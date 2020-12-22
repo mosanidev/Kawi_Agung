@@ -35,6 +35,7 @@ namespace Kawi_Agung
 
 		private void FormTambahBarang_Load(object sender, EventArgs e)
 		{
+			
 			string hasilBacaJenis = JenisBarang.BacaData("", "", listJenis);
 			string hasilBacaKategori = KategoriBarang.BacaData("", "", listKategori);
 			string hasilBacaMerek = MerekBarang.BacaData("", "", listMerek);
@@ -62,11 +63,14 @@ namespace Kawi_Agung
 					comboBoxTambahBarangMerekBarang.Items.Add(item.IdMerekBarang + " - " + item.NamaMerekBarang);
 				}
 			}
+
+			comboBoxSatuanBarang.Items.Add("PC");
+			comboBoxSatuanBarang.Items.Add("SET");
 		}
 
 		private void buttonTambahBarang_Click(object sender, EventArgs e)
 		{
-			if (textBoxTambahBarangKodeBarang.Text == "" || textBoxTambahBarangNamaBarang.Text == "" || comboBoxTambahBarangJenisBarang.Text == "" || comboBoxTambahBarangKategoriBarang.Text == "" || comboBoxTambahBarangMerekBarang.Text == "")
+			if (textBoxTambahBarangKodeBarang.Text == "" || textBoxTambahBarangNamaBarang.Text == "" || comboBoxTambahBarangJenisBarang.Text == "" || comboBoxTambahBarangKategoriBarang.Text == "" || comboBoxTambahBarangMerekBarang.Text == "" || comboBoxSatuanBarang.Text == "")
 			{
 				MessageBox.Show("Data harus diisi semua terlebih dahulu");
 			}
@@ -82,9 +86,11 @@ namespace Kawi_Agung
 					foto = ConvertImageToBinary(Image.FromFile(pathFoto));
 				}
 
-				Barang barang = new Barang(textBoxTambahBarangKodeBarang.Text, textBoxTambahBarangNamaBarang.Text, jenis, kategori, merek, hasilHargaJual, Convert.ToInt32(numericUpDownTambahBarangDiskon.Value), foto);
+				hasilHargaJual = hitungDiskon(Convert.ToInt32(numericUpDownTambahBarangHargaJual.Value), Convert.ToInt32(numericUpDownTambahBarangDiskon.Value));
 
-				string hasilTambah = Barang.TambahData(barang);
+				Barang barang = new Barang(textBoxTambahBarangKodeBarang.Text, textBoxTambahBarangNamaBarang.Text, jenis, kategori, merek, hasilHargaJual, Convert.ToInt32(numericUpDownTambahBarangDiskon.Value), Convert.ToInt32(numericUpDownStokMinimal.Value), comboBoxSatuanBarang.Text, foto);
+
+				string hasilTambah = Barang.TambahData(barang, this.mainForm.listBarang);
 
 				if (hasilTambah == "1")
 				{

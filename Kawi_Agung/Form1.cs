@@ -29,8 +29,10 @@ namespace Kawi_Agung
 			if (textBoxUsername.Text == "")
 			{
                 MessageBox.Show("Harap di isi terlebih dahulu");
-            }
-			else
+				textBoxUsername.Clear();
+				textBoxUsername.Focus();
+			}
+			else if (textBoxUsername.Text != "")
 			{
 				string hasilBaca = User.BacaData("u.username", textBoxUsername.Text, listUser);
 
@@ -50,24 +52,28 @@ namespace Kawi_Agung
                     else if (listUser[0].Status == "Terblokir")
                     {
                         MessageBox.Show("Mohon maaf anda tidak dapat mengakses sistem. Akun anda terblokir");
-                        textBoxUsername.Text = "";
+                        textBoxUsername.Clear();
                         textBoxUsername.Focus();
                     }
-				}
-				else if (listUser.Count == 0)
-				{
-					MessageBox.Show("Username tidak terdaftar di dalam sistem");
-                    textBoxUsername.Text = ""; 
+          
+                }
+                else if (listUser.Count == 0)
+                {
+                    MessageBox.Show("Username tidak terdaftar di dalam sistem");
+                    textBoxUsername.Clear();
                     textBoxUsername.Focus();
                 }
-			}
-		}
+                textBoxUsername.Clear();
+            }
+        }
 
         private void btnNextPassword_Click(object sender, EventArgs e)
 		{
             if (textBoxPassword.Text == "")
             {
                 MessageBox.Show("Harap di isi terlebih dahulu");
+                textBoxPassword.Clear();
+                textBoxPassword.Focus();
             }
             else if (DecryptPassword(listUser[0].Password) == textBoxPassword.Text)
             {
@@ -88,8 +94,8 @@ namespace Kawi_Agung
             else if (DecryptPassword(listUser[0].Password) != textBoxPassword.Text)
             {
                 // salah password
-                MessageBox.Show("Password yang anda masukkan salah"); 
-                textBoxPassword.Text = "";
+                MessageBox.Show("Password yang anda masukkan salah");
+                textBoxPassword.Clear();
                 textBoxPassword.Focus();
             }
         }
@@ -99,12 +105,15 @@ namespace Kawi_Agung
             if (textBoxNewPassword.Text == "" || textBoxRePassword.Text == "")
             {
                 MessageBox.Show("Harap di isi terlebih dahulu");
+                textBoxNewPassword.Clear();
+                textBoxRePassword.Clear();
+                textBoxNewPassword.Focus();
             }
             else if (textBoxRePassword.Text != textBoxNewPassword.Text)
             {
                 MessageBox.Show("Harap ketikkan ulang password dengan benar");
-                textBoxNewPassword.Text = "";
-                textBoxRePassword.Text = "";
+                textBoxNewPassword.Clear();
+                textBoxRePassword.Clear();
                 textBoxNewPassword.Focus();
             }
             else if (textBoxRePassword.Text == textBoxNewPassword.Text)

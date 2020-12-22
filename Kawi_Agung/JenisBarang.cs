@@ -63,11 +63,11 @@ namespace Kawi_Agung
 
 			if (kriteria == "")
 			{
-				sql = "SELECT * FROM jenis_barang";
+				sql = "SELECT * FROM jenis_barang ORDER BY idjenis_barang";
 			}
 			else
 			{
-				sql = "SELECT * FROM jenis_barang WHERE " + kriteria + " LIKE '%" + nilaiKriteria + "%'";
+				sql = "SELECT * FROM jenis_barang WHERE " + kriteria + " LIKE '%" + nilaiKriteria + "%' ORDER BY idjenis_barang";
 			}
 			try
 			{

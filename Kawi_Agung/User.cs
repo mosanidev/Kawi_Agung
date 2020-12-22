@@ -24,7 +24,7 @@ namespace Kawi_Agung
 		private string alamat;
 		private DateTime tanggalLahir;
 		private string noTelp;
-		private byte[] foto;
+		private byte[]? foto;
 		private Jabatan jabatan;
 		private string namaRekening;
 		private string noRekening;
@@ -40,8 +40,8 @@ namespace Kawi_Agung
 		public string Password { get => password; set => password = value; }
 		public string Status { get => status; set => status = value; }
 		public string Nama { get => nama; set => nama = value; }
-		public string JenisKelamin { get => nama; set => nama = value; }
-		public string Alamat { get => nama; set => nama = value; }
+		public string JenisKelamin { get => jenisKelamin; set => jenisKelamin = value; }
+		public string Alamat { get => alamat; set => alamat = value; }
 		public DateTime TanggalLahir { get => tanggalLahir; set => tanggalLahir = value; }
 		public string NoTelp { get => noTelp; set => noTelp = value; }
 		public byte[] Foto { get => foto; set => foto = value; }
@@ -116,13 +116,24 @@ namespace Kawi_Agung
 			c.ExecuteNonQuery();
 		}
 
-		public static string UbahData(User user)
+		public static string UbahData(User user, bool pathFotoWasNull)
 		{
-			string sql = "UPDATE user SET password='" + EncryptPassword(user.Password) + "', alamat='" + user.Alamat + "', no_telp='" + user.NoTelp  + "', foto=@foto, nama_rekening='" + user.NamaRekening +"', no_rekening='" + user.NoRekening +"', nama_bank='" + user.NamaBank +"' WHERE iduser=" + user.idUser;
+			string sql = "";
+			MySqlParameter fotoParam = null;
 
-			var fotoParam = new MySqlParameter("foto", MySqlDbType.Blob);
+			if (pathFotoWasNull == true)
+			{
+				sql = "UPDATE user SET password='" + EncryptPassword(user.Password) + "', alamat='" + user.Alamat + "', no_telp='" + user.NoTelp + "', nama_rekening='" + user.NamaRekening + "', no_rekening='" + user.NoRekening + "', nama_bank='" + user.NamaBank + "' WHERE iduser=" + user.idUser;
 
-			fotoParam.Value = user.foto;
+			} else if (pathFotoWasNull == false) {
+
+				sql = "UPDATE user SET password='" + EncryptPassword(user.Password) + "', alamat='" + user.Alamat + "', no_telp='" + user.NoTelp + "', foto=@foto, nama_rekening='" + user.NamaRekening + "', no_rekening='" + user.NoRekening + "', nama_bank='" + user.NamaBank + "' WHERE iduser=" + user.idUser;
+
+				fotoParam = new MySqlParameter("foto", MySqlDbType.Blob);
+
+				fotoParam.Value = user.foto;
+
+			}
 
 			try
 			{
@@ -133,7 +144,10 @@ namespace Kawi_Agung
 				MySqlCommand c = new MySqlCommand(sql, k.KoneksiDB);
 
 				// if blob type must do parameterized query not concat string
-				c.Parameters.Add(fotoParam);
+				if (pathFotoWasNull == false)
+				{
+					c.Parameters.Add(fotoParam);
+				}
 
 				c.ExecuteReader();
 
@@ -218,8 +232,13 @@ namespace Kawi_Agung
 					user.TanggalLahir = DateTime.Parse(hasilData.GetValue(6).ToString());
 					user.Alamat = hasilData.GetValue(7).ToString();
 					user.NoTelp = hasilData.GetValue(8).ToString();
-					user.Foto = (byte[])hasilData.GetValue(9);
 
+					// jika kolom foto sudah diisi maka ditampung 
+					if (hasilData.GetValue(9) != System.DBNull.Value)
+					{
+						user.Foto = (byte[])hasilData.GetValue(9);
+					}
+					
 					Jabatan jabatan = new Jabatan(int.Parse(hasilData.GetValue(10).ToString()), hasilData.GetValue(11).ToString());
 
 					user.Jabatan = jabatan;

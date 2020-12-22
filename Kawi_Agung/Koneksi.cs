@@ -30,6 +30,7 @@ namespace Kawi_Agung
 			KoneksiDB.ConnectionString = ConfigurationManager.ConnectionStrings["KonfigurasiKoneksi"].ConnectionString;
 
 			string hasilConnect = Connect();
+
 		}
 
 		public Koneksi(string pNamaServer, string pNamaDatabase, string pUsername, string pPassword)

@@ -27,9 +27,11 @@ namespace Kawi_Agung
 			labelDetailJenisBarang.Text = FormMaster.listSelectedBarang[0].Jenis.Nama;
 			labelDetailKategoriBarang.Text = FormMaster.listSelectedBarang[0].Kategori.Nama;
 			labelDetailMerekBarang.Text = FormMaster.listSelectedBarang[0].Merek.NamaMerekBarang;
+			labelDetailStokMinimal.Text = FormMaster.listSelectedBarang[0].StokMinimal.ToString();
+			labelDetailSatuanBarang.Text = FormMaster.listSelectedBarang[0].Satuan;
 			labelTotalHargaJual.Text = ConvertToRupiah(FormMaster.listSelectedBarang[0].HargaJual);
 			labelDetailDiskonJual.Text = FormMaster.listSelectedBarang[0].DiskonPersenJual.ToString();
-			labelDetailHargaJual.Text = CountPriceBeforeDiscount(FormMaster.listSelectedBarang[0].HargaJual, FormMaster.listSelectedBarang[0].DiskonPersenJual).ToString();
+			labelDetailHargaJual.Text = ConvertToRupiah(CountPriceBeforeDiscount(FormMaster.listSelectedBarang[0].HargaJual, FormMaster.listSelectedBarang[0].DiskonPersenJual));
 
 			if (FormMaster.listSelectedBarang[0].Foto != null)
 			{

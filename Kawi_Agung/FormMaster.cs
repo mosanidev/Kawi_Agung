@@ -149,6 +149,7 @@ namespace Kawi_Agung
 
 			if (listUserInfo.Count > 0)
 			{
+				labelNamaUser.Text = listUserInfo[0].Nama;
 				labelProfilNama.Text = listUserInfo[0].Nama;
 				textBoxNoTelpProfilUser.Text = listUserInfo[0].NoTelp;
 				labelProfilTglLahir.Text = listUserInfo[0].TanggalLahir.ToString();
@@ -160,14 +161,13 @@ namespace Kawi_Agung
 				textBoxRekeningBankProfilUser.Text = listUserInfo[0].NamaBank;
 				textBoxPasswordProfilUser.Text = frm.DecryptPassword(listUserInfo[0].Password);
 				labelJenisKelaminProfilUser.Text = listUserInfo[0].JenisKelamin;
-			}
 
-			if (ConvertBinaryToImage(listUserInfo[0].Foto) != null)
-			{
-				iconPictureBoxUser.Image = ConvertBinaryToImage(listUserInfo[0].Foto);
-				iconPictureBoxFotoProfil.Image = ConvertBinaryToImage(listUserInfo[0].Foto);
+				if (listUserInfo[0].Foto != null)
+				{
+					iconPictureBoxUser.Image = ConvertBinaryToImage(listUserInfo[0].Foto);
+					iconPictureBoxFotoProfil.Image = ConvertBinaryToImage(listUserInfo[0].Foto);
+				}
 			}
-			
 		}
 
 		private void PopulatePelangganTable(string kriteria, string nilaiKriteria)
@@ -1210,14 +1210,21 @@ namespace Kawi_Agung
 
 			string hasilBaca = "";
 
-			foreach (DataGridViewRow r in dataGridViewDaftarBarang.SelectedRows)
+			foreach (DataGridViewRow row in dataGridViewDaftarBarang.SelectedRows)
 			{
-				MessageBox.Show(r.Cells[1].Value.ToString());
-				hasilBaca = Barang.BacaDetailBarang("b.idbarang", r.Cells[1].Value.ToString(), listSelectedBarang);
+				hasilBaca = Barang.BacaDetailBarang("b.idbarang", row.Cells[1].Value.ToString(), listSelectedBarang);
 			}
 
-			FormDetailBarang frm = new FormDetailBarang();
-			frm.Show();
+			if (hasilBaca == "1")
+			{
+				FormDetailBarang frm = new FormDetailBarang();
+				frm.Show();
+			}
+			else
+			{
+				MessageBox.Show(hasilBaca);
+			}
+			
 		}
 
 		private void buttonTambahJenisBarang_Click(object sender, EventArgs e)
@@ -1564,9 +1571,16 @@ namespace Kawi_Agung
 				user.Foto = ConvertImageToBinary(Image.FromFile(pathFoto));
 			}
 
-			if (textBoxPasswordProfilUser.Text.Length >= 8)
+			if (textBoxPasswordProfilUser.Text.Length >= 8 && user.Foto == null)
 			{
-				if (User.UbahData(user) == "1")
+				if (User.UbahData(user, true) == "1")
+				{
+					MessageBox.Show("Data telah disimpan");
+				}
+			}
+			else if (textBoxPasswordProfilUser.Text.Length >= 8 && user.Foto != null)
+			{
+				if (User.UbahData(user, false) == "1")
 				{
 					iconPictureBoxUser.ImageLocation = pathFoto;
 					iconPictureBoxFotoProfil.ImageLocation = pathFoto;
@@ -1676,14 +1690,80 @@ namespace Kawi_Agung
 					hasilBaca = Barang.BacaDetailBarang("b.idbarang", row.Cells[1].Value.ToString(), listSelectedBarang);
 				}
 
-				FormUbahBarang frm = new FormUbahBarang(this);
-				frm.Show();
+				if (hasilBaca == "1")
+				{
+					FormUbahBarang frm = new FormUbahBarang(this);
+					frm.Show();
+				}
+				else
+				{
+					MessageBox.Show(hasilBaca);
+				}
 			}
 		}
 
 		private void buttonHapusDaftarBarang_Click(object sender, EventArgs e)
 		{
+			listSelectedBarang.Clear();
 
+			if (dataGridViewDaftarBarang.SelectedRows.Count == 0)
+			{
+				MessageBox.Show("Pilih satu atau lebih data di tabel untuk di hapus");
+			}
+			else
+			{
+				foreach (DataGridViewRow row in dataGridViewDaftarBarang.SelectedRows)
+				{
+					Barang barang = new Barang();
+					barang.IdBarang = int.Parse(row.Cells[1].Value.ToString());
+
+					listSelectedBarang.Add(barang);
+				}
+
+				DialogResult dialogResult = MessageBox.Show($"Apakah anda yakin untuk menghapus {listSelectedBarang.Count} barang ini?", "Hapus", MessageBoxButtons.YesNo);
+				if (dialogResult == DialogResult.Yes)
+				{
+					List<string> hasil = Barang.HapusData(listSelectedBarang);
+
+					int jumlahBerhasil = 0;
+					int jumlahGagal = 0;
+
+					string keteranganGagal = "";
+
+					foreach (var item in hasil)
+					{
+						if (item == "berhasil")
+						{
+							jumlahBerhasil++;
+						}
+						else
+						{
+							jumlahGagal++;
+							keteranganGagal = item.ToString();
+						}
+					}
+
+					if (jumlahGagal == 0)
+					{
+						MessageBox.Show($"{jumlahBerhasil} data berhasil di hapus");
+					}
+					else if (jumlahGagal > 0 && jumlahBerhasil > 0)
+					{
+						MessageBox.Show($"{jumlahBerhasil} data berhasil di hapus, {jumlahGagal} data gagal dihapus karena {keteranganGagal}");
+					}
+					else if (jumlahBerhasil == 0)
+					{
+						MessageBox.Show($"{jumlahGagal} data gagal dihapus karena {keteranganGagal}");
+					}
+
+					FormMaster_Load(sender, e);
+				}
+				else if (dialogResult == DialogResult.Cancel)
+				{
+					this.DialogResult = DialogResult.Cancel;
+				}
+			}
 		}
+
 	}
 }

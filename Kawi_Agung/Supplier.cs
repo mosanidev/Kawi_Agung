@@ -75,11 +75,11 @@ namespace Kawi_Agung
 
 			if (kriteria == "")
 			{
-				sql = "SELECT * FROM supplier";
+				sql = "SELECT * FROM supplier ORDER BY idsupplier";
 			}
 			else
 			{
-				sql = "SELECT * FROM supplier WHERE " + kriteria + " LIKE '%" + nilaiKriteria + "%'";
+				sql = "SELECT * FROM supplier WHERE " + kriteria + " LIKE '%" + nilaiKriteria + "%' ORDER BY idsupplier";
 			}
 			try
 			{
