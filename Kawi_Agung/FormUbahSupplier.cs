@@ -38,9 +38,20 @@ namespace Kawi_Agung
 		{
 			int IdSupplier = FormMaster.listSelectedSupplier[0].IdSupplier;
 
-			Supplier supplier = new Supplier(IdSupplier, textBoxUbahNamaSupplier.Text, richTextBoxUbahAlamatSupplier.Text, textBoxUbahNoTelpSupplier.Text);
+			Supplier supplier = new Supplier();
+			supplier.IdSupplier = IdSupplier;
+			supplier.Nama = textBoxUbahNamaSupplier.Text;
+			supplier.Alamat = richTextBoxUbahAlamatSupplier.Text;
+			supplier.NoTelp = textBoxUbahNoTelpSupplier.Text;
 
-			string hasil = Supplier.UbahData(supplier);
+			List<Supplier> listSupplier = new List<Supplier>();
+			string hasilBaca = Supplier.BacaData("exclude", FormMaster.listSelectedSupplier[0].Nama, listSupplier);
+			string hasilUbah = "";
+
+			if (hasilBaca == "1")
+			{
+				hasilUbah = Supplier.UbahData(supplier, listSupplier);
+			}
 
 			if (textBoxUbahNamaSupplier.Text == "" || textBoxUbahNoTelpSupplier.Text == "" || richTextBoxUbahAlamatSupplier.Text == "")
 			{
@@ -48,12 +59,17 @@ namespace Kawi_Agung
 			}
 			else if (textBoxUbahNamaSupplier.Text != "" || textBoxUbahNoTelpSupplier.Text != "" || richTextBoxUbahAlamatSupplier.Text != "")
 			{
-				if (hasil == "1")
+				if (hasilUbah == "1")
 				{
 					MessageBox.Show("Proses ubah berhasil");
 
+					this.mainForm.textBoxSearchNamaSupplier.Clear();
 					this.mainForm.FormMaster_Load(buttonUbahSupplier, e);
 					this.Close();
+				}
+				else
+				{
+					MessageBox.Show(hasilUbah);
 				}
 			}
 		}

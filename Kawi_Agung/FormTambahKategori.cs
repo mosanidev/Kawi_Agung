@@ -32,16 +32,22 @@ namespace Kawi_Agung
 			}
 			else 
 			{
-				KategoriBarang kategori = new KategoriBarang(textBoxTambahKategoriBarang.Text);
+				KategoriBarang kategori = new KategoriBarang();
+				kategori.Nama = textBoxTambahKategoriBarang.Text;
 
-				string hasil = KategoriBarang.TambahData(kategori);
+				string hasilTambah = KategoriBarang.TambahData(kategori, this.mainForm.listKategori);
 
-				if (hasil == "1")
+				if (hasilTambah == "1")
 				{
 					MessageBox.Show("Proses tambah berhasil");
 
+					this.mainForm.textBoxSearchKategoriBrg.Clear();
 					this.mainForm.FormMaster_Load(buttonTambahKategori, e);
 					this.Close();
+				}
+				else
+				{
+					MessageBox.Show(hasilTambah);
 				}
 			}
 		}

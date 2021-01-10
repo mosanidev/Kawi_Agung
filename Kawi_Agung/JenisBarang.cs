@@ -12,7 +12,6 @@ namespace Kawi_Agung
 	{
 		#region DATAMEMBERS
 
-		private int no; // untuk nomor di tabel
 		private int idJenisBarang;
 		private string nama;
 
@@ -20,7 +19,6 @@ namespace Kawi_Agung
 
 		#region PROPERTIES
 
-		public int No { get => no; set => no = value; }
 		public int IdJenisBarang { get => idJenisBarang; set => idJenisBarang = value; }
 		public string Nama { get => nama; set => nama = value; }
 
@@ -31,17 +29,6 @@ namespace Kawi_Agung
 		{
 			IdJenisBarang = 0;
 			Nama = "";
-		}
-
-		public JenisBarang(string pNama)
-		{
-			Nama = pNama;
-		}
-
-		public JenisBarang(int pIdJenisBarang, string pNama)
-		{
-			IdJenisBarang = pIdJenisBarang;
-			Nama = pNama;
 		}
 
 		#endregion
@@ -60,25 +47,30 @@ namespace Kawi_Agung
 		public static string BacaData(string kriteria, string nilaiKriteria, List<JenisBarang> listJenis)
 		{
 			string sql = "";
+			Koneksi conn = new Koneksi();
 
 			if (kriteria == "")
 			{
 				sql = "SELECT * FROM jenis_barang ORDER BY idjenis_barang";
 			}
+			else if (kriteria == "exclude") // kriteria khusus untuk perintah sql yang menyeleksi semua jenis barang terkecuali jenis tertentu
+			{
+				sql = "SELECT * FROM jenis_barang WHERE NOT nama='"  + nilaiKriteria + "' ORDER BY idjenis_barang";
+			}
 			else
 			{
 				sql = "SELECT * FROM jenis_barang WHERE " + kriteria + " LIKE '%" + nilaiKriteria + "%' ORDER BY idjenis_barang";
 			}
+
+			MySqlCommand cmd = new MySqlCommand(sql, conn.KoneksiDB);
+			MySqlDataReader hasil = cmd.ExecuteReader();
+
 			try
 			{
-				MySqlDataReader hasil = Koneksi.JalankanPerintahQuery(sql);
-
-				int i = 1;
-				while(hasil.Read())
+				while (hasil.Read())
 				{
 					JenisBarang jenis = new JenisBarang();
 
-					jenis.No = i++;
 					jenis.IdJenisBarang = int.Parse(hasil.GetValue(0).ToString());
 					jenis.Nama = hasil.GetValue(1).ToString();
 
@@ -91,14 +83,27 @@ namespace Kawi_Agung
 			{
 				return "Terjadi Kesalahan. Pesan Kesalahan : " + ex.Message;
 			}
+			finally
+			{
+				cmd.Dispose();
+				hasil.Dispose();
+			}
 		}
 
-		public static string TambahData(JenisBarang jenis)
+		public static string TambahData(JenisBarang jenis, List<JenisBarang> listJenis)
 		{
 			string sql = "INSERT INTO jenis_barang(nama) VALUES('" + jenis.Nama + "')";
 
 			try
 			{
+				for (int i = 0; i < listJenis.Count; i++)
+				{
+					if (jenis.Nama.ToLower() == listJenis[i].Nama.ToLower())
+					{
+						return "Nama jenis sudah ada. Harap masukkan nama yang lain";
+					}
+				}
+
 				JalankanPerintahDML(sql);
 				return "1";
 			}
@@ -109,12 +114,20 @@ namespace Kawi_Agung
 
 		}
 
-		public static string UbahData(JenisBarang jenis)
+		public static string UbahData(JenisBarang jenis, List<JenisBarang> listJenis)
 		{
 			string sql = "UPDATE jenis_barang SET nama='" + jenis.Nama + "' WHERE idjenis_barang=" + jenis.idJenisBarang;
 
 			try
 			{
+				for (int i = 0; i < listJenis.Count; i++)
+				{
+					if (jenis.Nama.ToLower() == listJenis[i].Nama.ToLower())
+					{
+						return "Nama jenis sudah ada. Harap masukkan nama yang lain";
+					}
+				}
+
 				JalankanPerintahDML(sql);
 				return "1";
 			}

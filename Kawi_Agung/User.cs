@@ -14,7 +14,6 @@ namespace Kawi_Agung
 	{
 		#region DATAMEMBERS
 
-		private int no;
 		private int idUser;
 		private string username;
 		private string password;
@@ -34,7 +33,6 @@ namespace Kawi_Agung
 
 		#region PROPERTIES
 
-		public int No { get => no; set => no = value; }
 		public int IdUser { get => idUser; set => idUser = value; }
 		public string Username { get => username; set => username = value; }
 		public string Password { get => password; set => password = value; }
@@ -57,7 +55,6 @@ namespace Kawi_Agung
 
 		public User()
 		{
-			No = 0;
 			IdUser = Interlocked.Increment(ref idUser);
 			Username = "";
 			Password = "";
@@ -71,35 +68,6 @@ namespace Kawi_Agung
 			NoRekening = "";
 			Foto = null;
 			NamaBank = ""; 
-		}
-
-		public User(string pUsername, string pPassword, string pAlamat, string pStatus, string pNama, string pJenisKelamin, DateTime pTanggalLahir, string pNoTelp, byte[] pFoto, string pNamaRekening, string pNoRekening, string pNamaBank, Jabatan pJabatan)
-		{
-			Username = pUsername;
-			Password = pPassword;
-			Status = pStatus;
-			Nama = pNama;
-			JenisKelamin = pJenisKelamin;
-			TanggalLahir = pTanggalLahir;
-			Alamat = pAlamat;
-			NoTelp = pNoTelp;
-			Foto = pFoto;
-			NamaRekening = pNamaRekening;
-			NoRekening = pNoRekening;
-			NamaBank = pNamaBank;
-			Jabatan = pJabatan;
-		}
-
-		public User(int pIdUser, string pPassword, string pAlamat, string pNoTelp, string pNamaRekening, string pNamaBank, string pNoRekening, byte[] pFoto)
-		{
-			IdUser = pIdUser;
-			Password = pPassword;
-			Alamat = pAlamat;
-			NoTelp = pNoTelp;
-			NamaRekening = pNamaRekening;
-			NoRekening = pNoRekening;
-			Foto = pFoto;
-			NamaBank = pNamaBank;
 		}
 
 		#endregion
@@ -123,7 +91,7 @@ namespace Kawi_Agung
 
 			if (pathFotoWasNull == true)
 			{
-				sql = "UPDATE user SET password='" + EncryptPassword(user.Password) + "', alamat='" + user.Alamat + "', no_telp='" + user.NoTelp + "', nama_rekening='" + user.NamaRekening + "', no_rekening='" + user.NoRekening + "', nama_bank='" + user.NamaBank + "' WHERE iduser=" + user.idUser;
+				sql = "UPDATE user SET password='" + EncryptPassword(user.Password) + "', alamat='" + user.Alamat + "', no_telp='" + user.NoTelp + "', nama_rekening='" + user.NamaRekening + "', no_rekening='" + user.NoRekening + "', nama_bank='" + user.NamaBank + "', foto=NULL WHERE iduser=" + user.idUser;
 
 			} else if (pathFotoWasNull == false) {
 
@@ -201,9 +169,71 @@ namespace Kawi_Agung
 			return Convert.ToBase64String(results, 0, results.Length);
 		}
 
+		public static string BacaPegawai(string kriteria, string nilaiKriteria, List<User> listUser)
+		{
+			string sql = "";
+			Koneksi conn = new Koneksi();
+
+			if (kriteria == "")
+			{
+				sql = "SELECT u.iduser, u.nama, u.username, j.nama, u.status, u.jenis_kelamin, u.tanggal_lahir, u.alamat, u.no_telp, u.foto FROM user u INNER JOIN jabatan j ON u.idjabatan=j.idjabatan WHERE NOT j.nama='Pemilik' ORDER BY u.nama";
+			}
+			else if (kriteria == "u.nama")
+			{
+				sql = "SELECT u.iduser, u.nama, u.username, j.nama, u.status, u.jenis_kelamin, u.tanggal_lahir, u.alamat, u.no_telp, u.foto FROM user u INNER JOIN jabatan j ON u.idjabatan=j.idjabatan WHERE NOT j.nama='Pemilik' AND " + kriteria + " LIKE '%" + nilaiKriteria + "%' ORDER BY u.nama";
+			}
+			else if (kriteria == "u.iduser")
+			{
+				sql = "SELECT u.iduser, u.nama, u.username, j.nama, u.status, u.jenis_kelamin, u.tanggal_lahir, u.alamat, u.no_telp, u.foto FROM user u INNER JOIN jabatan j ON u.idjabatan=j.idjabatan WHERE NOT j.nama='Pemilik' AND " + kriteria + " =" + nilaiKriteria;
+			}
+
+			MySqlCommand cmd = new MySqlCommand(sql, conn.KoneksiDB);
+			MySqlDataReader hasil = cmd.ExecuteReader();
+
+			try
+			{
+				while (hasil.Read())
+				{
+					Jabatan j = new Jabatan();
+					j.Nama = hasil.GetValue(3).ToString();
+
+					User user = new User();
+
+					user.IdUser = Convert.ToInt32(hasil.GetValue(0));
+					user.Nama = hasil.GetValue(1).ToString();
+					user.Username = hasil.GetValue(2).ToString();
+					user.Jabatan = j;
+					user.Status = hasil.GetValue(4).ToString();
+					user.JenisKelamin = hasil.GetValue(5).ToString();
+					user.TanggalLahir = DateTime.Parse(hasil.GetValue(6).ToString());
+					user.Alamat = hasil.GetValue(7).ToString();
+					user.NoTelp = hasil.GetValue(8).ToString();
+
+					// jika kolom foto sudah diisi maka ditampung 
+					if (hasil.GetValue(9) != System.DBNull.Value)
+					{
+						user.Foto = (byte[])hasil.GetValue(9);
+					}
+
+					listUser.Add(user);
+				}
+				return "1";
+			}
+			catch (Exception ex)
+			{
+				return "Terjadi Kesalahan. Pesan Kesalahan : " + ex.Message;
+			}
+			finally
+			{
+				cmd.Dispose();
+				hasil.Dispose();
+			}
+		}
+
 		public static string BacaData(string kriteria, string nilaiKriteria, List<User> listUser)
 		{
 			string sql = "";
+			Koneksi conn = new Koneksi();
 
 			if (kriteria == "")
 			{
@@ -213,38 +243,39 @@ namespace Kawi_Agung
 			{
 				sql = "SELECT u.iduser, u.username, u.password, u.status, u.nama, u.jenis_kelamin, u.tanggal_lahir, u.alamat, u.no_telp, u.foto, u.idjabatan, j.nama, u.nama_rekening, u.no_rekening, u.nama_bank FROM user u INNER JOIN jabatan j ON u.idjabatan=j.idjabatan WHERE " + kriteria + " = '" + nilaiKriteria + "'";
 			}
+
+			MySqlCommand cmd = new MySqlCommand(sql, conn.KoneksiDB);
+			MySqlDataReader hasil = cmd.ExecuteReader();
+
 			try
 			{
-				MySqlDataReader hasilData = Koneksi.JalankanPerintahQuery(sql);
 
-				int i = 1;
-				while (hasilData.Read())
+				while (hasil.Read())
 				{
 					User user = new User();
 
-					user.No = i++;
-					user.IdUser = int.Parse(hasilData.GetValue(0).ToString());
-					user.Username = hasilData.GetValue(1).ToString();
-					user.Password = hasilData.GetValue(2).ToString();
-					user.Status = hasilData.GetValue(3).ToString();
-					user.Nama = hasilData.GetValue(4).ToString();
-					user.JenisKelamin = hasilData.GetValue(5).ToString();
-					user.TanggalLahir = DateTime.Parse(hasilData.GetValue(6).ToString());
-					user.Alamat = hasilData.GetValue(7).ToString();
-					user.NoTelp = hasilData.GetValue(8).ToString();
+					user.IdUser = int.Parse(hasil.GetValue(0).ToString());
+					user.Username = hasil.GetValue(1).ToString();
+					user.Password = hasil.GetValue(2).ToString();
+					user.Status = hasil.GetValue(3).ToString();
+					user.Nama = hasil.GetValue(4).ToString();
+					user.JenisKelamin = hasil.GetValue(5).ToString();
+					user.TanggalLahir = DateTime.Parse(hasil.GetValue(6).ToString());
+					user.Alamat = hasil.GetValue(7).ToString();
+					user.NoTelp = hasil.GetValue(8).ToString();
 
 					// jika kolom foto sudah diisi maka ditampung 
-					if (hasilData.GetValue(9) != System.DBNull.Value)
+					if (hasil.GetValue(9) != System.DBNull.Value)
 					{
-						user.Foto = (byte[])hasilData.GetValue(9);
+						user.Foto = (byte[])hasil.GetValue(9);
 					}
-					
-					Jabatan jabatan = new Jabatan(int.Parse(hasilData.GetValue(10).ToString()), hasilData.GetValue(11).ToString());
+
+					Jabatan jabatan = new Jabatan(int.Parse(hasil.GetValue(10).ToString()), hasil.GetValue(11).ToString());
 
 					user.Jabatan = jabatan;
-					user.NamaRekening = hasilData.GetValue(12).ToString();
-					user.NoRekening = hasilData.GetValue(13).ToString();
-					user.NamaBank = hasilData.GetValue(14).ToString();
+					user.NamaRekening = hasil.GetValue(12).ToString();
+					user.NoRekening = hasil.GetValue(13).ToString();
+					user.NamaBank = hasil.GetValue(14).ToString();
 
 					listUser.Add(user);
 				}
@@ -253,6 +284,11 @@ namespace Kawi_Agung
 			catch (Exception ex)
 			{
 				return "Terjadi Kesalahan. Pesan Kesalahan : " + ex.Message;
+			}
+			finally
+			{
+				cmd.Dispose();
+				hasil.Dispose();
 			}
 		}
 

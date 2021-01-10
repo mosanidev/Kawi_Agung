@@ -11,7 +11,6 @@ namespace Kawi_Agung
 	{
 		#region DATAMEMBERS
 
-		private int no;  // untuk nomor di tabel
 		private int idPelanggan;
 		private string nama;
 		private string alamat;
@@ -21,7 +20,6 @@ namespace Kawi_Agung
 
 		#region PROPERTIES
 
-		public int No { get => no; set => no = value; }
 		public int IdPelanggan { get => idPelanggan; set => idPelanggan = value; }
 		public string Nama { get => nama; set => nama = value; }
 		public string Alamat { get => alamat; set => alamat = value; }
@@ -71,6 +69,7 @@ namespace Kawi_Agung
 		public static string BacaData(string kriteria, string nilaiKriteria, List<Pelanggan> listPelanggan)
 		{
 			string sql = "";
+			Koneksi conn = new Koneksi();
 
 			if (kriteria == "")
 			{
@@ -80,21 +79,22 @@ namespace Kawi_Agung
 			{
 				sql = "SELECT * FROM pelanggan WHERE " + kriteria + " LIKE '%" + nilaiKriteria + "%'";
 			}
+
+			MySqlCommand cmd = new MySqlCommand(sql, conn.KoneksiDB);
+			MySqlDataReader hasil = cmd.ExecuteReader();
+
 			try
 			{
-				MySqlDataReader hasil = Koneksi.JalankanPerintahQuery(sql);
-
-				int i = 1;
 				while (hasil.Read())
 				{
-					Pelanggan supplier = new Pelanggan();
-					supplier.No = i++;
-					supplier.IdPelanggan = int.Parse(hasil.GetValue(0).ToString());
-					supplier.Nama = hasil.GetValue(1).ToString();
-					supplier.Alamat = hasil.GetValue(2).ToString();
-					supplier.NoTelp = hasil.GetValue(3).ToString();
+					Pelanggan pelanggan = new Pelanggan();
 
-					listPelanggan.Add(supplier);
+					pelanggan.IdPelanggan = int.Parse(hasil.GetValue(0).ToString());
+					pelanggan.Nama = hasil.GetValue(1).ToString();
+					pelanggan.Alamat = hasil.GetValue(2).ToString();
+					pelanggan.NoTelp = hasil.GetValue(3).ToString();
+
+					listPelanggan.Add(pelanggan);
 				}
 
 				return "1";
@@ -102,6 +102,11 @@ namespace Kawi_Agung
 			catch (Exception ex)
 			{
 				return "Terjadi Kesalahan. Pesan Kesalahan : " + ex.Message;
+			}
+			finally
+			{
+				cmd.Dispose();
+				hasil.Dispose();
 			}
 		}
 

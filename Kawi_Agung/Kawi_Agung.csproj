@@ -38,6 +38,7 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>0</WarningLevel>
     <LangVersion>8.0</LangVersion>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -106,6 +107,7 @@
     <Compile Include="Barang.cs" />
     <Compile Include="Button_WOC.cs">
       <SubType>Component</SubType>
+      <CustomToolNamespace>Button_WOC</CustomToolNamespace>
     </Compile>
     <Compile Include="DragControl.cs">
       <SubType>Component</SubType>
@@ -121,6 +123,18 @@
     </Compile>
     <Compile Include="FormDetailBarang.Designer.cs">
       <DependentUpon>FormDetailBarang.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormDetailNotaBeli.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormDetailNotaBeli.Designer.cs">
+      <DependentUpon>FormDetailNotaBeli.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormDetailPegawai.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormDetailPegawai.Designer.cs">
+      <DependentUpon>FormDetailPegawai.cs</DependentUpon>
     </Compile>
     <Compile Include="FormMaster.cs">
       <SubType>Form</SubType>
@@ -151,6 +165,12 @@
     </Compile>
     <Compile Include="FormTambahNotaJual.Designer.cs">
       <DependentUpon>FormTambahNotaJual.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormTambahPegawai.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormTambahPegawai.Designer.cs">
+      <DependentUpon>FormTambahPegawai.cs</DependentUpon>
     </Compile>
     <Compile Include="FormTambahPelanggan.cs">
       <SubType>Form</SubType>
@@ -218,13 +238,16 @@
     <Compile Include="FormTambahNotaBeli.Designer.cs">
       <DependentUpon>FormTambahNotaBeli.cs</DependentUpon>
     </Compile>
-    <Compile Include="HakAkses.cs" />
     <Compile Include="Jabatan.cs" />
     <Compile Include="JenisBarang.cs" />
     <Compile Include="KategoriBarang.cs" />
     <Compile Include="Koneksi.cs" />
     <Compile Include="Menu.cs" />
     <Compile Include="MerekBarang.cs" />
+    <Compile Include="NotaBeli.cs" />
+    <Compile Include="NotaBeliDetil.cs" />
+    <Compile Include="NotaJual.cs" />
+    <Compile Include="NotaJualDetil.cs" />
     <Compile Include="Pelanggan.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -242,6 +265,12 @@
     <EmbeddedResource Include="FormDetailBarang.resx">
       <DependentUpon>FormDetailBarang.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FormDetailNotaBeli.resx">
+      <DependentUpon>FormDetailNotaBeli.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormDetailPegawai.resx">
+      <DependentUpon>FormDetailPegawai.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormMaster.resx">
       <DependentUpon>FormMaster.cs</DependentUpon>
     </EmbeddedResource>
@@ -256,6 +285,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormTambahNotaJual.resx">
       <DependentUpon>FormTambahNotaJual.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormTambahPegawai.resx">
+      <DependentUpon>FormTambahPegawai.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormTambahPelanggan.resx">
       <DependentUpon>FormTambahPelanggan.cs</DependentUpon>

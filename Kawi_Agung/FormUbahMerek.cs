@@ -28,9 +28,19 @@ namespace Kawi_Agung
 		{
 			int IdMerek = FormMaster.listSelectedMerek[0].IdMerekBarang;
 
-			MerekBarang merek = new MerekBarang(IdMerek, textBoxUbahMerekBarang.Text);
+			MerekBarang merek = new MerekBarang();
+			merek.IdMerekBarang = IdMerek;
+			merek.Nama = textBoxUbahMerekBarang.Text;
 
-			string hasil = MerekBarang.UbahData(merek);
+			List<MerekBarang> listMerek = new List<MerekBarang>();
+
+			string hasilBaca = MerekBarang.BacaData("exclude", FormMaster.listSelectedMerek[0].Nama, listMerek);
+			string hasilUbah = "";
+
+			if (hasilBaca == "1")
+			{
+				hasilUbah = MerekBarang.UbahData(merek, listMerek);
+			}
 
 			if (textBoxUbahMerekBarang.Text == "")
 			{
@@ -38,19 +48,24 @@ namespace Kawi_Agung
 			}
 			else if (textBoxUbahMerekBarang.Text != "")
 			{
-				if (hasil == "1")
+				if (hasilUbah == "1")
 				{
 					MessageBox.Show("Proses ubah berhasil");
 
+					this.mainForm.textBoxSearchMerekBrg.Clear();
 					this.mainForm.FormMaster_Load(buttonUbahMerek, e);
 					this.Close();
+				}
+				else
+				{
+					MessageBox.Show(hasilUbah);
 				}
 			}
 		}
 
 		private void FormUbahMerek_Load(object sender, EventArgs e)
 		{
-			textBoxUbahMerekBarang.Text = FormMaster.listSelectedMerek[0].NamaMerekBarang;
+			textBoxUbahMerekBarang.Text = FormMaster.listSelectedMerek[0].Nama;
 
 			textBoxUbahMerekBarang.SelectionStart = textBoxUbahMerekBarang.Text.Length;
 			textBoxUbahMerekBarang.SelectionLength = 0;

@@ -11,7 +11,6 @@ namespace Kawi_Agung
 	{
 		#region DATAMEMBERS
 
-		private int no;  // untuk nomor di tabel
 		private int idSupplier;
 		private string nama;
 		private string alamat;
@@ -21,12 +20,10 @@ namespace Kawi_Agung
 
 		#region PROPERTIES
 
-		public int No { get => no; set => no = value; }
 		public int IdSupplier { get => idSupplier; set => idSupplier = value; }
 		public string Nama { get => nama; set => nama = value; }
 		public string Alamat { get => alamat; set => alamat = value; }
 		public string NoTelp { get => noTelp; set => noTelp = value; }
-
 
 		#endregion
 
@@ -40,20 +37,20 @@ namespace Kawi_Agung
 			NoTelp = "";
 		}
 
-		public Supplier(int pIdSupplier, string pNama, string pAlamat, string pNoTelp)
-		{
-			IdSupplier = pIdSupplier;
-			Nama = pNama;
-			Alamat = pAlamat;
-			NoTelp = pNoTelp;
-		}
+		//public Supplier(int pIdSupplier, string pNama, string pAlamat, string pNoTelp)
+		//{
+		//	IdSupplier = pIdSupplier;
+		//	Nama = pNama;
+		//	Alamat = pAlamat;
+		//	NoTelp = pNoTelp;
+		//}
 
-		public Supplier(string pNama, string pAlamat, string pNoTelp)
-		{
-			Nama = pNama;
-			Alamat = pAlamat;
-			NoTelp = pNoTelp;
-		}
+		//public Supplier(string pNama, string pAlamat, string pNoTelp)
+		//{
+		//	Nama = pNama;
+		//	Alamat = pAlamat;
+		//	NoTelp = pNoTelp;
+		//}
 
 		#endregion
 
@@ -72,25 +69,30 @@ namespace Kawi_Agung
 		public static string BacaData(string kriteria, string nilaiKriteria, List<Supplier> listSupplier)
 		{
 			string sql = "";
+			Koneksi conn = new Koneksi();
 
 			if (kriteria == "")
 			{
 				sql = "SELECT * FROM supplier ORDER BY idsupplier";
 			}
+			else if (kriteria == "exclude") // // kriteria khusus untuk perintah sql yang menyeleksi semua supplier terkecuali kode barang tertentu
+			{
+				sql = "SELECT * FROM supplier WHERE NOT nama='" + nilaiKriteria + "' ORDER BY idsupplier";
+			}
 			else
 			{
 				sql = "SELECT * FROM supplier WHERE " + kriteria + " LIKE '%" + nilaiKriteria + "%' ORDER BY idsupplier";
 			}
+
+			MySqlCommand cmd = new MySqlCommand(sql, conn.KoneksiDB);
+			MySqlDataReader hasil = cmd.ExecuteReader();
+
 			try
 			{
-				MySqlDataReader hasil = Koneksi.JalankanPerintahQuery(sql);
-
-			
-				int i = 1;
 				while (hasil.Read())
 				{
 					Supplier supplier = new Supplier();
-					supplier.No = i++;
+
 					supplier.IdSupplier = int.Parse(hasil.GetValue(0).ToString());
 					supplier.Nama = hasil.GetValue(1).ToString();
 					supplier.Alamat = hasil.GetValue(2).ToString();
@@ -105,14 +107,27 @@ namespace Kawi_Agung
 			{
 				return "Terjadi Kesalahan. Pesan Kesalahan : " + ex.Message;
 			}
+			finally
+			{
+				cmd.Dispose();
+				hasil.Dispose();
+			}
 		}
 
-		public static string TambahData(Supplier supplier)
+		public static string TambahData(Supplier supplier, List<Supplier> listSupplier)
 		{
 			string sql = "INSERT INTO supplier(nama, alamat, no_telp) VALUES('" + supplier.Nama + "', '" + supplier.Alamat + "', '" + supplier.NoTelp + "')";
 
 			try
 			{
+				for (int i = 0; i < listSupplier.Count; i++)
+				{
+					if (supplier.Nama.ToLower() == listSupplier[i].Nama.ToLower())
+					{
+						return "Nama supplier sudah ada. Harap masukkan nama yang lain";
+					}
+				}
+
 				JalankanPerintahDML(sql);
 				return "1";
 			}
@@ -122,12 +137,20 @@ namespace Kawi_Agung
 			}
 		}
 
-		public static string UbahData(Supplier supplier)
+		public static string UbahData(Supplier supplier, List<Supplier> listSupplier)
 		{
 			string sql = "UPDATE supplier SET nama='" + supplier.Nama + "', alamat='" + supplier.Alamat + "', no_telp='" + supplier.NoTelp + "' WHERE idsupplier=" + supplier.IdSupplier;
 			 
 			try
 			{
+				for (int i = 0; i < listSupplier.Count; i++)
+				{
+					if (supplier.Nama.ToLower() == listSupplier[i].Nama.ToLower())
+					{
+						return "Nama supplier sudah ada. Harap masukkan nama yang lain";
+					}
+				}
+
 				JalankanPerintahDML(sql);
 				return "1";
 			}

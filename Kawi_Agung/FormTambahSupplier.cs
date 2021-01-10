@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using ePOSOne.btnProduct;
 
 namespace Kawi_Agung
 {
@@ -32,16 +33,24 @@ namespace Kawi_Agung
 			}
 			else
 			{
-				Supplier supplier = new Supplier(textBoxTambahNamaSupplier.Text, richTextBoxTambahAlamatSupplier.Text, textBoxTambahNoTelpSupplier.Text);
+				Supplier supplier = new Supplier();
+				supplier.Nama = textBoxTambahNamaSupplier.Text;
+				supplier.Alamat = richTextBoxTambahAlamatSupplier.Text;
+				supplier.NoTelp = textBoxTambahNoTelpSupplier.Text;
 
-				string hasil = Supplier.TambahData(supplier);
+				string hasilTambah = Supplier.TambahData(supplier, this.mainForm.listSupplier);
 
-				if (hasil == "1")
+				if (hasilTambah == "1")
 				{
 					MessageBox.Show("Proses tambah berhasil");
 
+					this.mainForm.textBoxSearchNamaSupplier.Clear();
 					this.mainForm.FormMaster_Load(buttonTambahSupplier, e);
 					this.Close();
+				}
+				else
+				{
+					MessageBox.Show(hasilTambah);
 				}
 			}
 		}

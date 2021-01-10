@@ -32,16 +32,22 @@ namespace Kawi_Agung
 			}
 			else
 			{
-				MerekBarang merek = new MerekBarang(textBoxTambahMerekBarang.Text);
+				MerekBarang merek = new MerekBarang();
+				merek.Nama = textBoxTambahMerekBarang.Text;
 
-				string hasil = MerekBarang.TambahData(merek);
+				string hasilTambah = MerekBarang.TambahData(merek, this.mainForm.listMerek);
 
-				if (hasil == "1")
+				if (hasilTambah == "1")
 				{
 					MessageBox.Show("Proses tambah berhasil");
 
+					this.mainForm.textBoxSearchMerekBrg.Clear();
 					this.mainForm.FormMaster_Load(buttonTambahMerek, e);
 					this.Close();
+				}
+				else
+				{
+					MessageBox.Show(hasilTambah);
 				}
 			}
 		}

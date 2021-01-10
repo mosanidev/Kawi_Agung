@@ -33,16 +33,22 @@ namespace Kawi_Agung
 			}
 			else
 			{
-				JenisBarang jenis = new JenisBarang(textBoxTambahJenisBarang.Text);
+				JenisBarang jenis = new JenisBarang();
+				jenis.Nama = textBoxTambahJenisBarang.Text;
 
-				string hasil = JenisBarang.TambahData(jenis);
+				string hasilTambah = JenisBarang.TambahData(jenis, this.mainForm.listJenis);
 
-				if (hasil == "1")
+				if (hasilTambah == "1")
 				{
 					MessageBox.Show("Proses tambah berhasil");
 
+					this.mainForm.textBoxSearchJenisBrg.Clear();
 					this.mainForm.FormMaster_Load(buttonTambahJenis, e);
 					this.Close();
+				}
+				else
+				{
+					MessageBox.Show(hasilTambah);
 				}
 			}
 		}

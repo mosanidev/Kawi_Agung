@@ -50,15 +50,14 @@
 			this.labelHasilHargaJual = new System.Windows.Forms.Label();
 			this.buttonTambahBarang = new ePOSOne.btnProduct.Button_WOC();
 			this.buttonUnggahFotoBarang = new ePOSOne.btnProduct.Button_WOC();
-			this.label6 = new System.Windows.Forms.Label();
-			this.numericUpDownStokMinimal = new System.Windows.Forms.NumericUpDown();
 			this.label7 = new System.Windows.Forms.Label();
 			this.comboBoxSatuanBarang = new System.Windows.Forms.ComboBox();
+			this.buttonHapusFoto = new ePOSOne.btnProduct.Button_WOC();
+			this.label6 = new System.Windows.Forms.Label();
 			this.panel1.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.numericUpDownTambahBarangHargaJual)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.numericUpDownTambahBarangDiskon)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.pictureBoxTambahBarangGambarBarang)).BeginInit();
-			((System.ComponentModel.ISupportInitialize)(this.numericUpDownStokMinimal)).BeginInit();
 			this.SuspendLayout();
 			// 
 			// panel1
@@ -76,7 +75,7 @@
 			this.labelJudul.AutoSize = true;
 			this.labelJudul.Font = new System.Drawing.Font("Century Gothic", 22F);
 			this.labelJudul.ForeColor = System.Drawing.Color.AliceBlue;
-			this.labelJudul.Location = new System.Drawing.Point(16, 9);
+			this.labelJudul.Location = new System.Drawing.Point(16, 10);
 			this.labelJudul.Name = "labelJudul";
 			this.labelJudul.Size = new System.Drawing.Size(248, 37);
 			this.labelJudul.TabIndex = 1;
@@ -86,7 +85,7 @@
 			// 
 			this.labelTambahBarangRP.AutoSize = true;
 			this.labelTambahBarangRP.Font = new System.Drawing.Font("Century Gothic", 12.5F);
-			this.labelTambahBarangRP.Location = new System.Drawing.Point(183, 289);
+			this.labelTambahBarangRP.Location = new System.Drawing.Point(183, 260);
 			this.labelTambahBarangRP.Name = "labelTambahBarangRP";
 			this.labelTambahBarangRP.Size = new System.Drawing.Size(32, 21);
 			this.labelTambahBarangRP.TabIndex = 64;
@@ -97,7 +96,7 @@
 			// 
 			this.label4.AutoSize = true;
 			this.label4.Font = new System.Drawing.Font("Century Gothic", 12.5F);
-			this.label4.Location = new System.Drawing.Point(28, 289);
+			this.label4.Location = new System.Drawing.Point(28, 260);
 			this.label4.Name = "label4";
 			this.label4.Size = new System.Drawing.Size(110, 21);
 			this.label4.TabIndex = 58;
@@ -107,7 +106,7 @@
 			// 
 			this.label3.AutoSize = true;
 			this.label3.Font = new System.Drawing.Font("Century Gothic", 12.5F);
-			this.label3.Location = new System.Drawing.Point(28, 117);
+			this.label3.Location = new System.Drawing.Point(28, 118);
 			this.label3.Name = "label3";
 			this.label3.Size = new System.Drawing.Size(137, 21);
 			this.label3.TabIndex = 57;
@@ -117,7 +116,7 @@
 			// 
 			this.label2.AutoSize = true;
 			this.label2.Font = new System.Drawing.Font("Century Gothic", 12.5F);
-			this.label2.Location = new System.Drawing.Point(28, 173);
+			this.label2.Location = new System.Drawing.Point(28, 174);
 			this.label2.Name = "label2";
 			this.label2.Size = new System.Drawing.Size(90, 21);
 			this.label2.TabIndex = 56;
@@ -127,7 +126,7 @@
 			// 
 			this.label16.AutoSize = true;
 			this.label16.Font = new System.Drawing.Font("Century Gothic", 12.5F);
-			this.label16.Location = new System.Drawing.Point(28, 201);
+			this.label16.Location = new System.Drawing.Point(28, 202);
 			this.label16.Name = "label16";
 			this.label16.Size = new System.Drawing.Size(73, 21);
 			this.label16.TabIndex = 54;
@@ -137,7 +136,7 @@
 			// 
 			this.label1.AutoSize = true;
 			this.label1.Font = new System.Drawing.Font("Century Gothic", 12.5F);
-			this.label1.Location = new System.Drawing.Point(28, 88);
+			this.label1.Location = new System.Drawing.Point(28, 89);
 			this.label1.Name = "label1";
 			this.label1.Size = new System.Drawing.Size(129, 21);
 			this.label1.TabIndex = 55;
@@ -147,7 +146,7 @@
 			// 
 			this.label17.AutoSize = true;
 			this.label17.Font = new System.Drawing.Font("Century Gothic", 12.5F);
-			this.label17.Location = new System.Drawing.Point(28, 145);
+			this.label17.Location = new System.Drawing.Point(28, 146);
 			this.label17.Name = "label17";
 			this.label17.Size = new System.Drawing.Size(59, 21);
 			this.label17.TabIndex = 53;
@@ -155,14 +154,14 @@
 			// 
 			// textBoxTambahBarangKodeBarang
 			// 
-			this.textBoxTambahBarangKodeBarang.Location = new System.Drawing.Point(187, 91);
+			this.textBoxTambahBarangKodeBarang.Location = new System.Drawing.Point(187, 92);
 			this.textBoxTambahBarangKodeBarang.Name = "textBoxTambahBarangKodeBarang";
 			this.textBoxTambahBarangKodeBarang.Size = new System.Drawing.Size(215, 20);
 			this.textBoxTambahBarangKodeBarang.TabIndex = 68;
 			// 
 			// textBoxTambahBarangNamaBarang
 			// 
-			this.textBoxTambahBarangNamaBarang.Location = new System.Drawing.Point(187, 120);
+			this.textBoxTambahBarangNamaBarang.Location = new System.Drawing.Point(187, 121);
 			this.textBoxTambahBarangNamaBarang.Name = "textBoxTambahBarangNamaBarang";
 			this.textBoxTambahBarangNamaBarang.Size = new System.Drawing.Size(215, 20);
 			this.textBoxTambahBarangNamaBarang.TabIndex = 69;
@@ -171,7 +170,7 @@
 			// 
 			this.comboBoxTambahBarangJenisBarang.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
 			this.comboBoxTambahBarangJenisBarang.FormattingEnabled = true;
-			this.comboBoxTambahBarangJenisBarang.Location = new System.Drawing.Point(187, 148);
+			this.comboBoxTambahBarangJenisBarang.Location = new System.Drawing.Point(187, 149);
 			this.comboBoxTambahBarangJenisBarang.Name = "comboBoxTambahBarangJenisBarang";
 			this.comboBoxTambahBarangJenisBarang.Size = new System.Drawing.Size(215, 21);
 			this.comboBoxTambahBarangJenisBarang.TabIndex = 70;
@@ -180,7 +179,7 @@
 			// 
 			this.comboBoxTambahBarangKategoriBarang.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
 			this.comboBoxTambahBarangKategoriBarang.FormattingEnabled = true;
-			this.comboBoxTambahBarangKategoriBarang.Location = new System.Drawing.Point(187, 176);
+			this.comboBoxTambahBarangKategoriBarang.Location = new System.Drawing.Point(187, 177);
 			this.comboBoxTambahBarangKategoriBarang.Name = "comboBoxTambahBarangKategoriBarang";
 			this.comboBoxTambahBarangKategoriBarang.Size = new System.Drawing.Size(215, 21);
 			this.comboBoxTambahBarangKategoriBarang.TabIndex = 71;
@@ -189,14 +188,14 @@
 			// 
 			this.comboBoxTambahBarangMerekBarang.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
 			this.comboBoxTambahBarangMerekBarang.FormattingEnabled = true;
-			this.comboBoxTambahBarangMerekBarang.Location = new System.Drawing.Point(187, 204);
+			this.comboBoxTambahBarangMerekBarang.Location = new System.Drawing.Point(187, 205);
 			this.comboBoxTambahBarangMerekBarang.Name = "comboBoxTambahBarangMerekBarang";
 			this.comboBoxTambahBarangMerekBarang.Size = new System.Drawing.Size(215, 21);
 			this.comboBoxTambahBarangMerekBarang.TabIndex = 72;
 			// 
 			// numericUpDownTambahBarangHargaJual
 			// 
-			this.numericUpDownTambahBarangHargaJual.Location = new System.Drawing.Point(221, 293);
+			this.numericUpDownTambahBarangHargaJual.Location = new System.Drawing.Point(221, 264);
 			this.numericUpDownTambahBarangHargaJual.Maximum = new decimal(new int[] {
             999999999,
             0,
@@ -208,7 +207,7 @@
 			// 
 			// numericUpDownTambahBarangDiskon
 			// 
-			this.numericUpDownTambahBarangDiskon.Location = new System.Drawing.Point(187, 320);
+			this.numericUpDownTambahBarangDiskon.Location = new System.Drawing.Point(187, 291);
 			this.numericUpDownTambahBarangDiskon.Maximum = new decimal(new int[] {
             99,
             0,
@@ -223,7 +222,7 @@
 			// 
 			this.labelTambahBarangPersen.AutoSize = true;
 			this.labelTambahBarangPersen.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
-			this.labelTambahBarangPersen.Location = new System.Drawing.Point(231, 320);
+			this.labelTambahBarangPersen.Location = new System.Drawing.Point(231, 291);
 			this.labelTambahBarangPersen.Name = "labelTambahBarangPersen";
 			this.labelTambahBarangPersen.Size = new System.Drawing.Size(21, 18);
 			this.labelTambahBarangPersen.TabIndex = 76;
@@ -232,7 +231,7 @@
 			// pictureBoxTambahBarangGambarBarang
 			// 
 			this.pictureBoxTambahBarangGambarBarang.Image = global::Kawi_Agung.Properties.Resources.box;
-			this.pictureBoxTambahBarangGambarBarang.Location = new System.Drawing.Point(461, 80);
+			this.pictureBoxTambahBarangGambarBarang.Location = new System.Drawing.Point(461, 81);
 			this.pictureBoxTambahBarangGambarBarang.Name = "pictureBoxTambahBarangGambarBarang";
 			this.pictureBoxTambahBarangGambarBarang.Size = new System.Drawing.Size(207, 174);
 			this.pictureBoxTambahBarangGambarBarang.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -243,7 +242,7 @@
 			// 
 			this.label5.AutoSize = true;
 			this.label5.Font = new System.Drawing.Font("Century Gothic", 12.5F);
-			this.label5.Location = new System.Drawing.Point(28, 318);
+			this.label5.Location = new System.Drawing.Point(28, 289);
 			this.label5.Name = "label5";
 			this.label5.Size = new System.Drawing.Size(73, 21);
 			this.label5.TabIndex = 77;
@@ -253,7 +252,7 @@
 			// 
 			this.labelHasilHargaJual.AutoSize = true;
 			this.labelHasilHargaJual.Font = new System.Drawing.Font("Century Gothic", 12.5F);
-			this.labelHasilHargaJual.Location = new System.Drawing.Point(183, 345);
+			this.labelHasilHargaJual.Location = new System.Drawing.Point(183, 347);
 			this.labelHasilHargaJual.Name = "labelHasilHargaJual";
 			this.labelHasilHargaJual.Size = new System.Drawing.Size(41, 21);
 			this.labelHasilHargaJual.TabIndex = 78;
@@ -272,7 +271,7 @@
 			this.buttonTambahBarang.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
 			this.buttonTambahBarang.Font = new System.Drawing.Font("Century Gothic", 11F);
 			this.buttonTambahBarang.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(49)))), ((int)(((byte)(69)))));
-			this.buttonTambahBarang.Location = new System.Drawing.Point(221, 384);
+			this.buttonTambahBarang.Location = new System.Drawing.Point(221, 385);
 			this.buttonTambahBarang.Name = "buttonTambahBarang";
 			this.buttonTambahBarang.OnHoverBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(7)))), ((int)(((byte)(104)))), ((int)(((byte)(159)))));
 			this.buttonTambahBarang.OnHoverButtonColor = System.Drawing.Color.FromArgb(((int)(((byte)(7)))), ((int)(((byte)(104)))), ((int)(((byte)(159)))));
@@ -297,7 +296,7 @@
 			this.buttonUnggahFotoBarang.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
 			this.buttonUnggahFotoBarang.Font = new System.Drawing.Font("Century Gothic", 11F);
 			this.buttonUnggahFotoBarang.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(49)))), ((int)(((byte)(69)))));
-			this.buttonUnggahFotoBarang.Location = new System.Drawing.Point(491, 260);
+			this.buttonUnggahFotoBarang.Location = new System.Drawing.Point(491, 261);
 			this.buttonUnggahFotoBarang.Name = "buttonUnggahFotoBarang";
 			this.buttonUnggahFotoBarang.OnHoverBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(7)))), ((int)(((byte)(104)))), ((int)(((byte)(159)))));
 			this.buttonUnggahFotoBarang.OnHoverButtonColor = System.Drawing.Color.FromArgb(((int)(((byte)(7)))), ((int)(((byte)(104)))), ((int)(((byte)(159)))));
@@ -309,33 +308,11 @@
 			this.buttonUnggahFotoBarang.UseVisualStyleBackColor = false;
 			this.buttonUnggahFotoBarang.Click += new System.EventHandler(this.buttonUnggahFotoBarang_Click);
 			// 
-			// label6
-			// 
-			this.label6.AutoSize = true;
-			this.label6.Font = new System.Drawing.Font("Century Gothic", 12.5F);
-			this.label6.Location = new System.Drawing.Point(28, 230);
-			this.label6.Name = "label6";
-			this.label6.Size = new System.Drawing.Size(123, 21);
-			this.label6.TabIndex = 79;
-			this.label6.Text = "Stok Minimal :";
-			// 
-			// numericUpDownStokMinimal
-			// 
-			this.numericUpDownStokMinimal.Location = new System.Drawing.Point(187, 234);
-			this.numericUpDownStokMinimal.Maximum = new decimal(new int[] {
-            999999999,
-            0,
-            0,
-            0});
-			this.numericUpDownStokMinimal.Name = "numericUpDownStokMinimal";
-			this.numericUpDownStokMinimal.Size = new System.Drawing.Size(215, 20);
-			this.numericUpDownStokMinimal.TabIndex = 80;
-			// 
 			// label7
 			// 
 			this.label7.AutoSize = true;
 			this.label7.Font = new System.Drawing.Font("Century Gothic", 12.5F);
-			this.label7.Location = new System.Drawing.Point(28, 260);
+			this.label7.Location = new System.Drawing.Point(28, 231);
 			this.label7.Name = "label7";
 			this.label7.Size = new System.Drawing.Size(79, 21);
 			this.label7.TabIndex = 81;
@@ -345,20 +322,55 @@
 			// 
 			this.comboBoxSatuanBarang.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
 			this.comboBoxSatuanBarang.FormattingEnabled = true;
-			this.comboBoxSatuanBarang.Location = new System.Drawing.Point(187, 263);
+			this.comboBoxSatuanBarang.Location = new System.Drawing.Point(187, 234);
 			this.comboBoxSatuanBarang.Name = "comboBoxSatuanBarang";
 			this.comboBoxSatuanBarang.Size = new System.Drawing.Size(215, 21);
 			this.comboBoxSatuanBarang.TabIndex = 82;
+			// 
+			// buttonHapusFoto
+			// 
+			this.buttonHapusFoto.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+			this.buttonHapusFoto.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(49)))), ((int)(((byte)(69)))));
+			this.buttonHapusFoto.ButtonColor = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(39)))), ((int)(((byte)(69)))));
+			this.buttonHapusFoto.Cursor = System.Windows.Forms.Cursors.Hand;
+			this.buttonHapusFoto.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(232)))), ((int)(((byte)(232)))));
+			this.buttonHapusFoto.FlatAppearance.BorderSize = 0;
+			this.buttonHapusFoto.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(232)))), ((int)(((byte)(232)))));
+			this.buttonHapusFoto.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(232)))), ((int)(((byte)(232)))));
+			this.buttonHapusFoto.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+			this.buttonHapusFoto.Font = new System.Drawing.Font("Century Gothic", 11F);
+			this.buttonHapusFoto.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(49)))), ((int)(((byte)(69)))));
+			this.buttonHapusFoto.Location = new System.Drawing.Point(491, 301);
+			this.buttonHapusFoto.Name = "buttonHapusFoto";
+			this.buttonHapusFoto.OnHoverBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(7)))), ((int)(((byte)(104)))), ((int)(((byte)(159)))));
+			this.buttonHapusFoto.OnHoverButtonColor = System.Drawing.Color.FromArgb(((int)(((byte)(7)))), ((int)(((byte)(104)))), ((int)(((byte)(159)))));
+			this.buttonHapusFoto.OnHoverTextColor = System.Drawing.Color.AliceBlue;
+			this.buttonHapusFoto.Size = new System.Drawing.Size(146, 34);
+			this.buttonHapusFoto.TabIndex = 109;
+			this.buttonHapusFoto.Text = "Hapus Foto";
+			this.buttonHapusFoto.TextColor = System.Drawing.Color.White;
+			this.buttonHapusFoto.UseVisualStyleBackColor = false;
+			this.buttonHapusFoto.Click += new System.EventHandler(this.buttonHapusFoto_Click);
+			// 
+			// label6
+			// 
+			this.label6.AutoSize = true;
+			this.label6.Font = new System.Drawing.Font("Microsoft Tai Le", 8F);
+			this.label6.Location = new System.Drawing.Point(187, 316);
+			this.label6.Name = "label6";
+			this.label6.Size = new System.Drawing.Size(193, 14);
+			this.label6.TabIndex = 110;
+			this.label6.Text = "Tekan ENTER setelah mengisi diskon";
 			// 
 			// FormTambahBarang
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(694, 438);
+			this.Controls.Add(this.label6);
+			this.Controls.Add(this.buttonHapusFoto);
 			this.Controls.Add(this.comboBoxSatuanBarang);
 			this.Controls.Add(this.label7);
-			this.Controls.Add(this.numericUpDownStokMinimal);
-			this.Controls.Add(this.label6);
 			this.Controls.Add(this.labelHasilHargaJual);
 			this.Controls.Add(this.label5);
 			this.Controls.Add(this.labelTambahBarangPersen);
@@ -389,7 +401,6 @@
 			((System.ComponentModel.ISupportInitialize)(this.numericUpDownTambahBarangHargaJual)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.numericUpDownTambahBarangDiskon)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.pictureBoxTambahBarangGambarBarang)).EndInit();
-			((System.ComponentModel.ISupportInitialize)(this.numericUpDownStokMinimal)).EndInit();
 			this.ResumeLayout(false);
 			this.PerformLayout();
 
@@ -419,9 +430,9 @@
 		private System.Windows.Forms.Label labelTambahBarangPersen;
 		private System.Windows.Forms.Label label5;
 		private System.Windows.Forms.Label labelHasilHargaJual;
-		private System.Windows.Forms.Label label6;
-		private System.Windows.Forms.NumericUpDown numericUpDownStokMinimal;
 		private System.Windows.Forms.Label label7;
 		private System.Windows.Forms.ComboBox comboBoxSatuanBarang;
+		private ePOSOne.btnProduct.Button_WOC buttonHapusFoto;
+		private System.Windows.Forms.Label label6;
 	}
 }

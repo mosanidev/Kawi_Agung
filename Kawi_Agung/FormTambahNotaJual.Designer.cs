@@ -28,9 +28,9 @@
 		/// </summary>
 		private void InitializeComponent()
 		{
-			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
 			this.panelSubMenuTransaksiBarangKeluar = new System.Windows.Forms.Panel();
 			this.panel8 = new System.Windows.Forms.Panel();
 			this.buttonSimpan = new ePOSOne.btnProduct.Button_WOC();
@@ -47,11 +47,9 @@
 			this.checkBoxDiskonJual = new System.Windows.Forms.CheckBox();
 			this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
 			this.label3 = new System.Windows.Forms.Label();
-			this.comboBox1 = new System.Windows.Forms.ComboBox();
+			this.comboBoxBarang = new System.Windows.Forms.ComboBox();
 			this.label2 = new System.Windows.Forms.Label();
-			this.label16 = new System.Windows.Forms.Label();
 			this.textBox1 = new System.Windows.Forms.TextBox();
-			this.comboBoxBarangKeluar = new System.Windows.Forms.ComboBox();
 			this.label1 = new System.Windows.Forms.Label();
 			this.textBoxPembeli = new System.Windows.Forms.TextBox();
 			this.labelTotalHargaBarangKeluar = new System.Windows.Forms.Label();
@@ -134,14 +132,14 @@
 			this.dataGridViewBarangKeluar.BorderStyle = System.Windows.Forms.BorderStyle.None;
 			this.dataGridViewBarangKeluar.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleVertical;
 			this.dataGridViewBarangKeluar.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-			dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-			dataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(7)))), ((int)(((byte)(104)))), ((int)(((byte)(159)))));
-			dataGridViewCellStyle4.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold);
-			dataGridViewCellStyle4.ForeColor = System.Drawing.Color.White;
-			dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-			dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-			dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-			this.dataGridViewBarangKeluar.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
+			dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+			dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(7)))), ((int)(((byte)(104)))), ((int)(((byte)(159)))));
+			dataGridViewCellStyle1.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold);
+			dataGridViewCellStyle1.ForeColor = System.Drawing.Color.White;
+			dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+			dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+			dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+			this.dataGridViewBarangKeluar.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
 			this.dataGridViewBarangKeluar.ColumnHeadersHeight = 50;
 			this.dataGridViewBarangKeluar.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
 			this.dataGridViewBarangKeluar.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -156,14 +154,14 @@
 			this.dataGridViewBarangKeluar.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(7)))), ((int)(((byte)(104)))), ((int)(((byte)(159)))));
 			this.dataGridViewBarangKeluar.Location = new System.Drawing.Point(23, 7);
 			this.dataGridViewBarangKeluar.Name = "dataGridViewBarangKeluar";
-			dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-			dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.ButtonFace;
-			dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.WindowText;
-			dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-			dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.ControlLightLight;
-			dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-			this.dataGridViewBarangKeluar.RowHeadersDefaultCellStyle = dataGridViewCellStyle6;
+			dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+			dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.ButtonFace;
+			dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+			dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.GradientInactiveCaption;
+			dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.ControlLightLight;
+			dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+			this.dataGridViewBarangKeluar.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
 			this.dataGridViewBarangKeluar.RowHeadersVisible = false;
 			this.dataGridViewBarangKeluar.RowTemplate.DefaultCellStyle.BackColor = System.Drawing.Color.GhostWhite;
 			this.dataGridViewBarangKeluar.RowTemplate.DefaultCellStyle.ForeColor = System.Drawing.Color.Black;
@@ -177,8 +175,8 @@
 			// 
 			// dataGridViewTextBoxColumn11
 			// 
-			dataGridViewCellStyle5.Padding = new System.Windows.Forms.Padding(3);
-			this.dataGridViewTextBoxColumn11.DefaultCellStyle = dataGridViewCellStyle5;
+			dataGridViewCellStyle2.Padding = new System.Windows.Forms.Padding(3);
+			this.dataGridViewTextBoxColumn11.DefaultCellStyle = dataGridViewCellStyle2;
 			this.dataGridViewTextBoxColumn11.HeaderText = "Kode Barang";
 			this.dataGridViewTextBoxColumn11.Name = "dataGridViewTextBoxColumn11";
 			// 
@@ -214,11 +212,9 @@
 			this.panel87.Controls.Add(this.checkBoxDiskonJual);
 			this.panel87.Controls.Add(this.dateTimePicker1);
 			this.panel87.Controls.Add(this.label3);
-			this.panel87.Controls.Add(this.comboBox1);
+			this.panel87.Controls.Add(this.comboBoxBarang);
 			this.panel87.Controls.Add(this.label2);
-			this.panel87.Controls.Add(this.label16);
 			this.panel87.Controls.Add(this.textBox1);
-			this.panel87.Controls.Add(this.comboBoxBarangKeluar);
 			this.panel87.Controls.Add(this.label1);
 			this.panel87.Controls.Add(this.textBoxPembeli);
 			this.panel87.Controls.Add(this.labelTotalHargaBarangKeluar);
@@ -280,13 +276,13 @@
 			this.label3.TabIndex = 39;
 			this.label3.Text = "Tanggal :";
 			// 
-			// comboBox1
+			// comboBoxBarang
 			// 
-			this.comboBox1.FormattingEnabled = true;
-			this.comboBox1.Location = new System.Drawing.Point(162, 106);
-			this.comboBox1.Name = "comboBox1";
-			this.comboBox1.Size = new System.Drawing.Size(215, 21);
-			this.comboBox1.TabIndex = 38;
+			this.comboBoxBarang.FormattingEnabled = true;
+			this.comboBoxBarang.Location = new System.Drawing.Point(162, 106);
+			this.comboBoxBarang.Name = "comboBoxBarang";
+			this.comboBoxBarang.Size = new System.Drawing.Size(215, 21);
+			this.comboBoxBarang.TabIndex = 38;
 			// 
 			// label2
 			// 
@@ -294,19 +290,9 @@
 			this.label2.Font = new System.Drawing.Font("Century Gothic", 12.5F);
 			this.label2.Location = new System.Drawing.Point(17, 106);
 			this.label2.Name = "label2";
-			this.label2.Size = new System.Drawing.Size(129, 21);
+			this.label2.Size = new System.Drawing.Size(80, 21);
 			this.label2.TabIndex = 37;
-			this.label2.Text = "Kode Barang :";
-			// 
-			// label16
-			// 
-			this.label16.AutoSize = true;
-			this.label16.Font = new System.Drawing.Font("Century Gothic", 12.5F);
-			this.label16.Location = new System.Drawing.Point(17, 135);
-			this.label16.Name = "label16";
-			this.label16.Size = new System.Drawing.Size(137, 21);
-			this.label16.TabIndex = 23;
-			this.label16.Text = "Nama Barang :";
+			this.label2.Text = "Barang :";
 			// 
 			// textBox1
 			// 
@@ -315,14 +301,6 @@
 			this.textBox1.Name = "textBox1";
 			this.textBox1.Size = new System.Drawing.Size(215, 20);
 			this.textBox1.TabIndex = 35;
-			// 
-			// comboBoxBarangKeluar
-			// 
-			this.comboBoxBarangKeluar.FormattingEnabled = true;
-			this.comboBoxBarangKeluar.Location = new System.Drawing.Point(162, 135);
-			this.comboBoxBarangKeluar.Name = "comboBoxBarangKeluar";
-			this.comboBoxBarangKeluar.Size = new System.Drawing.Size(215, 21);
-			this.comboBoxBarangKeluar.TabIndex = 24;
 			// 
 			// label1
 			// 
@@ -365,7 +343,7 @@
 			// 
 			this.labelHargaSatuanBarangKeluar.AutoSize = true;
 			this.labelHargaSatuanBarangKeluar.Font = new System.Drawing.Font("Century Gothic", 12.5F);
-			this.labelHargaSatuanBarangKeluar.Location = new System.Drawing.Point(158, 159);
+			this.labelHargaSatuanBarangKeluar.Location = new System.Drawing.Point(158, 131);
 			this.labelHargaSatuanBarangKeluar.Name = "labelHargaSatuanBarangKeluar";
 			this.labelHargaSatuanBarangKeluar.Size = new System.Drawing.Size(16, 21);
 			this.labelHargaSatuanBarangKeluar.TabIndex = 28;
@@ -375,7 +353,7 @@
 			// 
 			this.label14.AutoSize = true;
 			this.label14.Font = new System.Drawing.Font("Century Gothic", 12.5F);
-			this.label14.Location = new System.Drawing.Point(17, 159);
+			this.label14.Location = new System.Drawing.Point(17, 131);
 			this.label14.Name = "label14";
 			this.label14.Size = new System.Drawing.Size(72, 21);
 			this.label14.TabIndex = 27;
@@ -383,7 +361,7 @@
 			// 
 			// numericUpDownBarangKeluar
 			// 
-			this.numericUpDownBarangKeluar.Location = new System.Drawing.Point(160, 183);
+			this.numericUpDownBarangKeluar.Location = new System.Drawing.Point(160, 155);
 			this.numericUpDownBarangKeluar.Name = "numericUpDownBarangKeluar";
 			this.numericUpDownBarangKeluar.Size = new System.Drawing.Size(47, 20);
 			this.numericUpDownBarangKeluar.TabIndex = 26;
@@ -392,7 +370,7 @@
 			// 
 			this.label15.AutoSize = true;
 			this.label15.Font = new System.Drawing.Font("Century Gothic", 12.5F);
-			this.label15.Location = new System.Drawing.Point(17, 182);
+			this.label15.Location = new System.Drawing.Point(17, 154);
 			this.label15.Name = "label15";
 			this.label15.Size = new System.Drawing.Size(78, 21);
 			this.label15.TabIndex = 25;
@@ -477,12 +455,10 @@
 		private System.Windows.Forms.TextBox textBoxPembeli;
 		private System.Windows.Forms.NumericUpDown numericUpDownBarangKeluar;
 		private System.Windows.Forms.Label label15;
-		private System.Windows.Forms.ComboBox comboBoxBarangKeluar;
-		private System.Windows.Forms.Label label16;
 		private FontAwesome.Sharp.IconPictureBox iconPictureBoxBarangKeluar;
 		private System.Windows.Forms.Label label17;
 		private System.Windows.Forms.Panel panel1;
-		private System.Windows.Forms.ComboBox comboBox1;
+		private System.Windows.Forms.ComboBox comboBoxBarang;
 		private System.Windows.Forms.Label label2;
 		private System.Windows.Forms.TextBox textBox1;
 		private System.Windows.Forms.Label label1;

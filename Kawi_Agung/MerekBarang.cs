@@ -12,16 +12,14 @@ namespace Kawi_Agung
 	{
 		#region DATAMEMBERS
 
-		private int no; // untuk nomor di tabel
 		private int idMerekBarang;
-		private string namaMerekBarang;
+		private string nama;
 
 		#endregion
 
 		#region PROPERTIES
-		public int No { get => no; set => no = value; }
 		public int IdMerekBarang { get => idMerekBarang; set => idMerekBarang = value; }
-		public string NamaMerekBarang { get => namaMerekBarang; set => namaMerekBarang = value; }
+		public string Nama { get => nama; set => nama = value; }
 
 		#endregion
 
@@ -29,22 +27,9 @@ namespace Kawi_Agung
 
 		public MerekBarang()
 		{
-			No = 1;
 			IdMerekBarang = Interlocked.Increment(ref idMerekBarang);
-			NamaMerekBarang = "";
+			Nama = "";
 		}
-
-		public MerekBarang(string pNamaMerekBarang)
-		{
-			NamaMerekBarang = pNamaMerekBarang;
-		}
-
-		public MerekBarang(int pIdMerekBarang, string pNamaMerekBarang)
-		{
-			IdMerekBarang = pIdMerekBarang;
-			NamaMerekBarang = pNamaMerekBarang;
-		}
-
 		#endregion
 
 		#region METHODS
@@ -62,27 +47,32 @@ namespace Kawi_Agung
 		public static string BacaData(string kriteria, string nilaiKriteria, List<MerekBarang> listMerek)
 		{
 			string sql = "";
+			Koneksi conn = new Koneksi();
 
 			if (kriteria == "")
 			{
 				sql = "SELECT idmerek_barang, nama FROM merek_barang ORDER BY idmerek_barang";
 			}
+			else if (kriteria == "exclude") // kriteria khusus untuk perintah sql yang menyeleksi semua merek barang terkecuali merek tertentu
+			{
+				sql = "SELECT idmerek_barang, nama FROM merek_barang WHERE NOT nama='" + nilaiKriteria + "' ORDER BY idmerek_barang";
+			}
 			else
 			{
-				sql = "SELECT idmerek_barang, nama FROM merek_barang WHERE " + kriteria + " LIKE '%" + nilaiKriteria + "%' ORDER BY idmerek_barang";
+				sql = "SELECT idmerek_barang, nama FROM merek_barang WHERE " + kriteria + " LIKE '%" + nilaiKriteria + "%'";
 			}
+
+			MySqlCommand cmd = new MySqlCommand(sql, conn.KoneksiDB);
+			MySqlDataReader hasil = cmd.ExecuteReader();
+
 			try
 			{
-				MySqlDataReader hasilData = Koneksi.JalankanPerintahQuery(sql);
-
-				int i = 1;
-				while (hasilData.Read())
+				while (hasil.Read())
 				{
 					MerekBarang merek = new MerekBarang();
 
-					merek.No = i++;
-					merek.IdMerekBarang = int.Parse(hasilData.GetValue(0).ToString());
-					merek.NamaMerekBarang = hasilData.GetValue(1).ToString();
+					merek.IdMerekBarang = int.Parse(hasil.GetValue(0).ToString());
+					merek.Nama = hasil.GetValue(1).ToString();
 
 					listMerek.Add(merek);
 				}
@@ -92,14 +82,27 @@ namespace Kawi_Agung
 			{
 				return "Terjadi Kesalahan. Pesan Kesalahan : " + ex.Message;
 			}
+			finally
+			{
+				cmd.Dispose();
+				hasil.Dispose();
+			}
 		}
 
-		public static string TambahData(MerekBarang merek)
+		public static string TambahData(MerekBarang merek, List<MerekBarang> listMerek)
 		{
-			string sql = "INSERT INTO merek_barang(nama) VALUES('" + merek.NamaMerekBarang + "')";
+			string sql = "INSERT INTO merek_barang(nama) VALUES('" + merek.Nama + "')";
 
 			try
 			{
+				for (int i = 0; i < listMerek.Count; i++)
+				{
+					if (merek.Nama.ToLower() == listMerek[i].Nama.ToLower())
+					{
+						return "Nama merek sudah ada. Harap masukkan nama yang lain";
+					}
+				}
+
 				JalankanPerintahDML(sql);
 				return "1";
 			}
@@ -109,12 +112,20 @@ namespace Kawi_Agung
 			}
 		}
 
-		public static string UbahData(MerekBarang merek)
+		public static string UbahData(MerekBarang merek, List<MerekBarang> listMerek)
 		{
-			string sql = "UPDATE merek_barang SET nama='" + merek.NamaMerekBarang + "' WHERE idmerek_barang=" + merek.IdMerekBarang;
+			string sql = "UPDATE merek_barang SET nama='" + merek.Nama + "' WHERE idmerek_barang=" + merek.IdMerekBarang;
 
 			try
 			{
+				for (int i = 0; i < listMerek.Count; i++)
+				{
+					if (merek.Nama.ToLower() == listMerek[i].Nama.ToLower())
+					{
+						return "Nama merek sudah ada. Harap masukkan nama yang lain";
+					}
+				}
+
 				JalankanPerintahDML(sql);
 				return "1";
 			}

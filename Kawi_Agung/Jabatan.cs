@@ -43,6 +43,7 @@ namespace Kawi_Agung
 		public static string BacaData(string kriteria, string nilaiKriteria, List<Jabatan> listJabatan)
 		{
 			string sql = "";
+			Koneksi conn = new Koneksi();
 
 			if (kriteria == "" && nilaiKriteria == "")
 			{
@@ -52,15 +53,17 @@ namespace Kawi_Agung
 			{
 				sql = "SELECT idjabatan, nama FROM jabatan WHERE '" + kriteria + "' LIKE '%" + nilaiKriteria + "%'"; 
 			}
+
+			MySqlCommand cmd = new MySqlCommand(sql, conn.KoneksiDB);
+			MySqlDataReader hasil = cmd.ExecuteReader();
+
 			try
 			{
-				MySqlDataReader hasilData = Koneksi.JalankanPerintahQuery(sql);
-
-				while (hasilData.Read())
+				while (hasil.Read())
 				{
 					Jabatan jabatan = new Jabatan();
-					jabatan.IdJabatan = int.Parse(hasilData.GetValue(0).ToString());
-					jabatan.Nama = hasilData.GetValue(1).ToString();
+					jabatan.IdJabatan = int.Parse(hasil.GetValue(0).ToString());
+					jabatan.Nama = hasil.GetValue(1).ToString();
 					listJabatan.Add(jabatan);
 				}
 				return "1";
@@ -68,6 +71,11 @@ namespace Kawi_Agung
 			catch (MySqlException ex)
 			{
 				return "Terjadi Kesalahan. Pesan Kesalahan : " + ex.Message;
+			}
+			finally
+			{
+				cmd.Dispose();
+				hasil.Dispose();
 			}
 		}
 

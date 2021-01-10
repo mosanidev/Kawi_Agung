@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Kawi_Agung.Properties;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -60,7 +61,7 @@ namespace Kawi_Agung
 			{
 				foreach (var item in listMerek)
 				{
-					comboBoxTambahBarangMerekBarang.Items.Add(item.IdMerekBarang + " - " + item.NamaMerekBarang);
+					comboBoxTambahBarangMerekBarang.Items.Add(item.IdMerekBarang + " - " + item.Nama);
 				}
 			}
 
@@ -77,9 +78,18 @@ namespace Kawi_Agung
 			else
 			{
 				byte[] foto = null;
-				JenisBarang jenis = new JenisBarang(int.Parse(comboBoxTambahBarangJenisBarang.Text.Split('-')[0]), comboBoxTambahBarangJenisBarang.Text.Split('-')[1]);
-				KategoriBarang kategori = new KategoriBarang(int.Parse(comboBoxTambahBarangKategoriBarang.Text.Split('-')[0]), comboBoxTambahBarangKategoriBarang.Text.Split('-')[1]);
-				MerekBarang merek = new MerekBarang(int.Parse(comboBoxTambahBarangMerekBarang.Text.Split('-')[0]), comboBoxTambahBarangMerekBarang.Text.Split('-')[1]);
+
+				JenisBarang jenis = new JenisBarang();
+				jenis.IdJenisBarang = int.Parse(comboBoxTambahBarangJenisBarang.Text.Split('-')[0]);
+				jenis.Nama = comboBoxTambahBarangJenisBarang.Text.Split('-')[1];
+				
+				KategoriBarang kategori = new KategoriBarang();
+				kategori.IdKategoriBarang = int.Parse(comboBoxTambahBarangKategoriBarang.Text.Split('-')[0]);
+				kategori.Nama = comboBoxTambahBarangKategoriBarang.Text.Split('-')[1];
+				
+				MerekBarang merek = new MerekBarang();
+				merek.IdMerekBarang = int.Parse(comboBoxTambahBarangMerekBarang.Text.Split('-')[0]);
+				merek.Nama = comboBoxTambahBarangMerekBarang.Text.Split('-')[1];
 
 				if (pathFoto != "")
 				{
@@ -88,7 +98,16 @@ namespace Kawi_Agung
 
 				hasilHargaJual = hitungDiskon(Convert.ToInt32(numericUpDownTambahBarangHargaJual.Value), Convert.ToInt32(numericUpDownTambahBarangDiskon.Value));
 
-				Barang barang = new Barang(textBoxTambahBarangKodeBarang.Text, textBoxTambahBarangNamaBarang.Text, jenis, kategori, merek, hasilHargaJual, Convert.ToInt32(numericUpDownTambahBarangDiskon.Value), Convert.ToInt32(numericUpDownStokMinimal.Value), comboBoxSatuanBarang.Text, foto);
+				Barang barang = new Barang();
+				barang.KodeBarang = textBoxTambahBarangKodeBarang.Text;
+				barang.Nama = textBoxTambahBarangNamaBarang.Text;
+				barang.Jenis = jenis;
+				barang.Kategori = kategori;
+				barang.Merek = merek;
+				barang.HargaJual = hasilHargaJual;
+				barang.DiskonPersenJual = Convert.ToInt32(numericUpDownTambahBarangDiskon.Value);
+				barang.Satuan = comboBoxSatuanBarang.Text;
+				barang.Foto = foto;
 
 				string hasilTambah = Barang.TambahData(barang, this.mainForm.listBarang);
 
@@ -96,12 +115,13 @@ namespace Kawi_Agung
 				{
 					MessageBox.Show("Data berhasil ditambahkan");
 
+					this.mainForm.textBoxSearchBarang.Clear();
 					this.mainForm.FormMaster_Load(buttonTambahBarang, e);
 					this.Close();
 				}
 				else
 				{
-					MessageBox.Show("Terjadi kesalahan. Pesan Kesalahan : " + hasilTambah);
+					MessageBox.Show(hasilTambah);
 				}
 			}
 		}
@@ -162,6 +182,12 @@ namespace Kawi_Agung
 				hasilHargaJual = hitungDiskon(hargaJual, diskon);
 				labelHasilHargaJual.Text = ConvertToRupiah(hasilHargaJual);
 			}
+		}
+
+		private void buttonHapusFoto_Click(object sender, EventArgs e)
+		{
+			pictureBoxTambahBarangGambarBarang.Image = Resources.box;
+			pathFoto = "";
 		}
 	}
 }

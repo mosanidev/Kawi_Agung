@@ -28,9 +28,20 @@ namespace Kawi_Agung
 		{
 			int IdJenis = FormMaster.listSelectedJenis[0].IdJenisBarang;
 
-			JenisBarang jenis = new JenisBarang(IdJenis, textBoxUbahJenisBarang.Text);
+			JenisBarang jenis = new JenisBarang();
+			jenis.IdJenisBarang = IdJenis;
+			jenis.Nama = textBoxUbahJenisBarang.Text;
 
-			string hasil = JenisBarang.UbahData(jenis);
+			List<JenisBarang> listJenis = new List<JenisBarang>();
+
+			string hasilBaca = JenisBarang.BacaData("exclude", FormMaster.listSelectedJenis[0].Nama, listJenis);
+
+			string hasilUbah = "";
+
+			if (hasilBaca == "1")
+			{
+				hasilUbah = JenisBarang.UbahData(jenis, listJenis);
+			}
 
 			if (textBoxUbahJenisBarang.Text == "")
 			{
@@ -38,12 +49,17 @@ namespace Kawi_Agung
 			}
 			else if (textBoxUbahJenisBarang.Text != "")
 			{
-				if (hasil == "1")
+				if (hasilUbah == "1")
 				{
 					MessageBox.Show("Proses ubah berhasil");
 
+					this.mainForm.textBoxSearchJenisBrg.Clear();
 					this.mainForm.FormMaster_Load(buttonUbahJenis, e);
 					this.Close();
+				}
+				else
+				{
+					MessageBox.Show(hasilUbah);
 				}
 			}
 		}

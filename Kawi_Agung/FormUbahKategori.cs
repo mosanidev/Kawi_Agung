@@ -36,9 +36,20 @@ namespace Kawi_Agung
 		{
 			int IdKategori = FormMaster.listSelectedKategori[0].IdKategoriBarang;
 
-			KategoriBarang kategori = new KategoriBarang(IdKategori, textBoxUbahKategoriBarang.Text);
+			KategoriBarang kategori = new KategoriBarang();
+			kategori.IdKategoriBarang = IdKategori;
+			kategori.Nama = textBoxUbahKategoriBarang.Text;
 
-			string hasil = KategoriBarang.UbahData(kategori);
+			List<KategoriBarang> listKategori = new List<KategoriBarang>();
+
+			string hasilBaca = KategoriBarang.BacaData("exclude", FormMaster.listSelectedKategori[0].Nama, listKategori);
+
+			string hasilUbah = "";
+
+			if (hasilBaca == "1")
+			{
+				hasilUbah = KategoriBarang.UbahData(kategori, listKategori);
+			}
 
 			if (textBoxUbahKategoriBarang.Text == "")
 			{
@@ -46,12 +57,17 @@ namespace Kawi_Agung
 			}
 			else if (textBoxUbahKategoriBarang.Text != "")
 			{
-				if (hasil == "1")
+				if (hasilUbah == "1")
 				{
 					MessageBox.Show("Proses ubah berhasil");
 
+					this.mainForm.textBoxSearchKategoriBrg.Clear();
 					this.mainForm.FormMaster_Load(buttonUbahKategori, e);
 					this.Close();
+				}
+				else
+				{
+					MessageBox.Show(hasilUbah);
 				}
 			}
 		}

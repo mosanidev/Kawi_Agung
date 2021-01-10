@@ -12,7 +12,6 @@ namespace Kawi_Agung
 	{
 		#region DATAMEMBERS
 
-		private int no; // untuk nomor di tabel
 		private int idKategoriBarang;
 		private string nama;
 
@@ -20,7 +19,6 @@ namespace Kawi_Agung
 
 		#region PROPERTIES
 
-		public int No { get => no; set => no = value; }
 		public int IdKategoriBarang { get => idKategoriBarang; set => idKategoriBarang = value; }
 		public string Nama { get => nama; set => nama = value; }
 
@@ -30,20 +28,10 @@ namespace Kawi_Agung
 
 		public KategoriBarang()
 		{
-			No = 1;
 			IdKategoriBarang = 0;
 			Nama = "";
 		}
 
-		public KategoriBarang(string pNama)
-		{
-			Nama = pNama;
-		}
-		public KategoriBarang(int pIdKategoriBarang, string pNama)
-		{
-			IdKategoriBarang = pIdKategoriBarang;
-			Nama = pNama;
-		}
 
 		#endregion
 
@@ -62,26 +50,31 @@ namespace Kawi_Agung
 		public static string BacaData(string kriteria, string nilaiKriteria, List<KategoriBarang> listKategori)
 		{
 			string sql = "";
+			Koneksi conn = new Koneksi();
 
 			if (kriteria == "")
 			{
 				sql = "SELECT * FROM kategori_barang ORDER BY idkategori_barang";
 
 			}
+			else if (kriteria == "exclude") // kriteria khusus untuk perintah sql yang menyeleksi semua jenis barang terkecuali jenis tertentu
+			{
+				sql = "SELECT * FROM kategori_barang WHERE NOT nama='" + nilaiKriteria + "' ORDER BY idkategori_barang";
+			}
 			else
 			{
 				sql = "SELECT * FROM kategori_barang WHERE " + kriteria + " LIKE '%" + nilaiKriteria + "%' ORDER BY idkategori_barang";
 			}
+
+			MySqlCommand cmd = new MySqlCommand(sql, conn.KoneksiDB);
+			MySqlDataReader hasil = cmd.ExecuteReader();
+
 			try
 			{
-				MySqlDataReader hasil = Koneksi.JalankanPerintahQuery(sql);
-
-				int i = 1;
 				while (hasil.Read())
 				{
 					KategoriBarang kategori = new KategoriBarang();
 
-					kategori.No = i++;
 					kategori.IdKategoriBarang = int.Parse(hasil.GetValue(0).ToString());
 					kategori.Nama = hasil.GetValue(1).ToString();
 
@@ -93,15 +86,27 @@ namespace Kawi_Agung
 			{
 				return "Terjadi Kesalahan. Pesan Kesalahan : " + ex.Message;
 			}
-
+			finally
+			{
+				cmd.Dispose();
+				hasil.Dispose();
+			}
 		}
 
-		public static string TambahData(KategoriBarang kategori)
+		public static string TambahData(KategoriBarang kategori, List<KategoriBarang> listKategori)
 		{
 			string sql = "INSERT INTO kategori_barang(nama) VALUES('" + kategori.Nama + "')";
 
 			try
 			{
+				for (int i = 0; i < listKategori.Count; i++)
+				{
+					if (kategori.Nama.ToLower() == listKategori[i].Nama.ToLower())
+					{
+						return "Nama kategori sudah ada. Harap masukkan nama yang lain";
+					}
+				}
+
 				JalankanPerintahDML(sql);
 				return "1";
 			}
@@ -111,12 +116,20 @@ namespace Kawi_Agung
 			}
 		}
 
-		public static string UbahData(KategoriBarang kategori)
+		public static string UbahData(KategoriBarang kategori, List<KategoriBarang> listKategori)
 		{
 			string sql = "UPDATE kategori_barang SET nama='" + kategori.Nama + "' WHERE idkategori_barang=" + kategori.IdKategoriBarang;
 
 			try
 			{
+				for (int i = 0; i < listKategori.Count; i++)
+				{
+					if (kategori.Nama.ToLower() == listKategori[i].Nama.ToLower())
+					{
+						return "Nama kategori sudah ada. Harap masukkan nama yang lain";
+					}
+				}
+
 				JalankanPerintahDML(sql);
 				return "1";
 			}
