@@ -255,20 +255,18 @@ namespace Kawi_Agung
 
 			if (listPelanggan.Count > 0)
 			{
-				//dataGridViewDaftarPelanggan.DataSource = null;
-				//dataGridViewDaftarPelanggan.DataSource = listPelanggan;
-				//dataGridViewDaftarPelanggan.Columns[0].HeaderText = "No";
+				dataGridViewDaftarPelanggan.Rows.Clear();
 
-				//dataGridViewDaftarPelanggan.Columns[1].Visible = false;
-
-				//dataGridViewDaftarPelanggan.Columns[2].HeaderText = "Nama";
-				//dataGridViewDaftarPelanggan.Columns[3].HeaderText = "Alamat";
-				//dataGridViewDaftarPelanggan.Columns[4].HeaderText = "No Telp";
-
+				int num = 1;
+				for (int i = 0; i < listPelanggan.Count; i++)
+				{
+					dataGridViewDaftarPelanggan.Rows.Add(num++, listPelanggan[i].IdPelanggan, listPelanggan[i].Nama, listPelanggan[i].NoTelp, listPelanggan[i].Alamat);
+				}
 			}
 			else if (buttonPelangganClicked && textBoxSearchNamaPelanggan.Text != "")
 			{
-				dataGridViewDaftarPelanggan.DataSource = null;
+				dataGridViewDaftarPelanggan.Rows.Clear();
+
 				MessageBox.Show("Data tidak ditemukan");
 
 				string pelanggan = textBoxSearchNamaPelanggan.Text.ToString();
@@ -297,6 +295,8 @@ namespace Kawi_Agung
 			}
 			else if (buttonSupplierClicked && textBoxSearchNamaSupplier.Text != "")
 			{
+				dataGridViewDaftarSupplier.Rows.Clear();
+
 				MessageBox.Show("Data tidak ditemukan");
 
 				string supplier = textBoxSearchNamaSupplier.Text.ToString();
@@ -326,6 +326,8 @@ namespace Kawi_Agung
 			}
 			else if (buttonJenisClicked && textBoxSearchJenisBrg.Text != "")
 			{
+				dataGridViewDaftarJenisBrg.Rows.Clear();
+
 				MessageBox.Show("Data tidak ditemukan");
 
 				string jenis = textBoxSearchJenisBrg.Text.ToString();
@@ -353,6 +355,8 @@ namespace Kawi_Agung
 			}
 			else if (buttonMerekClicked && textBoxSearchMerekBrg.Text != "")
 			{
+				dataGridViewSubMenuMerekBrg.Rows.Clear();
+
 				MessageBox.Show("Data tidak ditemukan");
 				string merek = textBoxSearchMerekBrg.Text.ToString();
 				textBoxSearchMerekBrg.Text = merek.Remove(merek.Length - 1);
@@ -379,6 +383,8 @@ namespace Kawi_Agung
 			}
 			else if (buttonKategoriClicked && textBoxSearchKategoriBrg.Text != "")
 			{
+				dataGridViewSubMenuKategoriBrg.Rows.Clear();
+
 				MessageBox.Show("Data tidak ditemukan");
 
 				string kategori = textBoxSearchKategoriBrg.Text.ToString();
@@ -706,7 +712,6 @@ namespace Kawi_Agung
 			}
 
 			listBarang.Clear();
-			dataGridViewDaftarBarang.DataSource = null;
 
 			if (comboBoxKriteriaBarang.SelectedIndex == 0)
 			{
@@ -766,7 +771,7 @@ namespace Kawi_Agung
 			}
 
 			listJenis.Clear();
-			dataGridViewDaftarJenisBrg.DataSource = null;
+
 			PopulateJenisTable("nama", textBoxSearchJenisBrg.Text);
 		}
 
@@ -1543,8 +1548,8 @@ namespace Kawi_Agung
 
 					pelanggan.IdPelanggan = int.Parse(row.Cells[1].Value.ToString());
 					pelanggan.Nama = row.Cells[2].Value.ToString();
-					pelanggan.Alamat = row.Cells[3].Value.ToString();
-					pelanggan.NoTelp = row.Cells[4].Value.ToString();
+					pelanggan.NoTelp = row.Cells[3].Value.ToString();
+					pelanggan.Alamat = row.Cells[4].Value.ToString();
 
 					listSelectedPelanggan.Add(pelanggan);
 				}

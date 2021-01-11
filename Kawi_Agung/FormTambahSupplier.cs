@@ -34,9 +34,9 @@ namespace Kawi_Agung
 			else
 			{
 				Supplier supplier = new Supplier();
-				supplier.Nama = textBoxTambahNamaSupplier.Text;
-				supplier.Alamat = richTextBoxTambahAlamatSupplier.Text;
-				supplier.NoTelp = textBoxTambahNoTelpSupplier.Text;
+				supplier.Nama = textBoxTambahNamaSupplier.Text.Trim();
+				supplier.Alamat = richTextBoxTambahAlamatSupplier.Text.Trim();
+				supplier.NoTelp = textBoxTambahNoTelpSupplier.Text.Trim();
 
 				string hasilTambah = Supplier.TambahData(supplier, this.mainForm.listSupplier);
 
@@ -48,9 +48,20 @@ namespace Kawi_Agung
 					this.mainForm.FormMaster_Load(buttonTambahSupplier, e);
 					this.Close();
 				}
-				else
+				else if (hasilTambah == "Nama supplier sudah ada") // apabila ada nama supplier yang sama di database
 				{
-					MessageBox.Show(hasilTambah);
+					DialogResult dialogResult = MessageBox.Show("Nama supplier sudah ada. Apakah Anda ingin menyimpan data dengan nama supplier tersebut?", "Tambah Supplier", MessageBoxButtons.YesNo);
+					if (dialogResult == DialogResult.Yes)
+					{
+						List<Supplier> listKosong = new List<Supplier>(); // kirim list kosong sebagai parameter method tambah data, agar bisa ditambahkan ke database
+						string hasilTambah_ = Supplier.TambahData(supplier, listKosong);
+
+						MessageBox.Show("Proses tambah berhasil");
+
+						this.mainForm.textBoxSearchNamaSupplier.Clear();
+						this.mainForm.FormMaster_Load(buttonTambahSupplier, e);
+						this.Close();
+					}
 				}
 			}
 		}

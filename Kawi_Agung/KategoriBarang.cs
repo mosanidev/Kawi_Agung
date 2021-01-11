@@ -103,7 +103,7 @@ namespace Kawi_Agung
 				{
 					if (kategori.Nama.ToLower() == listKategori[i].Nama.ToLower())
 					{
-						return "Nama kategori sudah ada. Harap masukkan nama yang lain";
+						return "Nama kategori sudah ada";
 					}
 				}
 
@@ -126,7 +126,7 @@ namespace Kawi_Agung
 				{
 					if (kategori.Nama.ToLower() == listKategori[i].Nama.ToLower())
 					{
-						return "Nama kategori sudah ada. Harap masukkan nama yang lain";
+						return "Nama kategori sudah ada";
 					}
 				}
 

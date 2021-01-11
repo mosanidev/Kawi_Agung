@@ -33,21 +33,32 @@ namespace Kawi_Agung
 			else
 			{
 				MerekBarang merek = new MerekBarang();
-				merek.Nama = textBoxTambahMerekBarang.Text;
+				merek.Nama = textBoxTambahMerekBarang.Text.Trim();
 
 				string hasilTambah = MerekBarang.TambahData(merek, this.mainForm.listMerek);
 
 				if (hasilTambah == "1")
 				{
-					MessageBox.Show("Proses tambah berhasil");
+					MessageBox.Show("Proses tambah berhasil", "Info");
 
 					this.mainForm.textBoxSearchMerekBrg.Clear();
 					this.mainForm.FormMaster_Load(buttonTambahMerek, e);
 					this.Close();
 				}
-				else
+				else if (hasilTambah == "Nama merek sudah ada")
 				{
-					MessageBox.Show(hasilTambah);
+					DialogResult dialogResult = MessageBox.Show("Merek sudah ada. Apakah Anda ingin menyimpan data dengan nama merek tersebut?", "Tambah Merek", MessageBoxButtons.YesNo);
+					if (dialogResult == DialogResult.Yes)
+					{
+						List<MerekBarang> listKosong = new List<MerekBarang>(); // kirim list kosong sebagai parameter method tambah data, agar bisa ditambahkan ke database
+						string hasilTambah_ = MerekBarang.TambahData(merek, listKosong);
+
+						MessageBox.Show("Proses tambah berhasil", "Info");
+
+						this.mainForm.textBoxSearchMerekBrg.Clear();
+						this.mainForm.FormMaster_Load(buttonTambahMerek, e);
+						this.Close();
+					}
 				}
 			}
 		}

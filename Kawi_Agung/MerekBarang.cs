@@ -99,7 +99,7 @@ namespace Kawi_Agung
 				{
 					if (merek.Nama.ToLower() == listMerek[i].Nama.ToLower())
 					{
-						return "Nama merek sudah ada. Harap masukkan nama yang lain";
+						return "Nama merek sudah ada";
 					}
 				}
 
@@ -122,7 +122,7 @@ namespace Kawi_Agung
 				{
 					if (merek.Nama.ToLower() == listMerek[i].Nama.ToLower())
 					{
-						return "Nama merek sudah ada. Harap masukkan nama yang lain";
+						return "Nama merek sudah ada";
 					}
 				}
 

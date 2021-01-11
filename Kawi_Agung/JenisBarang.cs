@@ -100,7 +100,7 @@ namespace Kawi_Agung
 				{
 					if (jenis.Nama.ToLower() == listJenis[i].Nama.ToLower())
 					{
-						return "Nama jenis sudah ada. Harap masukkan nama yang lain";
+						return "Nama jenis sudah ada";
 					}
 				}
 
@@ -124,7 +124,7 @@ namespace Kawi_Agung
 				{
 					if (jenis.Nama.ToLower() == listJenis[i].Nama.ToLower())
 					{
-						return "Nama jenis sudah ada. Harap masukkan nama yang lain";
+						return "Nama jenis sudah ada";
 					}
 				}
 

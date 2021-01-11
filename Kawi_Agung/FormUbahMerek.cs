@@ -30,7 +30,7 @@ namespace Kawi_Agung
 
 			MerekBarang merek = new MerekBarang();
 			merek.IdMerekBarang = IdMerek;
-			merek.Nama = textBoxUbahMerekBarang.Text;
+			merek.Nama = textBoxUbahMerekBarang.Text.Trim();
 
 			List<MerekBarang> listMerek = new List<MerekBarang>();
 
@@ -50,15 +50,26 @@ namespace Kawi_Agung
 			{
 				if (hasilUbah == "1")
 				{
-					MessageBox.Show("Proses ubah berhasil");
+					MessageBox.Show("Proses ubah berhasil", "Info");
 
 					this.mainForm.textBoxSearchMerekBrg.Clear();
 					this.mainForm.FormMaster_Load(buttonUbahMerek, e);
 					this.Close();
 				}
-				else
+				else if (hasilUbah == "Nama merek sudah ada")
 				{
-					MessageBox.Show(hasilUbah);
+					DialogResult dialogResult = MessageBox.Show("Merek sudah ada. Apakah Anda ingin menyimpan data dengan nama merek tersebut?", "Tambah Merek", MessageBoxButtons.YesNo);
+					if (dialogResult == DialogResult.Yes)
+					{
+						List<MerekBarang> listKosong = new List<MerekBarang>(); // kirim list kosong sebagai parameter method tambah data, agar bisa ditambahkan ke database
+						string hasilTambah_ = MerekBarang.UbahData(merek, listKosong);
+
+						MessageBox.Show("Proses ubah berhasil", "Info");
+
+						this.mainForm.textBoxSearchMerekBrg.Clear();
+						this.mainForm.FormMaster_Load(buttonUbahMerek, e);
+						this.Close();
+					}
 				}
 			}
 		}

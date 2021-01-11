@@ -37,21 +37,6 @@ namespace Kawi_Agung
 			NoTelp = "";
 		}
 
-		//public Supplier(int pIdSupplier, string pNama, string pAlamat, string pNoTelp)
-		//{
-		//	IdSupplier = pIdSupplier;
-		//	Nama = pNama;
-		//	Alamat = pAlamat;
-		//	NoTelp = pNoTelp;
-		//}
-
-		//public Supplier(string pNama, string pAlamat, string pNoTelp)
-		//{
-		//	Nama = pNama;
-		//	Alamat = pAlamat;
-		//	NoTelp = pNoTelp;
-		//}
-
 		#endregion
 
 		#region METHODS
@@ -124,7 +109,7 @@ namespace Kawi_Agung
 				{
 					if (supplier.Nama.ToLower() == listSupplier[i].Nama.ToLower())
 					{
-						return "Nama supplier sudah ada. Harap masukkan nama yang lain";
+						return "Nama supplier sudah ada";
 					}
 				}
 
@@ -147,7 +132,7 @@ namespace Kawi_Agung
 				{
 					if (supplier.Nama.ToLower() == listSupplier[i].Nama.ToLower())
 					{
-						return "Nama supplier sudah ada. Harap masukkan nama yang lain";
+						return "Nama supplier sudah ada";
 					}
 				}
 

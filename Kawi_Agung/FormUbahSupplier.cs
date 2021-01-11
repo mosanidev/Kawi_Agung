@@ -40,9 +40,9 @@ namespace Kawi_Agung
 
 			Supplier supplier = new Supplier();
 			supplier.IdSupplier = IdSupplier;
-			supplier.Nama = textBoxUbahNamaSupplier.Text;
-			supplier.Alamat = richTextBoxUbahAlamatSupplier.Text;
-			supplier.NoTelp = textBoxUbahNoTelpSupplier.Text;
+			supplier.Nama = textBoxUbahNamaSupplier.Text.Trim();
+			supplier.Alamat = richTextBoxUbahAlamatSupplier.Text.Trim();
+			supplier.NoTelp = textBoxUbahNoTelpSupplier.Text.Trim();
 
 			List<Supplier> listSupplier = new List<Supplier>();
 			string hasilBaca = Supplier.BacaData("exclude", FormMaster.listSelectedSupplier[0].Nama, listSupplier);
@@ -67,9 +67,20 @@ namespace Kawi_Agung
 					this.mainForm.FormMaster_Load(buttonUbahSupplier, e);
 					this.Close();
 				}
-				else
+				else if (hasilUbah == "Nama supplier sudah ada")
 				{
-					MessageBox.Show(hasilUbah);
+					DialogResult dialogResult = MessageBox.Show("Nama supplier sudah ada. Apakah Anda ingin menyimpan data dengan nama supplier tersebut?", "", MessageBoxButtons.YesNo);
+					if (dialogResult == DialogResult.Yes)
+					{
+						List<Supplier> listKosong = new List<Supplier>(); // kirim list kosong sebagai parameter method ubah data, agar bisa disimpan ke database
+						string hasilTambah_ = Supplier.UbahData(supplier, listKosong);
+
+						MessageBox.Show("Proses ubah berhasil");
+
+						this.mainForm.textBoxSearchNamaSupplier.Clear();
+						this.mainForm.FormMaster_Load(buttonUbahSupplier, e);
+						this.Close();
+					}
 				}
 			}
 		}

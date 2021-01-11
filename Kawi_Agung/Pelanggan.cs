@@ -37,21 +37,6 @@ namespace Kawi_Agung
 			NoTelp = "";
 		}
 
-		public Pelanggan(int pIdPelanggan, string pNama, string pAlamat, string pNoTelp)
-		{
-			IdPelanggan = pIdPelanggan;
-			Nama = pNama;
-			Alamat = pAlamat;
-			NoTelp = pNoTelp;
-		}
-
-		public Pelanggan(string pNama, string pAlamat, string pNoTelp)
-		{
-			Nama = pNama;
-			Alamat = pAlamat;
-			NoTelp = pNoTelp;
-		}
-
 		#endregion
 
 		#region METHODS
@@ -73,11 +58,15 @@ namespace Kawi_Agung
 
 			if (kriteria == "")
 			{
-				sql = "SELECT * FROM pelanggan";
+				sql = "SELECT * FROM pelanggan ORDER BY idpelanggan";
+			}
+			else if (kriteria == "exclude")
+			{
+				sql = "SELECT * FROM pelanggan WHERE NOT nama='" + nilaiKriteria + "' ORDER BY idpelanggan";
 			}
 			else
 			{
-				sql = "SELECT * FROM pelanggan WHERE " + kriteria + " LIKE '%" + nilaiKriteria + "%'";
+				sql = "SELECT * FROM pelanggan WHERE " + kriteria + " LIKE '%" + nilaiKriteria + "%' ORDER BY idpelanggan";
 			}
 
 			MySqlCommand cmd = new MySqlCommand(sql, conn.KoneksiDB);
@@ -110,12 +99,20 @@ namespace Kawi_Agung
 			}
 		}
 
-		public static string TambahData(Pelanggan pelanggan)
+		public static string TambahData(Pelanggan pelanggan, List<Pelanggan> listPelanggan)
 		{
 			string sql = "INSERT INTO pelanggan(nama, alamat, no_telp) VALUES('" + pelanggan.Nama + "', '" + pelanggan.Alamat + "', '" + pelanggan.NoTelp + "')";
 
 			try
 			{
+				for (int i = 0; i < listPelanggan.Count; i++)
+				{
+					if (pelanggan.Nama.ToLower() == listPelanggan[i].Nama.ToLower())
+					{
+						return "Nama pelanggan sudah ada";
+					}
+				}
+
 				JalankanPerintahDML(sql);
 				return "1";
 			}
@@ -125,12 +122,20 @@ namespace Kawi_Agung
 			}
 		}
 
-		public static string UbahData(Pelanggan pelanggan)
+		public static string UbahData(Pelanggan pelanggan, List<Pelanggan> listPelanggan)
 		{
 			string sql = "UPDATE pelanggan SET nama='" + pelanggan.Nama + "', alamat='" + pelanggan.Alamat + "', no_telp='" + pelanggan.NoTelp + "' WHERE idpelanggan=" + pelanggan.IdPelanggan;
 
 			try
 			{
+				for (int i = 0; i < listPelanggan.Count; i++)
+				{
+					if (pelanggan.Nama.ToLower() == listPelanggan[i].Nama.ToLower())
+					{
+						return "Nama pelanggan sudah ada";
+					}
+				}
+
 				JalankanPerintahDML(sql);
 				return "1";
 			}

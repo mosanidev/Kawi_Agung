@@ -34,21 +34,32 @@ namespace Kawi_Agung
 			else
 			{
 				JenisBarang jenis = new JenisBarang();
-				jenis.Nama = textBoxTambahJenisBarang.Text;
+				jenis.Nama = textBoxTambahJenisBarang.Text.Trim();
 
 				string hasilTambah = JenisBarang.TambahData(jenis, this.mainForm.listJenis);
 
 				if (hasilTambah == "1")
 				{
-					MessageBox.Show("Proses tambah berhasil");
+					MessageBox.Show("Proses tambah berhasil", "Info");
 
 					this.mainForm.textBoxSearchJenisBrg.Clear();
 					this.mainForm.FormMaster_Load(buttonTambahJenis, e);
 					this.Close();
 				}
-				else
+				else if (hasilTambah == "Nama jenis sudah ada")
 				{
-					MessageBox.Show(hasilTambah);
+					DialogResult dialogResult = MessageBox.Show("Jenis sudah ada. Apakah Anda ingin menyimpan data dengan nama jenis tersebut?", "Tambah Jenis", MessageBoxButtons.YesNo);
+					if (dialogResult == DialogResult.Yes)
+					{
+						List<JenisBarang> listKosong = new List<JenisBarang>(); // kirim list kosong sebagai parameter method tambah data, agar bisa ditambahkan ke database
+						string hasilTambah_ = JenisBarang.TambahData(jenis, listKosong);
+
+						MessageBox.Show("Proses tambah berhasil" , "Info");
+
+						this.mainForm.textBoxSearchJenisBrg.Clear();
+						this.mainForm.FormMaster_Load(buttonTambahJenis, e);
+						this.Close();
+					}
 				}
 			}
 		}

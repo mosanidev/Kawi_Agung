@@ -38,7 +38,7 @@ namespace Kawi_Agung
 
 			KategoriBarang kategori = new KategoriBarang();
 			kategori.IdKategoriBarang = IdKategori;
-			kategori.Nama = textBoxUbahKategoriBarang.Text;
+			kategori.Nama = textBoxUbahKategoriBarang.Text.Trim();
 
 			List<KategoriBarang> listKategori = new List<KategoriBarang>();
 
@@ -59,15 +59,26 @@ namespace Kawi_Agung
 			{
 				if (hasilUbah == "1")
 				{
-					MessageBox.Show("Proses ubah berhasil");
+					MessageBox.Show("Proses ubah berhasil", "Info");
 
 					this.mainForm.textBoxSearchKategoriBrg.Clear();
 					this.mainForm.FormMaster_Load(buttonUbahKategori, e);
 					this.Close();
 				}
-				else
+				else if (hasilUbah == "Nama kategori sudah ada")
 				{
-					MessageBox.Show(hasilUbah);
+					DialogResult dialogResult = MessageBox.Show("Kategori sudah ada. Apakah Anda ingin menyimpan data dengan nama kategori tersebut?", "Ubah Kategori", MessageBoxButtons.YesNo);
+					if (dialogResult == DialogResult.Yes)
+					{
+						List<KategoriBarang> listKosong = new List<KategoriBarang>(); // kirim list kosong sebagai parameter method tambah data, agar bisa ditambahkan ke database
+						string hasilTambah_ = KategoriBarang.UbahData(kategori, listKosong);
+
+						MessageBox.Show("Proses ubah berhasil", "Info");
+
+						this.mainForm.textBoxSearchKategoriBrg.Clear();
+						this.mainForm.FormMaster_Load(buttonUbahKategori, e);
+						this.Close();
+					}
 				}
 			}
 		}
