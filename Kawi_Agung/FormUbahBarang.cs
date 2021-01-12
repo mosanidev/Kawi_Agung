@@ -26,7 +26,6 @@ namespace Kawi_Agung
 
 		private string pathFoto = "";
 		private int hasilHargaJual = 0;
-		bool photoBool = true;
 
 		private FormMaster mainForm = null;
 
@@ -143,6 +142,7 @@ namespace Kawi_Agung
 
 				pictureBoxUbahBarangGambarBarang.Image = new Bitmap(openFileDialog.FileName);
 				pathFoto = openFileDialog.FileName;
+				pictureBoxUbahBarangGambarBarang.Tag = "Unggahan";
 			}
 		}
 
@@ -171,7 +171,6 @@ namespace Kawi_Agung
 				if (pathFoto != "")
 				{
 					foto = ConvertImageToBinary(Image.FromFile(pathFoto));
-					photoBool = false;
 				}
 
 				hasilHargaJual = hitungDiskon(Convert.ToInt32(numericUpDownUbahBarangHargaJual.Value), Convert.ToInt32(numericUpDownUbahBarangDiskon.Value));
@@ -196,7 +195,16 @@ namespace Kawi_Agung
 
 				if (hasilBaca == "1")
 				{
-					hasilUbah = Barang.UbahData(barang, listBarang, photoBool);
+					if (pictureBoxUbahBarangGambarBarang.Tag == "Default")
+					{
+						hasilUbah = Barang.UbahData(barang, listBarang, "Kosong");
+					} else if (pictureBoxUbahBarangGambarBarang.Tag == "Unggahan")
+					{
+						hasilUbah = Barang.UbahData(barang, listBarang, "Ada");
+					} else if (pictureBoxUbahBarangGambarBarang.Tag == null)
+					{
+						hasilUbah = Barang.UbahData(barang, listBarang, "Tidak Ada");
+					}
 				}
 
 				if (hasilUbah == "1")
@@ -247,8 +255,7 @@ namespace Kawi_Agung
 		private void buttonHapusFoto_Click(object sender, EventArgs e)
 		{
 			pictureBoxUbahBarangGambarBarang.Image = Resources.box;
-			pathFoto = "";
-			photoBool = true;
+			pictureBoxUbahBarangGambarBarang.Tag = "Default";
 		}
 	}
 }

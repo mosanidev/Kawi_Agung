@@ -58,9 +58,9 @@ namespace Kawi_Agung
 		bool buttonPegawaiClicked = false;
 
 		public List<User> listUserInfo = new List<User>();
-		string pathFoto;
+		public List<User> listUser = new List<User>();
+		string pathFoto = "";
 
-		private bool buttonHapusFotoClicked = false;
 		#endregion
 
 		public FormMaster()
@@ -98,8 +98,11 @@ namespace Kawi_Agung
 			PopulatePelangganTable("", "");
 			PopulateBarangTable("", "");
 			PopulateNotaBeliTable("", "", "");
-			PopulatePegawai("", "");
+			PopulatePegawaiTable("", "");
 			AddUserInfo();
+
+			// query all user to list user
+			User.BacaData("", "", listUser);
 
 			dateTimePickerTanggalAkhirNotaBeli.Value = DateTime.Now;
 			dateTimePickerTanggalAwalNotaBeli.Value = DateTime.Now.AddDays(-7);
@@ -118,7 +121,7 @@ namespace Kawi_Agung
 			listPegawai.Clear();
 		}
 
-		private void PopulatePegawai(string kriteria, string nilaiKriteria)
+		private void PopulatePegawaiTable(string kriteria, string nilaiKriteria)
 		{
 			string hasilBaca = User.BacaPegawai(kriteria, nilaiKriteria, listPegawai);
 
@@ -129,7 +132,7 @@ namespace Kawi_Agung
 				int num = 1;
 				for (int i = 0; i < listPegawai.Count; i++)
 				{
-					dataGridViewPegawai.Rows.Add(num++, listPegawai[i].IdUser, listPegawai[i].Nama, listPegawai[i].Username, listPegawai[i].Jabatan.Nama, listPegawai[i].Status);
+					dataGridViewPegawai.Rows.Add(num++, listPegawai[i].IdUser, listPegawai[i].Nama, listPegawai[i].Username, listPegawai[i].Jabatan.IdJabatan, listPegawai[i].Jabatan.Nama, listPegawai[i].Status);
 				}
 			}
 			else if (buttonPegawaiClicked && textBoxSearchPegawai.Text != "")
@@ -399,7 +402,7 @@ namespace Kawi_Agung
 		{
 			string jabatan = labelJabatanUser.Text.ToString();
 
-			if (jabatan != "Pemilik")
+			if (jabatan != "Manajer")
 			{
 				label16.Visible = false;
 				label17.Visible = false;
@@ -411,7 +414,7 @@ namespace Kawi_Agung
 				buttonSimpanInfoUser.Location = new Point(27, 351);
 			}
 
-			if (jabatan == "Pemilik")
+			if (jabatan == "Manajer")
 			{
 				iconButtonTransaksi.Visible = false;
 				iconButtonPelanggan.Visible = false;
@@ -419,7 +422,7 @@ namespace Kawi_Agung
 				iconButtonTransaksi.Visible = false;
 				iconButtonSupplier.Visible = false;
 			}
-			else if (jabatan == "Admin Gudang")
+			else if (jabatan == "Admin Pembelian")
 			{
 				iconButtonLaporan.Visible = false;
 				iconButtonPelanggan.Visible = false;
@@ -866,8 +869,8 @@ namespace Kawi_Agung
 			}
 
 			listPegawai.Clear();
-			dataGridViewPegawai.DataSource = null;
-			PopulatePegawai("u.nama", textBoxSearchPegawai.Text);
+
+			PopulatePegawaiTable("u.nama", textBoxSearchPegawai.Text);
 		}
 
 		private void iconButtonBackPanelJenisBrg_MouseHover(object sender, EventArgs e)
@@ -1628,15 +1631,16 @@ namespace Kawi_Agung
 		private void buttonProfilUbahInfo_Click(object sender, EventArgs e)
 		{
 			User user = new User();
-			user.IdUser = listUserInfo[0].IdUser;
+			user.IdUser = int.Parse(labelProfilIdUser.Text);
 			user.Password = textBoxPasswordProfilUser.Text;
-			user.Alamat = richTextBoxAlamatProfilUser.Text;
+			user.Alamat = richTextBoxAlamatProfilUser.Text.Trim();
 			user.NoTelp = textBoxNoTelpProfilUser.Text;
-			if (listUserInfo[0].Jabatan.Nama == "Pemilik")
+
+			if (labelJabatanUser.Text == "Manajer")
 			{
-				user.NamaRekening = textBoxNamaRekeningProfilUser.Text;
-				user.NoRekening = textBoxNoRekeningProfilUser.Text;
-				user.NamaBank = textBoxRekeningBankProfilUser.Text;
+				user.NamaRekening = textBoxNamaRekeningProfilUser.Text.Trim();
+				user.NoRekening = textBoxNoRekeningProfilUser.Text.Trim();
+				user.NamaBank = textBoxRekeningBankProfilUser.Text.Trim();
 			}
 			else
 			{
@@ -1644,40 +1648,38 @@ namespace Kawi_Agung
 				user.NoRekening = "";
 				user.NamaBank = "";
 			}
-			if (pathFoto != null)
+
+			if (pathFoto != "")
 			{
 				user.Foto = ConvertImageToBinary(Image.FromFile(pathFoto));
 			}
 
-			if (textBoxPasswordProfilUser.Text.Length >= 8 && user.Foto == null)
+			if (textBoxPasswordProfilUser.Text.Length >= 8)
 			{
-				if (User.UbahData(user, true) == "1")
+				if (iconPictureBoxFotoProfil.Tag == "Default")
 				{
-					if (buttonHapusFotoClicked == true)
-					{
-						iconPictureBoxUser.Image = Resources.profile_picture;
-					}
-
+					User.UbahData(user, "Kosong");
+					iconPictureBoxUser.Image = Resources.profile_picture;
 					MessageBox.Show("Data telah disimpan");
-
 				}
-			}
-			else if (textBoxPasswordProfilUser.Text.Length >= 8 && user.Foto != null)
-			{
-				if (User.UbahData(user, false) == "1")
+				else if (iconPictureBoxFotoProfil.Tag == "Unggahan")
 				{
+					User.UbahData(user, "Ada");
 					iconPictureBoxUser.ImageLocation = pathFoto;
 					iconPictureBoxFotoProfil.ImageLocation = pathFoto;
-
+					MessageBox.Show("Data telah disimpan");
+				}
+				else if (iconPictureBoxFotoProfil.Tag == null)
+				{
+					User.UbahData(user, "Tidak Ada");
 					MessageBox.Show("Data telah disimpan");
 				}
 			}
-			else
+			else if (textBoxPasswordProfilUser.Text.Length < 8)
 			{
 				MessageBox.Show("Password minimal 8 karakter");
 			}
 
-			buttonHapusFotoClicked = false;
 		}
 
 		private void checkBoxTampilPassword_CheckedChanged(object sender, EventArgs e)
@@ -1711,6 +1713,7 @@ namespace Kawi_Agung
 
 					iconPictureBoxFotoProfil.Image = new Bitmap(openFileDialog.FileName);
 					pathFoto = openFileDialog.FileName;
+					iconPictureBoxFotoProfil.Tag = "Unggahan";
 				}
 			}
 		}
@@ -1862,8 +1865,6 @@ namespace Kawi_Agung
 		{
 			if (dateTimePickerTanggalAwalNotaBeli.Value >= dateTimePickerTanggalAkhirNotaBeli.Value)
 			{
-				//dateTimePickerTanggalAkhirNotaBeli.Value = DateTime.Today.AddDays(+1);
-				//dateTimePickerTanggalAwalNotaBeli.Value = DateTime.Today;
 				MessageBox.Show("Mohon input tanggal awal dan akhir nota beli dengan benar");
 
 				dataGridViewBarangMasuk.Rows.Clear();
@@ -1966,7 +1967,100 @@ namespace Kawi_Agung
 		private void buttonHapusFoto_Click(object sender, EventArgs e)
 		{
 			iconPictureBoxFotoProfil.Image = Resources.profile_picture;
-			buttonHapusFotoClicked = true;
+			iconPictureBoxFotoProfil.Tag = "Default";
+		}
+
+		private void buttonUbahPegawai_Click(object sender, EventArgs e)
+		{
+			listSelectedPegawai.Clear();
+			string keteranganStatus = "";
+
+			foreach (DataGridViewRow row in dataGridViewPegawai.SelectedRows)
+			{
+				if (row.Cells[6].Value.ToString() == "Tidak Aktif")
+				{
+					keteranganStatus = "Tidak Aktif";
+				}
+				else
+				{
+					keteranganStatus = "Aktif/Blokir";
+				}
+			}
+
+			if (dataGridViewPegawai.SelectedRows.Count == 0)
+			{
+				MessageBox.Show("Pilih satu data di tabel untuk di ubah");
+			}
+			else if (dataGridViewPegawai.SelectedRows.Count > 1)
+			{
+				MessageBox.Show("Hanya bisa pilih satu data di tabel untuk di ubah");
+			}
+			else
+			{
+				int idUser = -1;
+				foreach (DataGridViewRow row in dataGridViewPegawai.SelectedRows)
+				{
+					idUser = Convert.ToInt32(row.Cells[1].Value);
+				}
+
+				User user = new User();
+				user.IdUser = idUser;
+
+				string hasilBaca = User.BacaPegawai("u.iduser", idUser.ToString(), listSelectedPegawai);
+
+				if (hasilBaca == "1")
+				{
+					FormUbahPegawai frm = new FormUbahPegawai(this, keteranganStatus);
+					frm.Show();
+				}
+
+			}
+		}
+
+		private void buttonHapusPegawai_Click(object sender, EventArgs e)
+		{
+			listSelectedPegawai.Clear();
+
+			if (dataGridViewPegawai.SelectedRows.Count == 0)
+			{
+				MessageBox.Show("Pilih satu atau lebih data di tabel untuk di hapus");
+			}
+			else if (dataGridViewPegawai.SelectedRows.Count > 1)
+			{
+				MessageBox.Show("Tidak dapat hapus lebih dari 1 data di tabel. Pilih satu data saja");
+			}
+			else if (dataGridViewPegawai.SelectedRows.Count == 1)
+			{
+				User user = null;
+
+				foreach (DataGridViewRow row in dataGridViewPegawai.SelectedRows)
+				{
+					user = new User();
+					user.IdUser = int.Parse(row.Cells[1].Value.ToString());
+				}
+
+				DialogResult dialogResult = MessageBox.Show($"Apakah anda yakin untuk menghapus akun pegawai ini?", "Hapus", MessageBoxButtons.YesNo);
+				if (dialogResult == DialogResult.Yes)
+				{
+					string hasilHapus = User.HapusData(user);
+
+					if (hasilHapus == "1")
+					{
+						MessageBox.Show("Akun pegawai berhasil di hapus", "Info");
+					}
+					else
+					{
+						MessageBox.Show(hasilHapus, "Info");
+					}
+
+					textBoxSearchPegawai.Clear();
+					FormMaster_Load(sender, e);
+				}
+				else if (dialogResult == DialogResult.Cancel)
+				{
+					this.DialogResult = DialogResult.Cancel;
+				}
+			}
 		}
 	}
 }

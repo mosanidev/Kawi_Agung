@@ -30,29 +30,14 @@ namespace Kawi_Agung
 			this.nama = "";
 		}
 
-		public Jabatan(int pIdJabatan, string pNama)
-		{
-			this.idJabatan = pIdJabatan;
-			this.nama = pNama;
-		}
-
 		#endregion
 
 		#region METHODS
 
-		public static string BacaData(string kriteria, string nilaiKriteria, List<Jabatan> listJabatan)
+		public static string BacaData(List<Jabatan> listJabatan)
 		{
-			string sql = "";
+			string sql = "SELECT idjabatan, nama FROM jabatan WHERE NOT nama='Pemilik'";
 			Koneksi conn = new Koneksi();
-
-			if (kriteria == "" && nilaiKriteria == "")
-			{
-				sql = "SELECT idjabatan, nama FROM jabatan";
-			}
-			else
-			{
-				sql = "SELECT idjabatan, nama FROM jabatan WHERE '" + kriteria + "' LIKE '%" + nilaiKriteria + "%'"; 
-			}
 
 			MySqlCommand cmd = new MySqlCommand(sql, conn.KoneksiDB);
 			MySqlDataReader hasil = cmd.ExecuteReader();

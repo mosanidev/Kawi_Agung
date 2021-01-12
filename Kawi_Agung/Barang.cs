@@ -141,7 +141,7 @@ namespace Kawi_Agung
 
 			var fotoParam = new MySqlParameter("foto", MySqlDbType.Blob);
 
-			fotoParam.Value = barang.foto;
+			fotoParam.Value = barang.Foto;
 
 			try
 			{
@@ -172,17 +172,21 @@ namespace Kawi_Agung
 
 		}
 
-		public static string UbahData(Barang barang, List<Barang> listBarang, bool pathFotoWasNull)
+		public static string UbahData(Barang barang, List<Barang> listBarang, string image)
 		{
 			string sql = "";
 			MySqlParameter fotoParam = null;
 
-			if (pathFotoWasNull == true)
+			if (image == "Tidak Ada")
 			{
-				sql = "UPDATE barang SET kode_barang='" + barang.KodeBarang + "', nama='" + barang.Nama + "', diskon_persen_jual=" + barang.DiskonPersenJual + ", harga_jual=" + barang.HargaJual + ", idkategori_barang=" + barang.Kategori.IdKategoriBarang + ", idjenis_barang=" + barang.Jenis.IdJenisBarang + ", idmerek_barang=" + barang.Merek.IdMerekBarang + ", satuan='" + barang.Satuan + "', foto=NULL WHERE idbarang=" + barang.IdBarang;
+				sql = "UPDATE barang SET kode_barang='" + barang.KodeBarang + "', nama='" + barang.Nama + "', diskon_persen_jual=" + barang.DiskonPersenJual + ", harga_jual=" + barang.HargaJual + ", idkategori_barang=" + barang.Kategori.IdKategoriBarang + ", idjenis_barang=" + barang.Jenis.IdJenisBarang + ", idmerek_barang=" + barang.Merek.IdMerekBarang + ", satuan='" + barang.Satuan + "' WHERE idbarang=" + barang.IdBarang;
 
 			}
-			else if (pathFotoWasNull == false)
+			else if (image == "Kosong")
+			{
+				sql = "UPDATE barang SET kode_barang='" + barang.KodeBarang + "', nama='" + barang.Nama + "', diskon_persen_jual=" + barang.DiskonPersenJual + ", harga_jual=" + barang.HargaJual + ", idkategori_barang=" + barang.Kategori.IdKategoriBarang + ", idjenis_barang=" + barang.Jenis.IdJenisBarang + ", idmerek_barang=" + barang.Merek.IdMerekBarang + ", satuan='" + barang.Satuan + "', foto=NULL WHERE idbarang=" + barang.IdBarang;
+			}
+			else if (image == "Ada")
 			{
 
 				sql = "UPDATE barang SET kode_barang='" + barang.KodeBarang + "', nama='" + barang.Nama + "', diskon_persen_jual=" + barang.DiskonPersenJual + ", harga_jual=" + barang.HargaJual + ", idkategori_barang=" + barang.Kategori.IdKategoriBarang + ", idjenis_barang=" + barang.Jenis.IdJenisBarang + ", idmerek_barang=" + barang.Merek.IdMerekBarang + ", satuan='" + barang.Satuan + "', foto=@foto WHERE idbarang=" + barang.IdBarang;
@@ -210,7 +214,7 @@ namespace Kawi_Agung
 				MySqlCommand c = new MySqlCommand(sql, k.KoneksiDB);
 
 				// if blob type must do parameterized query not concat string
-				if (pathFotoWasNull == false)
+				if (image == "Ada")
 				{
 					c.Parameters.Add(fotoParam);
 				}

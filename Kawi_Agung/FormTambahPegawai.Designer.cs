@@ -44,8 +44,12 @@
 			this.textBoxUsernamePegawai = new System.Windows.Forms.TextBox();
 			this.comboBoxJabatanPegawai = new System.Windows.Forms.ComboBox();
 			this.textBoxAlamatPegawai = new System.Windows.Forms.TextBox();
-			this.buttonTambahBarang = new ePOSOne.btnProduct.Button_WOC();
+			this.pictureBoxTambahFotoUser = new System.Windows.Forms.PictureBox();
+			this.buttonHapusFoto = new ePOSOne.btnProduct.Button_WOC();
+			this.buttonUnggahFotoUser = new ePOSOne.btnProduct.Button_WOC();
+			this.buttonTambahPegawai = new ePOSOne.btnProduct.Button_WOC();
 			this.panel1.SuspendLayout();
+			((System.ComponentModel.ISupportInitialize)(this.pictureBoxTambahFotoUser)).BeginInit();
 			this.SuspendLayout();
 			// 
 			// label8
@@ -137,7 +141,7 @@
 			this.panel1.Location = new System.Drawing.Point(0, 0);
 			this.panel1.Margin = new System.Windows.Forms.Padding(0);
 			this.panel1.Name = "panel1";
-			this.panel1.Size = new System.Drawing.Size(486, 59);
+			this.panel1.Size = new System.Drawing.Size(731, 59);
 			this.panel1.TabIndex = 83;
 			// 
 			// textBoxPegawaiNama
@@ -194,36 +198,98 @@
 			this.textBoxAlamatPegawai.Size = new System.Drawing.Size(231, 69);
 			this.textBoxAlamatPegawai.TabIndex = 107;
 			// 
-			// buttonTambahBarang
+			// pictureBoxTambahFotoUser
 			// 
-			this.buttonTambahBarang.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(49)))), ((int)(((byte)(69)))));
-			this.buttonTambahBarang.ButtonColor = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(49)))), ((int)(((byte)(69)))));
-			this.buttonTambahBarang.Cursor = System.Windows.Forms.Cursors.Hand;
-			this.buttonTambahBarang.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(232)))), ((int)(((byte)(232)))));
-			this.buttonTambahBarang.FlatAppearance.BorderSize = 0;
-			this.buttonTambahBarang.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(232)))), ((int)(((byte)(232)))));
-			this.buttonTambahBarang.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(232)))), ((int)(((byte)(232)))));
-			this.buttonTambahBarang.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-			this.buttonTambahBarang.Font = new System.Drawing.Font("Century Gothic", 11F);
-			this.buttonTambahBarang.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(49)))), ((int)(((byte)(69)))));
-			this.buttonTambahBarang.Location = new System.Drawing.Point(114, 404);
-			this.buttonTambahBarang.Name = "buttonTambahBarang";
-			this.buttonTambahBarang.OnHoverBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(7)))), ((int)(((byte)(104)))), ((int)(((byte)(159)))));
-			this.buttonTambahBarang.OnHoverButtonColor = System.Drawing.Color.FromArgb(((int)(((byte)(7)))), ((int)(((byte)(104)))), ((int)(((byte)(159)))));
-			this.buttonTambahBarang.OnHoverTextColor = System.Drawing.Color.AliceBlue;
-			this.buttonTambahBarang.Size = new System.Drawing.Size(232, 40);
-			this.buttonTambahBarang.TabIndex = 108;
-			this.buttonTambahBarang.Text = "Tambah";
-			this.buttonTambahBarang.TextColor = System.Drawing.Color.White;
-			this.buttonTambahBarang.UseVisualStyleBackColor = false;
-			this.buttonTambahBarang.Click += new System.EventHandler(this.buttonTambahBarang_Click);
+			this.pictureBoxTambahFotoUser.Image = global::Kawi_Agung.Properties.Resources.profile_picture;
+			this.pictureBoxTambahFotoUser.Location = new System.Drawing.Point(472, 81);
+			this.pictureBoxTambahFotoUser.Name = "pictureBoxTambahFotoUser";
+			this.pictureBoxTambahFotoUser.Size = new System.Drawing.Size(207, 174);
+			this.pictureBoxTambahFotoUser.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+			this.pictureBoxTambahFotoUser.TabIndex = 110;
+			this.pictureBoxTambahFotoUser.TabStop = false;
+			// 
+			// buttonHapusFoto
+			// 
+			this.buttonHapusFoto.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+			this.buttonHapusFoto.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(49)))), ((int)(((byte)(69)))));
+			this.buttonHapusFoto.ButtonColor = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(39)))), ((int)(((byte)(69)))));
+			this.buttonHapusFoto.Cursor = System.Windows.Forms.Cursors.Hand;
+			this.buttonHapusFoto.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(232)))), ((int)(((byte)(232)))));
+			this.buttonHapusFoto.FlatAppearance.BorderSize = 0;
+			this.buttonHapusFoto.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(232)))), ((int)(((byte)(232)))));
+			this.buttonHapusFoto.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(232)))), ((int)(((byte)(232)))));
+			this.buttonHapusFoto.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+			this.buttonHapusFoto.Font = new System.Drawing.Font("Century Gothic", 11F);
+			this.buttonHapusFoto.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(49)))), ((int)(((byte)(69)))));
+			this.buttonHapusFoto.Location = new System.Drawing.Point(499, 301);
+			this.buttonHapusFoto.Name = "buttonHapusFoto";
+			this.buttonHapusFoto.OnHoverBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(7)))), ((int)(((byte)(104)))), ((int)(((byte)(159)))));
+			this.buttonHapusFoto.OnHoverButtonColor = System.Drawing.Color.FromArgb(((int)(((byte)(7)))), ((int)(((byte)(104)))), ((int)(((byte)(159)))));
+			this.buttonHapusFoto.OnHoverTextColor = System.Drawing.Color.AliceBlue;
+			this.buttonHapusFoto.Size = new System.Drawing.Size(146, 34);
+			this.buttonHapusFoto.TabIndex = 112;
+			this.buttonHapusFoto.Text = "Hapus Foto";
+			this.buttonHapusFoto.TextColor = System.Drawing.Color.White;
+			this.buttonHapusFoto.UseVisualStyleBackColor = false;
+			// 
+			// buttonUnggahFotoUser
+			// 
+			this.buttonUnggahFotoUser.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+			this.buttonUnggahFotoUser.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(49)))), ((int)(((byte)(69)))));
+			this.buttonUnggahFotoUser.ButtonColor = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(49)))), ((int)(((byte)(69)))));
+			this.buttonUnggahFotoUser.Cursor = System.Windows.Forms.Cursors.Hand;
+			this.buttonUnggahFotoUser.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(232)))), ((int)(((byte)(232)))));
+			this.buttonUnggahFotoUser.FlatAppearance.BorderSize = 0;
+			this.buttonUnggahFotoUser.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(232)))), ((int)(((byte)(232)))));
+			this.buttonUnggahFotoUser.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(232)))), ((int)(((byte)(232)))));
+			this.buttonUnggahFotoUser.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+			this.buttonUnggahFotoUser.Font = new System.Drawing.Font("Century Gothic", 11F);
+			this.buttonUnggahFotoUser.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(49)))), ((int)(((byte)(69)))));
+			this.buttonUnggahFotoUser.Location = new System.Drawing.Point(499, 261);
+			this.buttonUnggahFotoUser.Name = "buttonUnggahFotoUser";
+			this.buttonUnggahFotoUser.OnHoverBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(7)))), ((int)(((byte)(104)))), ((int)(((byte)(159)))));
+			this.buttonUnggahFotoUser.OnHoverButtonColor = System.Drawing.Color.FromArgb(((int)(((byte)(7)))), ((int)(((byte)(104)))), ((int)(((byte)(159)))));
+			this.buttonUnggahFotoUser.OnHoverTextColor = System.Drawing.Color.AliceBlue;
+			this.buttonUnggahFotoUser.Size = new System.Drawing.Size(146, 34);
+			this.buttonUnggahFotoUser.TabIndex = 111;
+			this.buttonUnggahFotoUser.Text = "Unggah";
+			this.buttonUnggahFotoUser.TextColor = System.Drawing.Color.White;
+			this.buttonUnggahFotoUser.UseVisualStyleBackColor = false;
+			this.buttonUnggahFotoUser.Click += new System.EventHandler(this.buttonUnggahFotoUser_Click);
+			// 
+			// buttonTambahPegawai
+			// 
+			this.buttonTambahPegawai.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(49)))), ((int)(((byte)(69)))));
+			this.buttonTambahPegawai.ButtonColor = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(49)))), ((int)(((byte)(69)))));
+			this.buttonTambahPegawai.Cursor = System.Windows.Forms.Cursors.Hand;
+			this.buttonTambahPegawai.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(232)))), ((int)(((byte)(232)))));
+			this.buttonTambahPegawai.FlatAppearance.BorderSize = 0;
+			this.buttonTambahPegawai.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(232)))), ((int)(((byte)(232)))));
+			this.buttonTambahPegawai.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(232)))), ((int)(((byte)(232)))));
+			this.buttonTambahPegawai.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+			this.buttonTambahPegawai.Font = new System.Drawing.Font("Century Gothic", 11F);
+			this.buttonTambahPegawai.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(49)))), ((int)(((byte)(69)))));
+			this.buttonTambahPegawai.Location = new System.Drawing.Point(255, 435);
+			this.buttonTambahPegawai.Name = "buttonTambahPegawai";
+			this.buttonTambahPegawai.OnHoverBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(7)))), ((int)(((byte)(104)))), ((int)(((byte)(159)))));
+			this.buttonTambahPegawai.OnHoverButtonColor = System.Drawing.Color.FromArgb(((int)(((byte)(7)))), ((int)(((byte)(104)))), ((int)(((byte)(159)))));
+			this.buttonTambahPegawai.OnHoverTextColor = System.Drawing.Color.AliceBlue;
+			this.buttonTambahPegawai.Size = new System.Drawing.Size(232, 40);
+			this.buttonTambahPegawai.TabIndex = 108;
+			this.buttonTambahPegawai.Text = "Tambah";
+			this.buttonTambahPegawai.TextColor = System.Drawing.Color.White;
+			this.buttonTambahPegawai.UseVisualStyleBackColor = false;
+			this.buttonTambahPegawai.Click += new System.EventHandler(this.buttonTambahPegawai_Click);
 			// 
 			// FormTambahPegawai
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(486, 456);
-			this.Controls.Add(this.buttonTambahBarang);
+			this.ClientSize = new System.Drawing.Size(731, 487);
+			this.Controls.Add(this.buttonHapusFoto);
+			this.Controls.Add(this.buttonUnggahFotoUser);
+			this.Controls.Add(this.pictureBoxTambahFotoUser);
+			this.Controls.Add(this.buttonTambahPegawai);
 			this.Controls.Add(this.textBoxAlamatPegawai);
 			this.Controls.Add(this.comboBoxJabatanPegawai);
 			this.Controls.Add(this.textBoxUsernamePegawai);
@@ -244,6 +310,7 @@
 			this.Load += new System.EventHandler(this.FormTambahPegawai_Load);
 			this.panel1.ResumeLayout(false);
 			this.panel1.PerformLayout();
+			((System.ComponentModel.ISupportInitialize)(this.pictureBoxTambahFotoUser)).EndInit();
 			this.ResumeLayout(false);
 			this.PerformLayout();
 
@@ -266,6 +333,9 @@
 		private System.Windows.Forms.TextBox textBoxUsernamePegawai;
 		private System.Windows.Forms.ComboBox comboBoxJabatanPegawai;
 		private System.Windows.Forms.TextBox textBoxAlamatPegawai;
-		private ePOSOne.btnProduct.Button_WOC buttonTambahBarang;
+		private ePOSOne.btnProduct.Button_WOC buttonTambahPegawai;
+		private ePOSOne.btnProduct.Button_WOC buttonHapusFoto;
+		private ePOSOne.btnProduct.Button_WOC buttonUnggahFotoUser;
+		private System.Windows.Forms.PictureBox pictureBoxTambahFotoUser;
 	}
 }

@@ -43,13 +43,13 @@ namespace Kawi_Agung
                         switchPanel(panelUsername, panelPassword, new Point(12, 54), new Point(999, 999));
                         textBoxPassword.Focus();
                     }
-                    else if (listUser[0].Status == "Belum Aktif")
+                    else if (listUser[0].Status == "Tidak Aktif")
                     {
                         MessageBox.Show("Untuk mengaktifkan akun, silahkan buat password terlebih dahulu");
                         switchPanel(panelUsername, panelBuatPassword, new Point(12, 54), new Point(999, 999));
                         textBoxNewPassword.Focus();
                     }
-                    else if (listUser[0].Status == "Terblokir")
+                    else if (listUser[0].Status == "Blokir")
                     {
                         MessageBox.Show("Mohon maaf anda tidak dapat mengakses sistem. Akun anda terblokir");
                         textBoxUsername.Clear();

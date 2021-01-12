@@ -11,7 +11,7 @@ namespace Kawi_Agung
 		{
 			InitializeComponent();
 
-			string hasilBaca = Jabatan.BacaData("", "", listJabatan);
+			string hasilBaca = Jabatan.BacaData(listJabatan);
 			if (hasilBaca == "1")
 			{
 				comboBoxJabatanUser.Items.Clear();

@@ -84,16 +84,76 @@ namespace Kawi_Agung
 			c.ExecuteNonQuery();
 		}
 
-		public static string UbahData(User user, bool pathFotoWasNull)
+		public static string UbahPegawai(User user, List<User> listUser, string image)
 		{
 			string sql = "";
 			MySqlParameter fotoParam = null;
 
-			if (pathFotoWasNull == true)
+			if (image == "Tidak Ada")
+			{
+				sql = "UPDATE user SET nama='" + user.Nama + "', jenis_kelamin='" + user.JenisKelamin + "', tanggal_lahir='" + user.TanggalLahir.ToString("yyyy-MM-dd") + "', no_telp='" + user.NoTelp + "', idjabatan=" + user.Jabatan.IdJabatan + ", status='" + user.Status + "', alamat='" + user.Alamat + "' WHERE iduser=" + user.IdUser;
+			}
+			else if (image == "Kosong")
+			{
+				sql = "UPDATE user SET nama='" + user.Nama + "', jenis_kelamin='" + user.JenisKelamin + "', tanggal_lahir='" + user.TanggalLahir.ToString("yyyy-MM-dd") + "', no_telp='" + user.NoTelp + "', idjabatan=" + user.Jabatan.IdJabatan + ", status='" + user.Status + "', alamat='" + user.Alamat + "', foto=NULL WHERE iduser=" + user.IdUser;
+			}
+			else if (image == "Ada")
+			{
+				sql = "UPDATE user SET nama='" + user.Nama + "', jenis_kelamin='" + user.JenisKelamin + "', tanggal_lahir='" + user.TanggalLahir.ToString("yyyy-MM-dd") + "', no_telp='" + user.NoTelp + "', idjabatan=" + user.Jabatan.IdJabatan + ", status='" + user.Status + "', alamat='" + user.Alamat + "', foto=@foto WHERE iduser=" + user.IdUser;
+
+				fotoParam = new MySqlParameter("foto", MySqlDbType.Blob);
+
+				fotoParam.Value = user.foto;
+			}
+			try
+			{
+				for (int i = 0; i < listUser.Count; i++)
+				{
+					if (user.Username.ToLower() == listUser[i].Username.ToLower())
+					{
+						return "Username sudah ada";
+					}
+				}
+
+				Koneksi k = new Koneksi();
+
+				k.Connect();
+
+				MySqlCommand c = new MySqlCommand(sql, k.KoneksiDB);
+
+				// if blob type must do parameterized query not concat string
+				if (image == "Ada")
+				{
+					c.Parameters.Add(fotoParam);
+				}
+
+				c.ExecuteReader();
+
+				return "1";
+			}
+			catch (MySqlException ex)
+			{
+				return ex.Message + ". Perintah sql : " + sql;
+			}
+
+		}
+		public static string UbahData(User user, string image)
+		{
+			string sql = "";
+			MySqlParameter fotoParam = null;
+
+			if (image == "Kosong") // kalau image dihapus
 			{
 				sql = "UPDATE user SET password='" + EncryptPassword(user.Password) + "', alamat='" + user.Alamat + "', no_telp='" + user.NoTelp + "', nama_rekening='" + user.NamaRekening + "', no_rekening='" + user.NoRekening + "', nama_bank='" + user.NamaBank + "', foto=NULL WHERE iduser=" + user.idUser;
 
-			} else if (pathFotoWasNull == false) {
+			}
+			else if (image == "Tidak Ada") // kalau image tidak di update
+			{
+				sql = "UPDATE user SET password='" + EncryptPassword(user.Password) + "', alamat='" + user.Alamat + "', no_telp='" + user.NoTelp + "', nama_rekening='" + user.NamaRekening + "', no_rekening='" + user.NoRekening + "', nama_bank='" + user.NamaBank + "' WHERE iduser=" + user.idUser;
+
+			}
+			else if (image == "Ada") // kalau image diunggah dari komputer
+			{
 
 				sql = "UPDATE user SET password='" + EncryptPassword(user.Password) + "', alamat='" + user.Alamat + "', no_telp='" + user.NoTelp + "', foto=@foto, nama_rekening='" + user.NamaRekening + "', no_rekening='" + user.NoRekening + "', nama_bank='" + user.NamaBank + "' WHERE iduser=" + user.idUser;
 
@@ -112,7 +172,7 @@ namespace Kawi_Agung
 				MySqlCommand c = new MySqlCommand(sql, k.KoneksiDB);
 
 				// if blob type must do parameterized query not concat string
-				if (pathFotoWasNull == false)
+				if (image == "Ada")
 				{
 					c.Parameters.Add(fotoParam);
 				}
@@ -127,13 +187,35 @@ namespace Kawi_Agung
 			}
 		}
 
-		public static string TambahData(User user)
+		public static string TambahPegawai(User user, List<User> listUser)
 		{
-			string sql = "INSERT INTO user(username, password, status, nama, jenis_kelamin, tanggal_lahir, alamat, no_telp, foto, idjabatan, nama_rekening, no_rekening, nama_bank) VALUES ('" + user.Username + "','" + EncryptPassword(user.Password) + "','" + user.Status + "','" + user.Nama + "','" + user.JenisKelamin + "','" + user.TanggalLahir + "','" + user.Alamat + "','" + user.NoTelp + "','" + user.Foto + "','" + user.Jabatan.IdJabatan + "','" + user.NamaRekening + "','" + user.NoRekening + "','" + user.NamaBank + "')";
+			string sql = "INSERT INTO user(nama, jenis_kelamin, tanggal_lahir, no_telp, username, idjabatan, alamat, status, foto) VALUES ('" + user.Nama + "','" + user.JenisKelamin + "','" + user.TanggalLahir.ToString("yyyy-MM-dd") + "','" + user.NoTelp + "','" + user.Username + "', " + user.Jabatan.IdJabatan + ",'" + user.Alamat + "', 'Belum Aktif', @foto)";
+
+			var fotoParam = new MySqlParameter("foto", MySqlDbType.Blob);
+
+			fotoParam.Value = user.Foto;
 
 			try
 			{
-				JalankanPerintahDML(sql);
+				for (int i = 0; i < listUser.Count; i++)
+				{
+					if (user.Username.ToLower() == listUser[i].Username.ToLower())
+					{
+						return "Username sudah ada";
+					}
+				}
+
+				Koneksi k = new Koneksi();
+
+				k.Connect();
+
+				MySqlCommand c = new MySqlCommand(sql, k.KoneksiDB);
+
+				// if blob type must do parameterized query not concat string
+				c.Parameters.Add(fotoParam);
+
+				c.ExecuteNonQuery();
+
 				return "1";
 			}
 			catch (MySqlException ex)
@@ -176,15 +258,19 @@ namespace Kawi_Agung
 
 			if (kriteria == "")
 			{
-				sql = "SELECT u.iduser, u.nama, u.username, j.nama, u.status, u.jenis_kelamin, u.tanggal_lahir, u.alamat, u.no_telp, u.foto FROM user u INNER JOIN jabatan j ON u.idjabatan=j.idjabatan WHERE NOT j.nama='Pemilik' ORDER BY u.nama";
+				sql = "SELECT u.iduser, u.nama, u.username, j.nama, u.status, u.jenis_kelamin, u.tanggal_lahir, u.alamat, u.no_telp, u.foto, u.idjabatan FROM user u INNER JOIN jabatan j ON u.idjabatan=j.idjabatan WHERE NOT j.nama='Pemilik' ORDER BY u.nama";
+			}
+			else if (kriteria == "exclude")
+			{
+				sql = "SELECT u.iduser, u.nama, u.username, j.nama, u.status, u.jenis_kelamin, u.tanggal_lahir, u.alamat, u.no_telp, u.foto, u.idjabatan FROM user u INNER JOIN jabatan j ON u.idjabatan=j.idjabatan WHERE NOT j.nama='Pemilik' AND NOT u.iduser =" + nilaiKriteria;
 			}
 			else if (kriteria == "u.nama")
 			{
-				sql = "SELECT u.iduser, u.nama, u.username, j.nama, u.status, u.jenis_kelamin, u.tanggal_lahir, u.alamat, u.no_telp, u.foto FROM user u INNER JOIN jabatan j ON u.idjabatan=j.idjabatan WHERE NOT j.nama='Pemilik' AND " + kriteria + " LIKE '%" + nilaiKriteria + "%' ORDER BY u.nama";
+				sql = "SELECT u.iduser, u.nama, u.username, j.nama, u.status, u.jenis_kelamin, u.tanggal_lahir, u.alamat, u.no_telp, u.foto, u.idjabatan FROM user u INNER JOIN jabatan j ON u.idjabatan=j.idjabatan WHERE NOT j.nama='Pemilik' AND " + kriteria + " LIKE '%" + nilaiKriteria + "%' ORDER BY u.nama";
 			}
 			else if (kriteria == "u.iduser")
 			{
-				sql = "SELECT u.iduser, u.nama, u.username, j.nama, u.status, u.jenis_kelamin, u.tanggal_lahir, u.alamat, u.no_telp, u.foto FROM user u INNER JOIN jabatan j ON u.idjabatan=j.idjabatan WHERE NOT j.nama='Pemilik' AND " + kriteria + " =" + nilaiKriteria;
+				sql = "SELECT u.iduser, u.nama, u.username, j.nama, u.status, u.jenis_kelamin, u.tanggal_lahir, u.alamat, u.no_telp, u.foto, u.idjabatan FROM user u INNER JOIN jabatan j ON u.idjabatan=j.idjabatan WHERE NOT j.nama='Pemilik' AND " + kriteria + " =" + nilaiKriteria;
 			}
 
 			MySqlCommand cmd = new MySqlCommand(sql, conn.KoneksiDB);
@@ -195,6 +281,7 @@ namespace Kawi_Agung
 				while (hasil.Read())
 				{
 					Jabatan j = new Jabatan();
+					j.IdJabatan = Convert.ToInt32(hasil.GetValue(10));
 					j.Nama = hasil.GetValue(3).ToString();
 
 					User user = new User();
@@ -249,7 +336,6 @@ namespace Kawi_Agung
 
 			try
 			{
-
 				while (hasil.Read())
 				{
 					User user = new User();
@@ -270,7 +356,9 @@ namespace Kawi_Agung
 						user.Foto = (byte[])hasil.GetValue(9);
 					}
 
-					Jabatan jabatan = new Jabatan(int.Parse(hasil.GetValue(10).ToString()), hasil.GetValue(11).ToString());
+					Jabatan jabatan = new Jabatan();
+					jabatan.IdJabatan = int.Parse(hasil.GetValue(10).ToString());
+					jabatan.Nama = hasil.GetValue(11).ToString();
 
 					user.Jabatan = jabatan;
 					user.NamaRekening = hasil.GetValue(12).ToString();
@@ -289,6 +377,28 @@ namespace Kawi_Agung
 			{
 				cmd.Dispose();
 				hasil.Dispose();
+			}
+		}
+
+		public static string HapusData(User user)
+		{
+			string sql = "DELETE FROM user WHERE iduser=" + user.IdUser;
+
+			try
+			{
+				JalankanPerintahDML(sql);
+
+				return "1";
+			}
+			catch (MySqlException ex)
+			{
+				if (ex.Number == 1451)
+				{
+					return "Hapus data gagal. Data pegawai masih ada di nota pembelian/penjualan";
+				}
+
+				// error sql lain selain error diatas belum direkam
+				return ex.Message;
 			}
 		}
 

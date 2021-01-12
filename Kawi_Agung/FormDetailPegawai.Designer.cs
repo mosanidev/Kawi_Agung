@@ -75,7 +75,7 @@
 			// 
 			// pictureBoxGambarPegawai
 			// 
-			this.pictureBoxGambarPegawai.Image = global::Kawi_Agung.Properties.Resources.box;
+			this.pictureBoxGambarPegawai.Image = global::Kawi_Agung.Properties.Resources.profile_picture;
 			this.pictureBoxGambarPegawai.Location = new System.Drawing.Point(544, 84);
 			this.pictureBoxGambarPegawai.Name = "pictureBoxGambarPegawai";
 			this.pictureBoxGambarPegawai.Size = new System.Drawing.Size(176, 150);

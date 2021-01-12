@@ -250,8 +250,7 @@
 			this.flowLayoutPanel9 = new System.Windows.Forms.FlowLayoutPanel();
 			this.buttonTambahPegawai = new ePOSOne.btnProduct.Button_WOC();
 			this.buttonUbahPegawai = new ePOSOne.btnProduct.Button_WOC();
-			this.buttonGantiJabatanUser = new ePOSOne.btnProduct.Button_WOC();
-			this.buttonBlokirUser = new ePOSOne.btnProduct.Button_WOC();
+			this.buttonHapusPegawai = new ePOSOne.btnProduct.Button_WOC();
 			this.textBoxSearchPegawai = new System.Windows.Forms.TextBox();
 			this.panelUnderlineSearchPegawai = new System.Windows.Forms.Panel();
 			this.label27 = new System.Windows.Forms.Label();
@@ -260,6 +259,7 @@
 			this.ColumnIdPegawai = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.dataGridViewTextBoxColumn33 = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.dataGridViewTextBoxColumn34 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.ColumnIdJabatan = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.dataGridViewTextBoxColumn35 = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.dataGridViewTextBoxColumn36 = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.panelMenuProfil = new System.Windows.Forms.Panel();
@@ -322,14 +322,14 @@
 			this.buttonUbahPelanggan = new ePOSOne.btnProduct.Button_WOC();
 			this.buttonHapusPelanggan = new ePOSOne.btnProduct.Button_WOC();
 			this.dataGridViewDaftarPelanggan = new System.Windows.Forms.DataGridView();
-			this.textBoxSearchNamaPelanggan = new System.Windows.Forms.TextBox();
-			this.panelUnderlineSearchPelanggan = new System.Windows.Forms.Panel();
-			this.label11 = new System.Windows.Forms.Label();
 			this.ColumnNoPelanggan = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.ColumnIdPelanggan = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.ColumnNamaPelanggan = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.ColumnNoTelpPelanggan = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.ColumnAlamatPelanggan = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.textBoxSearchNamaPelanggan = new System.Windows.Forms.TextBox();
+			this.panelUnderlineSearchPelanggan = new System.Windows.Forms.Panel();
+			this.label11 = new System.Windows.Forms.Label();
 			this.panelSideNavigation.SuspendLayout();
 			this.panelUserProfile.SuspendLayout();
 			this.panel6.SuspendLayout();
@@ -3259,7 +3259,7 @@
 			this.panelMenuPegawai.Controls.Add(this.label27);
 			this.panelMenuPegawai.Controls.Add(this.dataGridViewPegawai);
 			this.panelMenuPegawai.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-			this.panelMenuPegawai.Location = new System.Drawing.Point(1800, 1700);
+			this.panelMenuPegawai.Location = new System.Drawing.Point(1800, 200);
 			this.panelMenuPegawai.Name = "panelMenuPegawai";
 			this.panelMenuPegawai.Size = new System.Drawing.Size(755, 537);
 			this.panelMenuPegawai.TabIndex = 30;
@@ -3268,8 +3268,7 @@
 			// 
 			this.flowLayoutPanel9.Controls.Add(this.buttonTambahPegawai);
 			this.flowLayoutPanel9.Controls.Add(this.buttonUbahPegawai);
-			this.flowLayoutPanel9.Controls.Add(this.buttonGantiJabatanUser);
-			this.flowLayoutPanel9.Controls.Add(this.buttonBlokirUser);
+			this.flowLayoutPanel9.Controls.Add(this.buttonHapusPegawai);
 			this.flowLayoutPanel9.Dock = System.Windows.Forms.DockStyle.Bottom;
 			this.flowLayoutPanel9.Location = new System.Drawing.Point(0, 437);
 			this.flowLayoutPanel9.Name = "flowLayoutPanel9";
@@ -3324,54 +3323,32 @@
 			this.buttonUbahPegawai.Text = "Ubah";
 			this.buttonUbahPegawai.TextColor = System.Drawing.Color.White;
 			this.buttonUbahPegawai.UseVisualStyleBackColor = false;
+			this.buttonUbahPegawai.Click += new System.EventHandler(this.buttonUbahPegawai_Click);
 			// 
-			// buttonGantiJabatanUser
+			// buttonHapusPegawai
 			// 
-			this.buttonGantiJabatanUser.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(49)))), ((int)(((byte)(69)))));
-			this.buttonGantiJabatanUser.ButtonColor = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(49)))), ((int)(((byte)(69)))));
-			this.buttonGantiJabatanUser.Cursor = System.Windows.Forms.Cursors.Hand;
-			this.buttonGantiJabatanUser.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(232)))), ((int)(((byte)(232)))));
-			this.buttonGantiJabatanUser.FlatAppearance.BorderSize = 0;
-			this.buttonGantiJabatanUser.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(232)))), ((int)(((byte)(232)))));
-			this.buttonGantiJabatanUser.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(232)))), ((int)(((byte)(232)))));
-			this.buttonGantiJabatanUser.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-			this.buttonGantiJabatanUser.Font = new System.Drawing.Font("Century Gothic", 11F);
-			this.buttonGantiJabatanUser.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(49)))), ((int)(((byte)(69)))));
-			this.buttonGantiJabatanUser.Location = new System.Drawing.Point(383, 20);
-			this.buttonGantiJabatanUser.Margin = new System.Windows.Forms.Padding(15, 20, 15, 20);
-			this.buttonGantiJabatanUser.Name = "buttonGantiJabatanUser";
-			this.buttonGantiJabatanUser.OnHoverBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(7)))), ((int)(((byte)(104)))), ((int)(((byte)(159)))));
-			this.buttonGantiJabatanUser.OnHoverButtonColor = System.Drawing.Color.FromArgb(((int)(((byte)(7)))), ((int)(((byte)(104)))), ((int)(((byte)(159)))));
-			this.buttonGantiJabatanUser.OnHoverTextColor = System.Drawing.Color.AliceBlue;
-			this.buttonGantiJabatanUser.Size = new System.Drawing.Size(154, 40);
-			this.buttonGantiJabatanUser.TabIndex = 7;
-			this.buttonGantiJabatanUser.Text = "Ganti Jabatan";
-			this.buttonGantiJabatanUser.TextColor = System.Drawing.Color.White;
-			this.buttonGantiJabatanUser.UseVisualStyleBackColor = false;
-			// 
-			// buttonBlokirUser
-			// 
-			this.buttonBlokirUser.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(49)))), ((int)(((byte)(69)))));
-			this.buttonBlokirUser.ButtonColor = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(49)))), ((int)(((byte)(69)))));
-			this.buttonBlokirUser.Cursor = System.Windows.Forms.Cursors.Hand;
-			this.buttonBlokirUser.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(232)))), ((int)(((byte)(232)))));
-			this.buttonBlokirUser.FlatAppearance.BorderSize = 0;
-			this.buttonBlokirUser.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(232)))), ((int)(((byte)(232)))));
-			this.buttonBlokirUser.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(232)))), ((int)(((byte)(232)))));
-			this.buttonBlokirUser.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-			this.buttonBlokirUser.Font = new System.Drawing.Font("Century Gothic", 11F);
-			this.buttonBlokirUser.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(49)))), ((int)(((byte)(69)))));
-			this.buttonBlokirUser.Location = new System.Drawing.Point(567, 20);
-			this.buttonBlokirUser.Margin = new System.Windows.Forms.Padding(15, 20, 15, 20);
-			this.buttonBlokirUser.Name = "buttonBlokirUser";
-			this.buttonBlokirUser.OnHoverBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(7)))), ((int)(((byte)(104)))), ((int)(((byte)(159)))));
-			this.buttonBlokirUser.OnHoverButtonColor = System.Drawing.Color.FromArgb(((int)(((byte)(7)))), ((int)(((byte)(104)))), ((int)(((byte)(159)))));
-			this.buttonBlokirUser.OnHoverTextColor = System.Drawing.Color.AliceBlue;
-			this.buttonBlokirUser.Size = new System.Drawing.Size(154, 40);
-			this.buttonBlokirUser.TabIndex = 8;
-			this.buttonBlokirUser.Text = "Blokir";
-			this.buttonBlokirUser.TextColor = System.Drawing.Color.White;
-			this.buttonBlokirUser.UseVisualStyleBackColor = false;
+			this.buttonHapusPegawai.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(49)))), ((int)(((byte)(69)))));
+			this.buttonHapusPegawai.ButtonColor = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(49)))), ((int)(((byte)(69)))));
+			this.buttonHapusPegawai.Cursor = System.Windows.Forms.Cursors.Hand;
+			this.buttonHapusPegawai.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(232)))), ((int)(((byte)(232)))));
+			this.buttonHapusPegawai.FlatAppearance.BorderSize = 0;
+			this.buttonHapusPegawai.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(232)))), ((int)(((byte)(232)))));
+			this.buttonHapusPegawai.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(232)))), ((int)(((byte)(232)))));
+			this.buttonHapusPegawai.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+			this.buttonHapusPegawai.Font = new System.Drawing.Font("Century Gothic", 11F);
+			this.buttonHapusPegawai.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(49)))), ((int)(((byte)(69)))));
+			this.buttonHapusPegawai.Location = new System.Drawing.Point(383, 20);
+			this.buttonHapusPegawai.Margin = new System.Windows.Forms.Padding(15, 20, 15, 20);
+			this.buttonHapusPegawai.Name = "buttonHapusPegawai";
+			this.buttonHapusPegawai.OnHoverBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(7)))), ((int)(((byte)(104)))), ((int)(((byte)(159)))));
+			this.buttonHapusPegawai.OnHoverButtonColor = System.Drawing.Color.FromArgb(((int)(((byte)(7)))), ((int)(((byte)(104)))), ((int)(((byte)(159)))));
+			this.buttonHapusPegawai.OnHoverTextColor = System.Drawing.Color.AliceBlue;
+			this.buttonHapusPegawai.Size = new System.Drawing.Size(154, 40);
+			this.buttonHapusPegawai.TabIndex = 7;
+			this.buttonHapusPegawai.Text = "Hapus";
+			this.buttonHapusPegawai.TextColor = System.Drawing.Color.White;
+			this.buttonHapusPegawai.UseVisualStyleBackColor = false;
+			this.buttonHapusPegawai.Click += new System.EventHandler(this.buttonHapusPegawai_Click);
 			// 
 			// textBoxSearchPegawai
 			// 
@@ -3431,6 +3408,7 @@
             this.ColumnIdPegawai,
             this.dataGridViewTextBoxColumn33,
             this.dataGridViewTextBoxColumn34,
+            this.ColumnIdJabatan,
             this.dataGridViewTextBoxColumn35,
             this.dataGridViewTextBoxColumn36});
 			this.dataGridViewPegawai.Cursor = System.Windows.Forms.Cursors.Hand;
@@ -3485,6 +3463,13 @@
 			this.dataGridViewTextBoxColumn34.HeaderText = "Username";
 			this.dataGridViewTextBoxColumn34.Name = "dataGridViewTextBoxColumn34";
 			this.dataGridViewTextBoxColumn34.ReadOnly = true;
+			// 
+			// ColumnIdJabatan
+			// 
+			this.ColumnIdJabatan.HeaderText = "Id Jabatan";
+			this.ColumnIdJabatan.Name = "ColumnIdJabatan";
+			this.ColumnIdJabatan.ReadOnly = true;
+			this.ColumnIdJabatan.Visible = false;
 			// 
 			// dataGridViewTextBoxColumn35
 			// 
@@ -3564,11 +3549,11 @@
 			// 
 			this.labelProfilIdUser.AutoSize = true;
 			this.labelProfilIdUser.Font = new System.Drawing.Font("Century Gothic", 12.5F);
-			this.labelProfilIdUser.Location = new System.Drawing.Point(621, 226);
+			this.labelProfilIdUser.Location = new System.Drawing.Point(563, 318);
 			this.labelProfilIdUser.Name = "labelProfilIdUser";
-			this.labelProfilIdUser.Size = new System.Drawing.Size(16, 21);
+			this.labelProfilIdUser.Size = new System.Drawing.Size(131, 21);
 			this.labelProfilIdUser.TabIndex = 49;
-			this.labelProfilIdUser.Text = "-";
+			this.labelProfilIdUser.Text = "hdsakjdjskahja";
 			this.labelProfilIdUser.Visible = false;
 			// 
 			// iconPictureBoxFotoProfil
@@ -4382,35 +4367,6 @@
 			this.dataGridViewDaftarPelanggan.Size = new System.Drawing.Size(709, 334);
 			this.dataGridViewDaftarPelanggan.TabIndex = 5;
 			// 
-			// textBoxSearchNamaPelanggan
-			// 
-			this.textBoxSearchNamaPelanggan.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(232)))), ((int)(((byte)(232)))));
-			this.textBoxSearchNamaPelanggan.BorderStyle = System.Windows.Forms.BorderStyle.None;
-			this.textBoxSearchNamaPelanggan.Font = new System.Drawing.Font("Century Gothic", 12.5F);
-			this.textBoxSearchNamaPelanggan.Location = new System.Drawing.Point(187, 39);
-			this.textBoxSearchNamaPelanggan.Name = "textBoxSearchNamaPelanggan";
-			this.textBoxSearchNamaPelanggan.Size = new System.Drawing.Size(200, 21);
-			this.textBoxSearchNamaPelanggan.TabIndex = 2;
-			this.textBoxSearchNamaPelanggan.TextChanged += new System.EventHandler(this.textBoxSearchNamaPelanggan_TextChanged);
-			// 
-			// panelUnderlineSearchPelanggan
-			// 
-			this.panelUnderlineSearchPelanggan.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(26)))), ((int)(((byte)(46)))));
-			this.panelUnderlineSearchPelanggan.Location = new System.Drawing.Point(187, 61);
-			this.panelUnderlineSearchPelanggan.Name = "panelUnderlineSearchPelanggan";
-			this.panelUnderlineSearchPelanggan.Size = new System.Drawing.Size(200, 4);
-			this.panelUnderlineSearchPelanggan.TabIndex = 1;
-			// 
-			// label11
-			// 
-			this.label11.AutoSize = true;
-			this.label11.Font = new System.Drawing.Font("Century Gothic", 12.5F);
-			this.label11.Location = new System.Drawing.Point(11, 39);
-			this.label11.Name = "label11";
-			this.label11.Size = new System.Drawing.Size(167, 21);
-			this.label11.TabIndex = 0;
-			this.label11.Text = "Nama Pelanggan :";
-			// 
 			// ColumnNoPelanggan
 			// 
 			this.ColumnNoPelanggan.HeaderText = "No";
@@ -4441,6 +4397,35 @@
 			this.ColumnAlamatPelanggan.HeaderText = "Alamat";
 			this.ColumnAlamatPelanggan.Name = "ColumnAlamatPelanggan";
 			this.ColumnAlamatPelanggan.ReadOnly = true;
+			// 
+			// textBoxSearchNamaPelanggan
+			// 
+			this.textBoxSearchNamaPelanggan.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(232)))), ((int)(((byte)(232)))));
+			this.textBoxSearchNamaPelanggan.BorderStyle = System.Windows.Forms.BorderStyle.None;
+			this.textBoxSearchNamaPelanggan.Font = new System.Drawing.Font("Century Gothic", 12.5F);
+			this.textBoxSearchNamaPelanggan.Location = new System.Drawing.Point(187, 39);
+			this.textBoxSearchNamaPelanggan.Name = "textBoxSearchNamaPelanggan";
+			this.textBoxSearchNamaPelanggan.Size = new System.Drawing.Size(200, 21);
+			this.textBoxSearchNamaPelanggan.TabIndex = 2;
+			this.textBoxSearchNamaPelanggan.TextChanged += new System.EventHandler(this.textBoxSearchNamaPelanggan_TextChanged);
+			// 
+			// panelUnderlineSearchPelanggan
+			// 
+			this.panelUnderlineSearchPelanggan.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(26)))), ((int)(((byte)(46)))));
+			this.panelUnderlineSearchPelanggan.Location = new System.Drawing.Point(187, 61);
+			this.panelUnderlineSearchPelanggan.Name = "panelUnderlineSearchPelanggan";
+			this.panelUnderlineSearchPelanggan.Size = new System.Drawing.Size(200, 4);
+			this.panelUnderlineSearchPelanggan.TabIndex = 1;
+			// 
+			// label11
+			// 
+			this.label11.AutoSize = true;
+			this.label11.Font = new System.Drawing.Font("Century Gothic", 12.5F);
+			this.label11.Location = new System.Drawing.Point(11, 39);
+			this.label11.Name = "label11";
+			this.label11.Size = new System.Drawing.Size(167, 21);
+			this.label11.TabIndex = 0;
+			this.label11.Text = "Nama Pelanggan :";
 			// 
 			// FormMaster
 			// 
@@ -4649,8 +4634,6 @@
 		private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn30;
 		private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn31;
 		private System.Windows.Forms.Panel panelMenuPegawai;
-		private ePOSOne.btnProduct.Button_WOC buttonBlokirUser;
-		private ePOSOne.btnProduct.Button_WOC buttonGantiJabatanUser;
 		private ePOSOne.btnProduct.Button_WOC buttonUbahPegawai;
 		private ePOSOne.btnProduct.Button_WOC buttonTambahPegawai;
 		private System.Windows.Forms.Panel panelUnderlineSearchPegawai;
@@ -4792,12 +4775,6 @@
 		private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn15;
 		private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn42;
 		private System.Windows.Forms.Label labelProfilIdUser;
-		private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn32;
-		private System.Windows.Forms.DataGridViewTextBoxColumn ColumnIdPegawai;
-		private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn33;
-		private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn34;
-		private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn35;
-		private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn36;
 		private System.Windows.Forms.DataGridViewTextBoxColumn ColumnNoJenis;
 		private System.Windows.Forms.DataGridViewTextBoxColumn ColumnIdJenis_;
 		private System.Windows.Forms.DataGridViewTextBoxColumn ColumnJenis_;
@@ -4826,5 +4803,13 @@
 		private System.Windows.Forms.DataGridViewTextBoxColumn ColumnNamaPelanggan;
 		private System.Windows.Forms.DataGridViewTextBoxColumn ColumnNoTelpPelanggan;
 		private System.Windows.Forms.DataGridViewTextBoxColumn ColumnAlamatPelanggan;
+		private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn32;
+		private System.Windows.Forms.DataGridViewTextBoxColumn ColumnIdPegawai;
+		private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn33;
+		private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn34;
+		private System.Windows.Forms.DataGridViewTextBoxColumn ColumnIdJabatan;
+		private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn35;
+		private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn36;
+		private ePOSOne.btnProduct.Button_WOC buttonHapusPegawai;
 	}
 }

@@ -28,7 +28,7 @@ namespace Kawi_Agung
 		{
 			if (textBoxTambahNamaPelanggan.Text == "" || textBoxTambahNoTelpPelanggan.Text == "" || richTextBoxTambahAlamatPelanggan.Text == "")
 			{
-				MessageBox.Show("Harap di isi terlebih dahulu");
+				MessageBox.Show("Harap di isi terlebih dahulu", "Info");
 			}
 			else
 			{
