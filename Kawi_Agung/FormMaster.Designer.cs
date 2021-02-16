@@ -172,8 +172,9 @@
 			this.flowLayoutPanelBarangKeluar = new System.Windows.Forms.FlowLayoutPanel();
 			this.buttonTambahNotaJual = new ePOSOne.btnProduct.Button_WOC();
 			this.buttonHapusNotaJual = new ePOSOne.btnProduct.Button_WOC();
-			this.buttonCetakNotaJual = new ePOSOne.btnProduct.Button_WOC();
 			this.dataGridViewBarangKeluar = new System.Windows.Forms.DataGridView();
+			this.ColumnNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.ColumnIdNotaJual = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.dataGridViewTextBoxColumn11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.dataGridViewTextBoxColumn12 = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.dataGridViewTextBoxColumn13 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -194,57 +195,47 @@
 			this.iconButtonLaporanStokBarang = new FontAwesome.Sharp.IconButton();
 			this.panelSubMenuLaporanPenjualan = new System.Windows.Forms.Panel();
 			this.flowLayoutPanelLaporanPenjualan = new System.Windows.Forms.FlowLayoutPanel();
-			this.buttonSimpanPDFLaporanPenjualan = new ePOSOne.btnProduct.Button_WOC();
-			this.buttonPrintLaporanPenjualan = new ePOSOne.btnProduct.Button_WOC();
 			this.label18 = new System.Windows.Forms.Label();
 			this.labelNominalTotalPenjualan = new System.Windows.Forms.Label();
-			this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
+			this.dateTimePickerTanggalAkhirLaporanPenjualan = new System.Windows.Forms.DateTimePicker();
+			this.dateTimePickerTanggalAwalLaporanPenjualan = new System.Windows.Forms.DateTimePicker();
 			this.label13 = new System.Windows.Forms.Label();
-			this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
 			this.iconButtonBackLaporanPenjualan = new FontAwesome.Sharp.IconButton();
-			this.dataGridView2 = new System.Windows.Forms.DataGridView();
+			this.dataGridViewLaporanPenjualan = new System.Windows.Forms.DataGridView();
 			this.dataGridViewTextBoxColumn16 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.dataGridViewTextBoxColumn17 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.dataGridViewTextBoxColumn18 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.dataGridViewTextBoxColumn19 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.dataGridViewTextBoxColumn20 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.dataGridViewTextBoxColumn21 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.ColumnTanggal__ = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.ColumnTotalPemasukan = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.label10 = new System.Windows.Forms.Label();
 			this.panelSubMenuLaporanPembelian = new System.Windows.Forms.Panel();
+			this.label20 = new System.Windows.Forms.Label();
 			this.flowLayoutPanelLaporanPembelian = new System.Windows.Forms.FlowLayoutPanel();
-			this.buttonSimpanPDFLaporanPembelian = new ePOSOne.btnProduct.Button_WOC();
-			this.buttonPrintLaporanPembelian = new ePOSOne.btnProduct.Button_WOC();
 			this.label5 = new System.Windows.Forms.Label();
-			this.labelTotalPembelian = new System.Windows.Forms.Label();
-			this.dateTimePicker3 = new System.Windows.Forms.DateTimePicker();
-			this.label19 = new System.Windows.Forms.Label();
-			this.dateTimePicker4 = new System.Windows.Forms.DateTimePicker();
+			this.labelTotalPengeluaran = new System.Windows.Forms.Label();
+			this.dateTimePickerTanggalAkhirLaporanPembelian = new System.Windows.Forms.DateTimePicker();
+			this.dateTimePickerTanggalAwalLaporanPembelian = new System.Windows.Forms.DateTimePicker();
 			this.iconButtonBackLaporanPembelian = new FontAwesome.Sharp.IconButton();
-			this.dataGridView3 = new System.Windows.Forms.DataGridView();
+			this.dataGridViewLaporanPembelian = new System.Windows.Forms.DataGridView();
 			this.dataGridViewTextBoxColumn22 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.dataGridViewTextBoxColumn23 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.dataGridViewTextBoxColumn24 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.dataGridViewTextBoxColumn26 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.dataGridViewTextBoxColumn27 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.ColumnTanggal___ = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.ColumnPengeluaran = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.label22 = new System.Windows.Forms.Label();
 			this.panelSubMenuLaporanStokBarang = new System.Windows.Forms.Panel();
+			this.label19 = new System.Windows.Forms.Label();
 			this.flowLayoutPanelLaporanStokBarang = new System.Windows.Forms.FlowLayoutPanel();
-			this.buttonSimpanPDFLaporanStokBarang = new ePOSOne.btnProduct.Button_WOC();
-			this.buttonPrintLaporanPrintStokBarang = new ePOSOne.btnProduct.Button_WOC();
 			this.panel1 = new System.Windows.Forms.Panel();
 			this.labelTotalJumlahBarangMinim = new System.Windows.Forms.Label();
 			this.label9 = new System.Windows.Forms.Label();
 			this.labelTotalJumlahBarang = new System.Windows.Forms.Label();
 			this.label8 = new System.Windows.Forms.Label();
-			this.textBoxSearchNamaBrgInventaris = new System.Windows.Forms.TextBox();
+			this.comboBoxKriteriaLaporanStokBarang = new System.Windows.Forms.ComboBox();
+			this.textBoxSearchBrgInventaris = new System.Windows.Forms.TextBox();
 			this.panelUnderlineSearchBrgInventaris = new System.Windows.Forms.Panel();
 			this.iconButtonBackLaporanInventaris = new FontAwesome.Sharp.IconButton();
-			this.label23 = new System.Windows.Forms.Label();
-			this.dataGridView4 = new System.Windows.Forms.DataGridView();
+			this.dataGridViewLaporanStokBarang = new System.Windows.Forms.DataGridView();
 			this.dataGridViewTextBoxColumn25 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.ColumnKodeBarang__ = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.dataGridViewTextBoxColumn28 = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.dataGridViewTextBoxColumn29 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.dataGridViewTextBoxColumn30 = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.dataGridViewTextBoxColumn31 = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.panelMenuPegawai = new System.Windows.Forms.Panel();
 			this.flowLayoutPanel9 = new System.Windows.Forms.FlowLayoutPanel();
@@ -296,9 +287,9 @@
 			this.flowLayoutPanelBarangMasuk = new System.Windows.Forms.FlowLayoutPanel();
 			this.buttonTambahBarangMasuk = new ePOSOne.btnProduct.Button_WOC();
 			this.buttonHapusBarangMasuk = new ePOSOne.btnProduct.Button_WOC();
-			this.buttonNotaBeli = new ePOSOne.btnProduct.Button_WOC();
 			this.dataGridViewBarangMasuk = new System.Windows.Forms.DataGridView();
 			this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.ColumnIdNotaBeli = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.dataGridViewTextBoxColumn9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.dataGridViewTextBoxColumn10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.dataGridViewTextBoxColumn15 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -367,14 +358,14 @@
 			this.flowLayoutPanelMenuLaporan.SuspendLayout();
 			this.panelSubMenuLaporanPenjualan.SuspendLayout();
 			this.flowLayoutPanelLaporanPenjualan.SuspendLayout();
-			((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.dataGridViewLaporanPenjualan)).BeginInit();
 			this.panelSubMenuLaporanPembelian.SuspendLayout();
 			this.flowLayoutPanelLaporanPembelian.SuspendLayout();
-			((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.dataGridViewLaporanPembelian)).BeginInit();
 			this.panelSubMenuLaporanStokBarang.SuspendLayout();
 			this.flowLayoutPanelLaporanStokBarang.SuspendLayout();
 			this.panel1.SuspendLayout();
-			((System.ComponentModel.ISupportInitialize)(this.dataGridView4)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.dataGridViewLaporanStokBarang)).BeginInit();
 			this.panelMenuPegawai.SuspendLayout();
 			this.flowLayoutPanel9.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.dataGridViewPegawai)).BeginInit();
@@ -802,6 +793,8 @@
 			// iconButtonBarangBarang
 			// 
 			this.iconButtonBarangBarang.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(7)))), ((int)(((byte)(104)))), ((int)(((byte)(159)))));
+			this.iconButtonBarangBarang.BackgroundImage = global::Kawi_Agung.Properties.Resources.box_kecil;
+			this.iconButtonBarangBarang.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
 			this.iconButtonBarangBarang.Cursor = System.Windows.Forms.Cursors.Hand;
 			this.iconButtonBarangBarang.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(4)))), ((int)(((byte)(135)))), ((int)(((byte)(209)))));
 			this.iconButtonBarangBarang.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(4)))), ((int)(((byte)(135)))), ((int)(((byte)(209)))));
@@ -827,6 +820,8 @@
 			// iconButtonJenisBarang
 			// 
 			this.iconButtonJenisBarang.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(7)))), ((int)(((byte)(104)))), ((int)(((byte)(159)))));
+			this.iconButtonJenisBarang.BackgroundImage = global::Kawi_Agung.Properties.Resources.box_kecil;
+			this.iconButtonJenisBarang.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
 			this.iconButtonJenisBarang.Cursor = System.Windows.Forms.Cursors.Hand;
 			this.iconButtonJenisBarang.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(4)))), ((int)(((byte)(135)))), ((int)(((byte)(209)))));
 			this.iconButtonJenisBarang.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(4)))), ((int)(((byte)(135)))), ((int)(((byte)(209)))));
@@ -852,6 +847,8 @@
 			// iconButtonKategoriBarang
 			// 
 			this.iconButtonKategoriBarang.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(7)))), ((int)(((byte)(104)))), ((int)(((byte)(159)))));
+			this.iconButtonKategoriBarang.BackgroundImage = global::Kawi_Agung.Properties.Resources.box_kecil;
+			this.iconButtonKategoriBarang.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
 			this.iconButtonKategoriBarang.Cursor = System.Windows.Forms.Cursors.Hand;
 			this.iconButtonKategoriBarang.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(4)))), ((int)(((byte)(135)))), ((int)(((byte)(209)))));
 			this.iconButtonKategoriBarang.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(4)))), ((int)(((byte)(135)))), ((int)(((byte)(209)))));
@@ -877,6 +874,8 @@
 			// iconButtonMerekBarang
 			// 
 			this.iconButtonMerekBarang.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(7)))), ((int)(((byte)(104)))), ((int)(((byte)(159)))));
+			this.iconButtonMerekBarang.BackgroundImage = global::Kawi_Agung.Properties.Resources.box_kecil;
+			this.iconButtonMerekBarang.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
 			this.iconButtonMerekBarang.Cursor = System.Windows.Forms.Cursors.Hand;
 			this.iconButtonMerekBarang.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(4)))), ((int)(((byte)(135)))), ((int)(((byte)(209)))));
 			this.iconButtonMerekBarang.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(4)))), ((int)(((byte)(135)))), ((int)(((byte)(209)))));
@@ -1097,7 +1096,7 @@
 			this.dataGridViewDaftarBarang.RowTemplate.DefaultCellStyle.BackColor = System.Drawing.Color.GhostWhite;
 			this.dataGridViewDaftarBarang.RowTemplate.DefaultCellStyle.ForeColor = System.Drawing.Color.Black;
 			this.dataGridViewDaftarBarang.RowTemplate.DefaultCellStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
-			this.dataGridViewDaftarBarang.RowTemplate.DefaultCellStyle.SelectionForeColor = System.Drawing.Color.White;
+			this.dataGridViewDaftarBarang.RowTemplate.DefaultCellStyle.SelectionForeColor = System.Drawing.Color.Black;
 			this.dataGridViewDaftarBarang.RowTemplate.DividerHeight = 1;
 			this.dataGridViewDaftarBarang.RowTemplate.Height = 25;
 			this.dataGridViewDaftarBarang.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
@@ -1385,7 +1384,7 @@
 			this.dataGridViewDaftarJenisBrg.RowTemplate.DefaultCellStyle.BackColor = System.Drawing.Color.GhostWhite;
 			this.dataGridViewDaftarJenisBrg.RowTemplate.DefaultCellStyle.ForeColor = System.Drawing.Color.Black;
 			this.dataGridViewDaftarJenisBrg.RowTemplate.DefaultCellStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
-			this.dataGridViewDaftarJenisBrg.RowTemplate.DefaultCellStyle.SelectionForeColor = System.Drawing.Color.White;
+			this.dataGridViewDaftarJenisBrg.RowTemplate.DefaultCellStyle.SelectionForeColor = System.Drawing.Color.Black;
 			this.dataGridViewDaftarJenisBrg.RowTemplate.DividerHeight = 1;
 			this.dataGridViewDaftarJenisBrg.RowTemplate.Height = 25;
 			this.dataGridViewDaftarJenisBrg.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
@@ -1612,7 +1611,7 @@
 			this.dataGridViewSubMenuKategoriBrg.RowTemplate.DefaultCellStyle.BackColor = System.Drawing.Color.GhostWhite;
 			this.dataGridViewSubMenuKategoriBrg.RowTemplate.DefaultCellStyle.ForeColor = System.Drawing.Color.Black;
 			this.dataGridViewSubMenuKategoriBrg.RowTemplate.DefaultCellStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
-			this.dataGridViewSubMenuKategoriBrg.RowTemplate.DefaultCellStyle.SelectionForeColor = System.Drawing.Color.White;
+			this.dataGridViewSubMenuKategoriBrg.RowTemplate.DefaultCellStyle.SelectionForeColor = System.Drawing.Color.Black;
 			this.dataGridViewSubMenuKategoriBrg.RowTemplate.DividerHeight = 1;
 			this.dataGridViewSubMenuKategoriBrg.RowTemplate.Height = 25;
 			this.dataGridViewSubMenuKategoriBrg.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
@@ -1839,7 +1838,7 @@
 			this.dataGridViewSubMenuMerekBrg.RowTemplate.DefaultCellStyle.BackColor = System.Drawing.Color.GhostWhite;
 			this.dataGridViewSubMenuMerekBrg.RowTemplate.DefaultCellStyle.ForeColor = System.Drawing.Color.Black;
 			this.dataGridViewSubMenuMerekBrg.RowTemplate.DefaultCellStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
-			this.dataGridViewSubMenuMerekBrg.RowTemplate.DefaultCellStyle.SelectionForeColor = System.Drawing.Color.White;
+			this.dataGridViewSubMenuMerekBrg.RowTemplate.DefaultCellStyle.SelectionForeColor = System.Drawing.Color.Black;
 			this.dataGridViewSubMenuMerekBrg.RowTemplate.DividerHeight = 1;
 			this.dataGridViewSubMenuMerekBrg.RowTemplate.Height = 25;
 			this.dataGridViewSubMenuMerekBrg.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
@@ -2043,7 +2042,7 @@
 			this.dataGridViewDaftarSupplier.RowTemplate.DefaultCellStyle.BackColor = System.Drawing.Color.GhostWhite;
 			this.dataGridViewDaftarSupplier.RowTemplate.DefaultCellStyle.ForeColor = System.Drawing.Color.Black;
 			this.dataGridViewDaftarSupplier.RowTemplate.DefaultCellStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
-			this.dataGridViewDaftarSupplier.RowTemplate.DefaultCellStyle.SelectionForeColor = System.Drawing.Color.White;
+			this.dataGridViewDaftarSupplier.RowTemplate.DefaultCellStyle.SelectionForeColor = System.Drawing.Color.Black;
 			this.dataGridViewDaftarSupplier.RowTemplate.DividerHeight = 1;
 			this.dataGridViewDaftarSupplier.RowTemplate.Height = 25;
 			this.dataGridViewDaftarSupplier.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
@@ -2135,7 +2134,6 @@
 			// 
 			this.flowLayoutPanelBarangKeluar.Controls.Add(this.buttonTambahNotaJual);
 			this.flowLayoutPanelBarangKeluar.Controls.Add(this.buttonHapusNotaJual);
-			this.flowLayoutPanelBarangKeluar.Controls.Add(this.buttonCetakNotaJual);
 			this.flowLayoutPanelBarangKeluar.Dock = System.Windows.Forms.DockStyle.Bottom;
 			this.flowLayoutPanelBarangKeluar.Location = new System.Drawing.Point(0, 345);
 			this.flowLayoutPanelBarangKeluar.Name = "flowLayoutPanelBarangKeluar";
@@ -2167,6 +2165,7 @@
 			this.buttonTambahNotaJual.Text = "Tambah";
 			this.buttonTambahNotaJual.TextColor = System.Drawing.Color.White;
 			this.buttonTambahNotaJual.UseVisualStyleBackColor = false;
+			this.buttonTambahNotaJual.Click += new System.EventHandler(this.buttonTambahNotaJual_Click);
 			// 
 			// buttonHapusNotaJual
 			// 
@@ -2193,32 +2192,7 @@
 			this.buttonHapusNotaJual.Text = "Hapus";
 			this.buttonHapusNotaJual.TextColor = System.Drawing.Color.White;
 			this.buttonHapusNotaJual.UseVisualStyleBackColor = false;
-			// 
-			// buttonCetakNotaJual
-			// 
-			this.buttonCetakNotaJual.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-			this.buttonCetakNotaJual.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(49)))), ((int)(((byte)(69)))));
-			this.buttonCetakNotaJual.ButtonColor = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(49)))), ((int)(((byte)(69)))));
-			this.buttonCetakNotaJual.Cursor = System.Windows.Forms.Cursors.Hand;
-			this.buttonCetakNotaJual.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(232)))), ((int)(((byte)(232)))));
-			this.buttonCetakNotaJual.FlatAppearance.BorderSize = 0;
-			this.buttonCetakNotaJual.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(232)))), ((int)(((byte)(232)))));
-			this.buttonCetakNotaJual.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(232)))), ((int)(((byte)(232)))));
-			this.buttonCetakNotaJual.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-			this.buttonCetakNotaJual.Font = new System.Drawing.Font("Century Gothic", 11F);
-			this.buttonCetakNotaJual.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(49)))), ((int)(((byte)(69)))));
-			this.buttonCetakNotaJual.Location = new System.Drawing.Point(280, 10);
-			this.buttonCetakNotaJual.Margin = new System.Windows.Forms.Padding(10);
-			this.buttonCetakNotaJual.Name = "buttonCetakNotaJual";
-			this.buttonCetakNotaJual.OnHoverBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(7)))), ((int)(((byte)(104)))), ((int)(((byte)(159)))));
-			this.buttonCetakNotaJual.OnHoverButtonColor = System.Drawing.Color.FromArgb(((int)(((byte)(7)))), ((int)(((byte)(104)))), ((int)(((byte)(159)))));
-			this.buttonCetakNotaJual.OnHoverTextColor = System.Drawing.Color.AliceBlue;
-			this.buttonCetakNotaJual.Size = new System.Drawing.Size(115, 40);
-			this.buttonCetakNotaJual.TabIndex = 35;
-			this.buttonCetakNotaJual.Text = "Cetak";
-			this.buttonCetakNotaJual.TextColor = System.Drawing.Color.White;
-			this.buttonCetakNotaJual.UseVisualStyleBackColor = false;
+			this.buttonHapusNotaJual.Click += new System.EventHandler(this.buttonHapusNotaJual_Click);
 			// 
 			// dataGridViewBarangKeluar
 			// 
@@ -2245,6 +2219,8 @@
 			this.dataGridViewBarangKeluar.ColumnHeadersHeight = 50;
 			this.dataGridViewBarangKeluar.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
 			this.dataGridViewBarangKeluar.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.ColumnNo,
+            this.ColumnIdNotaJual,
             this.dataGridViewTextBoxColumn11,
             this.dataGridViewTextBoxColumn12,
             this.dataGridViewTextBoxColumn13,
@@ -2254,6 +2230,7 @@
 			this.dataGridViewBarangKeluar.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(7)))), ((int)(((byte)(104)))), ((int)(((byte)(159)))));
 			this.dataGridViewBarangKeluar.Location = new System.Drawing.Point(23, 7);
 			this.dataGridViewBarangKeluar.Name = "dataGridViewBarangKeluar";
+			this.dataGridViewBarangKeluar.ReadOnly = true;
 			dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
 			dataGridViewCellStyle13.BackColor = System.Drawing.SystemColors.ButtonFace;
 			dataGridViewCellStyle13.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -2266,12 +2243,26 @@
 			this.dataGridViewBarangKeluar.RowTemplate.DefaultCellStyle.BackColor = System.Drawing.Color.GhostWhite;
 			this.dataGridViewBarangKeluar.RowTemplate.DefaultCellStyle.ForeColor = System.Drawing.Color.Black;
 			this.dataGridViewBarangKeluar.RowTemplate.DefaultCellStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
-			this.dataGridViewBarangKeluar.RowTemplate.DefaultCellStyle.SelectionForeColor = System.Drawing.Color.White;
+			this.dataGridViewBarangKeluar.RowTemplate.DefaultCellStyle.SelectionForeColor = System.Drawing.Color.Black;
 			this.dataGridViewBarangKeluar.RowTemplate.DividerHeight = 1;
 			this.dataGridViewBarangKeluar.RowTemplate.Height = 25;
 			this.dataGridViewBarangKeluar.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
 			this.dataGridViewBarangKeluar.Size = new System.Drawing.Size(709, 332);
 			this.dataGridViewBarangKeluar.TabIndex = 6;
+			this.dataGridViewBarangKeluar.DoubleClick += new System.EventHandler(this.dataGridViewBarangKeluar_DoubleClick);
+			// 
+			// ColumnNo
+			// 
+			this.ColumnNo.HeaderText = "No";
+			this.ColumnNo.Name = "ColumnNo";
+			this.ColumnNo.ReadOnly = true;
+			// 
+			// ColumnIdNotaJual
+			// 
+			this.ColumnIdNotaJual.HeaderText = "Id Nota Jual";
+			this.ColumnIdNotaJual.Name = "ColumnIdNotaJual";
+			this.ColumnIdNotaJual.ReadOnly = true;
+			this.ColumnIdNotaJual.Visible = false;
 			// 
 			// dataGridViewTextBoxColumn11
 			// 
@@ -2279,21 +2270,25 @@
 			this.dataGridViewTextBoxColumn11.DefaultCellStyle = dataGridViewCellStyle12;
 			this.dataGridViewTextBoxColumn11.HeaderText = "No Faktur";
 			this.dataGridViewTextBoxColumn11.Name = "dataGridViewTextBoxColumn11";
+			this.dataGridViewTextBoxColumn11.ReadOnly = true;
 			// 
 			// dataGridViewTextBoxColumn12
 			// 
 			this.dataGridViewTextBoxColumn12.HeaderText = "Tanggal";
 			this.dataGridViewTextBoxColumn12.Name = "dataGridViewTextBoxColumn12";
+			this.dataGridViewTextBoxColumn12.ReadOnly = true;
 			// 
 			// dataGridViewTextBoxColumn13
 			// 
-			this.dataGridViewTextBoxColumn13.HeaderText = "Pembeli";
+			this.dataGridViewTextBoxColumn13.HeaderText = "Pelanggan";
 			this.dataGridViewTextBoxColumn13.Name = "dataGridViewTextBoxColumn13";
+			this.dataGridViewTextBoxColumn13.ReadOnly = true;
 			// 
 			// dataGridViewTextBoxColumn14
 			// 
 			this.dataGridViewTextBoxColumn14.HeaderText = "Pegawai";
 			this.dataGridViewTextBoxColumn14.Name = "dataGridViewTextBoxColumn14";
+			this.dataGridViewTextBoxColumn14.ReadOnly = true;
 			// 
 			// panel87
 			// 
@@ -2326,6 +2321,7 @@
 			this.dateTimePickerTanggalAkhirNotaJual.Name = "dateTimePickerTanggalAkhirNotaJual";
 			this.dateTimePickerTanggalAkhirNotaJual.Size = new System.Drawing.Size(200, 20);
 			this.dateTimePickerTanggalAkhirNotaJual.TabIndex = 26;
+			this.dateTimePickerTanggalAkhirNotaJual.ValueChanged += new System.EventHandler(this.dateTimePickerTanggalAkhirNotaJual_ValueChanged);
 			// 
 			// dateTimePickerTglAwalNotaJual
 			// 
@@ -2333,6 +2329,7 @@
 			this.dateTimePickerTglAwalNotaJual.Name = "dateTimePickerTglAwalNotaJual";
 			this.dateTimePickerTglAwalNotaJual.Size = new System.Drawing.Size(200, 20);
 			this.dateTimePickerTglAwalNotaJual.TabIndex = 25;
+			this.dateTimePickerTglAwalNotaJual.ValueChanged += new System.EventHandler(this.dateTimePickerTglAwalNotaJual_ValueChanged);
 			// 
 			// comboBoxKriteriaBarangKeluar
 			// 
@@ -2343,9 +2340,9 @@
 			this.comboBoxKriteriaBarangKeluar.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
 			this.comboBoxKriteriaBarangKeluar.FormattingEnabled = true;
 			this.comboBoxKriteriaBarangKeluar.Items.AddRange(new object[] {
+            "Tanggal",
             "No Faktur",
-            "Pelanggan",
-            "Tanggal"});
+            "Pelanggan"});
 			this.comboBoxKriteriaBarangKeluar.Location = new System.Drawing.Point(143, 39);
 			this.comboBoxKriteriaBarangKeluar.Name = "comboBoxKriteriaBarangKeluar";
 			this.comboBoxKriteriaBarangKeluar.Size = new System.Drawing.Size(150, 27);
@@ -2430,6 +2427,8 @@
 			// iconButtonLaporanPenjualan
 			// 
 			this.iconButtonLaporanPenjualan.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(7)))), ((int)(((byte)(104)))), ((int)(((byte)(159)))));
+			this.iconButtonLaporanPenjualan.BackgroundImage = global::Kawi_Agung.Properties.Resources.laporan_kecil;
+			this.iconButtonLaporanPenjualan.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
 			this.iconButtonLaporanPenjualan.Cursor = System.Windows.Forms.Cursors.Hand;
 			this.iconButtonLaporanPenjualan.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(4)))), ((int)(((byte)(135)))), ((int)(((byte)(209)))));
 			this.iconButtonLaporanPenjualan.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(4)))), ((int)(((byte)(135)))), ((int)(((byte)(209)))));
@@ -2447,7 +2446,7 @@
 			this.iconButtonLaporanPenjualan.Rotation = 0D;
 			this.iconButtonLaporanPenjualan.Size = new System.Drawing.Size(150, 144);
 			this.iconButtonLaporanPenjualan.TabIndex = 4;
-			this.iconButtonLaporanPenjualan.Text = "Laporan Penjualan";
+			this.iconButtonLaporanPenjualan.Text = "Penjualan";
 			this.iconButtonLaporanPenjualan.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
 			this.iconButtonLaporanPenjualan.UseVisualStyleBackColor = false;
 			this.iconButtonLaporanPenjualan.Click += new System.EventHandler(this.iconButtonLaporanPenjualan_Click);
@@ -2455,6 +2454,8 @@
 			// iconButtonLaporanPembelian
 			// 
 			this.iconButtonLaporanPembelian.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(7)))), ((int)(((byte)(104)))), ((int)(((byte)(159)))));
+			this.iconButtonLaporanPembelian.BackgroundImage = global::Kawi_Agung.Properties.Resources.laporan_kecil;
+			this.iconButtonLaporanPembelian.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
 			this.iconButtonLaporanPembelian.Cursor = System.Windows.Forms.Cursors.Hand;
 			this.iconButtonLaporanPembelian.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(4)))), ((int)(((byte)(135)))), ((int)(((byte)(209)))));
 			this.iconButtonLaporanPembelian.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(4)))), ((int)(((byte)(135)))), ((int)(((byte)(209)))));
@@ -2472,7 +2473,7 @@
 			this.iconButtonLaporanPembelian.Rotation = 0D;
 			this.iconButtonLaporanPembelian.Size = new System.Drawing.Size(150, 144);
 			this.iconButtonLaporanPembelian.TabIndex = 5;
-			this.iconButtonLaporanPembelian.Text = "Laporan Pembelian";
+			this.iconButtonLaporanPembelian.Text = "Pembelian";
 			this.iconButtonLaporanPembelian.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
 			this.iconButtonLaporanPembelian.UseVisualStyleBackColor = false;
 			this.iconButtonLaporanPembelian.Click += new System.EventHandler(this.iconButtonLaporanPembelian_Click);
@@ -2480,6 +2481,8 @@
 			// iconButtonLaporanStokBarang
 			// 
 			this.iconButtonLaporanStokBarang.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(7)))), ((int)(((byte)(104)))), ((int)(((byte)(159)))));
+			this.iconButtonLaporanStokBarang.BackgroundImage = global::Kawi_Agung.Properties.Resources.laporan_kecil;
+			this.iconButtonLaporanStokBarang.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
 			this.iconButtonLaporanStokBarang.Cursor = System.Windows.Forms.Cursors.Hand;
 			this.iconButtonLaporanStokBarang.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(4)))), ((int)(((byte)(135)))), ((int)(((byte)(209)))));
 			this.iconButtonLaporanStokBarang.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(4)))), ((int)(((byte)(135)))), ((int)(((byte)(209)))));
@@ -2497,7 +2500,7 @@
 			this.iconButtonLaporanStokBarang.Rotation = 0D;
 			this.iconButtonLaporanStokBarang.Size = new System.Drawing.Size(150, 144);
 			this.iconButtonLaporanStokBarang.TabIndex = 6;
-			this.iconButtonLaporanStokBarang.Text = "Laporan Stok Barang";
+			this.iconButtonLaporanStokBarang.Text = "Stok Barang";
 			this.iconButtonLaporanStokBarang.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
 			this.iconButtonLaporanStokBarang.UseVisualStyleBackColor = false;
 			this.iconButtonLaporanStokBarang.Click += new System.EventHandler(this.iconButtonLaporanInventarisBarang_Click);
@@ -2506,11 +2509,11 @@
 			// 
 			this.panelSubMenuLaporanPenjualan.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(232)))), ((int)(((byte)(232)))));
 			this.panelSubMenuLaporanPenjualan.Controls.Add(this.flowLayoutPanelLaporanPenjualan);
-			this.panelSubMenuLaporanPenjualan.Controls.Add(this.dateTimePicker2);
+			this.panelSubMenuLaporanPenjualan.Controls.Add(this.dateTimePickerTanggalAkhirLaporanPenjualan);
+			this.panelSubMenuLaporanPenjualan.Controls.Add(this.dateTimePickerTanggalAwalLaporanPenjualan);
 			this.panelSubMenuLaporanPenjualan.Controls.Add(this.label13);
-			this.panelSubMenuLaporanPenjualan.Controls.Add(this.dateTimePicker1);
 			this.panelSubMenuLaporanPenjualan.Controls.Add(this.iconButtonBackLaporanPenjualan);
-			this.panelSubMenuLaporanPenjualan.Controls.Add(this.dataGridView2);
+			this.panelSubMenuLaporanPenjualan.Controls.Add(this.dataGridViewLaporanPenjualan);
 			this.panelSubMenuLaporanPenjualan.Controls.Add(this.label10);
 			this.panelSubMenuLaporanPenjualan.ImeMode = System.Windows.Forms.ImeMode.NoControl;
 			this.panelSubMenuLaporanPenjualan.Location = new System.Drawing.Point(1600, 1000);
@@ -2520,8 +2523,6 @@
 			// 
 			// flowLayoutPanelLaporanPenjualan
 			// 
-			this.flowLayoutPanelLaporanPenjualan.Controls.Add(this.buttonSimpanPDFLaporanPenjualan);
-			this.flowLayoutPanelLaporanPenjualan.Controls.Add(this.buttonPrintLaporanPenjualan);
 			this.flowLayoutPanelLaporanPenjualan.Controls.Add(this.label18);
 			this.flowLayoutPanelLaporanPenjualan.Controls.Add(this.labelNominalTotalPenjualan);
 			this.flowLayoutPanelLaporanPenjualan.Dock = System.Windows.Forms.DockStyle.Bottom;
@@ -2530,99 +2531,52 @@
 			this.flowLayoutPanelLaporanPenjualan.Size = new System.Drawing.Size(755, 100);
 			this.flowLayoutPanelLaporanPenjualan.TabIndex = 14;
 			// 
-			// buttonSimpanPDFLaporanPenjualan
-			// 
-			this.buttonSimpanPDFLaporanPenjualan.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(49)))), ((int)(((byte)(69)))));
-			this.buttonSimpanPDFLaporanPenjualan.ButtonColor = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(49)))), ((int)(((byte)(69)))));
-			this.buttonSimpanPDFLaporanPenjualan.Cursor = System.Windows.Forms.Cursors.Hand;
-			this.buttonSimpanPDFLaporanPenjualan.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(232)))), ((int)(((byte)(232)))));
-			this.buttonSimpanPDFLaporanPenjualan.FlatAppearance.BorderSize = 0;
-			this.buttonSimpanPDFLaporanPenjualan.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(232)))), ((int)(((byte)(232)))));
-			this.buttonSimpanPDFLaporanPenjualan.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(232)))), ((int)(((byte)(232)))));
-			this.buttonSimpanPDFLaporanPenjualan.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-			this.buttonSimpanPDFLaporanPenjualan.Font = new System.Drawing.Font("Century Gothic", 11F);
-			this.buttonSimpanPDFLaporanPenjualan.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(49)))), ((int)(((byte)(69)))));
-			this.buttonSimpanPDFLaporanPenjualan.Location = new System.Drawing.Point(30, 30);
-			this.buttonSimpanPDFLaporanPenjualan.Margin = new System.Windows.Forms.Padding(30);
-			this.buttonSimpanPDFLaporanPenjualan.Name = "buttonSimpanPDFLaporanPenjualan";
-			this.buttonSimpanPDFLaporanPenjualan.OnHoverBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(7)))), ((int)(((byte)(104)))), ((int)(((byte)(159)))));
-			this.buttonSimpanPDFLaporanPenjualan.OnHoverButtonColor = System.Drawing.Color.FromArgb(((int)(((byte)(7)))), ((int)(((byte)(104)))), ((int)(((byte)(159)))));
-			this.buttonSimpanPDFLaporanPenjualan.OnHoverTextColor = System.Drawing.Color.AliceBlue;
-			this.buttonSimpanPDFLaporanPenjualan.Size = new System.Drawing.Size(154, 40);
-			this.buttonSimpanPDFLaporanPenjualan.TabIndex = 5;
-			this.buttonSimpanPDFLaporanPenjualan.Text = "Simpan PDF";
-			this.buttonSimpanPDFLaporanPenjualan.TextColor = System.Drawing.Color.White;
-			this.buttonSimpanPDFLaporanPenjualan.UseVisualStyleBackColor = false;
-			// 
-			// buttonPrintLaporanPenjualan
-			// 
-			this.buttonPrintLaporanPenjualan.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(49)))), ((int)(((byte)(69)))));
-			this.buttonPrintLaporanPenjualan.ButtonColor = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(49)))), ((int)(((byte)(69)))));
-			this.buttonPrintLaporanPenjualan.Cursor = System.Windows.Forms.Cursors.Hand;
-			this.buttonPrintLaporanPenjualan.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(232)))), ((int)(((byte)(232)))));
-			this.buttonPrintLaporanPenjualan.FlatAppearance.BorderSize = 0;
-			this.buttonPrintLaporanPenjualan.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(232)))), ((int)(((byte)(232)))));
-			this.buttonPrintLaporanPenjualan.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(232)))), ((int)(((byte)(232)))));
-			this.buttonPrintLaporanPenjualan.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-			this.buttonPrintLaporanPenjualan.Font = new System.Drawing.Font("Century Gothic", 11F);
-			this.buttonPrintLaporanPenjualan.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(49)))), ((int)(((byte)(69)))));
-			this.buttonPrintLaporanPenjualan.Location = new System.Drawing.Point(244, 30);
-			this.buttonPrintLaporanPenjualan.Margin = new System.Windows.Forms.Padding(30);
-			this.buttonPrintLaporanPenjualan.Name = "buttonPrintLaporanPenjualan";
-			this.buttonPrintLaporanPenjualan.OnHoverBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(7)))), ((int)(((byte)(104)))), ((int)(((byte)(159)))));
-			this.buttonPrintLaporanPenjualan.OnHoverButtonColor = System.Drawing.Color.FromArgb(((int)(((byte)(7)))), ((int)(((byte)(104)))), ((int)(((byte)(159)))));
-			this.buttonPrintLaporanPenjualan.OnHoverTextColor = System.Drawing.Color.AliceBlue;
-			this.buttonPrintLaporanPenjualan.Size = new System.Drawing.Size(154, 40);
-			this.buttonPrintLaporanPenjualan.TabIndex = 13;
-			this.buttonPrintLaporanPenjualan.Text = "Print";
-			this.buttonPrintLaporanPenjualan.TextColor = System.Drawing.Color.White;
-			this.buttonPrintLaporanPenjualan.UseVisualStyleBackColor = false;
-			// 
 			// label18
 			// 
 			this.label18.AutoSize = true;
 			this.label18.Font = new System.Drawing.Font("Century Gothic", 12.5F);
-			this.label18.Location = new System.Drawing.Point(478, 40);
+			this.label18.Location = new System.Drawing.Point(50, 40);
 			this.label18.Margin = new System.Windows.Forms.Padding(50, 40, 0, 40);
 			this.label18.Name = "label18";
-			this.label18.Size = new System.Drawing.Size(147, 21);
+			this.label18.Size = new System.Drawing.Size(162, 21);
 			this.label18.TabIndex = 11;
-			this.label18.Text = "Total Penjualan :";
+			this.label18.Text = "Total Pemasukan :";
 			// 
 			// labelNominalTotalPenjualan
 			// 
 			this.labelNominalTotalPenjualan.AutoSize = true;
 			this.labelNominalTotalPenjualan.Font = new System.Drawing.Font("Century Gothic", 12.5F);
-			this.labelNominalTotalPenjualan.Location = new System.Drawing.Point(625, 40);
+			this.labelNominalTotalPenjualan.Location = new System.Drawing.Point(212, 40);
 			this.labelNominalTotalPenjualan.Margin = new System.Windows.Forms.Padding(0, 40, 40, 40);
 			this.labelNominalTotalPenjualan.Name = "labelNominalTotalPenjualan";
 			this.labelNominalTotalPenjualan.Size = new System.Drawing.Size(16, 21);
 			this.labelNominalTotalPenjualan.TabIndex = 12;
 			this.labelNominalTotalPenjualan.Text = "-";
 			// 
-			// dateTimePicker2
+			// dateTimePickerTanggalAkhirLaporanPenjualan
 			// 
-			this.dateTimePicker2.Location = new System.Drawing.Point(398, 41);
-			this.dateTimePicker2.Name = "dateTimePicker2";
-			this.dateTimePicker2.Size = new System.Drawing.Size(200, 20);
-			this.dateTimePicker2.TabIndex = 10;
+			this.dateTimePickerTanggalAkhirLaporanPenjualan.Location = new System.Drawing.Point(412, 41);
+			this.dateTimePickerTanggalAkhirLaporanPenjualan.Name = "dateTimePickerTanggalAkhirLaporanPenjualan";
+			this.dateTimePickerTanggalAkhirLaporanPenjualan.Size = new System.Drawing.Size(200, 20);
+			this.dateTimePickerTanggalAkhirLaporanPenjualan.TabIndex = 10;
+			this.dateTimePickerTanggalAkhirLaporanPenjualan.ValueChanged += new System.EventHandler(this.dateTimePickerTanggalAkhirLaporanPenjualan_ValueChanged);
+			// 
+			// dateTimePickerTanggalAwalLaporanPenjualan
+			// 
+			this.dateTimePickerTanggalAwalLaporanPenjualan.Location = new System.Drawing.Point(177, 41);
+			this.dateTimePickerTanggalAwalLaporanPenjualan.Name = "dateTimePickerTanggalAwalLaporanPenjualan";
+			this.dateTimePickerTanggalAwalLaporanPenjualan.Size = new System.Drawing.Size(200, 20);
+			this.dateTimePickerTanggalAwalLaporanPenjualan.TabIndex = 8;
+			this.dateTimePickerTanggalAwalLaporanPenjualan.ValueChanged += new System.EventHandler(this.dateTimePickerTanggalAwalLaporanPenjualan_ValueChanged);
 			// 
 			// label13
 			// 
 			this.label13.AutoSize = true;
-			this.label13.Font = new System.Drawing.Font("Century Gothic", 12.5F);
-			this.label13.Location = new System.Drawing.Point(380, 39);
+			this.label13.Location = new System.Drawing.Point(383, 45);
 			this.label13.Name = "label13";
-			this.label13.Size = new System.Drawing.Size(16, 21);
-			this.label13.TabIndex = 9;
-			this.label13.Text = "-";
-			// 
-			// dateTimePicker1
-			// 
-			this.dateTimePicker1.Location = new System.Drawing.Point(177, 41);
-			this.dateTimePicker1.Name = "dateTimePicker1";
-			this.dateTimePicker1.Size = new System.Drawing.Size(200, 20);
-			this.dateTimePicker1.TabIndex = 8;
+			this.label13.Size = new System.Drawing.Size(23, 13);
+			this.label13.TabIndex = 28;
+			this.label13.Text = "s/d";
 			// 
 			// iconButtonBackLaporanPenjualan
 			// 
@@ -2649,20 +2603,20 @@
 			this.iconButtonBackLaporanPenjualan.MouseLeave += new System.EventHandler(this.iconButtonBackLaporanPenjualan_MouseLeave);
 			this.iconButtonBackLaporanPenjualan.MouseHover += new System.EventHandler(this.iconButtonBackLaporanPenjualan_MouseHover);
 			// 
-			// dataGridView2
+			// dataGridViewLaporanPenjualan
 			// 
-			this.dataGridView2.AllowUserToAddRows = false;
-			this.dataGridView2.AllowUserToDeleteRows = false;
-			this.dataGridView2.AllowUserToResizeColumns = false;
-			this.dataGridView2.AllowUserToResizeRows = false;
-			this.dataGridView2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+			this.dataGridViewLaporanPenjualan.AllowUserToAddRows = false;
+			this.dataGridViewLaporanPenjualan.AllowUserToDeleteRows = false;
+			this.dataGridViewLaporanPenjualan.AllowUserToResizeColumns = false;
+			this.dataGridViewLaporanPenjualan.AllowUserToResizeRows = false;
+			this.dataGridViewLaporanPenjualan.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-			this.dataGridView2.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-			this.dataGridView2.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(232)))), ((int)(((byte)(232)))));
-			this.dataGridView2.BorderStyle = System.Windows.Forms.BorderStyle.None;
-			this.dataGridView2.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleVertical;
-			this.dataGridView2.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
+			this.dataGridViewLaporanPenjualan.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+			this.dataGridViewLaporanPenjualan.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(232)))), ((int)(((byte)(232)))));
+			this.dataGridViewLaporanPenjualan.BorderStyle = System.Windows.Forms.BorderStyle.None;
+			this.dataGridViewLaporanPenjualan.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleVertical;
+			this.dataGridViewLaporanPenjualan.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
 			dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
 			dataGridViewCellStyle14.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(7)))), ((int)(((byte)(104)))), ((int)(((byte)(159)))));
 			dataGridViewCellStyle14.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold);
@@ -2670,21 +2624,19 @@
 			dataGridViewCellStyle14.SelectionBackColor = System.Drawing.SystemColors.Highlight;
 			dataGridViewCellStyle14.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
 			dataGridViewCellStyle14.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-			this.dataGridView2.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle14;
-			this.dataGridView2.ColumnHeadersHeight = 50;
-			this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-			this.dataGridView2.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+			this.dataGridViewLaporanPenjualan.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle14;
+			this.dataGridViewLaporanPenjualan.ColumnHeadersHeight = 50;
+			this.dataGridViewLaporanPenjualan.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+			this.dataGridViewLaporanPenjualan.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dataGridViewTextBoxColumn16,
-            this.dataGridViewTextBoxColumn17,
-            this.dataGridViewTextBoxColumn18,
-            this.dataGridViewTextBoxColumn19,
-            this.dataGridViewTextBoxColumn20,
-            this.dataGridViewTextBoxColumn21});
-			this.dataGridView2.Cursor = System.Windows.Forms.Cursors.Hand;
-			this.dataGridView2.EnableHeadersVisualStyles = false;
-			this.dataGridView2.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(7)))), ((int)(((byte)(104)))), ((int)(((byte)(159)))));
-			this.dataGridView2.Location = new System.Drawing.Point(15, 90);
-			this.dataGridView2.Name = "dataGridView2";
+            this.ColumnTanggal__,
+            this.ColumnTotalPemasukan});
+			this.dataGridViewLaporanPenjualan.Cursor = System.Windows.Forms.Cursors.Hand;
+			this.dataGridViewLaporanPenjualan.EnableHeadersVisualStyles = false;
+			this.dataGridViewLaporanPenjualan.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(7)))), ((int)(((byte)(104)))), ((int)(((byte)(159)))));
+			this.dataGridViewLaporanPenjualan.Location = new System.Drawing.Point(15, 90);
+			this.dataGridViewLaporanPenjualan.Name = "dataGridViewLaporanPenjualan";
+			this.dataGridViewLaporanPenjualan.ReadOnly = true;
 			dataGridViewCellStyle16.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
 			dataGridViewCellStyle16.BackColor = System.Drawing.SystemColors.ButtonFace;
 			dataGridViewCellStyle16.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -2692,17 +2644,17 @@
 			dataGridViewCellStyle16.SelectionBackColor = System.Drawing.SystemColors.GradientInactiveCaption;
 			dataGridViewCellStyle16.SelectionForeColor = System.Drawing.SystemColors.ControlLightLight;
 			dataGridViewCellStyle16.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-			this.dataGridView2.RowHeadersDefaultCellStyle = dataGridViewCellStyle16;
-			this.dataGridView2.RowHeadersVisible = false;
-			this.dataGridView2.RowTemplate.DefaultCellStyle.BackColor = System.Drawing.Color.GhostWhite;
-			this.dataGridView2.RowTemplate.DefaultCellStyle.ForeColor = System.Drawing.Color.Black;
-			this.dataGridView2.RowTemplate.DefaultCellStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
-			this.dataGridView2.RowTemplate.DefaultCellStyle.SelectionForeColor = System.Drawing.Color.White;
-			this.dataGridView2.RowTemplate.DividerHeight = 1;
-			this.dataGridView2.RowTemplate.Height = 25;
-			this.dataGridView2.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-			this.dataGridView2.Size = new System.Drawing.Size(709, 334);
-			this.dataGridView2.TabIndex = 5;
+			this.dataGridViewLaporanPenjualan.RowHeadersDefaultCellStyle = dataGridViewCellStyle16;
+			this.dataGridViewLaporanPenjualan.RowHeadersVisible = false;
+			this.dataGridViewLaporanPenjualan.RowTemplate.DefaultCellStyle.BackColor = System.Drawing.Color.GhostWhite;
+			this.dataGridViewLaporanPenjualan.RowTemplate.DefaultCellStyle.ForeColor = System.Drawing.Color.Black;
+			this.dataGridViewLaporanPenjualan.RowTemplate.DefaultCellStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+			this.dataGridViewLaporanPenjualan.RowTemplate.DefaultCellStyle.SelectionForeColor = System.Drawing.Color.Black;
+			this.dataGridViewLaporanPenjualan.RowTemplate.DividerHeight = 1;
+			this.dataGridViewLaporanPenjualan.RowTemplate.Height = 25;
+			this.dataGridViewLaporanPenjualan.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+			this.dataGridViewLaporanPenjualan.Size = new System.Drawing.Size(709, 334);
+			this.dataGridViewLaporanPenjualan.TabIndex = 5;
 			// 
 			// dataGridViewTextBoxColumn16
 			// 
@@ -2710,31 +2662,19 @@
 			this.dataGridViewTextBoxColumn16.DefaultCellStyle = dataGridViewCellStyle15;
 			this.dataGridViewTextBoxColumn16.HeaderText = "No";
 			this.dataGridViewTextBoxColumn16.Name = "dataGridViewTextBoxColumn16";
+			this.dataGridViewTextBoxColumn16.ReadOnly = true;
 			// 
-			// dataGridViewTextBoxColumn17
+			// ColumnTanggal__
 			// 
-			this.dataGridViewTextBoxColumn17.HeaderText = "Nama Barang";
-			this.dataGridViewTextBoxColumn17.Name = "dataGridViewTextBoxColumn17";
+			this.ColumnTanggal__.HeaderText = "Tanggal";
+			this.ColumnTanggal__.Name = "ColumnTanggal__";
+			this.ColumnTanggal__.ReadOnly = true;
 			// 
-			// dataGridViewTextBoxColumn18
+			// ColumnTotalPemasukan
 			// 
-			this.dataGridViewTextBoxColumn18.HeaderText = "Harga Jual";
-			this.dataGridViewTextBoxColumn18.Name = "dataGridViewTextBoxColumn18";
-			// 
-			// dataGridViewTextBoxColumn19
-			// 
-			this.dataGridViewTextBoxColumn19.HeaderText = "Laba";
-			this.dataGridViewTextBoxColumn19.Name = "dataGridViewTextBoxColumn19";
-			// 
-			// dataGridViewTextBoxColumn20
-			// 
-			this.dataGridViewTextBoxColumn20.HeaderText = "Qty";
-			this.dataGridViewTextBoxColumn20.Name = "dataGridViewTextBoxColumn20";
-			// 
-			// dataGridViewTextBoxColumn21
-			// 
-			this.dataGridViewTextBoxColumn21.HeaderText = "Total Harga Jual";
-			this.dataGridViewTextBoxColumn21.Name = "dataGridViewTextBoxColumn21";
+			this.ColumnTotalPemasukan.HeaderText = "Pemasukan";
+			this.ColumnTotalPemasukan.Name = "ColumnTotalPemasukan";
+			this.ColumnTotalPemasukan.ReadOnly = true;
 			// 
 			// label10
 			// 
@@ -2749,12 +2689,12 @@
 			// panelSubMenuLaporanPembelian
 			// 
 			this.panelSubMenuLaporanPembelian.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(232)))), ((int)(((byte)(232)))));
+			this.panelSubMenuLaporanPembelian.Controls.Add(this.label20);
 			this.panelSubMenuLaporanPembelian.Controls.Add(this.flowLayoutPanelLaporanPembelian);
-			this.panelSubMenuLaporanPembelian.Controls.Add(this.dateTimePicker3);
-			this.panelSubMenuLaporanPembelian.Controls.Add(this.label19);
-			this.panelSubMenuLaporanPembelian.Controls.Add(this.dateTimePicker4);
+			this.panelSubMenuLaporanPembelian.Controls.Add(this.dateTimePickerTanggalAkhirLaporanPembelian);
+			this.panelSubMenuLaporanPembelian.Controls.Add(this.dateTimePickerTanggalAwalLaporanPembelian);
 			this.panelSubMenuLaporanPembelian.Controls.Add(this.iconButtonBackLaporanPembelian);
-			this.panelSubMenuLaporanPembelian.Controls.Add(this.dataGridView3);
+			this.panelSubMenuLaporanPembelian.Controls.Add(this.dataGridViewLaporanPembelian);
 			this.panelSubMenuLaporanPembelian.Controls.Add(this.label22);
 			this.panelSubMenuLaporanPembelian.ImeMode = System.Windows.Forms.ImeMode.NoControl;
 			this.panelSubMenuLaporanPembelian.Location = new System.Drawing.Point(1660, 330);
@@ -2762,111 +2702,62 @@
 			this.panelSubMenuLaporanPembelian.Size = new System.Drawing.Size(755, 537);
 			this.panelSubMenuLaporanPembelian.TabIndex = 28;
 			// 
+			// label20
+			// 
+			this.label20.AutoSize = true;
+			this.label20.Location = new System.Drawing.Point(381, 45);
+			this.label20.Name = "label20";
+			this.label20.Size = new System.Drawing.Size(23, 13);
+			this.label20.TabIndex = 29;
+			this.label20.Text = "s/d";
+			// 
 			// flowLayoutPanelLaporanPembelian
 			// 
-			this.flowLayoutPanelLaporanPembelian.Controls.Add(this.buttonSimpanPDFLaporanPembelian);
-			this.flowLayoutPanelLaporanPembelian.Controls.Add(this.buttonPrintLaporanPembelian);
 			this.flowLayoutPanelLaporanPembelian.Controls.Add(this.label5);
-			this.flowLayoutPanelLaporanPembelian.Controls.Add(this.labelTotalPembelian);
+			this.flowLayoutPanelLaporanPembelian.Controls.Add(this.labelTotalPengeluaran);
 			this.flowLayoutPanelLaporanPembelian.Dock = System.Windows.Forms.DockStyle.Bottom;
 			this.flowLayoutPanelLaporanPembelian.Location = new System.Drawing.Point(0, 437);
 			this.flowLayoutPanelLaporanPembelian.Name = "flowLayoutPanelLaporanPembelian";
 			this.flowLayoutPanelLaporanPembelian.Size = new System.Drawing.Size(755, 100);
 			this.flowLayoutPanelLaporanPembelian.TabIndex = 15;
 			// 
-			// buttonSimpanPDFLaporanPembelian
-			// 
-			this.buttonSimpanPDFLaporanPembelian.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(49)))), ((int)(((byte)(69)))));
-			this.buttonSimpanPDFLaporanPembelian.ButtonColor = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(49)))), ((int)(((byte)(69)))));
-			this.buttonSimpanPDFLaporanPembelian.Cursor = System.Windows.Forms.Cursors.Hand;
-			this.buttonSimpanPDFLaporanPembelian.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(232)))), ((int)(((byte)(232)))));
-			this.buttonSimpanPDFLaporanPembelian.FlatAppearance.BorderSize = 0;
-			this.buttonSimpanPDFLaporanPembelian.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(232)))), ((int)(((byte)(232)))));
-			this.buttonSimpanPDFLaporanPembelian.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(232)))), ((int)(((byte)(232)))));
-			this.buttonSimpanPDFLaporanPembelian.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-			this.buttonSimpanPDFLaporanPembelian.Font = new System.Drawing.Font("Century Gothic", 11F);
-			this.buttonSimpanPDFLaporanPembelian.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(49)))), ((int)(((byte)(69)))));
-			this.buttonSimpanPDFLaporanPembelian.Location = new System.Drawing.Point(30, 30);
-			this.buttonSimpanPDFLaporanPembelian.Margin = new System.Windows.Forms.Padding(30);
-			this.buttonSimpanPDFLaporanPembelian.Name = "buttonSimpanPDFLaporanPembelian";
-			this.buttonSimpanPDFLaporanPembelian.OnHoverBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(7)))), ((int)(((byte)(104)))), ((int)(((byte)(159)))));
-			this.buttonSimpanPDFLaporanPembelian.OnHoverButtonColor = System.Drawing.Color.FromArgb(((int)(((byte)(7)))), ((int)(((byte)(104)))), ((int)(((byte)(159)))));
-			this.buttonSimpanPDFLaporanPembelian.OnHoverTextColor = System.Drawing.Color.AliceBlue;
-			this.buttonSimpanPDFLaporanPembelian.Size = new System.Drawing.Size(154, 40);
-			this.buttonSimpanPDFLaporanPembelian.TabIndex = 5;
-			this.buttonSimpanPDFLaporanPembelian.Text = "Simpan PDF";
-			this.buttonSimpanPDFLaporanPembelian.TextColor = System.Drawing.Color.White;
-			this.buttonSimpanPDFLaporanPembelian.UseVisualStyleBackColor = false;
-			// 
-			// buttonPrintLaporanPembelian
-			// 
-			this.buttonPrintLaporanPembelian.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(49)))), ((int)(((byte)(69)))));
-			this.buttonPrintLaporanPembelian.ButtonColor = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(49)))), ((int)(((byte)(69)))));
-			this.buttonPrintLaporanPembelian.Cursor = System.Windows.Forms.Cursors.Hand;
-			this.buttonPrintLaporanPembelian.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(232)))), ((int)(((byte)(232)))));
-			this.buttonPrintLaporanPembelian.FlatAppearance.BorderSize = 0;
-			this.buttonPrintLaporanPembelian.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(232)))), ((int)(((byte)(232)))));
-			this.buttonPrintLaporanPembelian.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(232)))), ((int)(((byte)(232)))));
-			this.buttonPrintLaporanPembelian.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-			this.buttonPrintLaporanPembelian.Font = new System.Drawing.Font("Century Gothic", 11F);
-			this.buttonPrintLaporanPembelian.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(49)))), ((int)(((byte)(69)))));
-			this.buttonPrintLaporanPembelian.Location = new System.Drawing.Point(244, 30);
-			this.buttonPrintLaporanPembelian.Margin = new System.Windows.Forms.Padding(30);
-			this.buttonPrintLaporanPembelian.Name = "buttonPrintLaporanPembelian";
-			this.buttonPrintLaporanPembelian.OnHoverBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(7)))), ((int)(((byte)(104)))), ((int)(((byte)(159)))));
-			this.buttonPrintLaporanPembelian.OnHoverButtonColor = System.Drawing.Color.FromArgb(((int)(((byte)(7)))), ((int)(((byte)(104)))), ((int)(((byte)(159)))));
-			this.buttonPrintLaporanPembelian.OnHoverTextColor = System.Drawing.Color.AliceBlue;
-			this.buttonPrintLaporanPembelian.Size = new System.Drawing.Size(154, 40);
-			this.buttonPrintLaporanPembelian.TabIndex = 13;
-			this.buttonPrintLaporanPembelian.Text = "Print";
-			this.buttonPrintLaporanPembelian.TextColor = System.Drawing.Color.White;
-			this.buttonPrintLaporanPembelian.UseVisualStyleBackColor = false;
-			// 
 			// label5
 			// 
 			this.label5.AutoSize = true;
 			this.label5.Font = new System.Drawing.Font("Century Gothic", 12.5F);
-			this.label5.Location = new System.Drawing.Point(478, 40);
+			this.label5.Location = new System.Drawing.Point(50, 40);
 			this.label5.Margin = new System.Windows.Forms.Padding(50, 40, 0, 40);
 			this.label5.Name = "label5";
 			this.label5.Size = new System.Drawing.Size(153, 21);
 			this.label5.TabIndex = 11;
 			this.label5.Text = "Total Pembelian :";
 			// 
-			// labelTotalPembelian
+			// labelTotalPengeluaran
 			// 
-			this.labelTotalPembelian.AutoSize = true;
-			this.labelTotalPembelian.Font = new System.Drawing.Font("Century Gothic", 12.5F);
-			this.labelTotalPembelian.Location = new System.Drawing.Point(631, 40);
-			this.labelTotalPembelian.Margin = new System.Windows.Forms.Padding(0, 40, 40, 40);
-			this.labelTotalPembelian.Name = "labelTotalPembelian";
-			this.labelTotalPembelian.Size = new System.Drawing.Size(16, 21);
-			this.labelTotalPembelian.TabIndex = 12;
-			this.labelTotalPembelian.Text = "-";
+			this.labelTotalPengeluaran.AutoSize = true;
+			this.labelTotalPengeluaran.Font = new System.Drawing.Font("Century Gothic", 12.5F);
+			this.labelTotalPengeluaran.Location = new System.Drawing.Point(203, 40);
+			this.labelTotalPengeluaran.Margin = new System.Windows.Forms.Padding(0, 40, 40, 40);
+			this.labelTotalPengeluaran.Name = "labelTotalPengeluaran";
+			this.labelTotalPengeluaran.Size = new System.Drawing.Size(16, 21);
+			this.labelTotalPengeluaran.TabIndex = 12;
+			this.labelTotalPengeluaran.Text = "-";
 			// 
-			// dateTimePicker3
+			// dateTimePickerTanggalAkhirLaporanPembelian
 			// 
-			this.dateTimePicker3.Location = new System.Drawing.Point(398, 41);
-			this.dateTimePicker3.Name = "dateTimePicker3";
-			this.dateTimePicker3.Size = new System.Drawing.Size(200, 20);
-			this.dateTimePicker3.TabIndex = 10;
+			this.dateTimePickerTanggalAkhirLaporanPembelian.Location = new System.Drawing.Point(410, 41);
+			this.dateTimePickerTanggalAkhirLaporanPembelian.Name = "dateTimePickerTanggalAkhirLaporanPembelian";
+			this.dateTimePickerTanggalAkhirLaporanPembelian.Size = new System.Drawing.Size(200, 20);
+			this.dateTimePickerTanggalAkhirLaporanPembelian.TabIndex = 10;
+			this.dateTimePickerTanggalAkhirLaporanPembelian.ValueChanged += new System.EventHandler(this.dateTimePickerTanggalAkhirLaporanPembelian_ValueChanged);
 			// 
-			// label19
+			// dateTimePickerTanggalAwalLaporanPembelian
 			// 
-			this.label19.AutoSize = true;
-			this.label19.Font = new System.Drawing.Font("Century Gothic", 12.5F);
-			this.label19.Location = new System.Drawing.Point(380, 39);
-			this.label19.Name = "label19";
-			this.label19.Size = new System.Drawing.Size(16, 21);
-			this.label19.TabIndex = 9;
-			this.label19.Text = "-";
-			// 
-			// dateTimePicker4
-			// 
-			this.dateTimePicker4.Location = new System.Drawing.Point(177, 41);
-			this.dateTimePicker4.Name = "dateTimePicker4";
-			this.dateTimePicker4.Size = new System.Drawing.Size(200, 20);
-			this.dateTimePicker4.TabIndex = 8;
+			this.dateTimePickerTanggalAwalLaporanPembelian.Location = new System.Drawing.Point(177, 41);
+			this.dateTimePickerTanggalAwalLaporanPembelian.Name = "dateTimePickerTanggalAwalLaporanPembelian";
+			this.dateTimePickerTanggalAwalLaporanPembelian.Size = new System.Drawing.Size(200, 20);
+			this.dateTimePickerTanggalAwalLaporanPembelian.TabIndex = 8;
+			this.dateTimePickerTanggalAwalLaporanPembelian.ValueChanged += new System.EventHandler(this.dateTimePickerTanggalAwalLaporanPembelian_ValueChanged);
 			// 
 			// iconButtonBackLaporanPembelian
 			// 
@@ -2893,20 +2784,20 @@
 			this.iconButtonBackLaporanPembelian.MouseLeave += new System.EventHandler(this.iconButtonBackLaporanPembelian_MouseLeave);
 			this.iconButtonBackLaporanPembelian.MouseHover += new System.EventHandler(this.iconButtonBackLaporanPembelian_MouseHover);
 			// 
-			// dataGridView3
+			// dataGridViewLaporanPembelian
 			// 
-			this.dataGridView3.AllowUserToAddRows = false;
-			this.dataGridView3.AllowUserToDeleteRows = false;
-			this.dataGridView3.AllowUserToResizeColumns = false;
-			this.dataGridView3.AllowUserToResizeRows = false;
-			this.dataGridView3.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+			this.dataGridViewLaporanPembelian.AllowUserToAddRows = false;
+			this.dataGridViewLaporanPembelian.AllowUserToDeleteRows = false;
+			this.dataGridViewLaporanPembelian.AllowUserToResizeColumns = false;
+			this.dataGridViewLaporanPembelian.AllowUserToResizeRows = false;
+			this.dataGridViewLaporanPembelian.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-			this.dataGridView3.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-			this.dataGridView3.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(232)))), ((int)(((byte)(232)))));
-			this.dataGridView3.BorderStyle = System.Windows.Forms.BorderStyle.None;
-			this.dataGridView3.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleVertical;
-			this.dataGridView3.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
+			this.dataGridViewLaporanPembelian.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+			this.dataGridViewLaporanPembelian.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(232)))), ((int)(((byte)(232)))));
+			this.dataGridViewLaporanPembelian.BorderStyle = System.Windows.Forms.BorderStyle.None;
+			this.dataGridViewLaporanPembelian.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleVertical;
+			this.dataGridViewLaporanPembelian.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
 			dataGridViewCellStyle17.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
 			dataGridViewCellStyle17.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(7)))), ((int)(((byte)(104)))), ((int)(((byte)(159)))));
 			dataGridViewCellStyle17.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold);
@@ -2914,20 +2805,19 @@
 			dataGridViewCellStyle17.SelectionBackColor = System.Drawing.SystemColors.Highlight;
 			dataGridViewCellStyle17.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
 			dataGridViewCellStyle17.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-			this.dataGridView3.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle17;
-			this.dataGridView3.ColumnHeadersHeight = 50;
-			this.dataGridView3.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-			this.dataGridView3.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+			this.dataGridViewLaporanPembelian.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle17;
+			this.dataGridViewLaporanPembelian.ColumnHeadersHeight = 50;
+			this.dataGridViewLaporanPembelian.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+			this.dataGridViewLaporanPembelian.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dataGridViewTextBoxColumn22,
-            this.dataGridViewTextBoxColumn23,
-            this.dataGridViewTextBoxColumn24,
-            this.dataGridViewTextBoxColumn26,
-            this.dataGridViewTextBoxColumn27});
-			this.dataGridView3.Cursor = System.Windows.Forms.Cursors.Hand;
-			this.dataGridView3.EnableHeadersVisualStyles = false;
-			this.dataGridView3.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(7)))), ((int)(((byte)(104)))), ((int)(((byte)(159)))));
-			this.dataGridView3.Location = new System.Drawing.Point(15, 90);
-			this.dataGridView3.Name = "dataGridView3";
+            this.ColumnTanggal___,
+            this.ColumnPengeluaran});
+			this.dataGridViewLaporanPembelian.Cursor = System.Windows.Forms.Cursors.Hand;
+			this.dataGridViewLaporanPembelian.EnableHeadersVisualStyles = false;
+			this.dataGridViewLaporanPembelian.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(7)))), ((int)(((byte)(104)))), ((int)(((byte)(159)))));
+			this.dataGridViewLaporanPembelian.Location = new System.Drawing.Point(15, 90);
+			this.dataGridViewLaporanPembelian.Name = "dataGridViewLaporanPembelian";
+			this.dataGridViewLaporanPembelian.ReadOnly = true;
 			dataGridViewCellStyle19.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
 			dataGridViewCellStyle19.BackColor = System.Drawing.SystemColors.ButtonFace;
 			dataGridViewCellStyle19.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -2935,17 +2825,17 @@
 			dataGridViewCellStyle19.SelectionBackColor = System.Drawing.SystemColors.GradientInactiveCaption;
 			dataGridViewCellStyle19.SelectionForeColor = System.Drawing.SystemColors.ControlLightLight;
 			dataGridViewCellStyle19.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-			this.dataGridView3.RowHeadersDefaultCellStyle = dataGridViewCellStyle19;
-			this.dataGridView3.RowHeadersVisible = false;
-			this.dataGridView3.RowTemplate.DefaultCellStyle.BackColor = System.Drawing.Color.GhostWhite;
-			this.dataGridView3.RowTemplate.DefaultCellStyle.ForeColor = System.Drawing.Color.Black;
-			this.dataGridView3.RowTemplate.DefaultCellStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
-			this.dataGridView3.RowTemplate.DefaultCellStyle.SelectionForeColor = System.Drawing.Color.White;
-			this.dataGridView3.RowTemplate.DividerHeight = 1;
-			this.dataGridView3.RowTemplate.Height = 25;
-			this.dataGridView3.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-			this.dataGridView3.Size = new System.Drawing.Size(709, 334);
-			this.dataGridView3.TabIndex = 5;
+			this.dataGridViewLaporanPembelian.RowHeadersDefaultCellStyle = dataGridViewCellStyle19;
+			this.dataGridViewLaporanPembelian.RowHeadersVisible = false;
+			this.dataGridViewLaporanPembelian.RowTemplate.DefaultCellStyle.BackColor = System.Drawing.Color.GhostWhite;
+			this.dataGridViewLaporanPembelian.RowTemplate.DefaultCellStyle.ForeColor = System.Drawing.Color.Black;
+			this.dataGridViewLaporanPembelian.RowTemplate.DefaultCellStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+			this.dataGridViewLaporanPembelian.RowTemplate.DefaultCellStyle.SelectionForeColor = System.Drawing.Color.Black;
+			this.dataGridViewLaporanPembelian.RowTemplate.DividerHeight = 1;
+			this.dataGridViewLaporanPembelian.RowTemplate.Height = 25;
+			this.dataGridViewLaporanPembelian.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+			this.dataGridViewLaporanPembelian.Size = new System.Drawing.Size(709, 334);
+			this.dataGridViewLaporanPembelian.TabIndex = 5;
 			// 
 			// dataGridViewTextBoxColumn22
 			// 
@@ -2953,26 +2843,19 @@
 			this.dataGridViewTextBoxColumn22.DefaultCellStyle = dataGridViewCellStyle18;
 			this.dataGridViewTextBoxColumn22.HeaderText = "No";
 			this.dataGridViewTextBoxColumn22.Name = "dataGridViewTextBoxColumn22";
+			this.dataGridViewTextBoxColumn22.ReadOnly = true;
 			// 
-			// dataGridViewTextBoxColumn23
+			// ColumnTanggal___
 			// 
-			this.dataGridViewTextBoxColumn23.HeaderText = "Nama Barang";
-			this.dataGridViewTextBoxColumn23.Name = "dataGridViewTextBoxColumn23";
+			this.ColumnTanggal___.HeaderText = "Tanggal";
+			this.ColumnTanggal___.Name = "ColumnTanggal___";
+			this.ColumnTanggal___.ReadOnly = true;
 			// 
-			// dataGridViewTextBoxColumn24
+			// ColumnPengeluaran
 			// 
-			this.dataGridViewTextBoxColumn24.HeaderText = "Harga Beli";
-			this.dataGridViewTextBoxColumn24.Name = "dataGridViewTextBoxColumn24";
-			// 
-			// dataGridViewTextBoxColumn26
-			// 
-			this.dataGridViewTextBoxColumn26.HeaderText = "Qty";
-			this.dataGridViewTextBoxColumn26.Name = "dataGridViewTextBoxColumn26";
-			// 
-			// dataGridViewTextBoxColumn27
-			// 
-			this.dataGridViewTextBoxColumn27.HeaderText = "Total Harga Beli";
-			this.dataGridViewTextBoxColumn27.Name = "dataGridViewTextBoxColumn27";
+			this.ColumnPengeluaran.HeaderText = "Pengeluaran";
+			this.ColumnPengeluaran.Name = "ColumnPengeluaran";
+			this.ColumnPengeluaran.ReadOnly = true;
 			// 
 			// label22
 			// 
@@ -2987,22 +2870,31 @@
 			// panelSubMenuLaporanStokBarang
 			// 
 			this.panelSubMenuLaporanStokBarang.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(232)))), ((int)(((byte)(232)))));
+			this.panelSubMenuLaporanStokBarang.Controls.Add(this.label19);
 			this.panelSubMenuLaporanStokBarang.Controls.Add(this.flowLayoutPanelLaporanStokBarang);
-			this.panelSubMenuLaporanStokBarang.Controls.Add(this.textBoxSearchNamaBrgInventaris);
+			this.panelSubMenuLaporanStokBarang.Controls.Add(this.comboBoxKriteriaLaporanStokBarang);
+			this.panelSubMenuLaporanStokBarang.Controls.Add(this.textBoxSearchBrgInventaris);
 			this.panelSubMenuLaporanStokBarang.Controls.Add(this.panelUnderlineSearchBrgInventaris);
 			this.panelSubMenuLaporanStokBarang.Controls.Add(this.iconButtonBackLaporanInventaris);
-			this.panelSubMenuLaporanStokBarang.Controls.Add(this.label23);
-			this.panelSubMenuLaporanStokBarang.Controls.Add(this.dataGridView4);
+			this.panelSubMenuLaporanStokBarang.Controls.Add(this.dataGridViewLaporanStokBarang);
 			this.panelSubMenuLaporanStokBarang.ImeMode = System.Windows.Forms.ImeMode.NoControl;
 			this.panelSubMenuLaporanStokBarang.Location = new System.Drawing.Point(1600, 20);
 			this.panelSubMenuLaporanStokBarang.Name = "panelSubMenuLaporanStokBarang";
 			this.panelSubMenuLaporanStokBarang.Size = new System.Drawing.Size(755, 537);
 			this.panelSubMenuLaporanStokBarang.TabIndex = 29;
 			// 
+			// label19
+			// 
+			this.label19.AutoSize = true;
+			this.label19.Font = new System.Drawing.Font("Century Gothic", 12.5F);
+			this.label19.Location = new System.Drawing.Point(84, 39);
+			this.label19.Name = "label19";
+			this.label19.Size = new System.Drawing.Size(54, 21);
+			this.label19.TabIndex = 18;
+			this.label19.Text = "Cari :";
+			// 
 			// flowLayoutPanelLaporanStokBarang
 			// 
-			this.flowLayoutPanelLaporanStokBarang.Controls.Add(this.buttonSimpanPDFLaporanStokBarang);
-			this.flowLayoutPanelLaporanStokBarang.Controls.Add(this.buttonPrintLaporanPrintStokBarang);
 			this.flowLayoutPanelLaporanStokBarang.Controls.Add(this.panel1);
 			this.flowLayoutPanelLaporanStokBarang.Dock = System.Windows.Forms.DockStyle.Bottom;
 			this.flowLayoutPanelLaporanStokBarang.Location = new System.Drawing.Point(0, 437);
@@ -3010,72 +2902,24 @@
 			this.flowLayoutPanelLaporanStokBarang.Size = new System.Drawing.Size(755, 100);
 			this.flowLayoutPanelLaporanStokBarang.TabIndex = 16;
 			// 
-			// buttonSimpanPDFLaporanStokBarang
-			// 
-			this.buttonSimpanPDFLaporanStokBarang.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(49)))), ((int)(((byte)(69)))));
-			this.buttonSimpanPDFLaporanStokBarang.ButtonColor = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(49)))), ((int)(((byte)(69)))));
-			this.buttonSimpanPDFLaporanStokBarang.Cursor = System.Windows.Forms.Cursors.Hand;
-			this.buttonSimpanPDFLaporanStokBarang.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(232)))), ((int)(((byte)(232)))));
-			this.buttonSimpanPDFLaporanStokBarang.FlatAppearance.BorderSize = 0;
-			this.buttonSimpanPDFLaporanStokBarang.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(232)))), ((int)(((byte)(232)))));
-			this.buttonSimpanPDFLaporanStokBarang.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(232)))), ((int)(((byte)(232)))));
-			this.buttonSimpanPDFLaporanStokBarang.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-			this.buttonSimpanPDFLaporanStokBarang.Font = new System.Drawing.Font("Century Gothic", 11F);
-			this.buttonSimpanPDFLaporanStokBarang.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(49)))), ((int)(((byte)(69)))));
-			this.buttonSimpanPDFLaporanStokBarang.Location = new System.Drawing.Point(30, 30);
-			this.buttonSimpanPDFLaporanStokBarang.Margin = new System.Windows.Forms.Padding(30);
-			this.buttonSimpanPDFLaporanStokBarang.Name = "buttonSimpanPDFLaporanStokBarang";
-			this.buttonSimpanPDFLaporanStokBarang.OnHoverBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(7)))), ((int)(((byte)(104)))), ((int)(((byte)(159)))));
-			this.buttonSimpanPDFLaporanStokBarang.OnHoverButtonColor = System.Drawing.Color.FromArgb(((int)(((byte)(7)))), ((int)(((byte)(104)))), ((int)(((byte)(159)))));
-			this.buttonSimpanPDFLaporanStokBarang.OnHoverTextColor = System.Drawing.Color.AliceBlue;
-			this.buttonSimpanPDFLaporanStokBarang.Size = new System.Drawing.Size(154, 40);
-			this.buttonSimpanPDFLaporanStokBarang.TabIndex = 5;
-			this.buttonSimpanPDFLaporanStokBarang.Text = "Simpan PDF";
-			this.buttonSimpanPDFLaporanStokBarang.TextColor = System.Drawing.Color.White;
-			this.buttonSimpanPDFLaporanStokBarang.UseVisualStyleBackColor = false;
-			// 
-			// buttonPrintLaporanPrintStokBarang
-			// 
-			this.buttonPrintLaporanPrintStokBarang.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(49)))), ((int)(((byte)(69)))));
-			this.buttonPrintLaporanPrintStokBarang.ButtonColor = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(49)))), ((int)(((byte)(69)))));
-			this.buttonPrintLaporanPrintStokBarang.Cursor = System.Windows.Forms.Cursors.Hand;
-			this.buttonPrintLaporanPrintStokBarang.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(232)))), ((int)(((byte)(232)))));
-			this.buttonPrintLaporanPrintStokBarang.FlatAppearance.BorderSize = 0;
-			this.buttonPrintLaporanPrintStokBarang.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(232)))), ((int)(((byte)(232)))));
-			this.buttonPrintLaporanPrintStokBarang.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(232)))), ((int)(((byte)(232)))));
-			this.buttonPrintLaporanPrintStokBarang.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-			this.buttonPrintLaporanPrintStokBarang.Font = new System.Drawing.Font("Century Gothic", 11F);
-			this.buttonPrintLaporanPrintStokBarang.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(49)))), ((int)(((byte)(69)))));
-			this.buttonPrintLaporanPrintStokBarang.Location = new System.Drawing.Point(244, 30);
-			this.buttonPrintLaporanPrintStokBarang.Margin = new System.Windows.Forms.Padding(30);
-			this.buttonPrintLaporanPrintStokBarang.Name = "buttonPrintLaporanPrintStokBarang";
-			this.buttonPrintLaporanPrintStokBarang.OnHoverBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(7)))), ((int)(((byte)(104)))), ((int)(((byte)(159)))));
-			this.buttonPrintLaporanPrintStokBarang.OnHoverButtonColor = System.Drawing.Color.FromArgb(((int)(((byte)(7)))), ((int)(((byte)(104)))), ((int)(((byte)(159)))));
-			this.buttonPrintLaporanPrintStokBarang.OnHoverTextColor = System.Drawing.Color.AliceBlue;
-			this.buttonPrintLaporanPrintStokBarang.Size = new System.Drawing.Size(154, 40);
-			this.buttonPrintLaporanPrintStokBarang.TabIndex = 13;
-			this.buttonPrintLaporanPrintStokBarang.Text = "Print";
-			this.buttonPrintLaporanPrintStokBarang.TextColor = System.Drawing.Color.White;
-			this.buttonPrintLaporanPrintStokBarang.UseVisualStyleBackColor = false;
-			// 
 			// panel1
 			// 
 			this.panel1.Controls.Add(this.labelTotalJumlahBarangMinim);
 			this.panel1.Controls.Add(this.label9);
 			this.panel1.Controls.Add(this.labelTotalJumlahBarang);
 			this.panel1.Controls.Add(this.label8);
-			this.panel1.Dock = System.Windows.Forms.DockStyle.Right;
-			this.panel1.Location = new System.Drawing.Point(428, 0);
+			this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
+			this.panel1.Location = new System.Drawing.Point(0, 0);
 			this.panel1.Margin = new System.Windows.Forms.Padding(0);
 			this.panel1.Name = "panel1";
-			this.panel1.Size = new System.Drawing.Size(327, 100);
+			this.panel1.Size = new System.Drawing.Size(567, 100);
 			this.panel1.TabIndex = 16;
 			// 
 			// labelTotalJumlahBarangMinim
 			// 
 			this.labelTotalJumlahBarangMinim.AutoSize = true;
 			this.labelTotalJumlahBarangMinim.Font = new System.Drawing.Font("Century Gothic", 12.5F);
-			this.labelTotalJumlahBarangMinim.Location = new System.Drawing.Point(265, 60);
+			this.labelTotalJumlahBarangMinim.Location = new System.Drawing.Point(343, 58);
 			this.labelTotalJumlahBarangMinim.Margin = new System.Windows.Forms.Padding(0, 40, 40, 40);
 			this.labelTotalJumlahBarangMinim.Name = "labelTotalJumlahBarangMinim";
 			this.labelTotalJumlahBarangMinim.Size = new System.Drawing.Size(16, 21);
@@ -3089,15 +2933,15 @@
 			this.label9.Location = new System.Drawing.Point(11, 57);
 			this.label9.Margin = new System.Windows.Forms.Padding(50, 40, 0, 40);
 			this.label9.Name = "label9";
-			this.label9.Size = new System.Drawing.Size(242, 21);
+			this.label9.Size = new System.Drawing.Size(325, 21);
 			this.label9.TabIndex = 13;
-			this.label9.Text = "Total Jumlah Barang Minim :";
+			this.label9.Text = "Total Jumlah Barang dgn Stok Kurang:";
 			// 
 			// labelTotalJumlahBarang
 			// 
 			this.labelTotalJumlahBarang.AutoSize = true;
 			this.labelTotalJumlahBarang.Font = new System.Drawing.Font("Century Gothic", 12.5F);
-			this.labelTotalJumlahBarang.Location = new System.Drawing.Point(265, 23);
+			this.labelTotalJumlahBarang.Location = new System.Drawing.Point(204, 23);
 			this.labelTotalJumlahBarang.Margin = new System.Windows.Forms.Padding(0, 40, 40, 40);
 			this.labelTotalJumlahBarang.Name = "labelTotalJumlahBarang";
 			this.labelTotalJumlahBarang.Size = new System.Drawing.Size(16, 21);
@@ -3115,21 +2959,38 @@
 			this.label8.TabIndex = 11;
 			this.label8.Text = "Total Jumlah Barang :";
 			// 
-			// textBoxSearchNamaBrgInventaris
+			// comboBoxKriteriaLaporanStokBarang
 			// 
-			this.textBoxSearchNamaBrgInventaris.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(232)))), ((int)(((byte)(232)))));
-			this.textBoxSearchNamaBrgInventaris.BorderStyle = System.Windows.Forms.BorderStyle.None;
-			this.textBoxSearchNamaBrgInventaris.Font = new System.Drawing.Font("Century Gothic", 12.5F);
-			this.textBoxSearchNamaBrgInventaris.Location = new System.Drawing.Point(227, 39);
-			this.textBoxSearchNamaBrgInventaris.Name = "textBoxSearchNamaBrgInventaris";
-			this.textBoxSearchNamaBrgInventaris.Size = new System.Drawing.Size(200, 21);
-			this.textBoxSearchNamaBrgInventaris.TabIndex = 15;
-			this.textBoxSearchNamaBrgInventaris.TextChanged += new System.EventHandler(this.textBoxSearchNamaBrgInventaris_TextChanged);
+			this.comboBoxKriteriaLaporanStokBarang.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(232)))), ((int)(((byte)(232)))));
+			this.comboBoxKriteriaLaporanStokBarang.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+			this.comboBoxKriteriaLaporanStokBarang.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+			this.comboBoxKriteriaLaporanStokBarang.Font = new System.Drawing.Font("Cambria", 12F, System.Drawing.FontStyle.Bold);
+			this.comboBoxKriteriaLaporanStokBarang.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+			this.comboBoxKriteriaLaporanStokBarang.FormattingEnabled = true;
+			this.comboBoxKriteriaLaporanStokBarang.Items.AddRange(new object[] {
+            "Kode Barang",
+            "Nama Barang"});
+			this.comboBoxKriteriaLaporanStokBarang.Location = new System.Drawing.Point(144, 39);
+			this.comboBoxKriteriaLaporanStokBarang.Name = "comboBoxKriteriaLaporanStokBarang";
+			this.comboBoxKriteriaLaporanStokBarang.Size = new System.Drawing.Size(175, 27);
+			this.comboBoxKriteriaLaporanStokBarang.TabIndex = 17;
+			this.comboBoxKriteriaLaporanStokBarang.SelectionChangeCommitted += new System.EventHandler(this.comboBoxKriteriaLaporanStokBarang_SelectionChangeCommitted);
+			// 
+			// textBoxSearchBrgInventaris
+			// 
+			this.textBoxSearchBrgInventaris.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(232)))), ((int)(((byte)(232)))));
+			this.textBoxSearchBrgInventaris.BorderStyle = System.Windows.Forms.BorderStyle.None;
+			this.textBoxSearchBrgInventaris.Font = new System.Drawing.Font("Century Gothic", 12.5F);
+			this.textBoxSearchBrgInventaris.Location = new System.Drawing.Point(334, 39);
+			this.textBoxSearchBrgInventaris.Name = "textBoxSearchBrgInventaris";
+			this.textBoxSearchBrgInventaris.Size = new System.Drawing.Size(200, 21);
+			this.textBoxSearchBrgInventaris.TabIndex = 15;
+			this.textBoxSearchBrgInventaris.TextChanged += new System.EventHandler(this.textBoxSearchNamaBrgInventaris_TextChanged);
 			// 
 			// panelUnderlineSearchBrgInventaris
 			// 
 			this.panelUnderlineSearchBrgInventaris.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(26)))), ((int)(((byte)(46)))));
-			this.panelUnderlineSearchBrgInventaris.Location = new System.Drawing.Point(227, 61);
+			this.panelUnderlineSearchBrgInventaris.Location = new System.Drawing.Point(334, 61);
 			this.panelUnderlineSearchBrgInventaris.Name = "panelUnderlineSearchBrgInventaris";
 			this.panelUnderlineSearchBrgInventaris.Size = new System.Drawing.Size(200, 4);
 			this.panelUnderlineSearchBrgInventaris.TabIndex = 14;
@@ -3159,30 +3020,20 @@
 			this.iconButtonBackLaporanInventaris.MouseLeave += new System.EventHandler(this.iconButtonBackLaporanInventaris_MouseLeave);
 			this.iconButtonBackLaporanInventaris.MouseHover += new System.EventHandler(this.iconButtonBackLaporanInventaris_MouseHover);
 			// 
-			// label23
+			// dataGridViewLaporanStokBarang
 			// 
-			this.label23.AutoSize = true;
-			this.label23.Font = new System.Drawing.Font("Century Gothic", 12.5F);
-			this.label23.Location = new System.Drawing.Point(83, 39);
-			this.label23.Name = "label23";
-			this.label23.Size = new System.Drawing.Size(137, 21);
-			this.label23.TabIndex = 13;
-			this.label23.Text = "Nama Barang :";
-			// 
-			// dataGridView4
-			// 
-			this.dataGridView4.AllowUserToAddRows = false;
-			this.dataGridView4.AllowUserToDeleteRows = false;
-			this.dataGridView4.AllowUserToResizeColumns = false;
-			this.dataGridView4.AllowUserToResizeRows = false;
-			this.dataGridView4.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+			this.dataGridViewLaporanStokBarang.AllowUserToAddRows = false;
+			this.dataGridViewLaporanStokBarang.AllowUserToDeleteRows = false;
+			this.dataGridViewLaporanStokBarang.AllowUserToResizeColumns = false;
+			this.dataGridViewLaporanStokBarang.AllowUserToResizeRows = false;
+			this.dataGridViewLaporanStokBarang.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-			this.dataGridView4.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-			this.dataGridView4.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(232)))), ((int)(((byte)(232)))));
-			this.dataGridView4.BorderStyle = System.Windows.Forms.BorderStyle.None;
-			this.dataGridView4.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleVertical;
-			this.dataGridView4.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
+			this.dataGridViewLaporanStokBarang.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+			this.dataGridViewLaporanStokBarang.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(232)))), ((int)(((byte)(232)))));
+			this.dataGridViewLaporanStokBarang.BorderStyle = System.Windows.Forms.BorderStyle.None;
+			this.dataGridViewLaporanStokBarang.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleVertical;
+			this.dataGridViewLaporanStokBarang.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
 			dataGridViewCellStyle20.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
 			dataGridViewCellStyle20.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(7)))), ((int)(((byte)(104)))), ((int)(((byte)(159)))));
 			dataGridViewCellStyle20.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold);
@@ -3190,20 +3041,21 @@
 			dataGridViewCellStyle20.SelectionBackColor = System.Drawing.SystemColors.Highlight;
 			dataGridViewCellStyle20.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
 			dataGridViewCellStyle20.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-			this.dataGridView4.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle20;
-			this.dataGridView4.ColumnHeadersHeight = 50;
-			this.dataGridView4.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-			this.dataGridView4.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+			this.dataGridViewLaporanStokBarang.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle20;
+			this.dataGridViewLaporanStokBarang.ColumnHeadersHeight = 50;
+			this.dataGridViewLaporanStokBarang.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+			this.dataGridViewLaporanStokBarang.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dataGridViewTextBoxColumn25,
+            this.ColumnKodeBarang__,
             this.dataGridViewTextBoxColumn28,
             this.dataGridViewTextBoxColumn29,
-            this.dataGridViewTextBoxColumn30,
             this.dataGridViewTextBoxColumn31});
-			this.dataGridView4.Cursor = System.Windows.Forms.Cursors.Hand;
-			this.dataGridView4.EnableHeadersVisualStyles = false;
-			this.dataGridView4.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(7)))), ((int)(((byte)(104)))), ((int)(((byte)(159)))));
-			this.dataGridView4.Location = new System.Drawing.Point(15, 90);
-			this.dataGridView4.Name = "dataGridView4";
+			this.dataGridViewLaporanStokBarang.Cursor = System.Windows.Forms.Cursors.Hand;
+			this.dataGridViewLaporanStokBarang.EnableHeadersVisualStyles = false;
+			this.dataGridViewLaporanStokBarang.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(7)))), ((int)(((byte)(104)))), ((int)(((byte)(159)))));
+			this.dataGridViewLaporanStokBarang.Location = new System.Drawing.Point(15, 90);
+			this.dataGridViewLaporanStokBarang.Name = "dataGridViewLaporanStokBarang";
+			this.dataGridViewLaporanStokBarang.ReadOnly = true;
 			dataGridViewCellStyle22.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
 			dataGridViewCellStyle22.BackColor = System.Drawing.SystemColors.ButtonFace;
 			dataGridViewCellStyle22.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -3211,17 +3063,17 @@
 			dataGridViewCellStyle22.SelectionBackColor = System.Drawing.SystemColors.GradientInactiveCaption;
 			dataGridViewCellStyle22.SelectionForeColor = System.Drawing.SystemColors.ControlLightLight;
 			dataGridViewCellStyle22.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-			this.dataGridView4.RowHeadersDefaultCellStyle = dataGridViewCellStyle22;
-			this.dataGridView4.RowHeadersVisible = false;
-			this.dataGridView4.RowTemplate.DefaultCellStyle.BackColor = System.Drawing.Color.GhostWhite;
-			this.dataGridView4.RowTemplate.DefaultCellStyle.ForeColor = System.Drawing.Color.Black;
-			this.dataGridView4.RowTemplate.DefaultCellStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
-			this.dataGridView4.RowTemplate.DefaultCellStyle.SelectionForeColor = System.Drawing.Color.White;
-			this.dataGridView4.RowTemplate.DividerHeight = 1;
-			this.dataGridView4.RowTemplate.Height = 25;
-			this.dataGridView4.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-			this.dataGridView4.Size = new System.Drawing.Size(709, 334);
-			this.dataGridView4.TabIndex = 5;
+			this.dataGridViewLaporanStokBarang.RowHeadersDefaultCellStyle = dataGridViewCellStyle22;
+			this.dataGridViewLaporanStokBarang.RowHeadersVisible = false;
+			this.dataGridViewLaporanStokBarang.RowTemplate.DefaultCellStyle.BackColor = System.Drawing.Color.GhostWhite;
+			this.dataGridViewLaporanStokBarang.RowTemplate.DefaultCellStyle.ForeColor = System.Drawing.Color.Black;
+			this.dataGridViewLaporanStokBarang.RowTemplate.DefaultCellStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+			this.dataGridViewLaporanStokBarang.RowTemplate.DefaultCellStyle.SelectionForeColor = System.Drawing.Color.Black;
+			this.dataGridViewLaporanStokBarang.RowTemplate.DividerHeight = 1;
+			this.dataGridViewLaporanStokBarang.RowTemplate.Height = 25;
+			this.dataGridViewLaporanStokBarang.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+			this.dataGridViewLaporanStokBarang.Size = new System.Drawing.Size(709, 334);
+			this.dataGridViewLaporanStokBarang.TabIndex = 5;
 			// 
 			// dataGridViewTextBoxColumn25
 			// 
@@ -3229,26 +3081,31 @@
 			this.dataGridViewTextBoxColumn25.DefaultCellStyle = dataGridViewCellStyle21;
 			this.dataGridViewTextBoxColumn25.HeaderText = "No";
 			this.dataGridViewTextBoxColumn25.Name = "dataGridViewTextBoxColumn25";
+			this.dataGridViewTextBoxColumn25.ReadOnly = true;
+			// 
+			// ColumnKodeBarang__
+			// 
+			this.ColumnKodeBarang__.HeaderText = "Kode Barang";
+			this.ColumnKodeBarang__.Name = "ColumnKodeBarang__";
+			this.ColumnKodeBarang__.ReadOnly = true;
 			// 
 			// dataGridViewTextBoxColumn28
 			// 
 			this.dataGridViewTextBoxColumn28.HeaderText = "Nama Barang";
 			this.dataGridViewTextBoxColumn28.Name = "dataGridViewTextBoxColumn28";
+			this.dataGridViewTextBoxColumn28.ReadOnly = true;
 			// 
 			// dataGridViewTextBoxColumn29
 			// 
-			this.dataGridViewTextBoxColumn29.HeaderText = "Jumlah Barang";
+			this.dataGridViewTextBoxColumn29.HeaderText = "Jumlah Stok";
 			this.dataGridViewTextBoxColumn29.Name = "dataGridViewTextBoxColumn29";
-			// 
-			// dataGridViewTextBoxColumn30
-			// 
-			this.dataGridViewTextBoxColumn30.HeaderText = "Stok Minimal";
-			this.dataGridViewTextBoxColumn30.Name = "dataGridViewTextBoxColumn30";
+			this.dataGridViewTextBoxColumn29.ReadOnly = true;
 			// 
 			// dataGridViewTextBoxColumn31
 			// 
 			this.dataGridViewTextBoxColumn31.HeaderText = "Keterangan";
 			this.dataGridViewTextBoxColumn31.Name = "dataGridViewTextBoxColumn31";
+			this.dataGridViewTextBoxColumn31.ReadOnly = true;
 			// 
 			// panelMenuPegawai
 			// 
@@ -3429,7 +3286,7 @@
 			this.dataGridViewPegawai.RowTemplate.DefaultCellStyle.BackColor = System.Drawing.Color.GhostWhite;
 			this.dataGridViewPegawai.RowTemplate.DefaultCellStyle.ForeColor = System.Drawing.Color.Black;
 			this.dataGridViewPegawai.RowTemplate.DefaultCellStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
-			this.dataGridViewPegawai.RowTemplate.DefaultCellStyle.SelectionForeColor = System.Drawing.Color.White;
+			this.dataGridViewPegawai.RowTemplate.DefaultCellStyle.SelectionForeColor = System.Drawing.Color.Black;
 			this.dataGridViewPegawai.RowTemplate.DividerHeight = 1;
 			this.dataGridViewPegawai.RowTemplate.Height = 25;
 			this.dataGridViewPegawai.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
@@ -3855,7 +3712,6 @@
 			// 
 			this.flowLayoutPanelBarangMasuk.Controls.Add(this.buttonTambahBarangMasuk);
 			this.flowLayoutPanelBarangMasuk.Controls.Add(this.buttonHapusBarangMasuk);
-			this.flowLayoutPanelBarangMasuk.Controls.Add(this.buttonNotaBeli);
 			this.flowLayoutPanelBarangMasuk.Dock = System.Windows.Forms.DockStyle.Bottom;
 			this.flowLayoutPanelBarangMasuk.Location = new System.Drawing.Point(0, 345);
 			this.flowLayoutPanelBarangMasuk.Name = "flowLayoutPanelBarangMasuk";
@@ -3914,32 +3770,7 @@
 			this.buttonHapusBarangMasuk.Text = "Hapus";
 			this.buttonHapusBarangMasuk.TextColor = System.Drawing.Color.White;
 			this.buttonHapusBarangMasuk.UseVisualStyleBackColor = false;
-			// 
-			// buttonNotaBeli
-			// 
-			this.buttonNotaBeli.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-			this.buttonNotaBeli.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(49)))), ((int)(((byte)(69)))));
-			this.buttonNotaBeli.ButtonColor = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(49)))), ((int)(((byte)(69)))));
-			this.buttonNotaBeli.Cursor = System.Windows.Forms.Cursors.Hand;
-			this.buttonNotaBeli.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(232)))), ((int)(((byte)(232)))));
-			this.buttonNotaBeli.FlatAppearance.BorderSize = 0;
-			this.buttonNotaBeli.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(232)))), ((int)(((byte)(232)))));
-			this.buttonNotaBeli.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(232)))), ((int)(((byte)(232)))));
-			this.buttonNotaBeli.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-			this.buttonNotaBeli.Font = new System.Drawing.Font("Century Gothic", 11F);
-			this.buttonNotaBeli.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(49)))), ((int)(((byte)(69)))));
-			this.buttonNotaBeli.Location = new System.Drawing.Point(280, 10);
-			this.buttonNotaBeli.Margin = new System.Windows.Forms.Padding(10);
-			this.buttonNotaBeli.Name = "buttonNotaBeli";
-			this.buttonNotaBeli.OnHoverBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(7)))), ((int)(((byte)(104)))), ((int)(((byte)(159)))));
-			this.buttonNotaBeli.OnHoverButtonColor = System.Drawing.Color.FromArgb(((int)(((byte)(7)))), ((int)(((byte)(104)))), ((int)(((byte)(159)))));
-			this.buttonNotaBeli.OnHoverTextColor = System.Drawing.Color.AliceBlue;
-			this.buttonNotaBeli.Size = new System.Drawing.Size(115, 40);
-			this.buttonNotaBeli.TabIndex = 33;
-			this.buttonNotaBeli.Text = "Cetak";
-			this.buttonNotaBeli.TextColor = System.Drawing.Color.White;
-			this.buttonNotaBeli.UseVisualStyleBackColor = false;
+			this.buttonHapusBarangMasuk.Click += new System.EventHandler(this.buttonHapusBarangMasuk_Click);
 			// 
 			// dataGridViewBarangMasuk
 			// 
@@ -3967,6 +3798,7 @@
 			this.dataGridViewBarangMasuk.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
 			this.dataGridViewBarangMasuk.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Column1,
+            this.ColumnIdNotaBeli,
             this.dataGridViewTextBoxColumn9,
             this.dataGridViewTextBoxColumn10,
             this.dataGridViewTextBoxColumn15,
@@ -3989,7 +3821,7 @@
 			this.dataGridViewBarangMasuk.RowTemplate.DefaultCellStyle.BackColor = System.Drawing.Color.GhostWhite;
 			this.dataGridViewBarangMasuk.RowTemplate.DefaultCellStyle.ForeColor = System.Drawing.Color.Black;
 			this.dataGridViewBarangMasuk.RowTemplate.DefaultCellStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
-			this.dataGridViewBarangMasuk.RowTemplate.DefaultCellStyle.SelectionForeColor = System.Drawing.Color.White;
+			this.dataGridViewBarangMasuk.RowTemplate.DefaultCellStyle.SelectionForeColor = System.Drawing.Color.Black;
 			this.dataGridViewBarangMasuk.RowTemplate.DividerHeight = 1;
 			this.dataGridViewBarangMasuk.RowTemplate.Height = 25;
 			this.dataGridViewBarangMasuk.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
@@ -4002,6 +3834,13 @@
 			this.Column1.HeaderText = "No";
 			this.Column1.Name = "Column1";
 			this.Column1.ReadOnly = true;
+			// 
+			// ColumnIdNotaBeli
+			// 
+			this.ColumnIdNotaBeli.HeaderText = "Id Nota Beli";
+			this.ColumnIdNotaBeli.Name = "ColumnIdNotaBeli";
+			this.ColumnIdNotaBeli.ReadOnly = true;
+			this.ColumnIdNotaBeli.Visible = false;
 			// 
 			// dataGridViewTextBoxColumn9
 			// 
@@ -4079,9 +3918,9 @@
 			this.comboBoxKriteriaBarangMasuk.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
 			this.comboBoxKriteriaBarangMasuk.FormattingEnabled = true;
 			this.comboBoxKriteriaBarangMasuk.Items.AddRange(new object[] {
+            "Tanggal",
             "No Faktur",
-            "Supplier",
-            "Tanggal"});
+            "Supplier"});
 			this.comboBoxKriteriaBarangMasuk.Location = new System.Drawing.Point(143, 39);
 			this.comboBoxKriteriaBarangMasuk.Name = "comboBoxKriteriaBarangMasuk";
 			this.comboBoxKriteriaBarangMasuk.Size = new System.Drawing.Size(150, 27);
@@ -4155,6 +3994,8 @@
 			// iconButtonBarangMasuk
 			// 
 			this.iconButtonBarangMasuk.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(7)))), ((int)(((byte)(104)))), ((int)(((byte)(159)))));
+			this.iconButtonBarangMasuk.BackgroundImage = global::Kawi_Agung.Properties.Resources.check_in_kecil;
+			this.iconButtonBarangMasuk.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
 			this.iconButtonBarangMasuk.Cursor = System.Windows.Forms.Cursors.Hand;
 			this.iconButtonBarangMasuk.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(4)))), ((int)(((byte)(135)))), ((int)(((byte)(209)))));
 			this.iconButtonBarangMasuk.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(4)))), ((int)(((byte)(135)))), ((int)(((byte)(209)))));
@@ -4180,6 +4021,8 @@
 			// iconButtonBarangKeluar
 			// 
 			this.iconButtonBarangKeluar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(7)))), ((int)(((byte)(104)))), ((int)(((byte)(159)))));
+			this.iconButtonBarangKeluar.BackgroundImage = global::Kawi_Agung.Properties.Resources.check_out_kecil;
+			this.iconButtonBarangKeluar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
 			this.iconButtonBarangKeluar.Cursor = System.Windows.Forms.Cursors.Hand;
 			this.iconButtonBarangKeluar.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(4)))), ((int)(((byte)(135)))), ((int)(((byte)(209)))));
 			this.iconButtonBarangKeluar.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(4)))), ((int)(((byte)(135)))), ((int)(((byte)(209)))));
@@ -4360,7 +4203,7 @@
 			this.dataGridViewDaftarPelanggan.RowTemplate.DefaultCellStyle.BackColor = System.Drawing.Color.GhostWhite;
 			this.dataGridViewDaftarPelanggan.RowTemplate.DefaultCellStyle.ForeColor = System.Drawing.Color.Black;
 			this.dataGridViewDaftarPelanggan.RowTemplate.DefaultCellStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
-			this.dataGridViewDaftarPelanggan.RowTemplate.DefaultCellStyle.SelectionForeColor = System.Drawing.Color.White;
+			this.dataGridViewDaftarPelanggan.RowTemplate.DefaultCellStyle.SelectionForeColor = System.Drawing.Color.Black;
 			this.dataGridViewDaftarPelanggan.RowTemplate.DividerHeight = 1;
 			this.dataGridViewDaftarPelanggan.RowTemplate.Height = 25;
 			this.dataGridViewDaftarPelanggan.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
@@ -4504,18 +4347,18 @@
 			this.panelSubMenuLaporanPenjualan.PerformLayout();
 			this.flowLayoutPanelLaporanPenjualan.ResumeLayout(false);
 			this.flowLayoutPanelLaporanPenjualan.PerformLayout();
-			((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.dataGridViewLaporanPenjualan)).EndInit();
 			this.panelSubMenuLaporanPembelian.ResumeLayout(false);
 			this.panelSubMenuLaporanPembelian.PerformLayout();
 			this.flowLayoutPanelLaporanPembelian.ResumeLayout(false);
 			this.flowLayoutPanelLaporanPembelian.PerformLayout();
-			((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.dataGridViewLaporanPembelian)).EndInit();
 			this.panelSubMenuLaporanStokBarang.ResumeLayout(false);
 			this.panelSubMenuLaporanStokBarang.PerformLayout();
 			this.flowLayoutPanelLaporanStokBarang.ResumeLayout(false);
 			this.panel1.ResumeLayout(false);
 			this.panel1.PerformLayout();
-			((System.ComponentModel.ISupportInitialize)(this.dataGridView4)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.dataGridViewLaporanStokBarang)).EndInit();
 			this.panelMenuPegawai.ResumeLayout(false);
 			this.panelMenuPegawai.PerformLayout();
 			this.flowLayoutPanel9.ResumeLayout(false);
@@ -4596,43 +4439,23 @@
 		private FontAwesome.Sharp.IconButton iconButtonBackBarangKeluar;
 		private System.Windows.Forms.Panel panelMenuLaporan;
 		private System.Windows.Forms.Panel panelSubMenuLaporanPenjualan;
-		private System.Windows.Forms.DateTimePicker dateTimePicker2;
-		private System.Windows.Forms.Label label13;
-		private System.Windows.Forms.DateTimePicker dateTimePicker1;
+		private System.Windows.Forms.DateTimePicker dateTimePickerTanggalAkhirLaporanPenjualan;
+		private System.Windows.Forms.DateTimePicker dateTimePickerTanggalAwalLaporanPenjualan;
 		private System.Windows.Forms.Label labelNominalTotalPenjualan;
 		private System.Windows.Forms.Label label18;
-		private ePOSOne.btnProduct.Button_WOC buttonSimpanPDFLaporanPenjualan;
 		private FontAwesome.Sharp.IconButton iconButtonBackLaporanPenjualan;
-		private System.Windows.Forms.DataGridView dataGridView2;
-		private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn16;
-		private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn17;
-		private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn18;
-		private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn19;
-		private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn20;
-		private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn21;
+		private System.Windows.Forms.DataGridView dataGridViewLaporanPenjualan;
 		private System.Windows.Forms.Label label10;
 		private System.Windows.Forms.Panel panelSubMenuLaporanPembelian;
-		private System.Windows.Forms.DateTimePicker dateTimePicker3;
-		private System.Windows.Forms.Label label19;
-		private System.Windows.Forms.DateTimePicker dateTimePicker4;
+		private System.Windows.Forms.DateTimePicker dateTimePickerTanggalAkhirLaporanPembelian;
+		private System.Windows.Forms.DateTimePicker dateTimePickerTanggalAwalLaporanPembelian;
 		private FontAwesome.Sharp.IconButton iconButtonBackLaporanPembelian;
-		private System.Windows.Forms.DataGridView dataGridView3;
-		private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn22;
-		private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn23;
-		private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn24;
-		private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn26;
-		private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn27;
+		private System.Windows.Forms.DataGridView dataGridViewLaporanPembelian;
 		private System.Windows.Forms.Label label22;
 		private System.Windows.Forms.Panel panelSubMenuLaporanStokBarang;
 		private System.Windows.Forms.Panel panelUnderlineSearchBrgInventaris;
 		private FontAwesome.Sharp.IconButton iconButtonBackLaporanInventaris;
-		private System.Windows.Forms.Label label23;
-		private System.Windows.Forms.DataGridView dataGridView4;
-		private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn25;
-		private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn28;
-		private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn29;
-		private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn30;
-		private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn31;
+		private System.Windows.Forms.DataGridView dataGridViewLaporanStokBarang;
 		private System.Windows.Forms.Panel panelMenuPegawai;
 		private ePOSOne.btnProduct.Button_WOC buttonUbahPegawai;
 		private ePOSOne.btnProduct.Button_WOC buttonTambahPegawai;
@@ -4670,16 +4493,10 @@
 		private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel9;
 		private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelBarangKeluar;
 		private ePOSOne.btnProduct.Button_WOC buttonTambahNotaJual;
-		private ePOSOne.btnProduct.Button_WOC buttonCetakNotaJual;
 		private ePOSOne.btnProduct.Button_WOC buttonHapusNotaJual;
 		private System.Windows.Forms.Label labelJudul;
-		private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn11;
-		private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn12;
-		private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn13;
-		private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn14;
 		private System.Windows.Forms.ComboBox comboBoxKriteriaBarang;
 		private System.Windows.Forms.ComboBox comboBoxKriteriaBarangKeluar;
-		private System.Windows.Forms.TextBox textBoxSearchBarangKeluar;
 		private System.Windows.Forms.Panel panelUnderlineSearchBarangKeluar;
 		private System.Windows.Forms.Label label14;
 		private System.Windows.Forms.Label labelSDNotaJual;
@@ -4688,7 +4505,6 @@
 		private System.Windows.Forms.Panel panelSubMenuTransaksiBarangMasuk;
 		private System.Windows.Forms.Panel panel2;
 		private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelBarangMasuk;
-		private ePOSOne.btnProduct.Button_WOC buttonNotaBeli;
 		private ePOSOne.btnProduct.Button_WOC buttonTambahBarangMasuk;
 		private ePOSOne.btnProduct.Button_WOC buttonHapusBarangMasuk;
 		private System.Windows.Forms.DataGridView dataGridViewBarangMasuk;
@@ -4697,20 +4513,14 @@
 		private System.Windows.Forms.DateTimePicker dateTimePickerTanggalAkhirNotaBeli;
 		private System.Windows.Forms.DateTimePicker dateTimePickerTanggalAwalNotaBeli;
 		private System.Windows.Forms.ComboBox comboBoxKriteriaBarangMasuk;
-		private System.Windows.Forms.TextBox textBoxSearchBarangMasuk;
 		private System.Windows.Forms.Panel panelUnderlineSearchBarangMasuk;
 		private System.Windows.Forms.Label label7;
 		private FontAwesome.Sharp.IconButton iconButtonBackPanelBarangMasuk;
 		private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelLaporanPenjualan;
-		private ePOSOne.btnProduct.Button_WOC buttonPrintLaporanPenjualan;
 		private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelLaporanPembelian;
-		private ePOSOne.btnProduct.Button_WOC buttonSimpanPDFLaporanPembelian;
-		private ePOSOne.btnProduct.Button_WOC buttonPrintLaporanPembelian;
 		private System.Windows.Forms.Label label5;
-		private System.Windows.Forms.Label labelTotalPembelian;
+		private System.Windows.Forms.Label labelTotalPengeluaran;
 		private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelLaporanStokBarang;
-		private ePOSOne.btnProduct.Button_WOC buttonSimpanPDFLaporanStokBarang;
-		private ePOSOne.btnProduct.Button_WOC buttonPrintLaporanPrintStokBarang;
 		private System.Windows.Forms.Panel panel1;
 		private System.Windows.Forms.Label labelTotalJumlahBarangMinim;
 		private System.Windows.Forms.Label label9;
@@ -4769,11 +4579,6 @@
 		public System.Windows.Forms.Label labelJabatanUser;
 		private System.Windows.Forms.PictureBox iconPictureBoxUser;
 		private System.Windows.Forms.PictureBox iconPictureBoxFotoProfil;
-		private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
-		private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn9;
-		private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn10;
-		private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn15;
-		private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn42;
 		private System.Windows.Forms.Label labelProfilIdUser;
 		private System.Windows.Forms.DataGridViewTextBoxColumn ColumnNoJenis;
 		private System.Windows.Forms.DataGridViewTextBoxColumn ColumnIdJenis_;
@@ -4793,7 +4598,7 @@
 		public System.Windows.Forms.TextBox textBoxSearchBarang;
 		public System.Windows.Forms.TextBox textBoxSearchMerekBrg;
 		public System.Windows.Forms.TextBox textBoxSearchNamaSupplier;
-		public System.Windows.Forms.TextBox textBoxSearchNamaBrgInventaris;
+		public System.Windows.Forms.TextBox textBoxSearchBrgInventaris;
 		public System.Windows.Forms.TextBox textBoxSearchPegawai;
 		public System.Windows.Forms.TextBox textBoxSearchJenisBrg;
 		public System.Windows.Forms.TextBox textBoxSearchNamaPelanggan;
@@ -4811,5 +4616,34 @@
 		private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn35;
 		private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn36;
 		private ePOSOne.btnProduct.Button_WOC buttonHapusPegawai;
+		public System.Windows.Forms.TextBox textBoxSearchBarangMasuk;
+		private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
+		private System.Windows.Forms.DataGridViewTextBoxColumn ColumnIdNotaBeli;
+		private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn9;
+		private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn10;
+		private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn15;
+		private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn42;
+		private System.Windows.Forms.DataGridViewTextBoxColumn ColumnNo;
+		private System.Windows.Forms.DataGridViewTextBoxColumn ColumnIdNotaJual;
+		private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn11;
+		private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn12;
+		private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn13;
+		private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn14;
+		public System.Windows.Forms.TextBox textBoxSearchBarangKeluar;
+		private System.Windows.Forms.Label label13;
+		private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn16;
+		private System.Windows.Forms.DataGridViewTextBoxColumn ColumnTanggal__;
+		private System.Windows.Forms.DataGridViewTextBoxColumn ColumnTotalPemasukan;
+		private System.Windows.Forms.Label label20;
+		private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn22;
+		private System.Windows.Forms.DataGridViewTextBoxColumn ColumnTanggal___;
+		private System.Windows.Forms.DataGridViewTextBoxColumn ColumnPengeluaran;
+		private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn25;
+		private System.Windows.Forms.DataGridViewTextBoxColumn ColumnKodeBarang__;
+		private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn28;
+		private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn29;
+		private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn31;
+		private System.Windows.Forms.Label label19;
+		private System.Windows.Forms.ComboBox comboBoxKriteriaLaporanStokBarang;
 	}
 }

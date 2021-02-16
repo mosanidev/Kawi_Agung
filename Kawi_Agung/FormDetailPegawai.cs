@@ -23,7 +23,7 @@ namespace Kawi_Agung
 		{
 			labelNama.Text = FormMaster.listSelectedPegawai[0].Nama;
 			labelJenisKelamin.Text = FormMaster.listSelectedPegawai[0].JenisKelamin;
-			labelTanggalLahir.Text = FormMaster.listSelectedPegawai[0].TanggalLahir.ToString("dd MMMMM yyyy");
+			labelTanggalLahir.Text = FormMaster.listSelectedPegawai[0].TanggalLahir.ToString("dd MMMM yyyy");
 			labelNoTelp.Text = FormMaster.listSelectedPegawai[0].NoTelp;
 			labelStatus.Text = FormMaster.listSelectedPegawai[0].Status;
 			labelUsername.Text = FormMaster.listSelectedPegawai[0].Username;

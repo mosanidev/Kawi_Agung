@@ -47,10 +47,10 @@
 			this.label6 = new System.Windows.Forms.Label();
 			this.labelTotalHargaJual = new System.Windows.Forms.Label();
 			this.label5 = new System.Windows.Forms.Label();
-			this.label7 = new System.Windows.Forms.Label();
-			this.labelDetailStokMinimal = new System.Windows.Forms.Label();
 			this.labelDetailSatuanBarang = new System.Windows.Forms.Label();
 			this.label10 = new System.Windows.Forms.Label();
+			this.labelJumlahStok = new System.Windows.Forms.Label();
+			this.label8 = new System.Windows.Forms.Label();
 			this.panel1.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.pictureBoxDetailGambarBarang)).BeginInit();
 			this.SuspendLayout();
@@ -130,7 +130,7 @@
 			// 
 			this.label4.AutoSize = true;
 			this.label4.Font = new System.Drawing.Font("Century Gothic", 12.5F);
-			this.label4.Location = new System.Drawing.Point(19, 283);
+			this.label4.Location = new System.Drawing.Point(19, 280);
 			this.label4.Name = "label4";
 			this.label4.Size = new System.Drawing.Size(110, 21);
 			this.label4.TabIndex = 45;
@@ -190,7 +190,7 @@
 			// 
 			this.labelDetailHargaJual.AutoSize = true;
 			this.labelDetailHargaJual.Font = new System.Drawing.Font("Century Gothic", 12.5F);
-			this.labelDetailHargaJual.Location = new System.Drawing.Point(174, 283);
+			this.labelDetailHargaJual.Location = new System.Drawing.Point(174, 280);
 			this.labelDetailHargaJual.Name = "labelDetailHargaJual";
 			this.labelDetailHargaJual.Size = new System.Drawing.Size(16, 21);
 			this.labelDetailHargaJual.TabIndex = 51;
@@ -210,7 +210,7 @@
 			// 
 			this.labelDetailDiskonJual.AutoSize = true;
 			this.labelDetailDiskonJual.Font = new System.Drawing.Font("Century Gothic", 12.5F);
-			this.labelDetailDiskonJual.Location = new System.Drawing.Point(174, 315);
+			this.labelDetailDiskonJual.Location = new System.Drawing.Point(174, 312);
 			this.labelDetailDiskonJual.Name = "labelDetailDiskonJual";
 			this.labelDetailDiskonJual.Size = new System.Drawing.Size(16, 21);
 			this.labelDetailDiskonJual.TabIndex = 54;
@@ -220,7 +220,7 @@
 			// 
 			this.label6.AutoSize = true;
 			this.label6.Font = new System.Drawing.Font("Century Gothic", 12.5F);
-			this.label6.Location = new System.Drawing.Point(19, 315);
+			this.label6.Location = new System.Drawing.Point(19, 312);
 			this.label6.Name = "label6";
 			this.label6.Size = new System.Drawing.Size(73, 21);
 			this.label6.TabIndex = 53;
@@ -240,37 +240,17 @@
 			// 
 			this.label5.AutoSize = true;
 			this.label5.Font = new System.Drawing.Font("Century Gothic", 12.5F);
-			this.label5.Location = new System.Drawing.Point(196, 315);
+			this.label5.Location = new System.Drawing.Point(196, 312);
 			this.label5.Name = "label5";
 			this.label5.Size = new System.Drawing.Size(23, 21);
 			this.label5.TabIndex = 56;
 			this.label5.Text = "%";
 			// 
-			// label7
-			// 
-			this.label7.AutoSize = true;
-			this.label7.Font = new System.Drawing.Font("Century Gothic", 12.5F);
-			this.label7.Location = new System.Drawing.Point(19, 223);
-			this.label7.Name = "label7";
-			this.label7.Size = new System.Drawing.Size(123, 21);
-			this.label7.TabIndex = 57;
-			this.label7.Text = "Stok Minimal :";
-			// 
-			// labelDetailStokMinimal
-			// 
-			this.labelDetailStokMinimal.AutoSize = true;
-			this.labelDetailStokMinimal.Font = new System.Drawing.Font("Century Gothic", 12.5F);
-			this.labelDetailStokMinimal.Location = new System.Drawing.Point(174, 223);
-			this.labelDetailStokMinimal.Name = "labelDetailStokMinimal";
-			this.labelDetailStokMinimal.Size = new System.Drawing.Size(16, 21);
-			this.labelDetailStokMinimal.TabIndex = 58;
-			this.labelDetailStokMinimal.Text = "-";
-			// 
 			// labelDetailSatuanBarang
 			// 
 			this.labelDetailSatuanBarang.AutoSize = true;
 			this.labelDetailSatuanBarang.Font = new System.Drawing.Font("Century Gothic", 12.5F);
-			this.labelDetailSatuanBarang.Location = new System.Drawing.Point(174, 252);
+			this.labelDetailSatuanBarang.Location = new System.Drawing.Point(174, 223);
 			this.labelDetailSatuanBarang.Name = "labelDetailSatuanBarang";
 			this.labelDetailSatuanBarang.Size = new System.Drawing.Size(16, 21);
 			this.labelDetailSatuanBarang.TabIndex = 60;
@@ -280,21 +260,41 @@
 			// 
 			this.label10.AutoSize = true;
 			this.label10.Font = new System.Drawing.Font("Century Gothic", 12.5F);
-			this.label10.Location = new System.Drawing.Point(19, 252);
+			this.label10.Location = new System.Drawing.Point(19, 223);
 			this.label10.Name = "label10";
 			this.label10.Size = new System.Drawing.Size(79, 21);
 			this.label10.TabIndex = 59;
 			this.label10.Text = "Satuan :";
+			// 
+			// labelJumlahStok
+			// 
+			this.labelJumlahStok.AutoSize = true;
+			this.labelJumlahStok.Font = new System.Drawing.Font("Century Gothic", 12.5F);
+			this.labelJumlahStok.Location = new System.Drawing.Point(174, 252);
+			this.labelJumlahStok.Name = "labelJumlahStok";
+			this.labelJumlahStok.Size = new System.Drawing.Size(16, 21);
+			this.labelJumlahStok.TabIndex = 62;
+			this.labelJumlahStok.Text = "-";
+			// 
+			// label8
+			// 
+			this.label8.AutoSize = true;
+			this.label8.Font = new System.Drawing.Font("Century Gothic", 12.5F);
+			this.label8.Location = new System.Drawing.Point(19, 252);
+			this.label8.Name = "label8";
+			this.label8.Size = new System.Drawing.Size(118, 21);
+			this.label8.TabIndex = 61;
+			this.label8.Text = "Jumlah Stok :";
 			// 
 			// FormDetailBarang
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(659, 385);
+			this.Controls.Add(this.labelJumlahStok);
+			this.Controls.Add(this.label8);
 			this.Controls.Add(this.labelDetailSatuanBarang);
 			this.Controls.Add(this.label10);
-			this.Controls.Add(this.labelDetailStokMinimal);
-			this.Controls.Add(this.label7);
 			this.Controls.Add(this.label5);
 			this.Controls.Add(this.labelTotalHargaJual);
 			this.Controls.Add(this.labelDetailDiskonJual);
@@ -346,9 +346,9 @@
 		private System.Windows.Forms.Label label6;
 		private System.Windows.Forms.Label labelTotalHargaJual;
 		private System.Windows.Forms.Label label5;
-		private System.Windows.Forms.Label label7;
-		private System.Windows.Forms.Label labelDetailStokMinimal;
 		private System.Windows.Forms.Label labelDetailSatuanBarang;
 		private System.Windows.Forms.Label label10;
+		private System.Windows.Forms.Label labelJumlahStok;
+		private System.Windows.Forms.Label label8;
 	}
 }

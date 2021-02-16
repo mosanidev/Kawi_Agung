@@ -23,6 +23,7 @@ namespace Kawi_Agung
 		private void FormDetailBarang_Load(object sender, EventArgs e)
 		{
 			labelDetailKodeBarang.Text = FormMaster.listSelectedBarang[0].KodeBarang;
+			labelJumlahStok.Text = FormMaster.listSelectedBarang[0].JumlahStok.ToString();
 			labelDetailNamaBarang.Text = FormMaster.listSelectedBarang[0].Nama;
 			labelDetailJenisBarang.Text = FormMaster.listSelectedBarang[0].Jenis.Nama;
 			labelDetailKategoriBarang.Text = FormMaster.listSelectedBarang[0].Kategori.Nama;

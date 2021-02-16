@@ -135,14 +135,16 @@ namespace Kawi_Agung
 			if (openFileDialog.ShowDialog() == DialogResult.OK)
 			{
 				// limit jadi 16 Mib
-				//if (new FileInfo(openFileDialog.FileName).Length > (64 * 1024))
-				//{
-				//	MessageBox.Show("Ukuran file tidak boleh lebih dari 64 kb");
-				//}
-
-				pictureBoxUbahBarangGambarBarang.Image = new Bitmap(openFileDialog.FileName);
-				pathFoto = openFileDialog.FileName;
-				pictureBoxUbahBarangGambarBarang.Tag = "Unggahan";
+				if (new FileInfo(openFileDialog.FileName).Length > (16 * 1048576))
+				{
+					MessageBox.Show("Ukuran file tidak boleh lebih dari 64 kb");
+				}
+				else
+				{
+					pictureBoxUbahBarangGambarBarang.Image = new Bitmap(openFileDialog.FileName);
+					pathFoto = openFileDialog.FileName;
+					pictureBoxUbahBarangGambarBarang.Tag = "Unggahan";
+				}
 			}
 		}
 

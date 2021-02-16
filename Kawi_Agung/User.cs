@@ -84,22 +84,22 @@ namespace Kawi_Agung
 			c.ExecuteNonQuery();
 		}
 
-		public static string UbahPegawai(User user, List<User> listUser, string image)
+		public static string UbahPegawai(User user, string image)
 		{
 			string sql = "";
 			MySqlParameter fotoParam = null;
 
 			if (image == "Tidak Ada")
 			{
-				sql = "UPDATE user SET nama='" + user.Nama + "', jenis_kelamin='" + user.JenisKelamin + "', tanggal_lahir='" + user.TanggalLahir.ToString("yyyy-MM-dd") + "', no_telp='" + user.NoTelp + "', idjabatan=" + user.Jabatan.IdJabatan + ", status='" + user.Status + "', alamat='" + user.Alamat + "' WHERE iduser=" + user.IdUser;
+				sql = "UPDATE user SET no_telp='" + user.NoTelp + "', idjabatan=" + user.Jabatan.IdJabatan + ", status='" + user.Status + "', alamat='" + user.Alamat + "' WHERE iduser=" + user.IdUser;
 			}
 			else if (image == "Kosong")
 			{
-				sql = "UPDATE user SET nama='" + user.Nama + "', jenis_kelamin='" + user.JenisKelamin + "', tanggal_lahir='" + user.TanggalLahir.ToString("yyyy-MM-dd") + "', no_telp='" + user.NoTelp + "', idjabatan=" + user.Jabatan.IdJabatan + ", status='" + user.Status + "', alamat='" + user.Alamat + "', foto=NULL WHERE iduser=" + user.IdUser;
+				sql = "UPDATE user SET no_telp='" + user.NoTelp + "', idjabatan=" + user.Jabatan.IdJabatan + ", status='" + user.Status + "', alamat='" + user.Alamat + "', foto=NULL WHERE iduser=" + user.IdUser;
 			}
 			else if (image == "Ada")
 			{
-				sql = "UPDATE user SET nama='" + user.Nama + "', jenis_kelamin='" + user.JenisKelamin + "', tanggal_lahir='" + user.TanggalLahir.ToString("yyyy-MM-dd") + "', no_telp='" + user.NoTelp + "', idjabatan=" + user.Jabatan.IdJabatan + ", status='" + user.Status + "', alamat='" + user.Alamat + "', foto=@foto WHERE iduser=" + user.IdUser;
+				sql = "UPDATE user SET no_telp='" + user.NoTelp + "', idjabatan=" + user.Jabatan.IdJabatan + ", status='" + user.Status + "', alamat='" + user.Alamat + "', foto=@foto WHERE iduser=" + user.IdUser;
 
 				fotoParam = new MySqlParameter("foto", MySqlDbType.Blob);
 
@@ -107,14 +107,6 @@ namespace Kawi_Agung
 			}
 			try
 			{
-				for (int i = 0; i < listUser.Count; i++)
-				{
-					if (user.Username.ToLower() == listUser[i].Username.ToLower())
-					{
-						return "Username sudah ada";
-					}
-				}
-
 				Koneksi k = new Koneksi();
 
 				k.Connect();
@@ -258,15 +250,15 @@ namespace Kawi_Agung
 
 			if (kriteria == "")
 			{
-				sql = "SELECT u.iduser, u.nama, u.username, j.nama, u.status, u.jenis_kelamin, u.tanggal_lahir, u.alamat, u.no_telp, u.foto, u.idjabatan FROM user u INNER JOIN jabatan j ON u.idjabatan=j.idjabatan WHERE NOT j.nama='Pemilik' ORDER BY u.nama";
+				sql = "SELECT u.iduser, u.nama, u.username, j.nama, u.status, u.jenis_kelamin, u.tanggal_lahir, u.alamat, u.no_telp, u.foto, u.idjabatan FROM user u INNER JOIN jabatan j ON u.idjabatan=j.idjabatan WHERE NOT j.nama='Manajer' ORDER BY u.nama";
 			}
 			else if (kriteria == "exclude")
 			{
-				sql = "SELECT u.iduser, u.nama, u.username, j.nama, u.status, u.jenis_kelamin, u.tanggal_lahir, u.alamat, u.no_telp, u.foto, u.idjabatan FROM user u INNER JOIN jabatan j ON u.idjabatan=j.idjabatan WHERE NOT j.nama='Pemilik' AND NOT u.iduser =" + nilaiKriteria;
+				sql = "SELECT u.iduser, u.nama, u.username, j.nama, u.status, u.jenis_kelamin, u.tanggal_lahir, u.alamat, u.no_telp, u.foto, u.idjabatan FROM user u INNER JOIN jabatan j ON u.idjabatan=j.idjabatan WHERE NOT j.nama='Manajer' AND NOT u.iduser =" + nilaiKriteria;
 			}
 			else if (kriteria == "u.nama")
 			{
-				sql = "SELECT u.iduser, u.nama, u.username, j.nama, u.status, u.jenis_kelamin, u.tanggal_lahir, u.alamat, u.no_telp, u.foto, u.idjabatan FROM user u INNER JOIN jabatan j ON u.idjabatan=j.idjabatan WHERE NOT j.nama='Pemilik' AND " + kriteria + " LIKE '%" + nilaiKriteria + "%' ORDER BY u.nama";
+				sql = "SELECT u.iduser, u.nama, u.username, j.nama, u.status, u.jenis_kelamin, u.tanggal_lahir, u.alamat, u.no_telp, u.foto, u.idjabatan FROM user u INNER JOIN jabatan j ON u.idjabatan=j.idjabatan WHERE NOT j.nama='Manajer' AND " + kriteria + " LIKE '%" + nilaiKriteria + "%' ORDER BY u.nama";
 			}
 			else if (kriteria == "u.iduser")
 			{

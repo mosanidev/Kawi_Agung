@@ -64,7 +64,7 @@ namespace Kawi_Agung
 			{
 				MessageBox.Show("Harap isi semua informasi terlebih dahulu");
 			}
-			else if (textBoxUsernamePegawai.Text.Length < 8)
+			else if (textBoxUsernamePegawai.Text.Length < 6)
 			{
 				MessageBox.Show("Username harus sama/lebih dari 8 karakter");
 			}

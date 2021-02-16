@@ -33,10 +33,18 @@
 			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
 			this.label8 = new System.Windows.Forms.Label();
 			this.dataGridViewBarangMasuk = new System.Windows.Forms.DataGridView();
+			this.dataGridViewTextBoxColumn11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.dataGridViewTextBoxColumn12 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.ColumnSatuan = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.dataGridViewTextBoxColumn14 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.dataGridViewTextBoxColumn15 = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.panel8 = new System.Windows.Forms.Panel();
 			this.panelSubMenuTransaksiBarangKeluar = new System.Windows.Forms.Panel();
 			this.panel87 = new System.Windows.Forms.Panel();
-			this.label4 = new System.Windows.Forms.Label();
+			this.labelSupplier = new System.Windows.Forms.Label();
+			this.labelTanggal = new System.Windows.Forms.Label();
+			this.labelNoFaktur = new System.Windows.Forms.Label();
+			this.labelTotalDiskonBeli = new System.Windows.Forms.Label();
 			this.label3 = new System.Windows.Forms.Label();
 			this.label1 = new System.Windows.Forms.Label();
 			this.labelTotalHargaBarangMasuk = new System.Windows.Forms.Label();
@@ -44,15 +52,6 @@
 			this.label17 = new System.Windows.Forms.Label();
 			this.labelJudul = new System.Windows.Forms.Label();
 			this.panel1 = new System.Windows.Forms.Panel();
-			this.labelTotalDiskonBeli = new System.Windows.Forms.Label();
-			this.labelNoFaktur = new System.Windows.Forms.Label();
-			this.labelTanggal = new System.Windows.Forms.Label();
-			this.labelSupplier = new System.Windows.Forms.Label();
-			this.dataGridViewTextBoxColumn11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.dataGridViewTextBoxColumn12 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.ColumnSatuan = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.dataGridViewTextBoxColumn14 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.dataGridViewTextBoxColumn15 = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			((System.ComponentModel.ISupportInitialize)(this.dataGridViewBarangMasuk)).BeginInit();
 			this.panel8.SuspendLayout();
 			this.panelSubMenuTransaksiBarangKeluar.SuspendLayout();
@@ -116,21 +115,53 @@
 			this.dataGridViewBarangMasuk.RowTemplate.DefaultCellStyle.BackColor = System.Drawing.Color.GhostWhite;
 			this.dataGridViewBarangMasuk.RowTemplate.DefaultCellStyle.ForeColor = System.Drawing.Color.Black;
 			this.dataGridViewBarangMasuk.RowTemplate.DefaultCellStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
-			this.dataGridViewBarangMasuk.RowTemplate.DefaultCellStyle.SelectionForeColor = System.Drawing.Color.White;
+			this.dataGridViewBarangMasuk.RowTemplate.DefaultCellStyle.SelectionForeColor = System.Drawing.Color.Black;
 			this.dataGridViewBarangMasuk.RowTemplate.DividerHeight = 1;
 			this.dataGridViewBarangMasuk.RowTemplate.Height = 25;
 			this.dataGridViewBarangMasuk.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
 			this.dataGridViewBarangMasuk.Size = new System.Drawing.Size(609, 238);
 			this.dataGridViewBarangMasuk.TabIndex = 6;
 			// 
+			// dataGridViewTextBoxColumn11
+			// 
+			dataGridViewCellStyle2.Padding = new System.Windows.Forms.Padding(3);
+			this.dataGridViewTextBoxColumn11.DefaultCellStyle = dataGridViewCellStyle2;
+			this.dataGridViewTextBoxColumn11.HeaderText = "Kode Barang";
+			this.dataGridViewTextBoxColumn11.Name = "dataGridViewTextBoxColumn11";
+			this.dataGridViewTextBoxColumn11.ReadOnly = true;
+			// 
+			// dataGridViewTextBoxColumn12
+			// 
+			this.dataGridViewTextBoxColumn12.HeaderText = "Nama Barang";
+			this.dataGridViewTextBoxColumn12.Name = "dataGridViewTextBoxColumn12";
+			this.dataGridViewTextBoxColumn12.ReadOnly = true;
+			// 
+			// ColumnSatuan
+			// 
+			this.ColumnSatuan.HeaderText = "Satuan";
+			this.ColumnSatuan.Name = "ColumnSatuan";
+			this.ColumnSatuan.ReadOnly = true;
+			// 
+			// dataGridViewTextBoxColumn14
+			// 
+			this.dataGridViewTextBoxColumn14.HeaderText = "Harga";
+			this.dataGridViewTextBoxColumn14.Name = "dataGridViewTextBoxColumn14";
+			this.dataGridViewTextBoxColumn14.ReadOnly = true;
+			// 
+			// dataGridViewTextBoxColumn15
+			// 
+			this.dataGridViewTextBoxColumn15.HeaderText = "Jumlah";
+			this.dataGridViewTextBoxColumn15.Name = "dataGridViewTextBoxColumn15";
+			this.dataGridViewTextBoxColumn15.ReadOnly = true;
+			// 
 			// panel8
 			// 
 			this.panel8.Controls.Add(this.dataGridViewBarangMasuk);
 			this.panel8.Dock = System.Windows.Forms.DockStyle.Bottom;
-			this.panel8.Location = new System.Drawing.Point(0, 195);
+			this.panel8.Location = new System.Drawing.Point(0, 196);
 			this.panel8.Name = "panel8";
 			this.panel8.Padding = new System.Windows.Forms.Padding(20);
-			this.panel8.Size = new System.Drawing.Size(649, 290);
+			this.panel8.Size = new System.Drawing.Size(649, 289);
 			this.panel8.TabIndex = 20;
 			// 
 			// panelSubMenuTransaksiBarangKeluar
@@ -152,7 +183,6 @@
 			this.panel87.Controls.Add(this.labelNoFaktur);
 			this.panel87.Controls.Add(this.labelTotalDiskonBeli);
 			this.panel87.Controls.Add(this.label8);
-			this.panel87.Controls.Add(this.label4);
 			this.panel87.Controls.Add(this.label3);
 			this.panel87.Controls.Add(this.label1);
 			this.panel87.Controls.Add(this.labelTotalHargaBarangMasuk);
@@ -164,15 +194,45 @@
 			this.panel87.Size = new System.Drawing.Size(649, 192);
 			this.panel87.TabIndex = 19;
 			// 
-			// label4
+			// labelSupplier
 			// 
-			this.label4.AutoSize = true;
-			this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-			this.label4.Location = new System.Drawing.Point(517, 158);
-			this.label4.Name = "label4";
-			this.label4.Size = new System.Drawing.Size(20, 17);
-			this.label4.TabIndex = 43;
-			this.label4.Text = "%";
+			this.labelSupplier.AutoSize = true;
+			this.labelSupplier.Font = new System.Drawing.Font("Century Gothic", 12.5F);
+			this.labelSupplier.Location = new System.Drawing.Point(158, 80);
+			this.labelSupplier.Name = "labelSupplier";
+			this.labelSupplier.Size = new System.Drawing.Size(115, 21);
+			this.labelSupplier.TabIndex = 72;
+			this.labelSupplier.Text = "labelSupplier";
+			// 
+			// labelTanggal
+			// 
+			this.labelTanggal.AutoSize = true;
+			this.labelTanggal.Font = new System.Drawing.Font("Century Gothic", 12.5F);
+			this.labelTanggal.Location = new System.Drawing.Point(158, 52);
+			this.labelTanggal.Name = "labelTanggal";
+			this.labelTanggal.Size = new System.Drawing.Size(118, 21);
+			this.labelTanggal.TabIndex = 71;
+			this.labelTanggal.Text = "labelTanggal";
+			// 
+			// labelNoFaktur
+			// 
+			this.labelNoFaktur.AutoSize = true;
+			this.labelNoFaktur.Font = new System.Drawing.Font("Century Gothic", 12.5F);
+			this.labelNoFaktur.Location = new System.Drawing.Point(158, 23);
+			this.labelNoFaktur.Name = "labelNoFaktur";
+			this.labelNoFaktur.Size = new System.Drawing.Size(126, 21);
+			this.labelNoFaktur.TabIndex = 70;
+			this.labelNoFaktur.Text = "labelNoFaktur";
+			// 
+			// labelTotalDiskonBeli
+			// 
+			this.labelTotalDiskonBeli.AutoSize = true;
+			this.labelTotalDiskonBeli.Font = new System.Drawing.Font("Century Gothic", 9F);
+			this.labelTotalDiskonBeli.Location = new System.Drawing.Point(494, 158);
+			this.labelTotalDiskonBeli.Name = "labelTotalDiskonBeli";
+			this.labelTotalDiskonBeli.Size = new System.Drawing.Size(15, 17);
+			this.labelTotalDiskonBeli.TabIndex = 69;
+			this.labelTotalDiskonBeli.Text = "0";
 			// 
 			// label3
 			// 
@@ -246,78 +306,6 @@
 			this.panel1.Size = new System.Drawing.Size(649, 59);
 			this.panel1.TabIndex = 30;
 			// 
-			// labelTotalDiskonBeli
-			// 
-			this.labelTotalDiskonBeli.AutoSize = true;
-			this.labelTotalDiskonBeli.Font = new System.Drawing.Font("Century Gothic", 9F);
-			this.labelTotalDiskonBeli.Location = new System.Drawing.Point(494, 158);
-			this.labelTotalDiskonBeli.Name = "labelTotalDiskonBeli";
-			this.labelTotalDiskonBeli.Size = new System.Drawing.Size(15, 17);
-			this.labelTotalDiskonBeli.TabIndex = 69;
-			this.labelTotalDiskonBeli.Text = "0";
-			// 
-			// labelNoFaktur
-			// 
-			this.labelNoFaktur.AutoSize = true;
-			this.labelNoFaktur.Font = new System.Drawing.Font("Century Gothic", 12.5F);
-			this.labelNoFaktur.Location = new System.Drawing.Point(158, 23);
-			this.labelNoFaktur.Name = "labelNoFaktur";
-			this.labelNoFaktur.Size = new System.Drawing.Size(126, 21);
-			this.labelNoFaktur.TabIndex = 70;
-			this.labelNoFaktur.Text = "labelNoFaktur";
-			// 
-			// labelTanggal
-			// 
-			this.labelTanggal.AutoSize = true;
-			this.labelTanggal.Font = new System.Drawing.Font("Century Gothic", 12.5F);
-			this.labelTanggal.Location = new System.Drawing.Point(158, 52);
-			this.labelTanggal.Name = "labelTanggal";
-			this.labelTanggal.Size = new System.Drawing.Size(118, 21);
-			this.labelTanggal.TabIndex = 71;
-			this.labelTanggal.Text = "labelTanggal";
-			// 
-			// labelSupplier
-			// 
-			this.labelSupplier.AutoSize = true;
-			this.labelSupplier.Font = new System.Drawing.Font("Century Gothic", 12.5F);
-			this.labelSupplier.Location = new System.Drawing.Point(158, 80);
-			this.labelSupplier.Name = "labelSupplier";
-			this.labelSupplier.Size = new System.Drawing.Size(115, 21);
-			this.labelSupplier.TabIndex = 72;
-			this.labelSupplier.Text = "labelSupplier";
-			// 
-			// dataGridViewTextBoxColumn11
-			// 
-			dataGridViewCellStyle2.Padding = new System.Windows.Forms.Padding(3);
-			this.dataGridViewTextBoxColumn11.DefaultCellStyle = dataGridViewCellStyle2;
-			this.dataGridViewTextBoxColumn11.HeaderText = "Kode Barang";
-			this.dataGridViewTextBoxColumn11.Name = "dataGridViewTextBoxColumn11";
-			this.dataGridViewTextBoxColumn11.ReadOnly = true;
-			// 
-			// dataGridViewTextBoxColumn12
-			// 
-			this.dataGridViewTextBoxColumn12.HeaderText = "Nama Barang";
-			this.dataGridViewTextBoxColumn12.Name = "dataGridViewTextBoxColumn12";
-			this.dataGridViewTextBoxColumn12.ReadOnly = true;
-			// 
-			// ColumnSatuan
-			// 
-			this.ColumnSatuan.HeaderText = "Satuan";
-			this.ColumnSatuan.Name = "ColumnSatuan";
-			this.ColumnSatuan.ReadOnly = true;
-			// 
-			// dataGridViewTextBoxColumn14
-			// 
-			this.dataGridViewTextBoxColumn14.HeaderText = "Harga";
-			this.dataGridViewTextBoxColumn14.Name = "dataGridViewTextBoxColumn14";
-			this.dataGridViewTextBoxColumn14.ReadOnly = true;
-			// 
-			// dataGridViewTextBoxColumn15
-			// 
-			this.dataGridViewTextBoxColumn15.HeaderText = "Jumlah";
-			this.dataGridViewTextBoxColumn15.Name = "dataGridViewTextBoxColumn15";
-			this.dataGridViewTextBoxColumn15.ReadOnly = true;
-			// 
 			// FormDetailNotaBeli
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -350,7 +338,6 @@
 		private System.Windows.Forms.Label labelTanggal;
 		private System.Windows.Forms.Label labelNoFaktur;
 		private System.Windows.Forms.Label labelTotalDiskonBeli;
-		private System.Windows.Forms.Label label4;
 		private System.Windows.Forms.Label label3;
 		private System.Windows.Forms.Label label1;
 		private System.Windows.Forms.Label labelTotalHargaBarangMasuk;

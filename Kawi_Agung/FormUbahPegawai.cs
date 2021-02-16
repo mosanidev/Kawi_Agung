@@ -37,29 +37,29 @@ namespace Kawi_Agung
 			{
 				comboBoxStatusPegawai.Visible = false;
 				labelStatus.Text = "Belum Aktif";
+				comboBoxJabatanPegawai.Focus();
 			}
 			else
 			{
 				labelStatus.Visible = false;
+				comboBoxStatusPegawai.Focus();
 			}
 		}
 
 		private void FormUbahPegawai_Load(object sender, EventArgs e)
 		{
-			textBoxPegawaiNama.Text = FormMaster.listSelectedPegawai[0].Nama;
+			labelNama.Text = FormMaster.listSelectedPegawai[0].Nama;
 			textBoxNoTelpPegawai.Text = FormMaster.listSelectedPegawai[0].NoTelp;
 			labelUsername.Text = FormMaster.listSelectedPegawai[0].Username;
 			textBoxAlamatPegawai.Text = FormMaster.listSelectedPegawai[0].Alamat;
-			dateTimePickerTanggalLahirPegawai.Value = FormMaster.listSelectedPegawai[0].TanggalLahir;
+			labelTanggalLahir.Text = FormMaster.listSelectedPegawai[0].TanggalLahir.ToString("dd MMMM yyyy");
 
 			if (FormMaster.listSelectedPegawai[0].Foto != null)
 			{
 				pictureBoxUbahFotoUser.Image = ConvertBinaryToImage(FormMaster.listSelectedPegawai[0].Foto);
 			}
 
-			comboBoxJenisKelaminPegawai.Items.Add("Laki-laki");
-			comboBoxJenisKelaminPegawai.Items.Add("Perempuan");
-			comboBoxJenisKelaminPegawai.SelectedItem = FormMaster.listSelectedPegawai[0].JenisKelamin;
+			labelJenisKelamin.Text = FormMaster.listSelectedPegawai[0].JenisKelamin;
 
 			comboBoxStatusPegawai.Items.Add("Aktif");
 			comboBoxStatusPegawai.Items.Add("Blokir");
@@ -76,9 +76,9 @@ namespace Kawi_Agung
 				comboBoxJabatanPegawai.SelectedItem = FormMaster.listSelectedPegawai[0].Jabatan.IdJabatan + " - " + FormMaster.listSelectedPegawai[0].Jabatan.Nama;
 			}
 
-			textBoxPegawaiNama.SelectionStart = textBoxPegawaiNama.Text.Length;
-			textBoxPegawaiNama.SelectionLength = 0;
-			
+			textBoxNoTelpPegawai.SelectionStart = textBoxNoTelpPegawai.Text.Length;
+			textBoxNoTelpPegawai.SelectionLength = 0;
+
 		}
 
 		Image ConvertBinaryToImage(byte[] data)
@@ -132,7 +132,7 @@ namespace Kawi_Agung
 
 		private void buttonUbahPegawai_Click(object sender, EventArgs e)
 		{
-			if (textBoxPegawaiNama.Text == "" || textBoxNoTelpPegawai.Text == "" || textBoxAlamatPegawai.Text == "")
+			if (textBoxNoTelpPegawai.Text == "" || textBoxAlamatPegawai.Text == "")
 			{
 				MessageBox.Show("Data harus diisi semua terlebih dahulu");
 			}
@@ -152,9 +152,6 @@ namespace Kawi_Agung
 
 				User user = new User();
 				user.IdUser = FormMaster.listSelectedPegawai[0].IdUser;
-				user.Nama = textBoxPegawaiNama.Text.Trim();
-				user.JenisKelamin = comboBoxJenisKelaminPegawai.Text;
-				user.TanggalLahir = dateTimePickerTanggalLahirPegawai.Value;
 				user.NoTelp = textBoxNoTelpPegawai.Text.Trim();
 
 				if (statusUser == "Belum Aktif")
@@ -170,24 +167,17 @@ namespace Kawi_Agung
 				user.Foto = foto;
 				user.Jabatan = jabatan;
 
-				List<User> listUser = new List<User>();
-
-				string hasilBaca = User.BacaPegawai("exclude", FormMaster.listSelectedPegawai[0].IdUser.ToString(), listUser);
-
 				string hasilUbah = "";
 
-				if (hasilBaca == "1")
+				if (pictureBoxUbahFotoUser.Tag == "Default")
 				{
-					if (pictureBoxUbahFotoUser.Tag == "Default")
-					{
-						hasilUbah = User.UbahPegawai(user, listUser, "Kosong");
-					} else if (pictureBoxUbahFotoUser.Tag == "Unggahan")
-					{
-						hasilUbah = User.UbahPegawai(user, listUser, "Ada");
-					} else if (pictureBoxUbahFotoUser.Tag == null)
-					{
-						hasilUbah = User.UbahPegawai(user, listUser, "Tidak Ada");
-					}
+					hasilUbah = User.UbahPegawai(user, "Kosong");
+				} else if (pictureBoxUbahFotoUser.Tag == "Unggahan")
+				{
+					hasilUbah = User.UbahPegawai(user, "Ada");
+				} else if (pictureBoxUbahFotoUser.Tag == null)
+				{
+					hasilUbah = User.UbahPegawai(user, "Tidak Ada");
 				}
 
 				if (hasilUbah == "1")
@@ -197,10 +187,6 @@ namespace Kawi_Agung
 					this.mainForm.textBoxSearchPegawai.Clear();
 					this.mainForm.FormMaster_Load(buttonUbahPegawai, e);
 					this.Close();
-				}
-				else
-				{
-					MessageBox.Show(hasilUbah + ".Harap input username yang lain");
 				}
 			}
 		}

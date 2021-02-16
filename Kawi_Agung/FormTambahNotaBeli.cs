@@ -93,7 +93,7 @@ namespace Kawi_Agung
 
 			if (e.KeyCode == Keys.Enter)
 			{
-				string barang = Barang.BacaDataBarang("b.kode_barang", textBoxKodeBarangMasuk.Text.ToString(), listBarang);
+				string barang = Barang.BacaDataBarang("cari barang", textBoxKodeBarangMasuk.Text.ToString(), listBarang);
 
 				if (listBarang.Count == 1)
 				{
@@ -128,6 +128,7 @@ namespace Kawi_Agung
 			labelKategoriBarang.Text = listBarang[0].Kategori.Nama;
 			labelMerekBarang.Text = listBarang[0].Merek.Nama;
 			labelJenisBarang.Text = listBarang[0].Jenis.Nama;
+			labelJumlahStok.Text = listBarang[0].JumlahStok.ToString();
 			labelSatuan.Text = listBarang[0].Satuan;
 		}
 
@@ -215,6 +216,7 @@ namespace Kawi_Agung
 			labelMerekBarang.Text = "-";
 			labelJenisBarang.Text = "-";
 			labelSatuan.Text = "-";
+			labelJumlahStok.Text = "-";
 			numericUpDownHargaBeli.Value = 0;
 			numericUpDownJumlahBarangMasuk.Value = 1;
 		}
@@ -253,7 +255,7 @@ namespace Kawi_Agung
 		{
 			if (textBoxNoFaktur.Text == "" || comboBoxSupplier.Text == "" || dataGridViewBarangMasuk.RowCount == 0)
 			{
-				MessageBox.Show("Harap isi informasi nota beli secara lengkap");
+				MessageBox.Show("Harap isi informasi nota beli secara lengkap", "Warning");
 			}
 			else 
 			{
@@ -268,8 +270,8 @@ namespace Kawi_Agung
 					nb.NoFaktur = textBoxNoFaktur.Text;
 
 					NotaBeliDetil nbd = new NotaBeliDetil();
-					nbd.IdBarang = b;
-					nbd.NoFaktur = nb;
+					nbd.Barang = b;
+					nbd.NotaBeli = nb;
 					nbd.Qty = Convert.ToInt32(row.Cells[5].Value);
 					nbd.SubTotal = Convert.ToInt32(row.Cells[4].Value);
 					nbd.Total = hitungDiskon(hitungGrandTotal(), Convert.ToInt32(numericUpDownTotalDiskonBeli.Value));
@@ -292,16 +294,19 @@ namespace Kawi_Agung
 				n.User = u;
 				n.ListNotaBeliDetil = listNotaBeliDetil;
 
-				string hasil = NotaBeli.TambahData(n);
+				string hasil = NotaBeli.TambahData(n, this.mainForm.listNotaBeli);
 
 				if (hasil == "1")
 				{
+					MessageBox.Show("Data berhasil ditambahkan");
+
+					this.mainForm.textBoxSearchBarangMasuk.Clear();
 					this.mainForm.FormMaster_Load(buttonSimpan, e);
 					this.Close();
 				}
 				else
 				{
-					MessageBox.Show("Data gagal dimasukkan");
+					MessageBox.Show(hasil);
 				}
 			}
 		}

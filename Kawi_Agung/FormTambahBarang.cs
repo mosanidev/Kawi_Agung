@@ -36,7 +36,6 @@ namespace Kawi_Agung
 
 		private void FormTambahBarang_Load(object sender, EventArgs e)
 		{
-			
 			string hasilBacaJenis = JenisBarang.BacaData("", "", listJenis);
 			string hasilBacaKategori = KategoriBarang.BacaData("", "", listKategori);
 			string hasilBacaMerek = MerekBarang.BacaData("", "", listMerek);
@@ -150,13 +149,15 @@ namespace Kawi_Agung
 			if (openFileDialog.ShowDialog() == DialogResult.OK)
 			{
 				// limit jadi 16 Mib
-				//if (new FileInfo(openFileDialog.FileName).Length > (64 * 1024))
-				//{
-				//	MessageBox.Show("Ukuran file tidak boleh lebih dari 64 kb");
-				//}
-				
-				pictureBoxTambahBarangGambarBarang.Image = new Bitmap(openFileDialog.FileName);
-				pathFoto = openFileDialog.FileName;
+				if (new FileInfo(openFileDialog.FileName).Length > (16 * 1048576))
+				{
+					MessageBox.Show("Ukuran file tidak boleh lebih dari 64 kb");
+				}
+				else
+				{
+					pictureBoxTambahBarangGambarBarang.Image = new Bitmap(openFileDialog.FileName);
+					pathFoto = openFileDialog.FileName;
+				}
 			}
 		}
 

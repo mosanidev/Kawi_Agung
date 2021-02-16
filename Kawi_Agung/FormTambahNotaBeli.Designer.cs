@@ -34,6 +34,9 @@
 			this.panel1 = new System.Windows.Forms.Panel();
 			this.labelJudul = new System.Windows.Forms.Label();
 			this.panel87 = new System.Windows.Forms.Panel();
+			this.labelJumlahStok = new System.Windows.Forms.Label();
+			this.label18 = new System.Windows.Forms.Label();
+			this.label11 = new System.Windows.Forms.Label();
 			this.labelIdBarang = new System.Windows.Forms.Label();
 			this.labelKodeBarang = new System.Windows.Forms.Label();
 			this.label5 = new System.Windows.Forms.Label();
@@ -112,6 +115,9 @@
 			// 
 			// panel87
 			// 
+			this.panel87.Controls.Add(this.labelJumlahStok);
+			this.panel87.Controls.Add(this.label18);
+			this.panel87.Controls.Add(this.label11);
 			this.panel87.Controls.Add(this.labelIdBarang);
 			this.panel87.Controls.Add(this.labelKodeBarang);
 			this.panel87.Controls.Add(this.label5);
@@ -150,6 +156,34 @@
 			this.panel87.Size = new System.Drawing.Size(687, 343);
 			this.panel87.TabIndex = 19;
 			// 
+			// labelJumlahStok
+			// 
+			this.labelJumlahStok.AutoSize = true;
+			this.labelJumlahStok.Location = new System.Drawing.Point(517, 283);
+			this.labelJumlahStok.Name = "labelJumlahStok";
+			this.labelJumlahStok.Size = new System.Drawing.Size(10, 13);
+			this.labelJumlahStok.TabIndex = 113;
+			this.labelJumlahStok.Text = "-";
+			// 
+			// label18
+			// 
+			this.label18.AutoSize = true;
+			this.label18.Location = new System.Drawing.Point(436, 283);
+			this.label18.Name = "label18";
+			this.label18.Size = new System.Drawing.Size(74, 13);
+			this.label18.TabIndex = 112;
+			this.label18.Text = "Jumlah Stok  :";
+			// 
+			// label11
+			// 
+			this.label11.AutoSize = true;
+			this.label11.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.label11.Location = new System.Drawing.Point(162, 164);
+			this.label11.Name = "label11";
+			this.label11.Size = new System.Drawing.Size(251, 16);
+			this.label11.TabIndex = 111;
+			this.label11.Text = "Tekan ENTER untuk menampilkan info barang";
+			// 
 			// labelIdBarang
 			// 
 			this.labelIdBarang.AutoSize = true;
@@ -164,7 +198,7 @@
 			// 
 			this.labelKodeBarang.AutoSize = true;
 			this.labelKodeBarang.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.labelKodeBarang.Location = new System.Drawing.Point(492, 164);
+			this.labelKodeBarang.Location = new System.Drawing.Point(516, 164);
 			this.labelKodeBarang.Name = "labelKodeBarang";
 			this.labelKodeBarang.Size = new System.Drawing.Size(10, 13);
 			this.labelKodeBarang.TabIndex = 72;
@@ -182,7 +216,7 @@
 			// labelSatuan
 			// 
 			this.labelSatuan.AutoSize = true;
-			this.labelSatuan.Location = new System.Drawing.Point(492, 262);
+			this.labelSatuan.Location = new System.Drawing.Point(516, 262);
 			this.labelSatuan.Name = "labelSatuan";
 			this.labelSatuan.Size = new System.Drawing.Size(10, 13);
 			this.labelSatuan.TabIndex = 70;
@@ -200,16 +234,16 @@
 			// label8
 			// 
 			this.label8.AutoSize = true;
-			this.label8.Font = new System.Drawing.Font("Century Gothic", 9F);
-			this.label8.Location = new System.Drawing.Point(455, 321);
+			this.label8.Font = new System.Drawing.Font("Microsoft Tai Le", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.label8.Location = new System.Drawing.Point(53, 277);
 			this.label8.Name = "label8";
-			this.label8.Size = new System.Drawing.Size(84, 17);
+			this.label8.Size = new System.Drawing.Size(80, 16);
 			this.label8.TabIndex = 68;
 			this.label8.Text = "Total Diskon :";
 			// 
 			// numericUpDownTotalDiskonBeli
 			// 
-			this.numericUpDownTotalDiskonBeli.Location = new System.Drawing.Point(545, 320);
+			this.numericUpDownTotalDiskonBeli.Location = new System.Drawing.Point(143, 276);
 			this.numericUpDownTotalDiskonBeli.Name = "numericUpDownTotalDiskonBeli";
 			this.numericUpDownTotalDiskonBeli.Size = new System.Drawing.Size(47, 20);
 			this.numericUpDownTotalDiskonBeli.TabIndex = 67;
@@ -241,7 +275,7 @@
 			// labelMerekBarang
 			// 
 			this.labelMerekBarang.AutoSize = true;
-			this.labelMerekBarang.Location = new System.Drawing.Point(492, 241);
+			this.labelMerekBarang.Location = new System.Drawing.Point(516, 241);
 			this.labelMerekBarang.Name = "labelMerekBarang";
 			this.labelMerekBarang.Size = new System.Drawing.Size(10, 13);
 			this.labelMerekBarang.TabIndex = 57;
@@ -259,7 +293,7 @@
 			// labelKategoriBarang
 			// 
 			this.labelKategoriBarang.AutoSize = true;
-			this.labelKategoriBarang.Location = new System.Drawing.Point(492, 221);
+			this.labelKategoriBarang.Location = new System.Drawing.Point(516, 221);
 			this.labelKategoriBarang.Name = "labelKategoriBarang";
 			this.labelKategoriBarang.Size = new System.Drawing.Size(10, 13);
 			this.labelKategoriBarang.TabIndex = 55;
@@ -277,7 +311,7 @@
 			// labelJenisBarang
 			// 
 			this.labelJenisBarang.AutoSize = true;
-			this.labelJenisBarang.Location = new System.Drawing.Point(492, 202);
+			this.labelJenisBarang.Location = new System.Drawing.Point(516, 202);
 			this.labelJenisBarang.Name = "labelJenisBarang";
 			this.labelJenisBarang.Size = new System.Drawing.Size(10, 13);
 			this.labelJenisBarang.TabIndex = 53;
@@ -305,7 +339,7 @@
 			// 
 			this.labelNamaBarang.AutoSize = true;
 			this.labelNamaBarang.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.labelNamaBarang.Location = new System.Drawing.Point(492, 183);
+			this.labelNamaBarang.Location = new System.Drawing.Point(516, 183);
 			this.labelNamaBarang.Name = "labelNamaBarang";
 			this.labelNamaBarang.Size = new System.Drawing.Size(10, 13);
 			this.labelNamaBarang.TabIndex = 50;
@@ -332,7 +366,7 @@
 			// 
 			this.label4.AutoSize = true;
 			this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-			this.label4.Location = new System.Drawing.Point(598, 321);
+			this.label4.Location = new System.Drawing.Point(196, 277);
 			this.label4.Name = "label4";
 			this.label4.Size = new System.Drawing.Size(20, 17);
 			this.label4.TabIndex = 43;
@@ -386,7 +420,7 @@
 			// 
 			this.labelTotalHargaBarangMasuk.AutoSize = true;
 			this.labelTotalHargaBarangMasuk.Font = new System.Drawing.Font("Century Gothic", 12.5F);
-			this.labelTotalHargaBarangMasuk.Location = new System.Drawing.Point(489, 291);
+			this.labelTotalHargaBarangMasuk.Location = new System.Drawing.Point(119, 247);
 			this.labelTotalHargaBarangMasuk.Name = "labelTotalHargaBarangMasuk";
 			this.labelTotalHargaBarangMasuk.Size = new System.Drawing.Size(41, 21);
 			this.labelTotalHargaBarangMasuk.TabIndex = 30;
@@ -396,7 +430,7 @@
 			// 
 			this.label12.AutoSize = true;
 			this.label12.Font = new System.Drawing.Font("Century Gothic", 12.5F);
-			this.label12.Location = new System.Drawing.Point(422, 291);
+			this.label12.Location = new System.Drawing.Point(52, 247);
 			this.label12.Name = "label12";
 			this.label12.Size = new System.Drawing.Size(61, 21);
 			this.label12.TabIndex = 29;
@@ -414,7 +448,7 @@
 			// 
 			// numericUpDownJumlahBarangMasuk
 			// 
-			this.numericUpDownJumlahBarangMasuk.Location = new System.Drawing.Point(162, 175);
+			this.numericUpDownJumlahBarangMasuk.Location = new System.Drawing.Point(162, 186);
 			this.numericUpDownJumlahBarangMasuk.Minimum = new decimal(new int[] {
             1,
             0,
@@ -434,7 +468,7 @@
 			// 
 			this.label15.AutoSize = true;
 			this.label15.Font = new System.Drawing.Font("Century Gothic", 12.5F);
-			this.label15.Location = new System.Drawing.Point(17, 172);
+			this.label15.Location = new System.Drawing.Point(17, 183);
 			this.label15.Name = "label15";
 			this.label15.Size = new System.Drawing.Size(78, 21);
 			this.label15.TabIndex = 25;
@@ -470,10 +504,10 @@
 			this.panel8.Controls.Add(this.buttonSimpan);
 			this.panel8.Controls.Add(this.dataGridViewBarangMasuk);
 			this.panel8.Dock = System.Windows.Forms.DockStyle.Bottom;
-			this.panel8.Location = new System.Drawing.Point(0, 405);
+			this.panel8.Location = new System.Drawing.Point(0, 377);
 			this.panel8.Name = "panel8";
 			this.panel8.Padding = new System.Windows.Forms.Padding(20);
-			this.panel8.Size = new System.Drawing.Size(687, 281);
+			this.panel8.Size = new System.Drawing.Size(687, 307);
 			this.panel8.TabIndex = 20;
 			// 
 			// buttonSimpan
@@ -489,7 +523,7 @@
 			this.buttonSimpan.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
 			this.buttonSimpan.Font = new System.Drawing.Font("Century Gothic", 11F);
 			this.buttonSimpan.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(49)))), ((int)(((byte)(69)))));
-			this.buttonSimpan.Location = new System.Drawing.Point(20, 221);
+			this.buttonSimpan.Location = new System.Drawing.Point(20, 247);
 			this.buttonSimpan.Name = "buttonSimpan";
 			this.buttonSimpan.OnHoverBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(7)))), ((int)(((byte)(104)))), ((int)(((byte)(159)))));
 			this.buttonSimpan.OnHoverButtonColor = System.Drawing.Color.FromArgb(((int)(((byte)(7)))), ((int)(((byte)(104)))), ((int)(((byte)(159)))));
@@ -611,14 +645,14 @@
 			this.panelSubMenuTransaksiBarangKeluar.ImeMode = System.Windows.Forms.ImeMode.NoControl;
 			this.panelSubMenuTransaksiBarangKeluar.Location = new System.Drawing.Point(0, 0);
 			this.panelSubMenuTransaksiBarangKeluar.Name = "panelSubMenuTransaksiBarangKeluar";
-			this.panelSubMenuTransaksiBarangKeluar.Size = new System.Drawing.Size(687, 686);
+			this.panelSubMenuTransaksiBarangKeluar.Size = new System.Drawing.Size(687, 684);
 			this.panelSubMenuTransaksiBarangKeluar.TabIndex = 27;
 			// 
 			// FormTambahNotaBeli
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(687, 686);
+			this.ClientSize = new System.Drawing.Size(687, 684);
 			this.Controls.Add(this.panel1);
 			this.Controls.Add(this.panelSubMenuTransaksiBarangKeluar);
 			this.Name = "FormTambahNotaBeli";
@@ -688,5 +722,8 @@
 		private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn15;
 		private System.Windows.Forms.DataGridViewButtonColumn ColumnAction;
 		private System.Windows.Forms.Label labelIdBarang;
+		private System.Windows.Forms.Label label11;
+		private System.Windows.Forms.Label labelJumlahStok;
+		private System.Windows.Forms.Label label18;
 	}
 }

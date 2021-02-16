@@ -11,8 +11,8 @@ namespace Kawi_Agung
 	{
 		#region DATAMEMBERS
 
-		private Barang idBarang;
-		private NotaBeli noFaktur;
+		private Barang barang;
+		private NotaBeli notaBeli;
 		private int qty;
 		private int subTotal;
 		private int total;
@@ -21,8 +21,8 @@ namespace Kawi_Agung
 		#endregion
 
 		#region PROPERTIES
-		public Barang IdBarang { get => idBarang; set => idBarang = value; }
-		public NotaBeli NoFaktur { get => noFaktur; set => noFaktur = value; }
+		public Barang Barang { get => barang; set => barang = value; }
+		public NotaBeli NotaBeli { get => notaBeli; set => notaBeli = value; }
 		public int Qty { get => qty; set => qty = value; }
 		public int SubTotal { get => subTotal; set => subTotal = value; }
 		public int Total { get => total; set => total = value; }
@@ -42,8 +42,8 @@ namespace Kawi_Agung
 
 		public NotaBeliDetil(Barang pBarang, NotaBeli pNotaBeli, int pQty, int pSubTotal, int pTotal, int pDiskonPersen)
 		{
-			IdBarang = pBarang;
-			NoFaktur = pNotaBeli;
+			Barang = pBarang;
+			NotaBeli = pNotaBeli;
 			Qty = pQty;
 			SubTotal = pSubTotal;
 			Total = pTotal;
@@ -62,11 +62,11 @@ namespace Kawi_Agung
 
 			if (kriteria == "")
 			{
-				sql = "SELECT nbd.idbarang, b.kode_barang, b.nama, b.satuan, nb.no_faktur, nbd.qty, nbd.sub_total, nbd.total, nbd.diskon_persen, nb.tanggal, s.nama FROM nota_beli_detil nbd INNER JOIN barang b ON nbd.idbarang=b.idbarang INNER JOIN nota_beli nb ON nbd.no_faktur=nb.no_faktur INNER JOIN supplier s ON nb.idsupplier=s.idsupplier";
+				sql = "SELECT nbd.idbarang, b.kode_barang, b.nama, b.satuan, nb.idnota_beli, nb.no_faktur, nbd.qty, nbd.sub_total, nbd.total, nbd.diskon_persen, nb.tanggal, s.nama FROM nota_beli_detil nbd INNER JOIN barang b ON nbd.idbarang=b.idbarang INNER JOIN nota_beli nb ON nbd.idnota_beli=nb.idnota_beli INNER JOIN supplier s ON nb.idsupplier=s.idsupplier";
 			}
 			else
 			{
-				sql = "SELECT nbd.idbarang, b.kode_barang, b.nama, b.satuan, nb.no_faktur, nbd.qty, nbd.sub_total, nbd.total, nbd.diskon_persen, nb.tanggal, s.nama FROM nota_beli_detil nbd INNER JOIN barang b ON nbd.idbarang=b.idbarang INNER JOIN nota_beli nb ON nbd.no_faktur=nb.no_faktur INNER JOIN supplier s ON nb.idsupplier=s.idsupplier WHERE " + kriteria + "='" + nilaiKriteria + "'";
+				sql = "SELECT nbd.idbarang, b.kode_barang, b.nama, b.satuan, nb.idnota_beli, nb.no_faktur, nbd.qty, nbd.sub_total, nbd.total, nbd.diskon_persen, nb.tanggal, s.nama FROM nota_beli_detil nbd INNER JOIN barang b ON nbd.idbarang=b.idbarang INNER JOIN nota_beli nb ON nbd.idnota_beli=nb.idnota_beli INNER JOIN supplier s ON nb.idsupplier=s.idsupplier WHERE " + kriteria + "='" + nilaiKriteria + "'";
 			}
 
 			MySqlCommand cmd = new MySqlCommand(sql, conn.KoneksiDB);
@@ -77,20 +77,21 @@ namespace Kawi_Agung
 				while (hasil.Read())
 				{
 					Supplier s = new Supplier();
-					s.Nama = hasil.GetValue(10).ToString();
+					s.Nama = hasil.GetValue(11).ToString();
 
 					Barang b = new Barang();
-					b.IdBarang = int.Parse(hasil.GetValue(0).ToString());
+					b.IdBarang = Convert.ToInt32(hasil.GetValue(0));
 					b.KodeBarang = hasil.GetValue(1).ToString();
 					b.Nama = hasil.GetValue(2).ToString();
 					b.Satuan = hasil.GetValue(3).ToString();
 
 					NotaBeli nb = new NotaBeli();
-					nb.NoFaktur = hasil.GetValue(4).ToString();
-					nb.Tanggal = DateTime.Parse(hasil.GetValue(9).ToString());
+					nb.IdNotaBeli = Convert.ToInt32(hasil.GetValue(4));
+					nb.NoFaktur = hasil.GetValue(5).ToString();
+					nb.Tanggal = DateTime.Parse(hasil.GetValue(10).ToString());
 					nb.Supplier = s;
 
-					NotaBeliDetil notaBeliDetil = new NotaBeliDetil(b, nb, Convert.ToInt32(hasil.GetValue(5)), Convert.ToInt32(hasil.GetValue(6)), Convert.ToInt32(hasil.GetValue(7)), Convert.ToInt32(hasil.GetValue(8)));
+					NotaBeliDetil notaBeliDetil = new NotaBeliDetil(b, nb, Convert.ToInt32(hasil.GetValue(6)), Convert.ToInt32(hasil.GetValue(7)), Convert.ToInt32(hasil.GetValue(8)), Convert.ToInt32(hasil.GetValue(9)));
 
 					listNotaBeliDetil.Add(notaBeliDetil);
 				}

@@ -24,6 +24,8 @@ namespace Kawi_Agung
 		private MerekBarang merek;
 		private int jumlahStok;
 		private string satuan;
+		private int totalJumlahStok;
+		private int totalBarangStokKurang;
 
 		#endregion
 
@@ -40,6 +42,8 @@ namespace Kawi_Agung
 		public MerekBarang Merek { get => merek; set => merek = value; }
 		public int JumlahStok { get => jumlahStok; set => jumlahStok = value; }
 		public string Satuan { get => satuan; set => satuan = value; }
+		public int TotalJumlahStok { get => totalJumlahStok; set => totalJumlahStok = value; }
+		public int TotalBarangStokKurang { get => totalBarangStokKurang; set => totalBarangStokKurang = value; }
 
 		#endregion
 
@@ -68,19 +72,23 @@ namespace Kawi_Agung
 
 			if (kriteria == "")
 			{
-				sql = "SELECT b.idbarang, b.kode_barang, b.nama, j.nama AS jenis, k.nama AS kategori, m.nama As merek, b.harga_jual, b.foto, b.diskon_persen_jual, b.satuan, b.jumlah_stok, j.idjenis_barang, k.idkategori_barang, m.idmerek_barang FROM barang b INNER JOIN kategori_barang k ON b.idkategori_barang=k.idkategori_barang INNER JOIN jenis_barang j ON b.idjenis_barang=j.idjenis_barang INNER JOIN merek_barang m ON b.idmerek_barang=m.idmerek_barang ORDER By b.idbarang";
+				sql = "SELECT b.idbarang, b.kode_barang, b.nama, j.nama AS jenis, k.nama AS kategori, m.nama As merek, b.harga_jual, b.foto, b.diskon_persen_jual, b.satuan, b.jumlah_stok, j.idjenis_barang, k.idkategori_barang, m.idmerek_barang FROM barang b INNER JOIN kategori_barang k ON b.idkategori_barang=k.idkategori_barang INNER JOIN jenis_barang j ON b.idjenis_barang=j.idjenis_barang INNER JOIN merek_barang m ON b.idmerek_barang=m.idmerek_barang ORDER BY b.kode_barang";
 			}
 			else if (kriteria == "b.idbarang")
 			{
-				sql = "SELECT b.idbarang, b.kode_barang, b.nama, j.nama AS jenis, k.nama AS kategori, m.nama As merek, b.harga_jual, b.foto, b.diskon_persen_jual, b.satuan, b.jumlah_stok, j.idjenis_barang, k.idkategori_barang, m.idmerek_barang FROM barang b INNER JOIN kategori_barang k ON b.idkategori_barang=k.idkategori_barang INNER JOIN jenis_barang j ON b.idjenis_barang=j.idjenis_barang INNER JOIN merek_barang m ON b.idmerek_barang=m.idmerek_barang WHERE " + kriteria + "=" + nilaiKriteria + " ORDER By b.idbarang";
+				sql = "SELECT b.idbarang, b.kode_barang, b.nama, j.nama AS jenis, k.nama AS kategori, m.nama As merek, b.harga_jual, b.foto, b.diskon_persen_jual, b.satuan, b.jumlah_stok, j.idjenis_barang, k.idkategori_barang, m.idmerek_barang FROM barang b INNER JOIN kategori_barang k ON b.idkategori_barang=k.idkategori_barang INNER JOIN jenis_barang j ON b.idjenis_barang=j.idjenis_barang INNER JOIN merek_barang m ON b.idmerek_barang=m.idmerek_barang WHERE b.idbarang=" + nilaiKriteria + " ORDER BY b.kode_barang";
+			}
+			else if (kriteria == "cari barang") // kriteria khusus untuk perintah sql yang menyeleksi kode barang tertentu
+			{
+				sql = "SELECT b.idbarang, b.kode_barang, b.nama, j.nama AS jenis, k.nama AS kategori, m.nama As merek, b.harga_jual, b.foto, b.diskon_persen_jual, b.satuan, b.jumlah_stok, j.idjenis_barang, k.idkategori_barang, m.idmerek_barang FROM barang b INNER JOIN kategori_barang k ON b.idkategori_barang=k.idkategori_barang INNER JOIN jenis_barang j ON b.idjenis_barang=j.idjenis_barang INNER JOIN merek_barang m ON b.idmerek_barang=m.idmerek_barang WHERE b.kode_barang='" + nilaiKriteria + "' ORDER BY b.kode_barang";
 			}
 			else if (kriteria == "exclude") // kriteria khusus untuk perintah sql yang menyeleksi semua barang terkecuali kode barang tertentu
 			{
-				sql = "SELECT b.idbarang, b.kode_barang, b.nama, j.nama AS jenis, k.nama AS kategori, m.nama As merek, b.harga_jual, b.foto, b.diskon_persen_jual, b.satuan, b.jumlah_stok, j.idjenis_barang, k.idkategori_barang, m.idmerek_barang FROM barang b INNER JOIN kategori_barang k ON b.idkategori_barang=k.idkategori_barang INNER JOIN jenis_barang j ON b.idjenis_barang=j.idjenis_barang INNER JOIN merek_barang m ON b.idmerek_barang=m.idmerek_barang WHERE NOT b.kode_barang ='" + nilaiKriteria + "' ORDER By b.idbarang";
+				sql = "SELECT b.idbarang, b.kode_barang, b.nama, j.nama AS jenis, k.nama AS kategori, m.nama As merek, b.harga_jual, b.foto, b.diskon_persen_jual, b.satuan, b.jumlah_stok, j.idjenis_barang, k.idkategori_barang, m.idmerek_barang FROM barang b INNER JOIN kategori_barang k ON b.idkategori_barang=k.idkategori_barang INNER JOIN jenis_barang j ON b.idjenis_barang=j.idjenis_barang INNER JOIN merek_barang m ON b.idmerek_barang=m.idmerek_barang WHERE NOT b.kode_barang ='" + nilaiKriteria + "' ORDER BY b.kode_barang";
 			}
 			else
 			{
-				sql = "SELECT b.idbarang, b.kode_barang, b.nama, j.nama AS jenis, k.nama AS kategori, m.nama As merek, b.harga_jual, b.foto, b.diskon_persen_jual, b.satuan, b.jumlah_stok, j.idjenis_barang, k.idkategori_barang, m.idmerek_barang FROM barang b INNER JOIN kategori_barang k ON b.idkategori_barang=k.idkategori_barang INNER JOIN jenis_barang j ON b.idjenis_barang=j.idjenis_barang INNER JOIN merek_barang m ON b.idmerek_barang=m.idmerek_barang WHERE " + kriteria + " LIKE '%" + nilaiKriteria + "%' ORDER By b.idbarang";
+				sql = "SELECT b.idbarang, b.kode_barang, b.nama, j.nama AS jenis, k.nama AS kategori, m.nama As merek, b.harga_jual, b.foto, b.diskon_persen_jual, b.satuan, b.jumlah_stok, j.idjenis_barang, k.idkategori_barang, m.idmerek_barang FROM barang b INNER JOIN kategori_barang k ON b.idkategori_barang=k.idkategori_barang INNER JOIN jenis_barang j ON b.idjenis_barang=j.idjenis_barang INNER JOIN merek_barang m ON b.idmerek_barang=m.idmerek_barang WHERE " + kriteria + " LIKE '%" + nilaiKriteria + "%' ORDER By b.kode_barang";
 			}
 
 			MySqlCommand cmd = new MySqlCommand(sql, conn.KoneksiDB);
@@ -133,9 +141,56 @@ namespace Kawi_Agung
 				hasil.Dispose();
 			}
 		}
-	
 
-	public static string TambahData(Barang barang, List<Barang> listBarang)
+		public static string BacaStokBarang(string kriteria, string nilaiKriteria, List<Barang> listBarang)
+		{
+			string sql = "";
+			Koneksi conn = new Koneksi();
+
+			if (kriteria == "")
+			{
+				sql = "SELECT kode_barang, nama, jumlah_stok, (select sum(jumlah_stok) FROM barang) as total_stok, (select count(jumlah_stok) from barang where jumlah_stok<=3) AS stok_kurang FROM barang ORDER BY kode_barang";
+			}
+			else if (kriteria == "kode_barang")
+			{
+				sql = "SELECT kode_barang, nama, jumlah_stok, (select sum(jumlah_stok) FROM barang) as total_stok, (select count(jumlah_stok) from barang where jumlah_stok<=3) AS stok_kurang FROM barang WHERE kode_barang LIKE '%" + nilaiKriteria + "%' ORDER by kode_barang";
+			}
+			else if (kriteria == "nama")
+			{
+				sql = "SELECT kode_barang, nama, jumlah_stok, (select sum(jumlah_stok) FROM barang) as total_stok, (select count(jumlah_stok) from barang where jumlah_stok<=3) AS stok_kurang FROM barang WHERE nama LIKE '%" + nilaiKriteria + "%' ORDER by kode_barang";
+			}
+
+			MySqlCommand cmd = new MySqlCommand(sql, conn.KoneksiDB);
+			MySqlDataReader hasil = cmd.ExecuteReader();
+
+			try
+			{
+				while (hasil.Read())
+				{
+					Barang barang = new Barang();
+					barang.KodeBarang = hasil.GetValue(0).ToString();
+					barang.Nama = hasil.GetValue(1).ToString();
+					barang.JumlahStok = Convert.ToInt32(hasil.GetValue(2));
+					barang.TotalJumlahStok = Convert.ToInt32(hasil.GetValue(3));
+					barang.TotalBarangStokKurang = Convert.ToInt32(hasil.GetValue(4));
+
+					listBarang.Add(barang);
+				}
+				return "1";
+			}
+			catch (Exception ex)
+			{
+				return "Terjadi Kesalahan. Pesan Kesalahan : " + ex.Message;
+			}
+
+			finally
+			{
+				cmd.Dispose();
+				hasil.Dispose();
+			}
+		}
+
+		public static string TambahData(Barang barang, List<Barang> listBarang)
 		{
 			string sql = "INSERT INTO barang(kode_barang, nama, idjenis_barang, idkategori_barang, idmerek_barang, harga_jual, diskon_persen_jual, satuan, jumlah_stok, foto) VALUES ('" + barang.KodeBarang + "', '" + barang.Nama + "', " + barang.Jenis.IdJenisBarang + ", " + barang.Kategori.IdKategoriBarang + ", " + barang.Merek.IdMerekBarang + ", " + barang.HargaJual + ", " + barang.DiskonPersenJual + ", '" + barang.Satuan + "', 0, @foto)";
 
@@ -231,40 +286,41 @@ namespace Kawi_Agung
 
 		public static string TambahStok(int idBarang, int jumlah)
 		{
-			string sql1 = "SELECT IF(jumlah_stok+" + jumlah + ">=stok_minimal, 'Cukup', 'Kurang') FROM barang WHERE idbarang=" + idBarang;
-			string sql2 = "";
-
-			Koneksi k = new Koneksi();
-			k.Connect();
-
-			MySqlCommand cmd = new MySqlCommand(sql1, k.KoneksiDB);
-
-			MySqlDataReader hasilBaca = cmd.ExecuteReader();
-
-			hasilBaca.Read();
-
-			if (hasilBaca.GetValue(0).ToString() == "Cukup")
-			{
-				sql2 = "UPDATE barang SET jumlah_stok=jumlah_stok+" + jumlah + ", status_stok='Cukup' WHERE idbarang=" + idBarang;
-			}
-			else
-			{
-				sql2 = "UPDATE barang SET jumlah_stok=jumlah_stok+" + jumlah + ", status_stok='Kurang' WHERE idbarang=" + idBarang;
-			}
-
-			hasilBaca.Close();
+			string sql = "UPDATE barang SET jumlah_stok=jumlah_stok+" + jumlah + " WHERE idbarang=" + idBarang;
 
 			try
 			{
-				MySqlCommand c = new MySqlCommand(sql2, k.KoneksiDB);
+				Koneksi k = new Koneksi();
+				k.Connect();
 
-				c.ExecuteNonQuery();
+				MySqlCommand cmd = new MySqlCommand(sql, k.KoneksiDB);
+				cmd.ExecuteNonQuery();
 
 				return "1";
 			}
 			catch (MySqlException ex)
 			{
-				return ex.Message + ". Perintah sql : " + sql1 + " dan " + sql2;
+				return ex.Message + ". Perintah sql : " + sql;
+			}
+		}
+
+		public static string KurangiStok(int idBarang, int jumlah)
+		{
+			string sql = "UPDATE barang SET jumlah_stok=jumlah_stok-" + jumlah + " WHERE idbarang=" + idBarang;
+
+			try
+			{
+				Koneksi k = new Koneksi();
+				k.Connect();
+
+				MySqlCommand cmd = new MySqlCommand(sql, k.KoneksiDB);
+				cmd.ExecuteNonQuery();
+
+				return "1";
+			}
+			catch (MySqlException ex)
+			{
+				return ex.Message + ". Perintah sql : " + sql;
 			}
 		}
 

@@ -56,7 +56,7 @@
 			// 
 			this.label8.AutoSize = true;
 			this.label8.Font = new System.Drawing.Font("Century Gothic", 12.5F);
-			this.label8.Location = new System.Drawing.Point(35, 191);
+			this.label8.Location = new System.Drawing.Point(36, 263);
 			this.label8.Name = "label8";
 			this.label8.Size = new System.Drawing.Size(83, 21);
 			this.label8.TabIndex = 92;
@@ -86,7 +86,7 @@
 			// 
 			this.label3.AutoSize = true;
 			this.label3.Font = new System.Drawing.Font("Century Gothic", 12.5F);
-			this.label3.Location = new System.Drawing.Point(36, 260);
+			this.label3.Location = new System.Drawing.Point(35, 228);
 			this.label3.Name = "label3";
 			this.label3.Size = new System.Drawing.Size(93, 21);
 			this.label3.TabIndex = 87;
@@ -96,7 +96,7 @@
 			// 
 			this.label2.AutoSize = true;
 			this.label2.Font = new System.Drawing.Font("Century Gothic", 12.5F);
-			this.label2.Location = new System.Drawing.Point(35, 226);
+			this.label2.Location = new System.Drawing.Point(36, 191);
 			this.label2.Name = "label2";
 			this.label2.Size = new System.Drawing.Size(103, 21);
 			this.label2.TabIndex = 86;
@@ -169,14 +169,14 @@
 			// 
 			// textBoxNoTelpPegawai
 			// 
-			this.textBoxNoTelpPegawai.Location = new System.Drawing.Point(184, 194);
+			this.textBoxNoTelpPegawai.Location = new System.Drawing.Point(184, 266);
 			this.textBoxNoTelpPegawai.Name = "textBoxNoTelpPegawai";
 			this.textBoxNoTelpPegawai.Size = new System.Drawing.Size(231, 20);
 			this.textBoxNoTelpPegawai.TabIndex = 104;
 			// 
 			// textBoxUsernamePegawai
 			// 
-			this.textBoxUsernamePegawai.Location = new System.Drawing.Point(184, 229);
+			this.textBoxUsernamePegawai.Location = new System.Drawing.Point(184, 194);
 			this.textBoxUsernamePegawai.Name = "textBoxUsernamePegawai";
 			this.textBoxUsernamePegawai.Size = new System.Drawing.Size(231, 20);
 			this.textBoxUsernamePegawai.TabIndex = 105;
@@ -185,7 +185,7 @@
 			// 
 			this.comboBoxJabatanPegawai.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
 			this.comboBoxJabatanPegawai.FormattingEnabled = true;
-			this.comboBoxJabatanPegawai.Location = new System.Drawing.Point(184, 263);
+			this.comboBoxJabatanPegawai.Location = new System.Drawing.Point(184, 231);
 			this.comboBoxJabatanPegawai.Name = "comboBoxJabatanPegawai";
 			this.comboBoxJabatanPegawai.Size = new System.Drawing.Size(231, 21);
 			this.comboBoxJabatanPegawai.TabIndex = 106;

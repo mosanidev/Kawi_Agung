@@ -355,12 +355,12 @@
 			// label6
 			// 
 			this.label6.AutoSize = true;
-			this.label6.Font = new System.Drawing.Font("Microsoft Tai Le", 8F);
-			this.label6.Location = new System.Drawing.Point(187, 316);
+			this.label6.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.label6.Location = new System.Drawing.Point(184, 314);
 			this.label6.Name = "label6";
-			this.label6.Size = new System.Drawing.Size(193, 14);
+			this.label6.Size = new System.Drawing.Size(252, 16);
 			this.label6.TabIndex = 110;
-			this.label6.Text = "Tekan ENTER setelah mengisi diskon";
+			this.label6.Text = "Tekan ENTER  untuk menampilkan total harga";
 			// 
 			// FormTambahBarang
 			// 

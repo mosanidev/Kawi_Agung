@@ -36,7 +36,7 @@ namespace Kawi_Agung
 
 		public static string BacaData(List<Jabatan> listJabatan)
 		{
-			string sql = "SELECT idjabatan, nama FROM jabatan WHERE NOT nama='Pemilik'";
+			string sql = "SELECT idjabatan, nama FROM jabatan WHERE NOT nama='Manajer'";
 			Koneksi conn = new Koneksi();
 
 			MySqlCommand cmd = new MySqlCommand(sql, conn.KoneksiDB);

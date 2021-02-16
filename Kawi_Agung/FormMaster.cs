@@ -19,43 +19,41 @@ namespace Kawi_Agung
     public partial class FormMaster : Form
     {
 		#region GLOBAL VARIABLE 
+
 		public ArrayList allPanels = new ArrayList();
 		public ArrayList allMainButtons = new ArrayList();
 		public ArrayList allFlowPanels = new ArrayList();
 
 		public List<MerekBarang> listMerek = new List<MerekBarang>();
 		public static List<MerekBarang> listSelectedMerek = new List<MerekBarang>();
-		bool buttonMerekClicked = false;
 
 		public List<KategoriBarang> listKategori = new List<KategoriBarang>();
 		public static List<KategoriBarang> listSelectedKategori = new List<KategoriBarang>();
-		bool buttonKategoriClicked = false;
 
 		public List<JenisBarang> listJenis = new List<JenisBarang>();
 		public static List<JenisBarang> listSelectedJenis = new List<JenisBarang>();
-		bool buttonJenisClicked = false;
 
 		public List<Barang> listBarang = new List<Barang>();
 		public static List<Barang> listSelectedBarang = new List<Barang>();
-		bool buttonBarangClicked = false;
 
 		public List<Supplier> listSupplier = new List<Supplier>();
 		public static List<Supplier> listSelectedSupplier = new List<Supplier>();
-		bool buttonSupplierClicked = false;
 
 		public List<Pelanggan> listPelanggan = new List<Pelanggan>();
 		public static List<Pelanggan> listSelectedPelanggan = new List<Pelanggan>();
-		bool buttonPelangganClicked = false;
 
 		public List<NotaBeli> listNotaBeli = new List<NotaBeli>();
 		public static List<NotaBeli> listSelectedNotaBeli = new List<NotaBeli>();
-		bool buttonNotaBeliClicked = false;
 
 		public static List<NotaBeliDetil> listSelectedNotaBeliDetil = new List<NotaBeliDetil>();
 
+		public List<NotaJual> listNotaJual = new List<NotaJual>();
+		public static List<NotaJual> listSelectedNotaJual = new List<NotaJual>();
+
+		public static List<NotaJualDetil> listSelectedNotaJualDetil = new List<NotaJualDetil>();
+
 		public List<User> listPegawai = new List<User>();
 		public static List<User> listSelectedPegawai = new List<User>();
-		bool buttonPegawaiClicked = false;
 
 		public List<User> listUserInfo = new List<User>();
 		public List<User> listUser = new List<User>();
@@ -85,11 +83,13 @@ namespace Kawi_Agung
 			comboBoxKriteriaBarang.SelectedIndex = 0;
 			comboBoxKriteriaBarangKeluar.SelectedIndex = 0;
 			comboBoxKriteriaBarangMasuk.SelectedIndex = 0;
+			comboBoxKriteriaLaporanStokBarang.SelectedIndex = 0;
 
 			dateTimePickerTanggalAwalNotaBeli.Value = DateTime.Today;
 			dateTimePickerTanggalAkhirNotaBeli.Value = dateTimePickerTanggalAwalNotaBeli.Value.AddDays(+1);
 
 			ClearAllList();
+			clearAllText();
 
 			PopulateMerekTable("","");
 			PopulateJenisTable("", "");
@@ -98,7 +98,11 @@ namespace Kawi_Agung
 			PopulatePelangganTable("", "");
 			PopulateBarangTable("", "");
 			PopulateNotaBeliTable("", "", "");
+			PopulateNotaJualTable("", "", "");
 			PopulatePegawaiTable("", "");
+			PopulateLaporanPenjualanTable("", "");
+			PopulateLaporanPembelianTable("", "");
+			PopulateLaporanStokTable("", "");
 			AddUserInfo();
 
 			// query all user to list user
@@ -106,6 +110,29 @@ namespace Kawi_Agung
 
 			dateTimePickerTanggalAkhirNotaBeli.Value = DateTime.Now;
 			dateTimePickerTanggalAwalNotaBeli.Value = DateTime.Now.AddDays(-7);
+
+			dateTimePickerTanggalAkhirNotaJual.Value = DateTime.Now;
+			dateTimePickerTglAwalNotaJual.Value = DateTime.Now.AddDays(-7);
+
+			dateTimePickerTanggalAkhirLaporanPenjualan.Value = DateTime.Now;
+			dateTimePickerTanggalAwalLaporanPenjualan.Value = DateTime.Now.AddDays(-7);
+
+			dateTimePickerTanggalAkhirLaporanPembelian.Value = DateTime.Now;
+			dateTimePickerTanggalAwalLaporanPembelian.Value = DateTime.Now.AddDays(-7);
+		}
+
+		public void clearAllText()
+		{
+			textBoxSearchBarang.Clear();
+			textBoxSearchBarangMasuk.Clear();
+			textBoxSearchBarangKeluar.Clear();
+			textBoxSearchJenisBrg.Clear();
+			textBoxSearchKategoriBrg.Clear();
+			textBoxSearchMerekBrg.Clear();
+			textBoxSearchNamaSupplier.Clear();
+			textBoxSearchPegawai.Clear();
+			textBoxSearchNamaPelanggan.Clear();
+			textBoxSearchBrgInventaris.Clear();
 		}
 
 		private void ClearAllList()
@@ -117,100 +144,156 @@ namespace Kawi_Agung
 			listSupplier.Clear();
 			listPelanggan.Clear();
 			listUserInfo.Clear();
+			listNotaJual.Clear();
 			listNotaBeli.Clear();
 			listPegawai.Clear();
+			listUser.Clear();
 		}
 
-		private void PopulatePegawaiTable(string kriteria, string nilaiKriteria)
+		private int PopulateLaporanPenjualanTable(string tanggalAwal, string tanggalAkhir)
 		{
+			listNotaJual.Clear();
+
+			string hasilBacaLaporanPenjualan = NotaJual.BacaDataTotalPemasukan(tanggalAwal, tanggalAkhir, listNotaJual);
+
+			dataGridViewLaporanPenjualan.Rows.Clear();
+
+			int num = 1;
+			int totalPemasukan = 0;
+
+			for (int i = 0; i < listNotaJual.Count; i++)
+			{
+				dataGridViewLaporanPenjualan.Rows.Add(num++, listNotaJual[i].Tanggal.ToString("dd MMMM yyyy"), listNotaJual[i].TotalPemasukan);
+				totalPemasukan += listNotaJual[i].TotalPemasukan;
+			}
+
+			labelNominalTotalPenjualan.Text = ConvertToRupiah(totalPemasukan);
+
+			return listNotaJual.Count;
+		}
+
+		private int PopulateLaporanStokTable(string kriteria, string nilaiKriteria)
+		{
+			listBarang.Clear();
+
+			string hasilBacaBarang = Barang.BacaStokBarang(kriteria, nilaiKriteria, listBarang);
+
+			dataGridViewLaporanStokBarang.Rows.Clear();
+
+			int num = 1;
+			int totalJumlahBarang = 0;
+			int totalBarangJumlahKurang = 0;
+
+			for (int i = 0; i < listBarang.Count; i++)
+			{
+				totalJumlahBarang = listBarang[i].TotalJumlahStok;
+				totalBarangJumlahKurang = listBarang[i].TotalBarangStokKurang;
+
+				if (listBarang[i].JumlahStok <= 3)
+				{
+					dataGridViewLaporanStokBarang.Rows.Add(num++, listBarang[i].KodeBarang, listBarang[i].Nama, listBarang[i].JumlahStok, "Stok Kurang");
+				}
+				else
+				{
+					dataGridViewLaporanStokBarang.Rows.Add(num++, listBarang[i].KodeBarang, listBarang[i].Nama, listBarang[i].JumlahStok, "Stok Cukup");
+				}
+			}
+
+			labelTotalJumlahBarang.Text = totalJumlahBarang.ToString();
+			labelTotalJumlahBarangMinim.Text = totalBarangJumlahKurang.ToString();
+
+			return listBarang.Count;
+		}
+
+		private int PopulateLaporanPembelianTable(string tanggalAwal, string tanggalAkhir)
+		{
+			listNotaBeli.Clear();
+
+			string hasilBacaLaporanPembelian = NotaBeli.BacaDataTotalPengeluaran(tanggalAwal, tanggalAkhir, listNotaBeli);
+
+			dataGridViewLaporanPembelian.Rows.Clear();
+
+			int num = 1;
+			int totalPengeluaran = 0;
+
+			for (int i = 0; i < listNotaBeli.Count; i++)
+			{
+				dataGridViewLaporanPembelian.Rows.Add(num++, listNotaBeli[i].Tanggal.ToString("dd MMMM yyyy"), listNotaBeli[i].TotalPengeluaran);
+				totalPengeluaran += listNotaBeli[i].TotalPengeluaran;
+			}
+
+			labelTotalPengeluaran.Text = ConvertToRupiah(totalPengeluaran);
+
+			return listNotaBeli.Count;
+		}
+
+		private int PopulatePegawaiTable(string kriteria, string nilaiKriteria)
+		{
+			listPegawai.Clear();
+
 			string hasilBaca = User.BacaPegawai(kriteria, nilaiKriteria, listPegawai);
 
-			if (listPegawai.Count > 0)
+			dataGridViewPegawai.Rows.Clear();
+
+			int num = 1;
+
+			for (int i = 0; i < listPegawai.Count; i++)
 			{
-				dataGridViewPegawai.Rows.Clear();
-
-				int num = 1;
-				for (int i = 0; i < listPegawai.Count; i++)
-				{
-					dataGridViewPegawai.Rows.Add(num++, listPegawai[i].IdUser, listPegawai[i].Nama, listPegawai[i].Username, listPegawai[i].Jabatan.IdJabatan, listPegawai[i].Jabatan.Nama, listPegawai[i].Status);
-				}
+				dataGridViewPegawai.Rows.Add(num++, listPegawai[i].IdUser, listPegawai[i].Nama, listPegawai[i].Username, listPegawai[i].Jabatan.IdJabatan, listPegawai[i].Jabatan.Nama, listPegawai[i].Status);
 			}
-			else if (buttonPegawaiClicked && textBoxSearchPegawai.Text != "")
-			{
-				dataGridViewPegawai.Rows.Clear();
 
-				MessageBox.Show("Data tidak ditemukan");
-
-				string user = textBoxSearchPegawai.Text.ToString();
-				textBoxSearchPegawai.Text = user.Remove(user.Length - 1);
-
-				// set focus
-				textBoxSearchPegawai.SelectionStart = textBoxSearchPegawai.Text.Length;
-				textBoxSearchPegawai.SelectionLength = 0;
-			}
+			return listPegawai.Count;
 		}
 
-		private void PopulateNotaBeliTable(string kriteria, string nilaiKriteria, string nilaiKriteria2)
+		private int PopulateNotaBeliTable(string kriteria, string nilaiKriteria, string nilaiKriteria2)
 		{
+			listNotaBeli.Clear();
+
 			string hasilBaca = NotaBeli.BacaData(kriteria, nilaiKriteria, nilaiKriteria2, listNotaBeli);
 
-			if (listNotaBeli.Count > 0)
+			dataGridViewBarangMasuk.Rows.Clear();
+
+			int num = 1;
+			for (int i = 0; i < listNotaBeli.Count; i++)
 			{
-				dataGridViewBarangMasuk.Rows.Clear();
-
-				int num = 1;
-				for (int i = 0; i < listNotaBeli.Count; i++)
-				{
-					dataGridViewBarangMasuk.Rows.Add(num++, listNotaBeli[i].NoFaktur, listNotaBeli[i].Tanggal.ToString("dd MMMM yyyy"), listNotaBeli[i].Supplier.Nama, listNotaBeli[i].User.Nama);
-				}
+				dataGridViewBarangMasuk.Rows.Add(num++, listNotaBeli[i].IdNotaBeli, listNotaBeli[i].NoFaktur, listNotaBeli[i].Tanggal.ToString("dd MMMM yyyy"), listNotaBeli[i].Supplier.Nama, listNotaBeli[i].User.Nama);
 			}
-			else if (buttonNotaBeliClicked && textBoxSearchBarangMasuk.Text != "")
-			{
-				dataGridViewBarangMasuk.Rows.Clear();
 
-				MessageBox.Show("Data tidak ditemukan");
-
-				string notaBeli = textBoxSearchBarangMasuk.Text.ToString();
-				textBoxSearchBarangMasuk.Text = notaBeli.Remove(notaBeli.Length - 1);
-
-				// set focus
-				textBoxSearchBarangMasuk.SelectionStart = textBoxSearchBarangMasuk.Text.Length;
-				textBoxSearchBarangMasuk.SelectionLength = 0;
-			}
-			else if (buttonNotaBeliClicked && listNotaBeli.Count == 0)
-			{
-				dataGridViewBarangMasuk.Rows.Clear();
-				MessageBox.Show("Data tidak ditemukan");
-			}
+			return listNotaBeli.Count();
 		}
 
-		private void PopulateBarangTable(string kriteria, string nilaiKriteria)
+		private int PopulateNotaJualTable(string kriteria, string nilaiKriteria, string nilaiKriteria2)
 		{
+			listNotaJual.Clear();
+
+			string hasilBaca = NotaJual.BacaData(kriteria, nilaiKriteria, nilaiKriteria2, listNotaJual);
+
+			dataGridViewBarangKeluar.Rows.Clear();
+
+			int num = 1;
+			for (int i = 0; i < listNotaJual.Count; i++)
+			{
+				dataGridViewBarangKeluar.Rows.Add(num++, listNotaJual[i].IdNotaJual, listNotaJual[i].NoFaktur, listNotaJual[i].Tanggal.ToString("dd MMMM yyyy"), listNotaJual[i].Pelanggan.Nama, listNotaJual[i].User.Nama);
+			}
+
+			return listNotaJual.Count();
+		}
+
+		private int PopulateBarangTable(string kriteria, string nilaiKriteria)
+		{
+			listBarang.Clear();
+
 			string hasilBaca = Barang.BacaDataBarang(kriteria, nilaiKriteria, listBarang);
 
-			if (listBarang.Count > 0)
+			dataGridViewDaftarBarang.Rows.Clear();
+
+			int num = 1;
+			for (int i = 0; i < listBarang.Count; i++)
 			{
-				dataGridViewDaftarBarang.Rows.Clear();
-
-				int num = 1;
-				for (int i = 0; i < listBarang.Count; i++)
-				{
-					dataGridViewDaftarBarang.Rows.Add(num++, listBarang[i].IdBarang, listBarang[i].KodeBarang, listBarang[i].Nama, listBarang[i].Jenis.IdJenisBarang, listBarang[i].Jenis.Nama, listBarang[i].Kategori.IdKategoriBarang, listBarang[i].Kategori.Nama, listBarang[i].Merek.IdMerekBarang, listBarang[i].Merek.Nama, ConvertToRupiah(listBarang[i].HargaJual), listBarang[i].DiskonPersenJual);
-				}
+				dataGridViewDaftarBarang.Rows.Add(num++, listBarang[i].IdBarang, listBarang[i].KodeBarang, listBarang[i].Nama, listBarang[i].Jenis.IdJenisBarang, listBarang[i].Jenis.Nama, listBarang[i].Kategori.IdKategoriBarang, listBarang[i].Kategori.Nama, listBarang[i].Merek.IdMerekBarang, listBarang[i].Merek.Nama, ConvertToRupiah(listBarang[i].HargaJual), listBarang[i].DiskonPersenJual);
 			}
-			else if (buttonBarangClicked && textBoxSearchBarang.Text != "")
-			{
-				dataGridViewDaftarBarang.Rows.Clear();
 
-				MessageBox.Show("Data tidak ditemukan");
-
-				string barang = textBoxSearchBarang.Text.ToString();
-				textBoxSearchBarang.Text = barang.Remove(barang.Length - 1);
-
-				// set focus
-				textBoxSearchBarang.SelectionStart = textBoxSearchBarang.Text.Length;
-				textBoxSearchBarang.SelectionLength = 0;
-			}
+			return listBarang.Count;
 		}
 
 		string ConvertToRupiah(int number)
@@ -252,151 +335,91 @@ namespace Kawi_Agung
 			}
 		}
 
-		private void PopulatePelangganTable(string kriteria, string nilaiKriteria)
+		private int PopulatePelangganTable(string kriteria, string nilaiKriteria)
 		{
+			listPelanggan.Clear();
+
 			string hasilBaca = Pelanggan.BacaData(kriteria, nilaiKriteria, listPelanggan);
 
-			if (listPelanggan.Count > 0)
+			dataGridViewDaftarPelanggan.Rows.Clear();
+
+			int num = 1;
+			for (int i = 0; i < listPelanggan.Count; i++)
 			{
-				dataGridViewDaftarPelanggan.Rows.Clear();
-
-				int num = 1;
-				for (int i = 0; i < listPelanggan.Count; i++)
-				{
-					dataGridViewDaftarPelanggan.Rows.Add(num++, listPelanggan[i].IdPelanggan, listPelanggan[i].Nama, listPelanggan[i].NoTelp, listPelanggan[i].Alamat);
-				}
+				dataGridViewDaftarPelanggan.Rows.Add(num++, listPelanggan[i].IdPelanggan, listPelanggan[i].Nama, listPelanggan[i].NoTelp, listPelanggan[i].Alamat);
 			}
-			else if (buttonPelangganClicked && textBoxSearchNamaPelanggan.Text != "")
-			{
-				dataGridViewDaftarPelanggan.Rows.Clear();
-
-				MessageBox.Show("Data tidak ditemukan");
-
-				string pelanggan = textBoxSearchNamaPelanggan.Text.ToString();
-				textBoxSearchNamaPelanggan.Text = pelanggan.Remove(pelanggan.Length - 1);
-
-				//set focus
-				textBoxSearchNamaPelanggan.SelectionStart = textBoxSearchNamaPelanggan.Text.Length;
-				textBoxSearchNamaPelanggan.SelectionLength = 0;
-			}
+			
+			return listPelanggan.Count;
 		}
 
-		private void PopulateSupplierTable(string kriteria, string nilaiKriteria)
+		private int PopulateSupplierTable(string kriteria, string nilaiKriteria)
 		{
+			listSupplier.Clear();
+
 			string hasilBaca = Supplier.BacaData(kriteria, nilaiKriteria, listSupplier);
 
-			if (listSupplier.Count > 0)
+			dataGridViewDaftarSupplier.Rows.Clear();
+
+			int num = 1;
+			for (int i = 0; i < listSupplier.Count; i++)
 			{
-				dataGridViewDaftarSupplier.Rows.Clear();
-
-				int num = 1;
-				for (int i = 0; i < listSupplier.Count; i++)
-				{
-					dataGridViewDaftarSupplier.Rows.Add(num++, listSupplier[i].IdSupplier, listSupplier[i].Nama, listSupplier[i].NoTelp, listSupplier[i].Alamat);
-				}
-
+				dataGridViewDaftarSupplier.Rows.Add(num++, listSupplier[i].IdSupplier, listSupplier[i].Nama, listSupplier[i].NoTelp, listSupplier[i].Alamat);
 			}
-			else if (buttonSupplierClicked && textBoxSearchNamaSupplier.Text != "")
-			{
-				dataGridViewDaftarSupplier.Rows.Clear();
 
-				MessageBox.Show("Data tidak ditemukan");
-
-				string supplier = textBoxSearchNamaSupplier.Text.ToString();
-				textBoxSearchNamaSupplier.Text = supplier.Remove(supplier.Length - 1);
-
-				// set focus
-				textBoxSearchNamaSupplier.SelectionStart = textBoxSearchNamaSupplier.Text.Length;
-				textBoxSearchNamaSupplier.SelectionLength = 0;
-			}
+			return listSupplier.Count;
 
 		}
 
-		private void PopulateJenisTable(string kriteria, string nilaiKriteria)
+		private int PopulateJenisTable(string kriteria, string nilaiKriteria)
 		{
+			listJenis.Clear();
+
 			string hasilBaca = JenisBarang.BacaData(kriteria, nilaiKriteria, listJenis);
 
-			if (listJenis.Count > 0)
+			dataGridViewDaftarJenisBrg.Rows.Clear();
+
+			int num = 1;
+			for (int i = 0; i < listJenis.Count; i++)
 			{
-				dataGridViewDaftarJenisBrg.Rows.Clear();
-
-				int num = 1;
-				for (int i = 0; i < listJenis.Count; i++)
-				{
-					dataGridViewDaftarJenisBrg.Rows.Add(num++, listJenis[i].IdJenisBarang, listJenis[i].Nama);
-				}
-
+				dataGridViewDaftarJenisBrg.Rows.Add(num++, listJenis[i].IdJenisBarang, listJenis[i].Nama);
 			}
-			else if (buttonJenisClicked && textBoxSearchJenisBrg.Text != "")
-			{
-				dataGridViewDaftarJenisBrg.Rows.Clear();
 
-				MessageBox.Show("Data tidak ditemukan");
-
-				string jenis = textBoxSearchJenisBrg.Text.ToString();
-				textBoxSearchJenisBrg.Text = jenis.Remove(jenis.Length - 1);
-
-				// set focus
-				textBoxSearchJenisBrg.SelectionStart = textBoxSearchJenisBrg.Text.Length;
-				textBoxSearchJenisBrg.SelectionLength = 0;
-			}
+			return listJenis.Count;
 		}
 
-		private void PopulateMerekTable(string kriteria, string nilaiKriteria)
+		private int PopulateMerekTable(string kriteria, string nilaiKriteria)
 		{
+			listMerek.Clear();
+
 			string hasilBaca =  MerekBarang.BacaData(kriteria, nilaiKriteria, listMerek);
 
-			if (listMerek.Count > 0)
+			dataGridViewSubMenuMerekBrg.Rows.Clear();
+
+			int num = 1;
+			for (int i = 0; i < listMerek.Count; i++)
 			{
-				dataGridViewSubMenuMerekBrg.Rows.Clear();
-
-				int num = 1;
-				for (int i = 0; i < listMerek.Count; i++)
-				{
-					dataGridViewSubMenuMerekBrg.Rows.Add(num++, listMerek[i].IdMerekBarang, listMerek[i].Nama);
-				}				
+				dataGridViewSubMenuMerekBrg.Rows.Add(num++, listMerek[i].IdMerekBarang, listMerek[i].Nama);
 			}
-			else if (buttonMerekClicked && textBoxSearchMerekBrg.Text != "")
-			{
-				dataGridViewSubMenuMerekBrg.Rows.Clear();
 
-				MessageBox.Show("Data tidak ditemukan");
-				string merek = textBoxSearchMerekBrg.Text.ToString();
-				textBoxSearchMerekBrg.Text = merek.Remove(merek.Length - 1);
-
-				// set focus
-				textBoxSearchMerekBrg.SelectionStart = textBoxSearchMerekBrg.Text.Length;
-				textBoxSearchMerekBrg.SelectionLength = 0;
-			}
+			return listMerek.Count;
+			
 		}
 
-		private void PopulateKategoriTable(string kriteria, string nilaiKriteria)
+		private int PopulateKategoriTable(string kriteria, string nilaiKriteria)
 		{
-			string hasilBaca = KategoriBarang.BacaData(kriteria, nilaiKriteria, listKategori);
+			listKategori.Clear();
 
-			if (listKategori.Count > 0)
+			string hasilBaca = KategoriBarang.BacaData(kriteria, nilaiKriteria, listKategori); // panggil method baca data tabel kategori yang akan di isi ke listkategori
+
+			dataGridViewSubMenuKategoriBrg.Rows.Clear();
+
+			int num = 1;
+			for (int i = 0; i < listKategori.Count; i++)
 			{
-				dataGridViewSubMenuKategoriBrg.Rows.Clear();
-
-				int num = 1;
-				for (int i = 0; i < listKategori.Count; i++)
-				{
-					dataGridViewSubMenuKategoriBrg.Rows.Add(num++, listKategori[i].IdKategoriBarang, listKategori[i].Nama);
-				}
+				dataGridViewSubMenuKategoriBrg.Rows.Add(num++, listKategori[i].IdKategoriBarang, listKategori[i].Nama);
 			}
-			else if (buttonKategoriClicked && textBoxSearchKategoriBrg.Text != "")
-			{
-				dataGridViewSubMenuKategoriBrg.Rows.Clear();
 
-				MessageBox.Show("Data tidak ditemukan");
-
-				string kategori = textBoxSearchKategoriBrg.Text.ToString();
-				textBoxSearchKategoriBrg.Text = kategori.Remove(kategori.Length - 1);
-
-				// set focus
-				textBoxSearchKategoriBrg.SelectionStart = textBoxSearchKategoriBrg.Text.Length;
-				textBoxSearchKategoriBrg.SelectionLength = 0;
-			}
+			return listKategori.Count;
 		}
 		private void CekJabatanUser()
 		{
@@ -416,10 +439,25 @@ namespace Kawi_Agung
 
 			if (jabatan == "Manajer")
 			{
-				iconButtonTransaksi.Visible = false;
 				iconButtonPelanggan.Visible = false;
-				iconButtonBarang.Visible = false;
-				iconButtonTransaksi.Visible = false;
+				
+				// sembunyikan button di nota beli untuk hak akses manajer
+				buttonTambahBarangMasuk.Visible = false;
+				buttonHapusBarangMasuk.Visible = false;
+
+				// sembunyikan button di nota jual untuk hak akses manajer
+				buttonTambahNotaJual.Visible = false;
+				buttonHapusNotaJual.Visible = false;
+
+				iconButtonJenisBarang.Visible = false;
+				iconButtonKategoriBarang.Visible = false;
+				iconButtonMerekBarang.Visible = false;
+
+				// button di modul barang
+				buttonTambahDaftarBarang.Visible = false;
+				buttonUbahDaftarBarang.Visible = false;
+				buttonHapusDaftarBarang.Visible = false;
+
 				iconButtonSupplier.Visible = false;
 			}
 			else if (jabatan == "Admin Pembelian")
@@ -438,35 +476,35 @@ namespace Kawi_Agung
 			}
 		}
 
-		private void deactiveMenuButtons(ArrayList arr, string text)
-		{
-			foreach (IconButton value in arr)
-			{
-				if (value.Text.ToLower().Contains(text))
-				{
-					value.Visible = false;
-				}
-			}
-		}
+		//private void deactiveMenuButtons(ArrayList arr, string text)
+		//{
+		//	foreach (IconButton value in arr)
+		//	{
+		//		if (value.Text.ToLower().Contains(text))
+		//		{
+		//			value.Visible = false;
+		//		}
+		//	}
+		//}
 
-		private void deactiveSubMenus(ArrayList arrSubMenu, string menuName, string subMenuName)
-		{
-			foreach (FlowLayoutPanel value in arrSubMenu)
-			{
-				if (value.Name.ToLower().Contains(menuName))
-				{
-					var buttons = value.Controls.OfType<Button>().ToList();
+		//private void deactiveSubMenus(ArrayList arrSubMenu, string menuName, string subMenuName)
+		//{
+		//	foreach (FlowLayoutPanel value in arrSubMenu)
+		//	{
+		//		if (value.Name.ToLower().Contains(menuName))
+		//		{
+		//			var buttons = value.Controls.OfType<Button>().ToList();
 
-					foreach (Button btn in buttons)
-					{
-						if (btn.Text.ToLower().Contains(subMenuName))
-						{
-							btn.Visible = false;
-						}
-					}
-				}
-			}
-		}
+		//			foreach (Button btn in buttons)
+		//			{
+		//				if (btn.Text.ToLower().Contains(subMenuName))
+		//				{
+		//					btn.Visible = false;
+		//				}
+		//			}
+		//		}
+		//	}
+		//}
 
 		private void addButtons()
 		{
@@ -657,7 +695,6 @@ namespace Kawi_Agung
 			activeButtonIndicator(panelButtonIndicator, unActiveButton, iconButtonPegawai, Color.FromArgb(227, 139, 50));
 			navigateTo(panelMenuPegawai, "Menu Pegawai");
 
-			buttonPegawaiClicked = true;
 		}
 
 		private void iconButtonSupplier_Click(object sender, EventArgs e)
@@ -667,8 +704,6 @@ namespace Kawi_Agung
 
 			activeButtonIndicator(panelButtonIndicator, unActiveButton, iconButtonSupplier, Color.FromArgb(227, 139, 50));
 			navigateTo(panelMenuSupplier, "Menu Supplier");
-
-			buttonSupplierClicked = true;
 		}
 
 		private void iconButtonPelanggan_Click(object sender, EventArgs e)
@@ -678,8 +713,6 @@ namespace Kawi_Agung
 
 			activeButtonIndicator(panelButtonIndicator, unActiveButton, iconButtonPelanggan, Color.FromArgb(227, 139, 50));
 			navigateTo(panelMenuPelanggan, "Menu Pelanggan");
-
-			buttonPelangganClicked = true;
 		}
 
 		private void iconButtonProfil_Click(object sender, EventArgs e)
@@ -694,11 +727,7 @@ namespace Kawi_Agung
 
 		private void iconButtonLogout_Click(object sender, EventArgs e)
 		{
-			this.Hide();
-			FormLogin frm = new FormLogin();
-			frm.ShowDialog();
-
-			this.Close();
+			Application.Restart();
 		}
 
 		#endregion
@@ -708,53 +737,65 @@ namespace Kawi_Agung
 			if (textBoxSearchBarang.Text == "")
 			{
 				panelUnderlineSearchBarang.BackColor = Color.FromArgb(12, 26, 46);
+
+				PopulateBarangTable("", "");
 			}
 			else
 			{
 				panelUnderlineSearchBarang.BackColor = Color.FromArgb(7, 104, 159);
-			}
 
-			listBarang.Clear();
+				int hasil = -1;
+				
+				if (comboBoxKriteriaBarang.SelectedIndex == 0)
+				{
+					hasil = PopulateBarangTable("b.kode_barang", textBoxSearchBarang.Text);
+				}
+				else if (comboBoxKriteriaBarang.SelectedIndex == 1)
+				{
+					hasil = PopulateBarangTable("b.nama", textBoxSearchBarang.Text);
+				}
 
-			if (comboBoxKriteriaBarang.SelectedIndex == 0)
-			{
-				PopulateBarangTable("b.kode_barang", textBoxSearchBarang.Text);
+				if (hasil == 0)
+				{
+					MessageBox.Show("Data barang tidak ditemukan");
+
+					string textBarang = textBoxSearchBarang.Text.ToString();
+
+					if (textBarang.Length > 0)
+					{
+						textBoxSearchBarang.Text = textBarang.Remove(textBarang.Length - 1);
+					}
+
+					// set focus
+					textBoxSearchBarang.SelectionStart = textBoxSearchBarang.Text.Length;
+					textBoxSearchBarang.SelectionLength = 0;
+				}
 			}
-			else if (comboBoxKriteriaBarang.SelectedIndex == 1)
-			{
-				PopulateBarangTable("b.nama", textBoxSearchBarang.Text);
-			}
-			
 		}
 
 		private void iconButtonBarangBarang_Click(object sender, EventArgs e)
 		{
 			navigateTo(panelSubMenuDaftarBarang, "Daftar Barang");
-			buttonBarangClicked = true;
 		}
 
 		private void iconButtonJenisBarang_Click(object sender, EventArgs e)
 		{
 			navigateTo(panelSubMenuJenisBarang, "Daftar Jenis Barang");
-			buttonJenisClicked = true;
 		}
 
 		private void iconButtonKategoriBarang_Click(object sender, EventArgs e)
 		{
 			navigateTo(panelSubMenuKategoriBarang, "Daftar Kategori Barang");
-			buttonKategoriClicked = true;
 		}
 
 		private void iconButtonMerekBarang_Click(object sender, EventArgs e)
 		{
 			navigateTo(panelSubMenuMerekBarang, "Daftar Merek Barang");
-			buttonMerekClicked = true;
 		}
 
 		private void iconButtonBarangMasuk_Click(object sender, EventArgs e)
 		{
 			navigateTo(panelSubMenuTransaksiBarangMasuk, "Barang Masuk");
-			buttonNotaBeliClicked = true;
 		}
 
 		private void iconButtonBarangKeluar_Click(object sender, EventArgs e)
@@ -764,82 +805,172 @@ namespace Kawi_Agung
 
 		private void textBoxSearchJenisBrg_TextChanged(object sender, EventArgs e)
 		{
-			if (textBoxSearchJenisBrg.Text == "")
+			if (textBoxSearchJenisBrg.Text.Length == 0)
 			{
 				panelUnderlineSearchJenisBrg.BackColor = Color.FromArgb(12, 26, 46);
+
+				PopulateJenisTable("", "");
 			}
 			else
 			{
 				panelUnderlineSearchJenisBrg.BackColor = Color.FromArgb(7, 104, 159);
+
+				int hasil = PopulateJenisTable("nama", textBoxSearchJenisBrg.Text);
+
+				if (hasil == 0)
+				{
+					MessageBox.Show("Data jenis tidak ditemukan");
+
+					string textJenis = textBoxSearchJenisBrg.Text.ToString();
+
+					if (textJenis.Length > 0)
+					{
+						textBoxSearchJenisBrg.Text = textJenis.Remove(textJenis.Length - 1);
+					}
+
+					// set focus
+					textBoxSearchJenisBrg.SelectionStart = textBoxSearchJenisBrg.Text.Length;
+					textBoxSearchJenisBrg.SelectionLength = 0;
+				}
 			}
-
-			listJenis.Clear();
-
-			PopulateJenisTable("nama", textBoxSearchJenisBrg.Text);
 		}
 
 		private void textBoxSearchKategoriBrg_TextChanged(object sender, EventArgs e)
 		{
-			if (textBoxSearchKategoriBrg.Text == "")
+			if (textBoxSearchKategoriBrg.Text.Length == 0)
 			{
 				panelUnderlineSearchKategori.BackColor = Color.FromArgb(12, 26, 46);
+
+				PopulateKategoriTable("", "");
 			}
 			else
 			{
 				panelUnderlineSearchKategori.BackColor = Color.FromArgb(7, 104, 159);
-			}
 
-			listKategori.Clear();
-			dataGridViewSubMenuKategoriBrg.DataSource = null;
-			PopulateKategoriTable("nama", textBoxSearchKategoriBrg.Text);
+				int hasil = PopulateKategoriTable("nama", textBoxSearchKategoriBrg.Text);
+
+				if (hasil == 0)
+				{
+					MessageBox.Show("Data kategori tidak ditemukan");
+
+					string textKategori = textBoxSearchKategoriBrg.Text.ToString();
+
+					if (textKategori.Length > 0)
+					{
+						textBoxSearchKategoriBrg.Text = textKategori.Remove(textKategori.Length - 1);
+					}
+
+					// set focus
+					textBoxSearchKategoriBrg.SelectionStart = textBoxSearchKategoriBrg.Text.Length;
+					textBoxSearchKategoriBrg.SelectionLength = 0;
+				}
+
+			}
 		}
 
 		private void textBoxSearchMerekBrg_TextChanged(object sender, EventArgs e)
 		{
-			if (textBoxSearchMerekBrg.Text == "")
+			if (textBoxSearchMerekBrg.Text.Length == 0)
 			{
 				panelUnderlineSearchMerek.BackColor = Color.FromArgb(12, 26, 46);
 
+				PopulateMerekTable("", "");
 			}
 			else
 			{
 				panelUnderlineSearchMerek.BackColor = Color.FromArgb(7, 104, 159);
 
+				int hasil = PopulateMerekTable("nama", textBoxSearchMerekBrg.Text);
+
+				if (hasil == 0)
+				{
+					MessageBox.Show("Data merek tidak ditemukan");
+
+					string textMerek = textBoxSearchMerekBrg.Text.ToString();
+
+					if (textMerek.Length > 0)
+					{
+						textBoxSearchMerekBrg.Text = textMerek.Remove(textMerek.Length - 1);
+					}
+
+					// set focus
+					textBoxSearchMerekBrg.SelectionStart = textBoxSearchMerekBrg.Text.Length;
+					textBoxSearchMerekBrg.SelectionLength = 0;
+				}
 			}
-
-			listMerek.Clear();
-			dataGridViewSubMenuMerekBrg.DataSource = null;
-			PopulateMerekTable("nama", textBoxSearchMerekBrg.Text);
-
-			
 		}
 
 		private void textBoxSearchNamaBrgInventaris_TextChanged(object sender, EventArgs e)
 		{
-			if (textBoxSearchNamaBrgInventaris.Text == "")
+			if (textBoxSearchBrgInventaris.Text.Length == 0)
 			{
 				panelUnderlineSearchBrgInventaris.BackColor = Color.FromArgb(12, 26, 46);
+
+				PopulateLaporanStokTable("", "");
 			}
 			else
 			{
 				panelUnderlineSearchBrgInventaris.BackColor = Color.FromArgb(7, 104, 159);
+
+				int hasil = -1;
+
+				if (comboBoxKriteriaLaporanStokBarang.SelectedIndex == 0)
+				{
+					hasil = PopulateLaporanStokTable("kode_barang", textBoxSearchBrgInventaris.Text);
+				}
+				else if (comboBoxKriteriaLaporanStokBarang.SelectedIndex == 1)
+				{
+					hasil = PopulateLaporanStokTable("nama", textBoxSearchBrgInventaris.Text);
+				}
+
+				if (hasil == 0)
+				{
+					MessageBox.Show("Data barang tidak ditemukan");
+
+					string textBarang = textBoxSearchBrgInventaris.Text.ToString();
+
+					if (textBarang.Length > 0)
+					{
+						textBoxSearchBrgInventaris.Text = textBarang.Remove(textBarang.Length - 1);
+					}
+
+					// set focus
+					textBoxSearchBrgInventaris.SelectionStart = textBoxSearchBrgInventaris.Text.Length;
+					textBoxSearchBrgInventaris.SelectionLength = 0;
+				}
 			}
 		}
 
 		private void textBoxSearchNamaSupplier_TextChanged(object sender, EventArgs e)
 		{
-			if (textBoxSearchNamaSupplier.Text == "")
+			if (textBoxSearchNamaSupplier.Text.Length == 0)
 			{
 				panelUnderlineSearchSupplier.BackColor = Color.FromArgb(12, 26, 46);
+
+				PopulateSupplierTable("", "");
 			}
 			else
 			{
 				panelUnderlineSearchSupplier.BackColor = Color.FromArgb(7, 104, 159);
-			}
 
-			listSupplier.Clear();
-			dataGridViewDaftarSupplier.DataSource = null;
-			PopulateSupplierTable("nama", textBoxSearchNamaSupplier.Text);
+				int hasil = PopulateSupplierTable("nama", textBoxSearchNamaSupplier.Text);
+
+				if (hasil == 0)
+				{
+					MessageBox.Show("Data supplier tidak ditemukan");
+
+					string textSupplier = textBoxSearchNamaSupplier.Text.ToString();
+
+					if (textSupplier.Length > 0)
+					{
+						textBoxSearchNamaSupplier.Text = textSupplier.Remove(textSupplier.Length - 1);
+					}
+
+					// set focus
+					textBoxSearchNamaSupplier.SelectionStart = textBoxSearchNamaSupplier.Text.Length;
+					textBoxSearchNamaSupplier.SelectionLength = 0;
+				}
+			}
 		}
 
 		private void iconButtonLaporanInventarisBarang_Click(object sender, EventArgs e)
@@ -859,18 +990,34 @@ namespace Kawi_Agung
 
 		private void textBoxSearchPegawai_TextChanged(object sender, EventArgs e)
 		{
-			if (textBoxSearchPegawai.Text == "")
+			if (textBoxSearchPegawai.Text.Length == 0)
 			{
 				panelUnderlineSearchPegawai.BackColor = Color.FromArgb(12, 26, 46);
+
+				PopulatePegawaiTable("", "");
 			}
 			else
 			{
 				panelUnderlineSearchPegawai.BackColor = Color.FromArgb(7, 104, 159);
+
+				int hasil = PopulatePegawaiTable("nama", textBoxSearchPegawai.Text);
+
+				if (hasil == 0)
+				{
+					MessageBox.Show("Data pegawai tidak ditemukan");
+
+					string textPegawai = textBoxSearchPegawai.Text.ToString();
+
+					if (textPegawai.Length > 0)
+					{
+						textBoxSearchPegawai.Text = textPegawai.Remove(textPegawai.Length - 1);
+					}
+
+					// set focus
+					textBoxSearchPegawai.SelectionStart = textBoxSearchPegawai.Text.Length;
+					textBoxSearchPegawai.SelectionLength = 0;
+				}
 			}
-
-			listPegawai.Clear();
-
-			PopulatePegawaiTable("u.nama", textBoxSearchPegawai.Text);
 		}
 
 		private void iconButtonBackPanelJenisBrg_MouseHover(object sender, EventArgs e)
@@ -1000,16 +1147,24 @@ namespace Kawi_Agung
 
 		private void comboBoxKriteriaBarangKeluar_SelectedIndexChanged(object sender, EventArgs e)
 		{
-			if (comboBoxKriteriaBarangKeluar.SelectedIndex == 2)
+			if (comboBoxKriteriaBarangKeluar.SelectedIndex == 0)
 			{
+				PopulateNotaJualTable("nj.tanggal", dateTimePickerTglAwalNotaJual.Value.ToString("yyyy-MM-dd"), dateTimePickerTanggalAkhirNotaJual.Value.ToString("yyyy-MM-dd"));
+
 				dateTimePickerTglAwalNotaJual.Visible = true;
 				dateTimePickerTanggalAkhirNotaJual.Visible = true;
+
+				dateTimePickerTanggalAkhirNotaJual.Value = DateTime.Now;
+				dateTimePickerTglAwalNotaJual.Value = DateTime.Now.AddDays(-7);
+
 				labelSDNotaJual.Visible = true;
 				textBoxSearchBarangKeluar.Visible = false;
 				panelUnderlineSearchBarangKeluar.Visible = false;
 			}
 			else
 			{
+				PopulateNotaJualTable("", "", "");
+
 				dateTimePickerTglAwalNotaJual.Visible = false;
 				dateTimePickerTanggalAkhirNotaJual.Visible = false;
 				labelSDNotaJual.Visible = false;
@@ -1023,10 +1178,39 @@ namespace Kawi_Agung
 			if (textBoxSearchBarangKeluar.Text == "")
 			{
 				panelUnderlineSearchBarangKeluar.BackColor = Color.FromArgb(12, 26, 46);
+
+				PopulateNotaJualTable("", "", "");
 			}
 			else
 			{
 				panelUnderlineSearchBarangKeluar.BackColor = Color.FromArgb(7, 104, 159);
+
+				int hasil = -1;
+
+				if (comboBoxKriteriaBarangKeluar.SelectedIndex == 1)
+				{
+					hasil = PopulateNotaJualTable("nj.no_faktur", textBoxSearchBarangKeluar.Text, "");
+				}
+				else if (comboBoxKriteriaBarangKeluar.SelectedIndex == 2)
+				{
+					hasil = PopulateNotaJualTable("p.nama", textBoxSearchBarangKeluar.Text, "");
+				}
+
+				if (hasil == 0)
+				{
+					MessageBox.Show("Data nota jual tidak ditemukan");
+
+					string textNotaJual = textBoxSearchBarangKeluar.Text.ToString();
+
+					if (textNotaJual.Length > 0)
+					{
+						textBoxSearchBarangKeluar.Text = textNotaJual.Remove(textNotaJual.Length - 1);
+					}
+
+					// set focus
+					textBoxSearchBarangKeluar.SelectionStart = textBoxSearchBarangKeluar.Text.Length;
+					textBoxSearchBarangKeluar.SelectionLength = 0;
+				}
 			}
 		}
 
@@ -1035,22 +1219,39 @@ namespace Kawi_Agung
 			if (textBoxSearchBarangMasuk.Text == "")
 			{
 				panelUnderlineSearchBarangMasuk.BackColor = Color.FromArgb(12, 26, 46);
+
+				PopulateNotaBeliTable("", "", "");
 			}
 			else
 			{
 				panelUnderlineSearchBarangMasuk.BackColor = Color.FromArgb(7, 104, 159);
-			}
 
-			listNotaBeli.Clear();
-			dataGridViewBarangMasuk.DataSource = null;
+				int hasil = -1;
 
-			if (comboBoxKriteriaBarangMasuk.SelectedIndex == 0)
-			{
-				PopulateNotaBeliTable("nb.no_faktur", textBoxSearchBarangMasuk.Text, "");
-			}
-			else if (comboBoxKriteriaBarangMasuk.SelectedIndex == 1)
-			{
-				PopulateNotaBeliTable("s.nama", textBoxSearchBarangMasuk.Text, "");
+				if (comboBoxKriteriaBarangMasuk.SelectedIndex == 1)
+				{
+					hasil = PopulateNotaBeliTable("nb.no_faktur", textBoxSearchBarangMasuk.Text, "");
+				}
+				else if (comboBoxKriteriaBarangMasuk.SelectedIndex == 2)
+				{
+					hasil = PopulateNotaBeliTable("s.nama", textBoxSearchBarangMasuk.Text, "");
+				}
+
+				if (hasil == 0)
+				{
+					MessageBox.Show("Data nota beli tidak ditemukan");
+
+					string textNotaBeli = textBoxSearchBarangMasuk.Text.ToString();
+
+					if (textNotaBeli.Length > 0)
+					{
+						textBoxSearchBarangMasuk.Text = textNotaBeli.Remove(textNotaBeli.Length - 1);
+					}
+
+					// set focus
+					textBoxSearchBarangMasuk.SelectionStart = textBoxSearchBarangMasuk.Text.Length;
+					textBoxSearchBarangMasuk.SelectionLength = 0;
+				}
 			}
 		}
 
@@ -1061,21 +1262,22 @@ namespace Kawi_Agung
 
 		private void comboBoxKriteriaBarangMasuk_SelectedIndexChanged(object sender, EventArgs e)
 		{
-			if (comboBoxKriteriaBarangMasuk.SelectedIndex == 2)
+			if (comboBoxKriteriaBarangMasuk.SelectedIndex == 0)
 			{
-				listNotaBeli.Clear();
 				PopulateNotaBeliTable("nb.tanggal", dateTimePickerTanggalAwalNotaBeli.Value.ToString("yyyy-MM-dd"), dateTimePickerTanggalAkhirNotaBeli.Value.ToString("yyyy-MM-dd"));
 
 				dateTimePickerTanggalAwalNotaBeli.Visible = true;
 				dateTimePickerTanggalAkhirNotaBeli.Visible = true;
+
+				dateTimePickerTanggalAkhirNotaBeli.Value = DateTime.Now;
+				dateTimePickerTanggalAwalNotaBeli.Value = DateTime.Now.AddDays(-7);
+
 				labelSDNotaBeli.Visible = true;
 				textBoxSearchBarangMasuk.Visible = false;
 				panelUnderlineSearchBarangMasuk.Visible = false;
 			}
 			else
 			{
-
-				listNotaBeli.Clear();
 				PopulateNotaBeliTable("", "", "");
 
 				dateTimePickerTanggalAwalNotaBeli.Visible = false;
@@ -1511,18 +1713,34 @@ namespace Kawi_Agung
 
 		private void textBoxSearchNamaPelanggan_TextChanged(object sender, EventArgs e)
 		{
-			if (textBoxSearchNamaPelanggan.Text == "")
+			if (textBoxSearchNamaPelanggan.Text.Length == 0)
 			{
 				panelUnderlineSearchPelanggan.BackColor = Color.FromArgb(12, 26, 46);
+
+				PopulatePelangganTable("", "");
 			}
 			else
 			{
 				panelUnderlineSearchPelanggan.BackColor = Color.FromArgb(7, 104, 159);
-			}
 
-			listPelanggan.Clear();
-			dataGridViewDaftarPelanggan.DataSource = null;
-			PopulatePelangganTable("nama", textBoxSearchNamaPelanggan.Text);
+				int hasil = PopulatePelangganTable("nama", textBoxSearchNamaPelanggan.Text);
+
+				if (hasil == 0)
+				{
+					MessageBox.Show("Data pelanggan tidak ditemukan");
+
+					string textPelanggan = textBoxSearchNamaPelanggan.Text.ToString();
+
+					if (textPelanggan.Length > 0)
+					{
+						textBoxSearchNamaPelanggan.Text = textPelanggan.Remove(textPelanggan.Length - 1);
+					}
+
+					// set focus
+					textBoxSearchNamaPelanggan.SelectionStart = textBoxSearchNamaPelanggan.Text.Length;
+					textBoxSearchNamaPelanggan.SelectionLength = 0;
+				}
+			}
 		}
 
 		private void buttonTambahPelanggan_Click(object sender, EventArgs e)
@@ -1619,6 +1837,7 @@ namespace Kawi_Agung
 						MessageBox.Show($"{jumlahGagal} data gagal dihapus karena {keteranganGagal}");
 					}
 
+					textBoxSearchNamaPelanggan.Clear();
 					FormMaster_Load(sender, e);
 				}
 				else if (dialogResult == DialogResult.Cancel)
@@ -1845,6 +2064,7 @@ namespace Kawi_Agung
 						MessageBox.Show($"{jumlahGagal} data gagal dihapus karena {keteranganGagal}");
 					}
 
+					textBoxSearchBarang.Clear();
 					FormMaster_Load(sender, e);
 				}
 				else if (dialogResult == DialogResult.Cancel)
@@ -1863,42 +2083,39 @@ namespace Kawi_Agung
 
 		private void dateTimePickerTanggalAwalNotaBeli_ValueChanged(object sender, EventArgs e)
 		{
-			if (dateTimePickerTanggalAwalNotaBeli.Value >= dateTimePickerTanggalAkhirNotaBeli.Value)
+			// secara default karena datetimepicker sudah di ubah di code di dalam formmaster_load maka pasti masuk else
+			// maka otomatis saat user baru buka modul nota beli, maka terfilter transaksi seminggu terakhir
+			if (dateTimePickerTanggalAwalNotaBeli.Value > dateTimePickerTanggalAkhirNotaBeli.Value)
 			{
-				MessageBox.Show("Mohon input tanggal awal dan akhir nota beli dengan benar");
+				MessageBox.Show("Mohon input tanggal awal dan akhir dengan benar");
 
 				dataGridViewBarangMasuk.Rows.Clear();
 			}
-			else
+			else 
 			{
-				listNotaBeli.Clear();
-
 				PopulateNotaBeliTable("nb.tanggal", dateTimePickerTanggalAwalNotaBeli.Value.ToString("yyyy-MM-dd"), dateTimePickerTanggalAkhirNotaBeli.Value.ToString("yyyy-MM-dd"));
 			}
 		}
 
 		private void dateTimePickerTanggalAkhirNotaBeli_ValueChanged(object sender, EventArgs e)
 		{
-			if (dateTimePickerTanggalAkhirNotaBeli.Value <= dateTimePickerTanggalAwalNotaBeli.Value)
+			// secara default karena datetimepicker sudah di ubah di code di dalam formmaster_load maka pasti masuk else
+			// maka otomatis saat user baru buka modul nota beli, maka terfilter transaksi seminggu terakhir
+			if (dateTimePickerTanggalAkhirNotaBeli.Value < dateTimePickerTanggalAwalNotaBeli.Value)
 			{
 				//dateTimePickerTanggalAkhirNotaBeli.Value = dateTimePickerTanggalAwalNotaBeli.Value.AddDays(+1);
-				MessageBox.Show("Mohon input tanggal awal dan akhir nota beli dengan benar");
+				MessageBox.Show("Mohon input tanggal awal dan akhir dengan benar");
 
 				dataGridViewBarangMasuk.Rows.Clear();
 			}
 			else
 			{
-				listNotaBeli.Clear();
-
 				PopulateNotaBeliTable("nb.tanggal", dateTimePickerTanggalAwalNotaBeli.Value.ToString("yyyy-MM-dd"), dateTimePickerTanggalAkhirNotaBeli.Value.ToString("yyyy-MM-dd"));
-
 			}
 		}
 
 		private void comboBoxKriteriaBarang_SelectionChangeCommitted(object sender, EventArgs e)
 		{
-			listBarang.Clear();
-
 			PopulateBarangTable("", "");
 
 			textBoxSearchBarang.Clear();
@@ -1922,7 +2139,7 @@ namespace Kawi_Agung
 
 			foreach (DataGridViewRow row in dataGridViewBarangMasuk.SelectedRows)
 			{
-				hasilBaca = NotaBeliDetil.BacaData("nb.no_faktur", row.Cells[1].Value.ToString(), listSelectedNotaBeliDetil);
+				hasilBaca = NotaBeliDetil.BacaData("nb.idnota_beli", row.Cells[1].Value.ToString(), listSelectedNotaBeliDetil);
 			}
 
 			if (hasilBaca == "1")
@@ -1977,9 +2194,9 @@ namespace Kawi_Agung
 
 			foreach (DataGridViewRow row in dataGridViewPegawai.SelectedRows)
 			{
-				if (row.Cells[6].Value.ToString() == "Tidak Aktif")
+				if (row.Cells[6].Value.ToString() == "Belum Aktif")
 				{
-					keteranganStatus = "Tidak Aktif";
+					keteranganStatus = "Belum Aktif";
 				}
 				else
 				{
@@ -2061,6 +2278,266 @@ namespace Kawi_Agung
 					this.DialogResult = DialogResult.Cancel;
 				}
 			}
+		}
+
+		private void buttonHapusBarangMasuk_Click(object sender, EventArgs e)
+		{
+			listSelectedNotaBeli.Clear();
+
+			if (dataGridViewBarangMasuk.SelectedRows.Count == 0)
+			{
+				MessageBox.Show("Pilih satu atau lebih data di tabel untuk di hapus");
+			}
+			else
+			{
+				foreach (DataGridViewRow row in dataGridViewBarangMasuk.SelectedRows)
+				{
+					NotaBeli nb = new NotaBeli();
+					nb.IdNotaBeli = Convert.ToInt32(row.Cells[1].Value);
+
+					listSelectedNotaBeli.Add(nb);
+				}
+
+				DialogResult dialogResult = MessageBox.Show($"Apakah anda yakin untuk menghapus {listSelectedNotaBeli.Count} data nota beli ini?", "Hapus", MessageBoxButtons.YesNo);
+				if (dialogResult == DialogResult.Yes)
+				{
+					List<string> hasil = NotaBeli.HapusData(listSelectedNotaBeli);
+
+					int jumlahBerhasil = 0;
+					int jumlahGagal = 0;
+
+					string keteranganGagal = "";
+
+					foreach (var item in hasil)
+					{
+						if (item == "berhasil")
+						{
+							jumlahBerhasil++;
+						}
+						else
+						{
+							jumlahGagal++;
+							keteranganGagal = item.ToString();
+						}
+					}
+
+					if (jumlahGagal == 0)
+					{
+						MessageBox.Show($"{jumlahBerhasil} data berhasil di hapus");
+					}
+					else if (jumlahGagal > 0 && jumlahBerhasil > 0)
+					{
+						MessageBox.Show($"{jumlahBerhasil} data berhasil di hapus, {jumlahGagal} data gagal dihapus karena {keteranganGagal}");
+					}
+					else if (jumlahBerhasil == 0)
+					{
+						MessageBox.Show($"{jumlahGagal} data gagal dihapus karena {keteranganGagal}");
+					}
+
+					textBoxSearchBarangMasuk.Clear();
+					FormMaster_Load(sender, e);
+				}
+				else if (dialogResult == DialogResult.Cancel)
+				{
+					this.DialogResult = DialogResult.Cancel;
+				}
+			}
+		}
+
+		private void buttonTambahNotaJual_Click(object sender, EventArgs e)
+		{
+			FormTambahNotaJual frm = new FormTambahNotaJual(this, int.Parse(labelProfilIdUser.Text));
+			frm.Owner = this;
+			frm.Show();
+		}
+
+		private void buttonHapusNotaJual_Click(object sender, EventArgs e)
+		{
+			listSelectedNotaJual.Clear();
+
+			if (dataGridViewBarangKeluar.SelectedRows.Count == 0)
+			{
+				MessageBox.Show("Pilih satu atau lebih data di tabel untuk di hapus");
+			}
+			else
+			{
+				foreach (DataGridViewRow row in dataGridViewBarangKeluar.SelectedRows)
+				{
+					NotaJual nj = new NotaJual();
+					nj.IdNotaJual = Convert.ToInt32(row.Cells[1].Value);
+
+					listSelectedNotaJual.Add(nj);
+				}
+
+				DialogResult dialogResult = MessageBox.Show($"Apakah anda yakin untuk menghapus {listSelectedNotaJual.Count} data nota jual ini?", "Hapus", MessageBoxButtons.YesNo);
+				if (dialogResult == DialogResult.Yes)
+				{
+					List<string> hasil = NotaJual.HapusData(listSelectedNotaJual);
+
+					int jumlahBerhasil = 0;
+					int jumlahGagal = 0;
+
+					string keteranganGagal = "";
+
+					foreach (var item in hasil)
+					{
+						if (item == "berhasil")
+						{
+							jumlahBerhasil++;
+						}
+						else
+						{
+							jumlahGagal++;
+							keteranganGagal = item.ToString();
+						}
+					}
+
+					if (jumlahGagal == 0)
+					{
+						MessageBox.Show($"{jumlahBerhasil} data berhasil di hapus");
+					}
+					else if (jumlahGagal > 0 && jumlahBerhasil > 0)
+					{
+						MessageBox.Show($"{jumlahBerhasil} data berhasil di hapus, {jumlahGagal} data gagal dihapus karena {keteranganGagal}");
+					}
+					else if (jumlahBerhasil == 0)
+					{
+						MessageBox.Show($"{jumlahGagal} data gagal dihapus karena {keteranganGagal}");
+					}
+
+					textBoxSearchBarangKeluar.Clear();
+					FormMaster_Load(sender, e);
+				}
+				else if (dialogResult == DialogResult.Cancel)
+				{
+					this.DialogResult = DialogResult.Cancel;
+				}
+			}
+		}
+
+		private void dataGridViewBarangKeluar_DoubleClick(object sender, EventArgs e)
+		{
+			listSelectedNotaJualDetil.Clear();
+
+			string hasilBaca = "";
+
+			foreach (DataGridViewRow row in dataGridViewBarangKeluar.SelectedRows)
+			{
+				hasilBaca = NotaJualDetil.BacaData("nj.idnota_jual", row.Cells[1].Value.ToString(), listSelectedNotaJualDetil);
+			}
+
+			if (hasilBaca == "1")
+			{
+				FormDetailNotaJual frm = new FormDetailNotaJual(this, labelJabatanUser.Text);
+				frm.Show();
+			}
+			else
+			{
+				MessageBox.Show(hasilBaca);
+			}
+		}
+
+		private void dateTimePickerTglAwalNotaJual_ValueChanged(object sender, EventArgs e)
+		{
+			// secara default karena datetimepicker sudah di ubah di code di dalam formmaster_load maka pasti masuk else
+			// maka otomatis saat user baru buka modul nota jual, maka terfilter transaksi seminggu terakhir
+			if (dateTimePickerTglAwalNotaJual.Value > dateTimePickerTanggalAkhirNotaJual.Value)
+			{
+				MessageBox.Show("Mohon input tanggal awal dan akhir dengan benar");
+
+				dataGridViewBarangKeluar.Rows.Clear();
+			}
+			else
+			{
+				PopulateNotaJualTable("nj.tanggal", dateTimePickerTglAwalNotaJual.Value.ToString("yyyy-MM-dd"), dateTimePickerTanggalAkhirNotaJual.Value.ToString("yyyy-MM-dd"));
+			}
+		}
+
+		private void dateTimePickerTanggalAkhirNotaJual_ValueChanged(object sender, EventArgs e)
+		{
+			// secara default karena datetimepicker sudah di ubah di code di dalam formmaster_load maka pasti masuk else
+			// maka otomatis saat user baru buka modul nota jual, maka terfilter transaksi seminggu terakhir
+			if (dateTimePickerTanggalAkhirNotaJual.Value < dateTimePickerTglAwalNotaJual.Value)
+			{
+				MessageBox.Show("Mohon input tanggal awal dan akhir dengan benar");
+
+				dataGridViewBarangKeluar.Rows.Clear();
+			}
+			else
+			{
+				PopulateNotaJualTable("nj.tanggal", dateTimePickerTglAwalNotaJual.Value.ToString("yyyy-MM-dd"), dateTimePickerTanggalAkhirNotaJual.Value.ToString("yyyy-MM-dd"));
+			}
+		}
+
+		private void dateTimePickerTanggalAwalLaporanPenjualan_ValueChanged(object sender, EventArgs e)
+		{
+			// secara default karena datetimepicker sudah di ubah di code di dalam formmaster_load maka pasti masuk else
+			// maka otomatis saat user baru buka modul nota beli, maka terfilter transaksi seminggu terakhir
+			if (dateTimePickerTanggalAwalLaporanPenjualan.Value > dateTimePickerTanggalAkhirLaporanPenjualan.Value)
+			{
+				MessageBox.Show("Mohon input tanggal awal dan akhir dengan benar");
+
+				dataGridViewLaporanPenjualan.Rows.Clear();
+			}
+			else
+			{
+				PopulateLaporanPenjualanTable(dateTimePickerTanggalAwalLaporanPenjualan.Value.ToString("yyyy-MM-dd"), dateTimePickerTanggalAkhirLaporanPenjualan.Value.ToString("yyyy-MM-dd"));
+			}
+		}
+
+		private void dateTimePickerTanggalAkhirLaporanPenjualan_ValueChanged(object sender, EventArgs e)
+		{
+			// secara default karena datetimepicker sudah di ubah di code di dalam formmaster_load maka pasti masuk else
+			// maka otomatis saat user baru buka modul nota beli, maka terfilter transaksi seminggu terakhir
+			if (dateTimePickerTanggalAkhirLaporanPenjualan.Value < dateTimePickerTanggalAwalLaporanPenjualan.Value)
+			{
+				MessageBox.Show("Mohon input tanggal awal dan akhir dengan benar");
+
+				dataGridViewLaporanPenjualan.Rows.Clear();
+			}
+			else
+			{
+				PopulateLaporanPenjualanTable(dateTimePickerTanggalAwalLaporanPenjualan.Value.ToString("yyyy-MM-dd"), dateTimePickerTanggalAkhirLaporanPenjualan.Value.ToString("yyyy-MM-dd"));
+			}
+		}
+
+		private void dateTimePickerTanggalAwalLaporanPembelian_ValueChanged(object sender, EventArgs e)
+		{
+			// secara default karena datetimepicker sudah di ubah di code di dalam formmaster_load maka pasti masuk else
+			// maka otomatis saat user baru buka modul nota beli, maka terfilter transaksi seminggu terakhir
+			if (dateTimePickerTanggalAwalLaporanPembelian.Value > dateTimePickerTanggalAkhirLaporanPembelian.Value)
+			{
+				MessageBox.Show("Mohon input tanggal awal dan akhir dengan benar");
+
+				dataGridViewLaporanPembelian.Rows.Clear();
+			}
+			else
+			{
+				PopulateLaporanPembelianTable(dateTimePickerTanggalAwalLaporanPembelian.Value.ToString("yyyy-MM-dd"), dateTimePickerTanggalAkhirLaporanPembelian.Value.ToString("yyyy-MM-dd"));
+			}
+		}
+
+		private void dateTimePickerTanggalAkhirLaporanPembelian_ValueChanged(object sender, EventArgs e)
+		{
+			// secara default karena datetimepicker sudah di ubah di code di dalam formmaster_load maka pasti masuk else
+			// maka otomatis saat user baru buka modul nota beli, maka terfilter transaksi seminggu terakhir
+			if (dateTimePickerTanggalAkhirLaporanPembelian.Value < dateTimePickerTanggalAwalLaporanPembelian.Value)
+			{
+				MessageBox.Show("Mohon input tanggal awal dan akhir dengan benar");
+
+				dataGridViewLaporanPembelian.Rows.Clear();
+			}
+			else
+			{
+				PopulateLaporanPembelianTable(dateTimePickerTanggalAwalLaporanPembelian.Value.ToString("yyyy-MM-dd"), dateTimePickerTanggalAkhirLaporanPembelian.Value.ToString("yyyy-MM-dd"));
+			}
+		}
+
+		private void comboBoxKriteriaLaporanStokBarang_SelectionChangeCommitted(object sender, EventArgs e)
+		{
+			PopulateLaporanStokTable("", "");
+
+			textBoxSearchBrgInventaris.Clear();
 		}
 	}
 }

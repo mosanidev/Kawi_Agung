@@ -19,7 +19,6 @@ namespace Kawi_Agung
         private void btnClose_Click(object sender, EventArgs e)
         {
             this.Close();
-
         }
 
         private void buttonNext_Click(object sender, EventArgs e)
@@ -43,7 +42,7 @@ namespace Kawi_Agung
                         switchPanel(panelUsername, panelPassword, new Point(12, 54), new Point(999, 999));
                         textBoxPassword.Focus();
                     }
-                    else if (listUser[0].Status == "Tidak Aktif")
+                    else if (listUser[0].Status == "Belum Aktif")
                     {
                         MessageBox.Show("Untuk mengaktifkan akun, silahkan buat password terlebih dahulu");
                         switchPanel(panelUsername, panelBuatPassword, new Point(12, 54), new Point(999, 999));
@@ -124,6 +123,7 @@ namespace Kawi_Agung
                 {
                     MessageBox.Show("Selamat datang, " + listUser[0].Nama);
 
+                    this.Hide();
                     FormMaster frmMaster = new FormMaster();
 
                     //frmMaster.iconPictureBoxUser
@@ -184,6 +184,24 @@ namespace Kawi_Agung
 		private void btnMinimize_Click(object sender, EventArgs e)
 		{
             this.WindowState = FormWindowState.Minimized;
+        }
+
+		private void iconButtonBackPanelPassword_Click(object sender, EventArgs e)
+		{
+            textBoxUsername.Clear();
+            textBoxPassword.Clear();
+
+            switchPanel(panelPassword, panelUsername, new Point(12, 54), new Point(999, 999));
+
+        }
+
+		private void iconButtonBackPanelNewPassword_Click(object sender, EventArgs e)
+		{
+            textBoxUsername.Clear();
+            textBoxNewPassword.Clear();
+            textBoxRePassword.Clear();
+
+            switchPanel(panelBuatPassword, panelUsername, new Point(12, 54), new Point(999, 999));
         }
 	}
 }

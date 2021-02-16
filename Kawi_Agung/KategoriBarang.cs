@@ -59,11 +59,11 @@ namespace Kawi_Agung
 			}
 			else if (kriteria == "exclude") // kriteria khusus untuk perintah sql yang menyeleksi semua jenis barang terkecuali jenis tertentu
 			{
-				sql = "SELECT * FROM kategori_barang WHERE NOT nama='" + nilaiKriteria + "' ORDER BY idkategori_barang";
+				sql = "SELECT * FROM kategori_barang WHERE NOT nama='" + nilaiKriteria + "' ORDER BY nama";
 			}
 			else
 			{
-				sql = "SELECT * FROM kategori_barang WHERE " + kriteria + " LIKE '%" + nilaiKriteria + "%' ORDER BY idkategori_barang";
+				sql = "SELECT * FROM kategori_barang WHERE " + kriteria + " LIKE '%" + nilaiKriteria + "%' ORDER BY nama";
 			}
 
 			MySqlCommand cmd = new MySqlCommand(sql, conn.KoneksiDB);

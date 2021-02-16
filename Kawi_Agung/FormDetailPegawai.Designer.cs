@@ -97,7 +97,7 @@
 			// 
 			this.label2.AutoSize = true;
 			this.label2.Font = new System.Drawing.Font("Century Gothic", 12.5F);
-			this.label2.Location = new System.Drawing.Point(18, 278);
+			this.label2.Location = new System.Drawing.Point(20, 196);
 			this.label2.Name = "label2";
 			this.label2.Size = new System.Drawing.Size(103, 21);
 			this.label2.TabIndex = 68;
@@ -107,7 +107,7 @@
 			// 
 			this.label3.AutoSize = true;
 			this.label3.Font = new System.Drawing.Font("Century Gothic", 12.5F);
-			this.label3.Location = new System.Drawing.Point(19, 320);
+			this.label3.Location = new System.Drawing.Point(20, 278);
 			this.label3.Name = "label3";
 			this.label3.Size = new System.Drawing.Size(93, 21);
 			this.label3.TabIndex = 69;
@@ -157,7 +157,7 @@
 			// 
 			this.label8.AutoSize = true;
 			this.label8.Font = new System.Drawing.Font("Century Gothic", 12.5F);
-			this.label8.Location = new System.Drawing.Point(19, 197);
+			this.label8.Location = new System.Drawing.Point(20, 320);
 			this.label8.Name = "label8";
 			this.label8.Size = new System.Drawing.Size(83, 21);
 			this.label8.TabIndex = 74;
@@ -207,7 +207,7 @@
 			// 
 			this.labelNoTelp.AutoSize = true;
 			this.labelNoTelp.Font = new System.Drawing.Font("Century Gothic", 11.5F);
-			this.labelNoTelp.Location = new System.Drawing.Point(163, 197);
+			this.labelNoTelp.Location = new System.Drawing.Point(163, 321);
 			this.labelNoTelp.Name = "labelNoTelp";
 			this.labelNoTelp.Size = new System.Drawing.Size(102, 21);
 			this.labelNoTelp.TabIndex = 79;
@@ -217,7 +217,7 @@
 			// 
 			this.labelUsername.AutoSize = true;
 			this.labelUsername.Font = new System.Drawing.Font("Century Gothic", 11.5F);
-			this.labelUsername.Location = new System.Drawing.Point(163, 278);
+			this.labelUsername.Location = new System.Drawing.Point(163, 197);
 			this.labelUsername.Name = "labelUsername";
 			this.labelUsername.Size = new System.Drawing.Size(126, 21);
 			this.labelUsername.TabIndex = 80;
@@ -227,7 +227,7 @@
 			// 
 			this.labelJabatan.AutoSize = true;
 			this.labelJabatan.Font = new System.Drawing.Font("Century Gothic", 11.5F);
-			this.labelJabatan.Location = new System.Drawing.Point(163, 320);
+			this.labelJabatan.Location = new System.Drawing.Point(163, 278);
 			this.labelJabatan.Name = "labelJabatan";
 			this.labelJabatan.Size = new System.Drawing.Size(117, 21);
 			this.labelJabatan.TabIndex = 81;
@@ -267,6 +267,7 @@
 			this.Controls.Add(this.pictureBoxGambarPegawai);
 			this.Controls.Add(this.panel1);
 			this.Name = "FormDetailPegawai";
+			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
 			this.Text = "FormDetailPegawai";
 			this.Load += new System.EventHandler(this.FormDetailPegawai_Load);
 			this.panel1.ResumeLayout(false);
