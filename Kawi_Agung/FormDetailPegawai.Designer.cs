@@ -266,6 +266,8 @@
 			this.Controls.Add(this.label1);
 			this.Controls.Add(this.pictureBoxGambarPegawai);
 			this.Controls.Add(this.panel1);
+			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+			this.MaximizeBox = false;
 			this.Name = "FormDetailPegawai";
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
 			this.Text = "FormDetailPegawai";

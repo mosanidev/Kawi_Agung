@@ -72,7 +72,8 @@ namespace Kawi_Agung
 			this.textBoxAlamatPegawai.Multiline = true;
 			this.textBoxAlamatPegawai.Name = "textBoxAlamatPegawai";
 			this.textBoxAlamatPegawai.Size = new System.Drawing.Size(231, 69);
-			this.textBoxAlamatPegawai.TabIndex = 127;
+			this.textBoxAlamatPegawai.TabIndex = 11;
+			this.textBoxAlamatPegawai.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBoxAlamatPegawai_KeyDown);
 			// 
 			// comboBoxStatusPegawai
 			// 
@@ -81,14 +82,14 @@ namespace Kawi_Agung
 			this.comboBoxStatusPegawai.Location = new System.Drawing.Point(185, 224);
 			this.comboBoxStatusPegawai.Name = "comboBoxStatusPegawai";
 			this.comboBoxStatusPegawai.Size = new System.Drawing.Size(231, 21);
-			this.comboBoxStatusPegawai.TabIndex = 126;
+			this.comboBoxStatusPegawai.TabIndex = 8;
 			// 
 			// textBoxNoTelpPegawai
 			// 
 			this.textBoxNoTelpPegawai.Location = new System.Drawing.Point(185, 294);
 			this.textBoxNoTelpPegawai.Name = "textBoxNoTelpPegawai";
 			this.textBoxNoTelpPegawai.Size = new System.Drawing.Size(231, 20);
-			this.textBoxNoTelpPegawai.TabIndex = 124;
+			this.textBoxNoTelpPegawai.TabIndex = 10;
 			// 
 			// label6
 			// 
@@ -189,7 +190,7 @@ namespace Kawi_Agung
 			this.comboBoxJabatanPegawai.Location = new System.Drawing.Point(184, 259);
 			this.comboBoxJabatanPegawai.Name = "comboBoxJabatanPegawai";
 			this.comboBoxJabatanPegawai.Size = new System.Drawing.Size(231, 21);
-			this.comboBoxJabatanPegawai.TabIndex = 133;
+			this.comboBoxJabatanPegawai.TabIndex = 9;
 			// 
 			// label4
 			// 
@@ -240,7 +241,7 @@ namespace Kawi_Agung
 			this.buttonHapusFoto.OnHoverButtonColor = System.Drawing.Color.FromArgb(((int)(((byte)(7)))), ((int)(((byte)(104)))), ((int)(((byte)(159)))));
 			this.buttonHapusFoto.OnHoverTextColor = System.Drawing.Color.AliceBlue;
 			this.buttonHapusFoto.Size = new System.Drawing.Size(146, 34);
-			this.buttonHapusFoto.TabIndex = 131;
+			this.buttonHapusFoto.TabIndex = 13;
 			this.buttonHapusFoto.Text = "Hapus Foto";
 			this.buttonHapusFoto.TextColor = System.Drawing.Color.White;
 			this.buttonHapusFoto.UseVisualStyleBackColor = false;
@@ -265,7 +266,7 @@ namespace Kawi_Agung
 			this.buttonUnggahFotoUser.OnHoverButtonColor = System.Drawing.Color.FromArgb(((int)(((byte)(7)))), ((int)(((byte)(104)))), ((int)(((byte)(159)))));
 			this.buttonUnggahFotoUser.OnHoverTextColor = System.Drawing.Color.AliceBlue;
 			this.buttonUnggahFotoUser.Size = new System.Drawing.Size(146, 34);
-			this.buttonUnggahFotoUser.TabIndex = 130;
+			this.buttonUnggahFotoUser.TabIndex = 12;
 			this.buttonUnggahFotoUser.Text = "Unggah";
 			this.buttonUnggahFotoUser.TextColor = System.Drawing.Color.White;
 			this.buttonUnggahFotoUser.UseVisualStyleBackColor = false;
@@ -289,7 +290,7 @@ namespace Kawi_Agung
 			this.buttonUbahPegawai.OnHoverButtonColor = System.Drawing.Color.FromArgb(((int)(((byte)(7)))), ((int)(((byte)(104)))), ((int)(((byte)(159)))));
 			this.buttonUbahPegawai.OnHoverTextColor = System.Drawing.Color.AliceBlue;
 			this.buttonUbahPegawai.Size = new System.Drawing.Size(232, 40);
-			this.buttonUbahPegawai.TabIndex = 128;
+			this.buttonUbahPegawai.TabIndex = 14;
 			this.buttonUbahPegawai.Text = "Simpan";
 			this.buttonUbahPegawai.TextColor = System.Drawing.Color.White;
 			this.buttonUbahPegawai.UseVisualStyleBackColor = false;
@@ -352,7 +353,10 @@ namespace Kawi_Agung
 			this.Controls.Add(this.label3);
 			this.Controls.Add(this.label2);
 			this.Controls.Add(this.panel1);
+			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+			this.MaximizeBox = false;
 			this.Name = "FormUbahPegawai";
+			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
 			this.Text = "FormUbahPegawai";
 			this.Load += new System.EventHandler(this.FormUbahPegawai_Load);
 			((System.ComponentModel.ISupportInitialize)(this.pictureBoxUbahFotoUser)).EndInit();

@@ -28,48 +28,29 @@ namespace Kawi_Agung
 		{
 			int IdMerek = FormMaster.listSelectedMerek[0].IdMerekBarang;
 
-			MerekBarang merek = new MerekBarang();
-			merek.IdMerekBarang = IdMerek;
-			merek.Nama = textBoxUbahMerekBarang.Text.Trim();
-
-			List<MerekBarang> listMerek = new List<MerekBarang>();
-
-			string hasilBaca = MerekBarang.BacaData("exclude", FormMaster.listSelectedMerek[0].Nama, listMerek);
-			string hasilUbah = "";
-
-			if (hasilBaca == "1")
-			{
-				hasilUbah = MerekBarang.UbahData(merek, listMerek);
-			}
-
 			if (textBoxUbahMerekBarang.Text == "")
 			{
 				MessageBox.Show("Harap di isi terlebih dahulu");
 			}
-			else if (textBoxUbahMerekBarang.Text != "")
+			else 
 			{
+				MerekBarang merek = new MerekBarang();
+				merek.IdMerekBarang = IdMerek;
+				merek.Nama = textBoxUbahMerekBarang.Text.Trim();
+
+				string hasilUbah = MerekBarang.UbahData(merek);
+
 				if (hasilUbah == "1")
 				{
-					MessageBox.Show("Proses ubah berhasil", "Info");
+					MessageBox.Show("Proses ubah berhasil");
 
 					this.mainForm.textBoxSearchMerekBrg.Clear();
-					this.mainForm.FormMaster_Load(buttonUbahMerek, e);
+					this.mainForm.PopulateMerekTable("", "");
 					this.Close();
 				}
-				else if (hasilUbah == "Nama merek sudah ada")
+				else
 				{
-					DialogResult dialogResult = MessageBox.Show("Merek sudah ada. Apakah Anda ingin menyimpan data dengan nama merek tersebut?", "Tambah Merek", MessageBoxButtons.YesNo);
-					if (dialogResult == DialogResult.Yes)
-					{
-						List<MerekBarang> listKosong = new List<MerekBarang>(); // kirim list kosong sebagai parameter method tambah data, agar bisa ditambahkan ke database
-						string hasilTambah_ = MerekBarang.UbahData(merek, listKosong);
-
-						MessageBox.Show("Proses ubah berhasil", "Info");
-
-						this.mainForm.textBoxSearchMerekBrg.Clear();
-						this.mainForm.FormMaster_Load(buttonUbahMerek, e);
-						this.Close();
-					}
+					MessageBox.Show(hasilUbah);
 				}
 			}
 		}
@@ -80,6 +61,14 @@ namespace Kawi_Agung
 
 			textBoxUbahMerekBarang.SelectionStart = textBoxUbahMerekBarang.Text.Length;
 			textBoxUbahMerekBarang.SelectionLength = 0;
+		}
+
+		private void textBoxUbahMerekBarang_KeyDown(object sender, KeyEventArgs e)
+		{
+			if (e.KeyCode == Keys.Enter)
+			{
+				buttonUbahMerek_Click(sender, e);
+			}
 		}
 	}
 }

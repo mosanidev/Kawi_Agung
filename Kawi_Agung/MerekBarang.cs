@@ -34,16 +34,6 @@ namespace Kawi_Agung
 
 		#region METHODS
 
-		public static void JalankanPerintahDML(string pSql)
-		{
-			Koneksi k = new Koneksi();
-			k.Connect();
-
-			MySqlCommand c = new MySqlCommand(pSql, k.KoneksiDB);
-
-			c.ExecuteNonQuery();
-		}
-
 		public static string BacaData(string kriteria, string nilaiKriteria, List<MerekBarang> listMerek)
 		{
 			string sql = "";
@@ -85,53 +75,52 @@ namespace Kawi_Agung
 			finally
 			{
 				cmd.Dispose();
-				hasil.Dispose();
+				hasil.Close();
+				conn.KoneksiDB.Close();
 			}
 		}
 
-		public static string TambahData(MerekBarang merek, List<MerekBarang> listMerek)
+		public static string TambahData(MerekBarang merek)
 		{
 			string sql = "INSERT INTO merek_barang(nama) VALUES('" + merek.Nama + "')";
+			Koneksi k = new Koneksi();
+			MySqlCommand c = new MySqlCommand(sql, k.KoneksiDB);
 
 			try
 			{
-				for (int i = 0; i < listMerek.Count; i++)
-				{
-					if (merek.Nama.ToLower() == listMerek[i].Nama.ToLower())
-					{
-						return "Nama merek sudah ada";
-					}
-				}
-
-				JalankanPerintahDML(sql);
+				c.ExecuteNonQuery();
 				return "1";
 			}
 			catch (MySqlException ex)
 			{
 				return ex.Message + ". Perintah sql : " + sql;
+			}
+			finally
+			{
+				c.Dispose();
+				k.KoneksiDB.Close();
 			}
 		}
 
-		public static string UbahData(MerekBarang merek, List<MerekBarang> listMerek)
+		public static string UbahData(MerekBarang merek)
 		{
 			string sql = "UPDATE merek_barang SET nama='" + merek.Nama + "' WHERE idmerek_barang=" + merek.IdMerekBarang;
+			Koneksi k = new Koneksi();
+			MySqlCommand c = new MySqlCommand(sql, k.KoneksiDB);
 
 			try
 			{
-				for (int i = 0; i < listMerek.Count; i++)
-				{
-					if (merek.Nama.ToLower() == listMerek[i].Nama.ToLower())
-					{
-						return "Nama merek sudah ada";
-					}
-				}
-
-				JalankanPerintahDML(sql);
+				c.ExecuteNonQuery();
 				return "1";
 			}
 			catch (MySqlException ex)
 			{
 				return ex.Message + ". Perintah sql : " + sql;
+			}
+			finally
+			{
+				c.Dispose();
+				k.KoneksiDB.Close();
 			}
 		}
 
@@ -139,6 +128,8 @@ namespace Kawi_Agung
 		{
 			List<string> listKeterangan = new List<string>();
 			string sql = "";
+			Koneksi k = new Koneksi();
+			MySqlCommand c = null;
 
 			foreach (MerekBarang merek in listMerek)
 			{
@@ -146,7 +137,9 @@ namespace Kawi_Agung
 
 				try
 				{
-					JalankanPerintahDML(sql);
+					k.Connect();
+					c = new MySqlCommand(sql, k.KoneksiDB);
+					c.ExecuteNonQuery();
 					listKeterangan.Add("berhasil");
 				}
 				catch (MySqlException ex)
@@ -157,6 +150,11 @@ namespace Kawi_Agung
 					}
 
 					// error sql lain selain error diatas belum direkam
+				}
+				finally
+				{
+					c.Dispose();
+					k.KoneksiDB.Close();
 				}
 			}
 

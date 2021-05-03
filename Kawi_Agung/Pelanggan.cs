@@ -41,16 +41,6 @@ namespace Kawi_Agung
 
 		#region METHODS
 
-		public static void JalankanPerintahDML(string pSql)
-		{
-			Koneksi k = new Koneksi();
-			k.Connect();
-
-			MySqlCommand c = new MySqlCommand(pSql, k.KoneksiDB);
-
-			c.ExecuteNonQuery();
-		}
-
 		public static string BacaData(string kriteria, string nilaiKriteria, List<Pelanggan> listPelanggan)
 		{
 			string sql = "";
@@ -58,15 +48,15 @@ namespace Kawi_Agung
 
 			if (kriteria == "")
 			{
-				sql = "SELECT * FROM pelanggan ORDER BY idpelanggan";
+				sql = "SELECT * FROM pelanggan ORDER BY nama ASC";
 			}
 			else if (kriteria == "exclude")
 			{
-				sql = "SELECT * FROM pelanggan WHERE NOT nama='" + nilaiKriteria + "' ORDER BY idpelanggan";
+				sql = "SELECT * FROM pelanggan WHERE NOT nama='" + nilaiKriteria + "' ORDER BY nama ASC";
 			}
 			else
 			{
-				sql = "SELECT * FROM pelanggan WHERE " + kriteria + " LIKE '%" + nilaiKriteria + "%' ORDER BY idpelanggan";
+				sql = "SELECT * FROM pelanggan WHERE " + kriteria + " LIKE '%" + nilaiKriteria + "%' ORDER BY nama ASC";
 			}
 
 			MySqlCommand cmd = new MySqlCommand(sql, conn.KoneksiDB);
@@ -95,53 +85,52 @@ namespace Kawi_Agung
 			finally
 			{
 				cmd.Dispose();
-				hasil.Dispose();
+				hasil.Close();
+				conn.KoneksiDB.Close();
 			}
 		}
 
-		public static string TambahData(Pelanggan pelanggan, List<Pelanggan> listPelanggan)
+		public static string TambahData(Pelanggan pelanggan)
 		{
 			string sql = "INSERT INTO pelanggan(nama, alamat, no_telp) VALUES('" + pelanggan.Nama + "', '" + pelanggan.Alamat + "', '" + pelanggan.NoTelp + "')";
+			Koneksi k = new Koneksi();
+			MySqlCommand cmd = new MySqlCommand(sql, k.KoneksiDB);
 
 			try
 			{
-				for (int i = 0; i < listPelanggan.Count; i++)
-				{
-					if (pelanggan.Nama.ToLower() == listPelanggan[i].Nama.ToLower())
-					{
-						return "Nama pelanggan sudah ada";
-					}
-				}
-
-				JalankanPerintahDML(sql);
+				cmd.ExecuteNonQuery();
 				return "1";
 			}
 			catch (MySqlException ex)
 			{
 				return ex.Message + ". Perintah sql : " + sql;
+			}
+			finally
+			{
+				cmd.Dispose();
+				k.KoneksiDB.Close();
 			}
 		}
 
-		public static string UbahData(Pelanggan pelanggan, List<Pelanggan> listPelanggan)
+		public static string UbahData(Pelanggan pelanggan)
 		{
 			string sql = "UPDATE pelanggan SET nama='" + pelanggan.Nama + "', alamat='" + pelanggan.Alamat + "', no_telp='" + pelanggan.NoTelp + "' WHERE idpelanggan=" + pelanggan.IdPelanggan;
+			Koneksi k = new Koneksi();
+			MySqlCommand cmd = new MySqlCommand(sql, k.KoneksiDB);
 
 			try
 			{
-				for (int i = 0; i < listPelanggan.Count; i++)
-				{
-					if (pelanggan.Nama.ToLower() == listPelanggan[i].Nama.ToLower())
-					{
-						return "Nama pelanggan sudah ada";
-					}
-				}
-
-				JalankanPerintahDML(sql);
+				cmd.ExecuteNonQuery();
 				return "1";
 			}
 			catch (MySqlException ex)
 			{
 				return ex.Message + ". Perintah sql : " + sql;
+			}
+			finally
+			{
+				cmd.Dispose();
+				k.KoneksiDB.Close();
 			}
 		}
 
@@ -149,14 +138,17 @@ namespace Kawi_Agung
 		{
 			List<string> listKeterangan = new List<string>();
 			string sql = "";
+			Koneksi k = new Koneksi();
+			MySqlCommand cmd = null;
 
 			foreach (Pelanggan pelanggan in listPelanggan)
 			{
 				sql = "DELETE FROM pelanggan WHERE idpelanggan=" + pelanggan.IdPelanggan;
+				cmd = new MySqlCommand(sql, k.KoneksiDB);
 
 				try
 				{
-					JalankanPerintahDML(sql);
+					cmd.ExecuteNonQuery();
 					listKeterangan.Add("berhasil");
 				}
 				catch (MySqlException ex)
@@ -167,6 +159,11 @@ namespace Kawi_Agung
 					}
 
 					// error sql lain selain error diatas belum direkam
+				}
+				finally
+				{
+					cmd.Dispose();
+					k.KoneksiDB.Close();
 				}
 			}
 			return listKeterangan;

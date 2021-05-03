@@ -23,7 +23,6 @@ namespace Kawi_Agung
 		private FormMaster mainForm = null;
 
 		private string pathFoto = "";
-		bool photoBool = true;
 		string statusUser = "";
 
 		public FormUbahPegawai(Form callingForm, string keteranganStatus)
@@ -54,9 +53,15 @@ namespace Kawi_Agung
 			textBoxAlamatPegawai.Text = FormMaster.listSelectedPegawai[0].Alamat;
 			labelTanggalLahir.Text = FormMaster.listSelectedPegawai[0].TanggalLahir.ToString("dd MMMM yyyy");
 
-			if (FormMaster.listSelectedPegawai[0].Foto != null)
+			if (FormMaster.listSelectedPegawai[0].Foto != "")
 			{
-				pictureBoxUbahFotoUser.Image = ConvertBinaryToImage(FormMaster.listSelectedPegawai[0].Foto);
+				string projectPath = Directory.GetParent(Directory.GetCurrentDirectory()).Parent.FullName + "\\images\\users";
+				string folderName = Path.Combine(projectPath, FormMaster.listSelectedPegawai[0].Username);
+				pictureBoxUbahFotoUser.ImageLocation = folderName + "\\" + "foto" + FormMaster.listSelectedPegawai[0].Foto.ToString();
+			}
+			else
+			{
+				pictureBoxUbahFotoUser.Image = Resources.profile_picture;
 			}
 
 			labelJenisKelamin.Text = FormMaster.listSelectedPegawai[0].JenisKelamin;
@@ -81,31 +86,11 @@ namespace Kawi_Agung
 
 		}
 
-		Image ConvertBinaryToImage(byte[] data)
-		{
-			var img = Resources.box;
-
-			if (data == null)
-				return img; ;
-			using (MemoryStream ms = new MemoryStream(data))
-			{
-				try
-				{
-					return Image.FromStream(ms);
-				}
-				catch (Exception e)
-				{
-					MessageBox.Show(e.Message.ToString());
-
-					return img;
-				}
-			}
-		}
-
 		private void buttonHapusFoto_Click(object sender, EventArgs e)
 		{
 			pictureBoxUbahFotoUser.Image = Resources.profile_picture;
 			pictureBoxUbahFotoUser.Tag = "Default";
+			pathFoto = "";
 		}
 
 		private void buttonUnggahFotoUser_Click(object sender, EventArgs e)
@@ -123,11 +108,19 @@ namespace Kawi_Agung
 				//{
 				//	MessageBox.Show("Ukuran file tidak boleh lebih dari 64 kb");
 				//}
-
-				pictureBoxUbahFotoUser.Image = new Bitmap(openFileDialog.FileName);
-				pathFoto = openFileDialog.FileName;
-				pictureBoxUbahFotoUser.Tag = "Unggahan";
+				try
+				{
+					pathFoto = openFileDialog.FileName;
+					pictureBoxUbahFotoUser.ImageLocation = openFileDialog.FileName;
+					pictureBoxUbahFotoUser.Tag = "Unggahan";
+				}
+				catch (IOException ex)
+				{
+					MessageBox.Show(ex.Message.ToString());
+				}
 			}
+
+			openFileDialog.Dispose();
 		}
 
 		private void buttonUbahPegawai_Click(object sender, EventArgs e)
@@ -138,21 +131,18 @@ namespace Kawi_Agung
 			}
 			else
 			{
-				byte[] foto = null;
-
 				Jabatan jabatan = new Jabatan();
 				jabatan.IdJabatan = int.Parse(comboBoxJabatanPegawai.Text.Split('-')[0]);
 				jabatan.Nama = comboBoxJabatanPegawai.Text.Split('-')[1];
 
-				if (pathFoto != "")
-				{
-					foto = ConvertImageToBinary(Image.FromFile(pathFoto));
-					photoBool = false;
-				}
-
 				User user = new User();
 				user.IdUser = FormMaster.listSelectedPegawai[0].IdUser;
 				user.NoTelp = textBoxNoTelpPegawai.Text.Trim();
+
+				if (pathFoto != "")
+				{
+					user.Foto = Path.GetExtension(pathFoto);
+				}
 
 				if (statusUser == "Belum Aktif")
 				{
@@ -164,16 +154,20 @@ namespace Kawi_Agung
 				}
 
 				user.Alamat = textBoxAlamatPegawai.Text.Trim();
-				user.Foto = foto;
 				user.Jabatan = jabatan;
 
 				string hasilUbah = "";
 
 				if (pictureBoxUbahFotoUser.Tag == "Default")
 				{
-					hasilUbah = User.UbahPegawai(user, "Kosong");
+					hasilUbah = User.UbahPegawai(user, "Hapus");
 				} else if (pictureBoxUbahFotoUser.Tag == "Unggahan")
 				{
+					string projectPath = Directory.GetParent(Directory.GetCurrentDirectory()).Parent.FullName + "\\images\\users";
+					string folderName = Path.Combine(projectPath, FormMaster.listSelectedPegawai[0].Username);
+					Directory.CreateDirectory(folderName);
+					Array.ForEach(Directory.GetFiles(@folderName + "\\"), File.Delete);
+					File.Copy(pathFoto, folderName + "\\" + "foto" + user.Foto);
 					hasilUbah = User.UbahPegawai(user, "Ada");
 				} else if (pictureBoxUbahFotoUser.Tag == null)
 				{
@@ -185,22 +179,17 @@ namespace Kawi_Agung
 					MessageBox.Show("Data berhasil disimpan");
 
 					this.mainForm.textBoxSearchPegawai.Clear();
-					this.mainForm.FormMaster_Load(buttonUbahPegawai, e);
+					this.mainForm.PopulatePegawaiTable("", "");
 					this.Close();
 				}
 			}
 		}
 
-		byte[] ConvertImageToBinary(Image img)
+		private void textBoxAlamatPegawai_KeyDown(object sender, KeyEventArgs e)
 		{
-			if (img == null)
-				return null;
-			using (MemoryStream ms = new MemoryStream())
+			if (e.KeyCode == Keys.Enter)
 			{
-				//System.Drawing.Imaging.ImageFormat.Jpeg
-				img.Save(ms, img.RawFormat);
-				return ms.ToArray();
-
+				buttonUbahPegawai_Click(sender, e);
 			}
 		}
 	}

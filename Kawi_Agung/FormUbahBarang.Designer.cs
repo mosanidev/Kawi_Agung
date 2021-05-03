@@ -164,6 +164,7 @@
 			// 
 			// textBoxUbahBarangKodeBarang
 			// 
+			this.textBoxUbahBarangKodeBarang.Enabled = false;
 			this.textBoxUbahBarangKodeBarang.Location = new System.Drawing.Point(187, 91);
 			this.textBoxUbahBarangKodeBarang.Name = "textBoxUbahBarangKodeBarang";
 			this.textBoxUbahBarangKodeBarang.Size = new System.Drawing.Size(215, 20);
@@ -392,7 +393,8 @@
 			this.Controls.Add(this.label17);
 			this.Controls.Add(this.textBoxUbahBarangNamaBarang);
 			this.Controls.Add(this.panel1);
-			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+			this.MaximizeBox = false;
 			this.Name = "FormUbahBarang";
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
 			this.Load += new System.EventHandler(this.FormUbahBarang_Load);

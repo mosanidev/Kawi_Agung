@@ -30,30 +30,15 @@ namespace Kawi_Agung
 			labelJabatan.Text = FormMaster.listSelectedPegawai[0].Jabatan.Nama;
 			labelAlamat.Text = FormMaster.listSelectedPegawai[0].Alamat;
 
-			if (FormMaster.listSelectedPegawai[0].Foto != null)
+			if (FormMaster.listSelectedPegawai[0].Foto != "")
 			{
-				pictureBoxGambarPegawai.Image = ConvertBinaryToImage(FormMaster.listSelectedPegawai[0].Foto);
+				string projectPath = Directory.GetParent(Directory.GetCurrentDirectory()).Parent.FullName + "\\images\\users";
+				string folderName = Path.Combine(projectPath, FormMaster.listSelectedPegawai[0].Username);
+				pictureBoxGambarPegawai.ImageLocation = folderName + "\\" + "foto" + FormMaster.listSelectedPegawai[0].Foto.ToString();
 			}
-		}
-
-		Image ConvertBinaryToImage(byte[] data)
-		{
-			var img = Resources.profile_picture;
-
-			if (data == null)
-				return img; ;
-			using (MemoryStream ms = new MemoryStream(data))
+			else
 			{
-				try
-				{
-					return Image.FromStream(ms);
-				}
-				catch (Exception e)
-				{
-					MessageBox.Show(e.Message.ToString());
-
-					return img;
-				}
+				pictureBoxGambarPegawai.Image = Resources.profile_picture;
 			}
 		}
 

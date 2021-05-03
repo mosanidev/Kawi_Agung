@@ -30,14 +30,13 @@ namespace Kawi_Agung
 		private void InitializeComponent()
 		{
 			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
 			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
 			this.panel1 = new System.Windows.Forms.Panel();
 			this.labelJudul = new System.Windows.Forms.Label();
 			this.panel87 = new System.Windows.Forms.Panel();
+			this.textBoxNoFaktur = new System.Windows.Forms.TextBox();
 			this.labelPelanggan = new System.Windows.Forms.Label();
 			this.labelTanggal = new System.Windows.Forms.Label();
-			this.labelNoFaktur = new System.Windows.Forms.Label();
 			this.labelTotalDiskonJual = new System.Windows.Forms.Label();
 			this.label8 = new System.Windows.Forms.Label();
 			this.label3 = new System.Windows.Forms.Label();
@@ -48,13 +47,8 @@ namespace Kawi_Agung
 			this.panelSubMenuTransaksiBarangKeluar = new System.Windows.Forms.Panel();
 			this.panel8 = new System.Windows.Forms.Panel();
 			this.panel2 = new System.Windows.Forms.Panel();
-			this.buttonSimpanPDF = new ePOSOne.btnProduct.Button_WOC();
+			this.buttonLihatNotaJual = new ePOSOne.btnProduct.Button_WOC();
 			this.dataGridViewBarangKeluar = new System.Windows.Forms.DataGridView();
-			this.dataGridViewTextBoxColumn11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.dataGridViewTextBoxColumn12 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.ColumnSatuan = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.dataGridViewTextBoxColumn14 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.dataGridViewTextBoxColumn15 = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.panel1.SuspendLayout();
 			this.panel87.SuspendLayout();
 			this.panelSubMenuTransaksiBarangKeluar.SuspendLayout();
@@ -87,9 +81,9 @@ namespace Kawi_Agung
 			// 
 			// panel87
 			// 
+			this.panel87.Controls.Add(this.textBoxNoFaktur);
 			this.panel87.Controls.Add(this.labelPelanggan);
 			this.panel87.Controls.Add(this.labelTanggal);
-			this.panel87.Controls.Add(this.labelNoFaktur);
 			this.panel87.Controls.Add(this.labelTotalDiskonJual);
 			this.panel87.Controls.Add(this.label8);
 			this.panel87.Controls.Add(this.label3);
@@ -102,6 +96,15 @@ namespace Kawi_Agung
 			this.panel87.Name = "panel87";
 			this.panel87.Size = new System.Drawing.Size(649, 192);
 			this.panel87.TabIndex = 19;
+			// 
+			// textBoxNoFaktur
+			// 
+			this.textBoxNoFaktur.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
+			this.textBoxNoFaktur.Location = new System.Drawing.Point(162, 22);
+			this.textBoxNoFaktur.Name = "textBoxNoFaktur";
+			this.textBoxNoFaktur.ReadOnly = true;
+			this.textBoxNoFaktur.Size = new System.Drawing.Size(213, 24);
+			this.textBoxNoFaktur.TabIndex = 74;
 			// 
 			// labelPelanggan
 			// 
@@ -122,16 +125,6 @@ namespace Kawi_Agung
 			this.labelTanggal.Size = new System.Drawing.Size(118, 21);
 			this.labelTanggal.TabIndex = 71;
 			this.labelTanggal.Text = "labelTanggal";
-			// 
-			// labelNoFaktur
-			// 
-			this.labelNoFaktur.AutoSize = true;
-			this.labelNoFaktur.Font = new System.Drawing.Font("Century Gothic", 12.5F);
-			this.labelNoFaktur.Location = new System.Drawing.Point(158, 23);
-			this.labelNoFaktur.Name = "labelNoFaktur";
-			this.labelNoFaktur.Size = new System.Drawing.Size(126, 21);
-			this.labelNoFaktur.TabIndex = 70;
-			this.labelNoFaktur.Text = "labelNoFaktur";
 			// 
 			// labelTotalDiskonJual
 			// 
@@ -228,38 +221,38 @@ namespace Kawi_Agung
 			// 
 			// panel2
 			// 
-			this.panel2.Controls.Add(this.buttonSimpanPDF);
+			this.panel2.Controls.Add(this.buttonLihatNotaJual);
 			this.panel2.Dock = System.Windows.Forms.DockStyle.Bottom;
 			this.panel2.Location = new System.Drawing.Point(20, 269);
 			this.panel2.Name = "panel2";
 			this.panel2.Size = new System.Drawing.Size(609, 56);
 			this.panel2.TabIndex = 7;
 			// 
-			// buttonSimpanPDF
+			// buttonLihatNotaJual
 			// 
-			this.buttonSimpanPDF.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+			this.buttonLihatNotaJual.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-			this.buttonSimpanPDF.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(49)))), ((int)(((byte)(69)))));
-			this.buttonSimpanPDF.ButtonColor = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(49)))), ((int)(((byte)(69)))));
-			this.buttonSimpanPDF.Cursor = System.Windows.Forms.Cursors.Hand;
-			this.buttonSimpanPDF.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(232)))), ((int)(((byte)(232)))));
-			this.buttonSimpanPDF.FlatAppearance.BorderSize = 0;
-			this.buttonSimpanPDF.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(232)))), ((int)(((byte)(232)))));
-			this.buttonSimpanPDF.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(232)))), ((int)(((byte)(232)))));
-			this.buttonSimpanPDF.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-			this.buttonSimpanPDF.Font = new System.Drawing.Font("Century Gothic", 11F);
-			this.buttonSimpanPDF.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(49)))), ((int)(((byte)(69)))));
-			this.buttonSimpanPDF.Location = new System.Drawing.Point(3, 9);
-			this.buttonSimpanPDF.Name = "buttonSimpanPDF";
-			this.buttonSimpanPDF.OnHoverBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(7)))), ((int)(((byte)(104)))), ((int)(((byte)(159)))));
-			this.buttonSimpanPDF.OnHoverButtonColor = System.Drawing.Color.FromArgb(((int)(((byte)(7)))), ((int)(((byte)(104)))), ((int)(((byte)(159)))));
-			this.buttonSimpanPDF.OnHoverTextColor = System.Drawing.Color.AliceBlue;
-			this.buttonSimpanPDF.Size = new System.Drawing.Size(120, 40);
-			this.buttonSimpanPDF.TabIndex = 43;
-			this.buttonSimpanPDF.Text = "Simpan PDF";
-			this.buttonSimpanPDF.TextColor = System.Drawing.Color.White;
-			this.buttonSimpanPDF.UseVisualStyleBackColor = false;
-			this.buttonSimpanPDF.Click += new System.EventHandler(this.buttonSimpanPDF_Click);
+			this.buttonLihatNotaJual.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(49)))), ((int)(((byte)(69)))));
+			this.buttonLihatNotaJual.ButtonColor = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(49)))), ((int)(((byte)(69)))));
+			this.buttonLihatNotaJual.Cursor = System.Windows.Forms.Cursors.Hand;
+			this.buttonLihatNotaJual.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(232)))), ((int)(((byte)(232)))));
+			this.buttonLihatNotaJual.FlatAppearance.BorderSize = 0;
+			this.buttonLihatNotaJual.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(232)))), ((int)(((byte)(232)))));
+			this.buttonLihatNotaJual.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(232)))), ((int)(((byte)(232)))));
+			this.buttonLihatNotaJual.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+			this.buttonLihatNotaJual.Font = new System.Drawing.Font("Century Gothic", 11F);
+			this.buttonLihatNotaJual.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(49)))), ((int)(((byte)(69)))));
+			this.buttonLihatNotaJual.Location = new System.Drawing.Point(3, 9);
+			this.buttonLihatNotaJual.Name = "buttonLihatNotaJual";
+			this.buttonLihatNotaJual.OnHoverBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(7)))), ((int)(((byte)(104)))), ((int)(((byte)(159)))));
+			this.buttonLihatNotaJual.OnHoverButtonColor = System.Drawing.Color.FromArgb(((int)(((byte)(7)))), ((int)(((byte)(104)))), ((int)(((byte)(159)))));
+			this.buttonLihatNotaJual.OnHoverTextColor = System.Drawing.Color.AliceBlue;
+			this.buttonLihatNotaJual.Size = new System.Drawing.Size(140, 40);
+			this.buttonLihatNotaJual.TabIndex = 43;
+			this.buttonLihatNotaJual.Text = "Lihat Nota Jual";
+			this.buttonLihatNotaJual.TextColor = System.Drawing.Color.White;
+			this.buttonLihatNotaJual.UseVisualStyleBackColor = false;
+			this.buttonLihatNotaJual.Click += new System.EventHandler(this.buttonSimpanPDF_Click);
 			// 
 			// dataGridViewBarangKeluar
 			// 
@@ -282,12 +275,6 @@ namespace Kawi_Agung
 			this.dataGridViewBarangKeluar.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
 			this.dataGridViewBarangKeluar.ColumnHeadersHeight = 50;
 			this.dataGridViewBarangKeluar.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-			this.dataGridViewBarangKeluar.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.dataGridViewTextBoxColumn11,
-            this.dataGridViewTextBoxColumn12,
-            this.ColumnSatuan,
-            this.dataGridViewTextBoxColumn14,
-            this.dataGridViewTextBoxColumn15});
 			this.dataGridViewBarangKeluar.Cursor = System.Windows.Forms.Cursors.Hand;
 			this.dataGridViewBarangKeluar.Dock = System.Windows.Forms.DockStyle.Top;
 			this.dataGridViewBarangKeluar.EnableHeadersVisualStyles = false;
@@ -295,14 +282,14 @@ namespace Kawi_Agung
 			this.dataGridViewBarangKeluar.Location = new System.Drawing.Point(20, 20);
 			this.dataGridViewBarangKeluar.Name = "dataGridViewBarangKeluar";
 			this.dataGridViewBarangKeluar.ReadOnly = true;
-			dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-			dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.ButtonFace;
-			dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
-			dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-			dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.ControlLightLight;
-			dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-			this.dataGridViewBarangKeluar.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
+			dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+			dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.ButtonFace;
+			dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+			dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.GradientInactiveCaption;
+			dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.ControlLightLight;
+			dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+			this.dataGridViewBarangKeluar.RowHeadersDefaultCellStyle = dataGridViewCellStyle2;
 			this.dataGridViewBarangKeluar.RowHeadersVisible = false;
 			this.dataGridViewBarangKeluar.RowTemplate.DefaultCellStyle.BackColor = System.Drawing.Color.GhostWhite;
 			this.dataGridViewBarangKeluar.RowTemplate.DefaultCellStyle.ForeColor = System.Drawing.Color.Black;
@@ -314,38 +301,6 @@ namespace Kawi_Agung
 			this.dataGridViewBarangKeluar.Size = new System.Drawing.Size(609, 238);
 			this.dataGridViewBarangKeluar.TabIndex = 6;
 			// 
-			// dataGridViewTextBoxColumn11
-			// 
-			dataGridViewCellStyle2.Padding = new System.Windows.Forms.Padding(3);
-			this.dataGridViewTextBoxColumn11.DefaultCellStyle = dataGridViewCellStyle2;
-			this.dataGridViewTextBoxColumn11.HeaderText = "Kode Barang";
-			this.dataGridViewTextBoxColumn11.Name = "dataGridViewTextBoxColumn11";
-			this.dataGridViewTextBoxColumn11.ReadOnly = true;
-			// 
-			// dataGridViewTextBoxColumn12
-			// 
-			this.dataGridViewTextBoxColumn12.HeaderText = "Nama Barang";
-			this.dataGridViewTextBoxColumn12.Name = "dataGridViewTextBoxColumn12";
-			this.dataGridViewTextBoxColumn12.ReadOnly = true;
-			// 
-			// ColumnSatuan
-			// 
-			this.ColumnSatuan.HeaderText = "Satuan";
-			this.ColumnSatuan.Name = "ColumnSatuan";
-			this.ColumnSatuan.ReadOnly = true;
-			// 
-			// dataGridViewTextBoxColumn14
-			// 
-			this.dataGridViewTextBoxColumn14.HeaderText = "Harga";
-			this.dataGridViewTextBoxColumn14.Name = "dataGridViewTextBoxColumn14";
-			this.dataGridViewTextBoxColumn14.ReadOnly = true;
-			// 
-			// dataGridViewTextBoxColumn15
-			// 
-			this.dataGridViewTextBoxColumn15.HeaderText = "Jumlah";
-			this.dataGridViewTextBoxColumn15.Name = "dataGridViewTextBoxColumn15";
-			this.dataGridViewTextBoxColumn15.ReadOnly = true;
-			// 
 			// FormDetailNotaJual
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -353,6 +308,8 @@ namespace Kawi_Agung
 			this.ClientSize = new System.Drawing.Size(649, 594);
 			this.Controls.Add(this.panel1);
 			this.Controls.Add(this.panelSubMenuTransaksiBarangKeluar);
+			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+			this.MaximizeBox = false;
 			this.Name = "FormDetailNotaJual";
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
 			this.Text = "FormDetailNotaJual";
@@ -376,7 +333,6 @@ namespace Kawi_Agung
 		private System.Windows.Forms.Panel panel87;
 		private System.Windows.Forms.Label labelPelanggan;
 		private System.Windows.Forms.Label labelTanggal;
-		private System.Windows.Forms.Label labelNoFaktur;
 		private System.Windows.Forms.Label labelTotalDiskonJual;
 		private System.Windows.Forms.Label label8;
 		private System.Windows.Forms.Label label3;
@@ -387,12 +343,8 @@ namespace Kawi_Agung
 		private System.Windows.Forms.Panel panelSubMenuTransaksiBarangKeluar;
 		private System.Windows.Forms.Panel panel8;
 		private System.Windows.Forms.DataGridView dataGridViewBarangKeluar;
-		private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn11;
-		private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn12;
-		private System.Windows.Forms.DataGridViewTextBoxColumn ColumnSatuan;
-		private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn14;
-		private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn15;
 		private System.Windows.Forms.Panel panel2;
-		public ePOSOne.btnProduct.Button_WOC buttonSimpanPDF;
+		public ePOSOne.btnProduct.Button_WOC buttonLihatNotaJual;
+		private System.Windows.Forms.TextBox textBoxNoFaktur;
 	}
 }

@@ -63,6 +63,7 @@
 			this.textBoxTambahMerekBarang.Name = "textBoxTambahMerekBarang";
 			this.textBoxTambahMerekBarang.Size = new System.Drawing.Size(215, 20);
 			this.textBoxTambahMerekBarang.TabIndex = 37;
+			this.textBoxTambahMerekBarang.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBoxTambahMerekBarang_KeyDown);
 			// 
 			// label1
 			// 
@@ -109,9 +110,7 @@
 			this.Controls.Add(this.textBoxTambahMerekBarang);
 			this.Controls.Add(this.label1);
 			this.Controls.Add(this.panel1);
-			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
 			this.MaximizeBox = false;
-			this.MinimizeBox = false;
 			this.Name = "FormTambahMerek";
 			this.ShowIcon = false;
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

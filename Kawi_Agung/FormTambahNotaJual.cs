@@ -68,27 +68,6 @@ namespace Kawi_Agung
 			return Convert.ToInt32((double)harga - ((double)harga * diskonDesimal));
 		}
 
-		Image ConvertBinaryToImage(byte[] data)
-		{
-			var img = Resources.profile_picture;
-
-			if (data == null)
-				return img; ;
-			using (MemoryStream ms = new MemoryStream(data))
-			{
-				try
-				{
-					return Image.FromStream(ms);
-				}
-				catch (Exception e)
-				{
-					MessageBox.Show(e.Message.ToString());
-
-					return img;
-				}
-			}
-		}
-
 		private void textBoxKodeBarangKeluar_KeyDown(object sender, KeyEventArgs e)
 		{
 			List<Barang> listBarang = new List<Barang>();
@@ -112,16 +91,15 @@ namespace Kawi_Agung
 
 		private void implementDataToView(List<Barang> listBarang)
 		{
-			Image imgBarang = null;
-
-			if (listBarang[0].Foto == null)
+			if (listBarang[0].Foto == "")
 			{
 				iconPictureBoxBarangKeluar.Image = Resources.box;
 			}
 			else
 			{
-				imgBarang = ConvertBinaryToImage(listBarang[0].Foto);
-				iconPictureBoxBarangKeluar.Image = imgBarang;
+				string projectPath = Directory.GetParent(Directory.GetCurrentDirectory()).Parent.FullName + "\\images\\barang";
+				string folderName = Path.Combine(projectPath, textBoxKodeBarangKeluar.Text);
+				iconPictureBoxBarangKeluar.ImageLocation = folderName + "\\" + "foto" + listBarang[0].Foto;
 			}
 
 			labelIdBarang.Text = listBarang[0].IdBarang.ToString();
@@ -267,59 +245,70 @@ namespace Kawi_Agung
 		{
 			if (textBoxNoFaktur.Text == "" || comboBoxPelanggan.Text == "" || dataGridViewBarangKeluar.RowCount == 0)
 			{
-				MessageBox.Show("Harap isi informasi nota jual secara lengkap", "Warning");
+				MessageBox.Show("Harap isi informasi nota jual secara lengkap");
 			}
 			else
 			{
-				List<NotaJualDetil> listNotaJualDetil = new List<NotaJualDetil>();
+				List<NotaJual> lstNotaJual = new List<NotaJual>();
+				NotaJual.BacaData("cek no faktur", textBoxNoFaktur.Text.ToString(), "", lstNotaJual);
 
-				foreach (DataGridViewRow row in dataGridViewBarangKeluar.Rows)
+				if (lstNotaJual.Count == 0)
 				{
-					Barang b = new Barang();
-					b.IdBarang = Convert.ToInt32(row.Cells[0].Value);
+					List<NotaJualDetil> listNotaJualDetil = new List<NotaJualDetil>();
 
-					NotaJual nj = new NotaJual();
-					nj.NoFaktur = textBoxNoFaktur.Text;
+					foreach (DataGridViewRow row in dataGridViewBarangKeluar.Rows)
+					{
+						Barang b = new Barang();
+						b.IdBarang = Convert.ToInt32(row.Cells[0].Value);
 
-					NotaJualDetil njd = new NotaJualDetil();
-					njd.Barang = b;
-					njd.NotaJual = nj;
-					njd.Qty = Convert.ToInt32(row.Cells[5].Value);
-					njd.SubTotal = Convert.ToInt32(row.Cells[4].Value);
-					njd.Total = hitungDiskon(hitungGrandTotal(), Convert.ToInt32(numericUpDownTotalDiskonJual.Value));
-					njd.DiskonPersen = Convert.ToInt32(numericUpDownTotalDiskonJual.Value);
+						NotaJual nj = new NotaJual();
+						nj.NoFaktur = textBoxNoFaktur.Text;
 
-					listNotaJualDetil.Add(njd);
-				}
+						NotaJualDetil njd = new NotaJualDetil();
+						njd.Barang = b;
+						njd.NotaJual = nj;
+						njd.Qty = Convert.ToInt32(row.Cells[5].Value);
+						njd.SubTotal = Convert.ToInt32(row.Cells[4].Value);
+						njd.Total = hitungDiskon(hitungGrandTotal(), Convert.ToInt32(numericUpDownTotalDiskonJual.Value));
+						njd.DiskonPersen = Convert.ToInt32(numericUpDownTotalDiskonJual.Value);
 
-				Pelanggan p = new Pelanggan();
-				p.IdPelanggan = int.Parse(comboBoxPelanggan.Text.Split('-')[0]);
-				p.Nama = comboBoxPelanggan.Text.Split('-')[1];
+						listNotaJualDetil.Add(njd);
+					}
 
-				User u = new User();
-				u.IdUser = idUser;
+					Pelanggan p = new Pelanggan();
+					p.IdPelanggan = int.Parse(comboBoxPelanggan.Text.Split('-')[0]);
+					p.Nama = comboBoxPelanggan.Text.Split('-')[1];
 
-				NotaJual n = new NotaJual();
-				n.NoFaktur = textBoxNoFaktur.Text.ToString();
-				n.Tanggal = dateTimePickerTanggalNotaJual.Value;
-				n.Pelanggan = p;
-				n.User = u;
-				n.ListNotaJualDetil = listNotaJualDetil;
+					User u = new User();
+					u.IdUser = idUser;
 
-				string hasil = NotaJual.TambahData(n, this.mainForm.listNotaJual);
+					NotaJual n = new NotaJual();
+					n.NoFaktur = textBoxNoFaktur.Text.ToString();
+					n.Tanggal = dateTimePickerTanggalNotaJual.Value;
+					n.Pelanggan = p;
+					n.User = u;
+					n.ListNotaJualDetil = listNotaJualDetil;
 
-				if (hasil == "1")
-				{
-					MessageBox.Show("Data berhasil ditambahkan");
+					string hasil = NotaJual.TambahData(n, this.mainForm.listNotaJual);
 
-					this.mainForm.textBoxSearchBarangKeluar.Clear();
-					this.mainForm.FormMaster_Load(buttonSimpan, e);
-					this.Close();
+					if (hasil == "1")
+					{
+						MessageBox.Show("Data berhasil ditambahkan");
+
+						this.mainForm.textBoxSearchBarangKeluar.Clear();
+						this.mainForm.PopulateNotaJualTable("", "", "");
+						this.Close();
+					}
+					else
+					{
+						MessageBox.Show(hasil);
+					}
 				}
 				else
 				{
-					MessageBox.Show(hasil);
+					MessageBox.Show("Nomor faktur sudah ada. Harap masukkan nomor faktur yang berbeda");
 				}
+
 			}
 		}
 	}

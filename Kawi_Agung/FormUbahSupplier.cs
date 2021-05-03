@@ -44,44 +44,34 @@ namespace Kawi_Agung
 			supplier.Alamat = richTextBoxUbahAlamatSupplier.Text.Trim();
 			supplier.NoTelp = textBoxUbahNoTelpSupplier.Text.Trim();
 
-			List<Supplier> listSupplier = new List<Supplier>();
-			string hasilBaca = Supplier.BacaData("exclude", FormMaster.listSelectedSupplier[0].Nama, listSupplier);
-			string hasilUbah = "";
-
-			if (hasilBaca == "1")
-			{
-				hasilUbah = Supplier.UbahData(supplier, listSupplier);
-			}
-
 			if (textBoxUbahNamaSupplier.Text == "" || textBoxUbahNoTelpSupplier.Text == "" || richTextBoxUbahAlamatSupplier.Text == "")
 			{
 				MessageBox.Show("Harap di isi terlebih dahulu");
 			}
 			else if (textBoxUbahNamaSupplier.Text != "" || textBoxUbahNoTelpSupplier.Text != "" || richTextBoxUbahAlamatSupplier.Text != "")
 			{
+				string hasilUbah = Supplier.UbahData(supplier);
+
 				if (hasilUbah == "1")
 				{
 					MessageBox.Show("Proses ubah berhasil");
 
 					this.mainForm.textBoxSearchNamaSupplier.Clear();
-					this.mainForm.FormMaster_Load(buttonUbahSupplier, e);
+					this.mainForm.PopulateSupplierTable("", "");
 					this.Close();
 				}
-				else if (hasilUbah == "Nama supplier sudah ada")
+				else
 				{
-					DialogResult dialogResult = MessageBox.Show("Nama supplier sudah ada. Apakah Anda ingin menyimpan data dengan nama supplier tersebut?", "", MessageBoxButtons.YesNo);
-					if (dialogResult == DialogResult.Yes)
-					{
-						List<Supplier> listKosong = new List<Supplier>(); // kirim list kosong sebagai parameter method ubah data, agar bisa disimpan ke database
-						string hasilTambah_ = Supplier.UbahData(supplier, listKosong);
-
-						MessageBox.Show("Proses ubah berhasil");
-
-						this.mainForm.textBoxSearchNamaSupplier.Clear();
-						this.mainForm.FormMaster_Load(buttonUbahSupplier, e);
-						this.Close();
-					}
+					MessageBox.Show(hasilUbah);
 				}
+			}
+		}
+
+		private void richTextBoxUbahAlamatSupplier_KeyDown(object sender, KeyEventArgs e)
+		{
+			if (e.KeyCode == Keys.Enter)
+			{
+				buttonUbahSupplier_Click(sender, e);
 			}
 		}
 	}

@@ -63,6 +63,7 @@
 			this.textBoxUbahKategoriBarang.Name = "textBoxUbahKategoriBarang";
 			this.textBoxUbahKategoriBarang.Size = new System.Drawing.Size(215, 20);
 			this.textBoxUbahKategoriBarang.TabIndex = 45;
+			this.textBoxUbahKategoriBarang.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBoxUbahKategoriBarang_KeyDown);
 			// 
 			// label1
 			// 
@@ -109,7 +110,8 @@
 			this.Controls.Add(this.buttonUbahKategori);
 			this.Controls.Add(this.textBoxUbahKategoriBarang);
 			this.Controls.Add(this.label1);
-			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+			this.MaximizeBox = false;
 			this.Name = "FormUbahKategori";
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
 			this.Load += new System.EventHandler(this.FormUbahKategori_Load);

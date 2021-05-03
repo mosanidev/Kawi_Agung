@@ -89,6 +89,7 @@
 			this.textBoxUbahMerekBarang.Name = "textBoxUbahMerekBarang";
 			this.textBoxUbahMerekBarang.Size = new System.Drawing.Size(215, 20);
 			this.textBoxUbahMerekBarang.TabIndex = 41;
+			this.textBoxUbahMerekBarang.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBoxUbahMerekBarang_KeyDown);
 			// 
 			// label1
 			// 
@@ -109,7 +110,8 @@
 			this.Controls.Add(this.buttonUbahMerek);
 			this.Controls.Add(this.textBoxUbahMerekBarang);
 			this.Controls.Add(this.label1);
-			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+			this.MaximizeBox = false;
 			this.Name = "FormUbahMerek";
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
 			this.Load += new System.EventHandler(this.FormUbahMerek_Load);

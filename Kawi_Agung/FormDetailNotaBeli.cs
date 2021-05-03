@@ -1,7 +1,4 @@
-﻿using iTextSharp.text;
-using iTextSharp.text.pdf;
-using iTextSharp.text.pdf.draw;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -24,7 +21,8 @@ namespace Kawi_Agung
 
 		private void FormDetailNotaBeli_Load(object sender, EventArgs e)
 		{
-			labelNoFaktur.Text = FormMaster.listSelectedNotaBeliDetil[0].NotaBeli.NoFaktur.ToString();
+			textBoxNoFaktur.Text = FormMaster.listSelectedNotaBeliDetil[0].NotaBeli.NoFaktur.ToString();
+			textBoxNoFaktur.SelectionStart = textBoxNoFaktur.TextLength;
 			labelTanggal.Text = FormMaster.listSelectedNotaBeliDetil[0].NotaBeli.Tanggal.ToString("dd MMMM yyyy");
 			labelSupplier.Text = FormMaster.listSelectedNotaBeliDetil[0].NotaBeli.Supplier.Nama.ToString();
 
@@ -34,7 +32,7 @@ namespace Kawi_Agung
 
 			foreach (var item in FormMaster.listSelectedNotaBeliDetil)
 			{
-				dataGridViewBarangMasuk.Rows.Add(item.Barang.KodeBarang, item.Barang.Nama, item.Barang.Satuan, item.SubTotal.ToString(), item.Qty.ToString());
+				dataGridViewBarangMasuk.Rows.Add(item.Barang.KodeBarang, item.Barang.Nama, item.Barang.Satuan, item.Qty.ToString(), item.SubTotal.ToString(), item.Qty*item.SubTotal);
 			}
 		}
 

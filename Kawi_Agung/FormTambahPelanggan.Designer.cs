@@ -81,7 +81,7 @@
 			this.buttonTambahPelanggan.OnHoverButtonColor = System.Drawing.Color.FromArgb(((int)(((byte)(7)))), ((int)(((byte)(104)))), ((int)(((byte)(159)))));
 			this.buttonTambahPelanggan.OnHoverTextColor = System.Drawing.Color.AliceBlue;
 			this.buttonTambahPelanggan.Size = new System.Drawing.Size(120, 40);
-			this.buttonTambahPelanggan.TabIndex = 56;
+			this.buttonTambahPelanggan.TabIndex = 3;
 			this.buttonTambahPelanggan.Text = "Tambah";
 			this.buttonTambahPelanggan.TextColor = System.Drawing.Color.White;
 			this.buttonTambahPelanggan.UseVisualStyleBackColor = false;
@@ -92,7 +92,7 @@
 			this.textBoxTambahNoTelpPelanggan.Location = new System.Drawing.Point(197, 156);
 			this.textBoxTambahNoTelpPelanggan.Name = "textBoxTambahNoTelpPelanggan";
 			this.textBoxTambahNoTelpPelanggan.Size = new System.Drawing.Size(215, 20);
-			this.textBoxTambahNoTelpPelanggan.TabIndex = 55;
+			this.textBoxTambahNoTelpPelanggan.TabIndex = 1;
 			// 
 			// label3
 			// 
@@ -109,8 +109,9 @@
 			this.richTextBoxTambahAlamatPelanggan.Location = new System.Drawing.Point(28, 228);
 			this.richTextBoxTambahAlamatPelanggan.Name = "richTextBoxTambahAlamatPelanggan";
 			this.richTextBoxTambahAlamatPelanggan.Size = new System.Drawing.Size(384, 61);
-			this.richTextBoxTambahAlamatPelanggan.TabIndex = 53;
+			this.richTextBoxTambahAlamatPelanggan.TabIndex = 2;
 			this.richTextBoxTambahAlamatPelanggan.Text = "";
+			this.richTextBoxTambahAlamatPelanggan.KeyDown += new System.Windows.Forms.KeyEventHandler(this.richTextBoxTambahAlamatPelanggan_KeyDown);
 			// 
 			// label2
 			// 
@@ -127,7 +128,7 @@
 			this.textBoxTambahNamaPelanggan.Location = new System.Drawing.Point(197, 116);
 			this.textBoxTambahNamaPelanggan.Name = "textBoxTambahNamaPelanggan";
 			this.textBoxTambahNamaPelanggan.Size = new System.Drawing.Size(215, 20);
-			this.textBoxTambahNamaPelanggan.TabIndex = 51;
+			this.textBoxTambahNamaPelanggan.TabIndex = 0;
 			// 
 			// label1
 			// 
@@ -152,7 +153,8 @@
 			this.Controls.Add(this.label2);
 			this.Controls.Add(this.textBoxTambahNamaPelanggan);
 			this.Controls.Add(this.label1);
-			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+			this.MaximizeBox = false;
 			this.Name = "FormTambahPelanggan";
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
 			this.panel1.ResumeLayout(false);

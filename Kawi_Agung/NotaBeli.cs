@@ -72,6 +72,10 @@ namespace Kawi_Agung
 			{
 				sql = "SELECT nb.idnota_beli, nb.no_faktur, nb.tanggal, s.nama, s.alamat, s.no_telp, u.nama FROM nota_beli nb INNER JOIN supplier s ON nb.idsupplier=s.idsupplier INNER JOIN user u ON nb.iduser=u.iduser WHERE " + kriteria + " BETWEEN '" + nilaiKriteria + "' AND '" + nilaiKriteria2 + "' ORDER BY nb.tanggal";
 			}
+			else if (kriteria == "cek no faktur") 
+			{
+				sql = "SELECT nb.idnota_beli, nb.no_faktur, nb.tanggal, s.nama, s.alamat, s.no_telp, u.nama FROM nota_beli nb INNER JOIN supplier s ON nb.idsupplier=s.idsupplier INNER JOIN user u ON nb.iduser=u.iduser WHERE nb.no_faktur='" + nilaiKriteria + "'";
+			}
 			else
 			{
 				sql = "SELECT nb.idnota_beli, nb.no_faktur, nb.tanggal, s.nama, s.alamat, s.no_telp, u.nama FROM nota_beli nb INNER JOIN supplier s ON nb.idsupplier=s.idsupplier INNER JOIN user u ON nb.iduser=u.iduser WHERE " + kriteria + " LIKE '%" + nilaiKriteria + "%' ORDER BY nb.tanggal";
@@ -111,66 +115,36 @@ namespace Kawi_Agung
 			finally
 			{
 				cmd.Dispose();
-				hasil.Dispose();
+				hasil.Close();
+				conn.KoneksiDB.Close();
 			}
 		}
 
-		public static string JalankanPerintahDML(string pSql)
-		{
-			try
-			{
-				Koneksi k = new Koneksi();
-				k.Connect();
-
-				MySqlCommand c = new MySqlCommand(pSql, k.KoneksiDB);
-
-				c.ExecuteNonQuery();
-
-				return "1";
-			}
-			catch (MySqlException e)
-			{
-				return e.Message;
-			}
-		}
-
-		public static string JalankanPerintahDML2(string pSql)
-		{
-			try
-			{
-				Koneksi k = new Koneksi();
-				k.Connect();
-
-				MySqlCommand c = new MySqlCommand(pSql, k.KoneksiDB);
-
-				return c.ExecuteScalar().ToString();
-
-			}
-			catch (MySqlException e)
-			{
-				return e.Message;
-			}
-		}
-
-		public static string TambahData(NotaBeli notaBeli, List<NotaBeli> listNB)
+		public static string TambahData(NotaBeli notaBeli)
 		{
 			using (var transcope = new TransactionScope(TransactionScopeOption.RequiresNew))
 			{
 				// tuliskan perintah SQL 1 : menambahkan nota beli ke tabel Nota Beli
 				string sql1 = "INSERT INTO nota_beli(no_faktur, tanggal, idsupplier, iduser) VALUES('" + notaBeli.NoFaktur + "', '" + notaBeli.Tanggal.ToString("yyyy-MM-dd") + "', " + notaBeli.Supplier.IdSupplier + ", " + notaBeli.User.IdUser + "); SELECT last_insert_id();";
+				string sql2 = "";
+				Koneksi k = new Koneksi();
+				k.Connect();
+				MySqlCommand c = new MySqlCommand(sql1, k.KoneksiDB);
+				MySqlCommand c2 = null;
 
 				try
 				{
-					for (int i = 0; i < listNB.Count; i++)
-					{
-						if (notaBeli.NoFaktur.ToLower() == listNB[i].NoFaktur.ToLower())
-						{
-							return "Nomor Faktur sudah ada. Harap masukkan nomor faktur yang lain";
-						}
-					}
+					//for (int i = 0; i < listNB.Count; i++)
+					//{
+					//	if (notaBeli.NoFaktur.ToLower() == listNB[i].NoFaktur.ToLower())
+					//	{
+					//		return "Nomor Faktur sudah ada. Harap masukkan nomor faktur yang lain";
+					//	}
+					//}
 
 					// menjalankan perintah untuk menambahkan ke tabel nota beli
-					string idNotaBeli = JalankanPerintahDML2(sql1);
+
+					string idNotaBeli = c.ExecuteScalar().ToString();
 
 					string hasilUpdateStok = "";
 
@@ -180,10 +154,12 @@ namespace Kawi_Agung
 						for (int i = 0; i < notaBeli.ListNotaBeliDetil.Count; i++)
 						{
 							// tuliskan perintah SQL 2 : menambahkan barang-barang yang terbeli ke Nota Beli Detil
-							string sql2 = "INSERT INTO nota_beli_detil(idbarang, idnota_beli, qty, sub_total, total, diskon_persen) VALUES(" + notaBeli.ListNotaBeliDetil[i].Barang.IdBarang + ", " + idNotaBeli + ", " + notaBeli.ListNotaBeliDetil[i].Qty + ", " + notaBeli.ListNotaBeliDetil[i].SubTotal + ", " + notaBeli.ListNotaBeliDetil[i].Total + ", " + notaBeli.ListNotaBeliDetil[i].DiskonPersen + ")";
+							sql2 = "INSERT INTO nota_beli_detil(idbarang, idnota_beli, qty, sub_total, total, diskon_persen) VALUES(" + notaBeli.ListNotaBeliDetil[i].Barang.IdBarang + ", " + idNotaBeli + ", " + notaBeli.ListNotaBeliDetil[i].Qty + ", " + notaBeli.ListNotaBeliDetil[i].SubTotal + ", " + notaBeli.ListNotaBeliDetil[i].Total + ", " + notaBeli.ListNotaBeliDetil[i].DiskonPersen + ")";
 
 							// menjalankan perintah untuk menambahkan ke tabel nota beli detil
-							string hasilTambahNotaBeliDetil = JalankanPerintahDML(sql2);
+							c2 = new MySqlCommand(sql2, k.KoneksiDB);
+							c2.ExecuteNonQuery();
+							string hasilTambahNotaBeliDetil = "1";
 
 							if (hasilTambahNotaBeliDetil == "1")
 							{
@@ -231,15 +207,29 @@ namespace Kawi_Agung
 
 					return e.Message;
 				}
+				finally
+				{
+					c.Dispose();
+					c2.Dispose();
+					k.KoneksiDB.Close();
+				}
 			}
 		}
 
 		public static List<string> HapusData(List<NotaBeli> listNotaBeli)
 		{
 			List<string> listKeterangan = new List<string>();
+
+			Koneksi k = new Koneksi();
+
 			string sql1 = "";
 			string sql2 = "";
 			string sql3 = "";
+
+			MySqlCommand cmd1 = null;
+			MySqlCommand cmd2 = null;
+			MySqlCommand cmd3 = null;
+			MySqlCommand cmd4 = null;
 
 			foreach (NotaBeli nb in listNotaBeli)
 			{
@@ -252,27 +242,23 @@ namespace Kawi_Agung
 
 				try
 				{
-					Koneksi k = new Koneksi();
-					k.Connect();
-
-					MySqlCommand cmd1 = new MySqlCommand(sql1, k.KoneksiDB);
-					MySqlCommand cmd2 = new MySqlCommand(sql2, k.KoneksiDB);
-					MySqlCommand cmd3 = new MySqlCommand(sql3, k.KoneksiDB);
+					cmd1 = new MySqlCommand(sql1, k.KoneksiDB);
+					cmd2 = new MySqlCommand(sql2, k.KoneksiDB);
+					cmd3 = new MySqlCommand(sql3, k.KoneksiDB);
 
 					if (hasilBacaNotaDetil == "1")
 					{
 						int idBarang = listNBD[0].Barang.IdBarang;
-						int	qty = listNBD[0].Qty;
+						int qty = listNBD[0].Qty;
 
 						sql3 = "UPDATE barang SET jumlah_stok=jumlah_stok-" + qty + " WHERE idbarang=" + idBarang;
 					}
 
-					MySqlCommand cmd4 = new MySqlCommand(sql3, k.KoneksiDB);
+					cmd4 = new MySqlCommand(sql3, k.KoneksiDB);
 
-					cmd4.ExecuteNonQuery(); 
+					cmd4.ExecuteNonQuery();
 					cmd1.ExecuteNonQuery();
 					cmd2.ExecuteNonQuery();
-
 
 					listKeterangan.Add("berhasil");
 				}
@@ -289,83 +275,16 @@ namespace Kawi_Agung
 
 					// error sql lain selain error diatas belum direkam
 				}
+				finally
+				{
+					cmd1.Dispose();
+					cmd2.Dispose();
+					cmd3.Dispose();
+					cmd4.Dispose();
+					k.KoneksiDB.Close();
+				}
 			}
 			return listKeterangan;
-		}
-
-		public static string CetakNota(string pKriteria, string pNilaiKriteria, string pNilaiKriteria2, string pNamaFile)
-		{
-			try
-			{
-				List<NotaBeli> listNotaBeli = new List<NotaBeli>();
-
-				// baca data nota tertentu yang akan dicetak
-				string hasilBaca = NotaBeli.BacaData(pKriteria, pNilaiKriteria, pNilaiKriteria2, listNotaBeli);
-
-				// simpan dulu isi nota yang akan ditampilkan ke objek file (StreamWriter)
-				StreamWriter file = new StreamWriter(pNamaFile);
-
-				for (int i = 0; i < listNotaBeli.Count; i++)
-				{
-					// tampilkan info perusahaan
-					file.WriteLine("");
-					file.WriteLine("UD. Kawi Agung");
-					file.WriteLine("Jl. Bungurasih Tengah No. 03B");
-					file.WriteLine("031-9551739-8537536");
-					file.WriteLine("SURABAYA");
-					file.WriteLine("=".PadRight(50, '='));
-
-					// tampilkan header nota
-					file.WriteLine("No. Faktur : " + listNotaBeli[i].NoFaktur);
-					file.WriteLine("Tanggal : " + listNotaBeli[i].Tanggal.ToString("dd MMMM yyyy"));
-					file.WriteLine("");
-					file.WriteLine("Supplier : " + listNotaBeli[i].Supplier.Nama);
-					file.WriteLine("Alamat : " + listNotaBeli[i].Supplier.Alamat);
-					file.WriteLine("No. Telp : " + listNotaBeli[i].Supplier.NoTelp);
-					file.WriteLine("=".PadRight(50, '='));
-
-					
-				}
-
-				List<NotaBeliDetil> listNBD = new List<NotaBeliDetil>();
-				NotaBeliDetil.BacaData("nb.no_faktur", listNotaBeli[0].NoFaktur, listNBD);
-
-				// tampilkan barang yang dibeli 
-				int grandTotal = 0; // untuk menampilkan grand total nota
-				for (int j = 0; j > listNBD.Count; j++)
-				{
-					string nama = listNBD[j].Barang.Nama;
-					// jika nama barang terlalu panjang maka hanya ambil 30 karakter awal saja
-					if (nama.Length > 30)
-					{
-						nama = nama.Substring(0, 30);
-					}
-					int jumlah = listNBD[j].Qty;
-					int subTotal = listNBD[j].SubTotal;
-					int harga = subTotal / jumlah;
-					file.WriteLine(nama.PadRight(30, ' '));
-					file.WriteLine(jumlah.ToString().PadRight(3, ' '));
-					file.WriteLine(harga.ToString("0,###").PadLeft(7, ' ')); // agar harga ditampilkan dengan pemisah ribuan
-					file.WriteLine(subTotal.ToString("0,###").PadLeft(10, ' ')); // agar sub total  ditampilkan dengan pemisah ribuan
-					file.WriteLine("");
-					//hitung grandtotal nota
-					grandTotal = grandTotal + jumlah * harga;
-				}
-				file.WriteLine("=".PadRight(50, '='));
-				file.WriteLine("TOTAL : " + grandTotal.ToString("0, ###"));
-				file.WriteLine("=".PadRight(50, '='));
-				file.WriteLine("");
-				file.Close();
-				// cetak ke printer 
-				Cetak c = new Cetak(pNamaFile, "Courier New", 9, 10, 10, 10, 10);
-				c.CetakKePrinter("tulisan");
-				return "1";
-
-			}
-			catch (MySqlException e)
-			{
-				return e.Message;
-			}
 		}
 
 		public static string BacaDataTotalPengeluaran(string tanggalAwal, string tanggalAkhir, List<NotaBeli> listNotaBeli)
@@ -395,7 +314,8 @@ namespace Kawi_Agung
 			finally
 			{
 				cmd.Dispose();
-				hasil.Dispose();
+				hasil.Close();
+				conn.KoneksiDB.Close();
 			}
 		}
 

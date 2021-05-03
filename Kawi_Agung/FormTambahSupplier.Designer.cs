@@ -66,7 +66,7 @@
 			this.textBoxTambahNamaSupplier.Location = new System.Drawing.Point(177, 113);
 			this.textBoxTambahNamaSupplier.Name = "textBoxTambahNamaSupplier";
 			this.textBoxTambahNamaSupplier.Size = new System.Drawing.Size(215, 20);
-			this.textBoxTambahNamaSupplier.TabIndex = 43;
+			this.textBoxTambahNamaSupplier.TabIndex = 0;
 			// 
 			// label1
 			// 
@@ -93,15 +93,16 @@
 			this.richTextBoxTambahAlamatSupplier.Location = new System.Drawing.Point(35, 229);
 			this.richTextBoxTambahAlamatSupplier.Name = "richTextBoxTambahAlamatSupplier";
 			this.richTextBoxTambahAlamatSupplier.Size = new System.Drawing.Size(357, 61);
-			this.richTextBoxTambahAlamatSupplier.TabIndex = 45;
+			this.richTextBoxTambahAlamatSupplier.TabIndex = 2;
 			this.richTextBoxTambahAlamatSupplier.Text = "";
+			this.richTextBoxTambahAlamatSupplier.KeyDown += new System.Windows.Forms.KeyEventHandler(this.richTextBoxTambahAlamatSupplier_KeyDown);
 			// 
 			// textBoxTambahNoTelpSupplier
 			// 
 			this.textBoxTambahNoTelpSupplier.Location = new System.Drawing.Point(177, 159);
 			this.textBoxTambahNoTelpSupplier.Name = "textBoxTambahNoTelpSupplier";
 			this.textBoxTambahNoTelpSupplier.Size = new System.Drawing.Size(215, 20);
-			this.textBoxTambahNoTelpSupplier.TabIndex = 47;
+			this.textBoxTambahNoTelpSupplier.TabIndex = 1;
 			// 
 			// label3
 			// 
@@ -133,7 +134,7 @@
 			this.buttonTambahSupplier.OnHoverButtonColor = System.Drawing.Color.FromArgb(((int)(((byte)(7)))), ((int)(((byte)(104)))), ((int)(((byte)(159)))));
 			this.buttonTambahSupplier.OnHoverTextColor = System.Drawing.Color.AliceBlue;
 			this.buttonTambahSupplier.Size = new System.Drawing.Size(120, 40);
-			this.buttonTambahSupplier.TabIndex = 48;
+			this.buttonTambahSupplier.TabIndex = 3;
 			this.buttonTambahSupplier.Text = "Tambah";
 			this.buttonTambahSupplier.TextColor = System.Drawing.Color.White;
 			this.buttonTambahSupplier.UseVisualStyleBackColor = false;
@@ -152,7 +153,8 @@
 			this.Controls.Add(this.textBoxTambahNamaSupplier);
 			this.Controls.Add(this.label1);
 			this.Controls.Add(this.panel1);
-			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+			this.MaximizeBox = false;
 			this.Name = "FormTambahSupplier";
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
 			this.panel1.ResumeLayout(false);

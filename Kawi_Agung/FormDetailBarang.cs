@@ -22,7 +22,8 @@ namespace Kawi_Agung
 
 		private void FormDetailBarang_Load(object sender, EventArgs e)
 		{
-			labelDetailKodeBarang.Text = FormMaster.listSelectedBarang[0].KodeBarang;
+			textBoxKodeBarang.Text = FormMaster.listSelectedBarang[0].KodeBarang;
+			textBoxKodeBarang.SelectionStart = textBoxKodeBarang.TextLength;
 			labelJumlahStok.Text = FormMaster.listSelectedBarang[0].JumlahStok.ToString();
 			labelDetailNamaBarang.Text = FormMaster.listSelectedBarang[0].Nama;
 			labelDetailJenisBarang.Text = FormMaster.listSelectedBarang[0].Jenis.Nama;
@@ -33,9 +34,15 @@ namespace Kawi_Agung
 			labelDetailDiskonJual.Text = FormMaster.listSelectedBarang[0].DiskonPersenJual.ToString();
 			labelDetailHargaJual.Text = ConvertToRupiah(CountPriceBeforeDiscount(FormMaster.listSelectedBarang[0].HargaJual, FormMaster.listSelectedBarang[0].DiskonPersenJual));
 
-			if (FormMaster.listSelectedBarang[0].Foto != null)
+			if (FormMaster.listSelectedBarang[0].Foto != "")
 			{
-				pictureBoxDetailGambarBarang.Image = ConvertBinaryToImage(FormMaster.listSelectedBarang[0].Foto);
+				string projectPath = Directory.GetParent(Directory.GetCurrentDirectory()).Parent.FullName + "\\images\\barang";
+				string folderName = Path.Combine(projectPath, FormMaster.listSelectedBarang[0].KodeBarang);
+				pictureBoxDetailGambarBarang.ImageLocation = folderName + "\\" + "foto" + FormMaster.listSelectedBarang[0].Foto.ToString();
+			}
+			else
+			{
+				pictureBoxDetailGambarBarang.Image = Resources.profile_picture;
 			}
 		}
 
@@ -44,27 +51,6 @@ namespace Kawi_Agung
 			CultureInfo culture = new CultureInfo("id-ID");
 
 			return string.Format(culture, "{0:c0}", number);
-		}
-
-		Image ConvertBinaryToImage(byte[] data)
-		{
-			var img = Resources.profile_picture;
-
-			if (data == null)
-				return img; ;
-			using (MemoryStream ms = new MemoryStream(data))
-			{
-				try
-				{
-					return Image.FromStream(ms);
-				}
-				catch (Exception e)
-				{
-					MessageBox.Show(e.Message.ToString());
-
-					return img;
-				}
-			}
 		}
 
 		int CountPriceBeforeDiscount(int salePrice, int discount)

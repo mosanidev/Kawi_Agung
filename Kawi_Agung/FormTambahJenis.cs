@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Controls;
 using System.Windows.Forms;
@@ -34,33 +35,32 @@ namespace Kawi_Agung
 			else
 			{
 				JenisBarang jenis = new JenisBarang();
+
 				jenis.Nama = textBoxTambahJenisBarang.Text.Trim();
 
-				string hasilTambah = JenisBarang.TambahData(jenis, this.mainForm.listJenis);
+				string hasilTambah = JenisBarang.TambahData(jenis);
 
 				if (hasilTambah == "1")
 				{
-					MessageBox.Show("Proses tambah berhasil", "Info");
+					MessageBox.Show("Proses tambah berhasil");
 
 					this.mainForm.textBoxSearchJenisBrg.Clear();
-					this.mainForm.FormMaster_Load(buttonTambahJenis, e);
+					this.mainForm.PopulateJenisTable("", "");
 					this.Close();
+
 				}
-				else if (hasilTambah == "Nama jenis sudah ada")
+				else
 				{
-					DialogResult dialogResult = MessageBox.Show("Jenis sudah ada. Apakah Anda ingin menyimpan data dengan nama jenis tersebut?", "Tambah Jenis", MessageBoxButtons.YesNo);
-					if (dialogResult == DialogResult.Yes)
-					{
-						List<JenisBarang> listKosong = new List<JenisBarang>(); // kirim list kosong sebagai parameter method tambah data, agar bisa ditambahkan ke database
-						string hasilTambah_ = JenisBarang.TambahData(jenis, listKosong);
-
-						MessageBox.Show("Proses tambah berhasil" , "Info");
-
-						this.mainForm.textBoxSearchJenisBrg.Clear();
-						this.mainForm.FormMaster_Load(buttonTambahJenis, e);
-						this.Close();
-					}
+					MessageBox.Show(hasilTambah);
 				}
+			}
+		}
+
+		private void textBoxTambahJenisBarang_KeyDown(object sender, KeyEventArgs e)
+		{
+			if (e.KeyCode == Keys.Enter)
+			{
+				buttonTambahJenis_Click(sender, e);
 			}
 		}
 	}

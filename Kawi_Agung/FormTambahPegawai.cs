@@ -45,19 +45,6 @@ namespace Kawi_Agung
 
 		}
 
-		byte[] ConvertImageToBinary(Image img)
-		{
-			if (img == null)
-				return null;
-			using (MemoryStream ms = new MemoryStream())
-			{
-				//System.Drawing.Imaging.ImageFormat.Jpeg
-				img.Save(ms, img.RawFormat);
-				return ms.ToArray();
-
-			}
-		}
-
 		private void buttonTambahPegawai_Click(object sender, EventArgs e)
 		{
 			if (textBoxPegawaiNama.Text == "" || textBoxUsernamePegawai.Text == "" || textBoxNoTelpPegawai.Text == "" || textBoxAlamatPegawai.Text == "" || comboBoxJabatanPegawai.Text == "" || comboBoxJenisKelaminPegawai.Text == "")
@@ -66,12 +53,10 @@ namespace Kawi_Agung
 			}
 			else if (textBoxUsernamePegawai.Text.Length < 6)
 			{
-				MessageBox.Show("Username harus sama/lebih dari 8 karakter");
+				MessageBox.Show("Username harus sama/lebih dari 6 karakter");
 			}
 			else
 			{
-				byte[] foto = null;
-
 				Jabatan jabatan = new Jabatan();
 				jabatan.IdJabatan = Convert.ToInt32(comboBoxJabatanPegawai.Text.Split('-')[0]);
 				jabatan.Nama = comboBoxJabatanPegawai.Text.Split('-')[1];
@@ -87,24 +72,34 @@ namespace Kawi_Agung
 
 				if (pathFoto != "")
 				{
-					foto = ConvertImageToBinary(Image.FromFile(pathFoto));
+					user.Foto = Path.GetExtension(pathFoto);
+					string projectPath = Directory.GetParent(Directory.GetCurrentDirectory()).Parent.FullName + "\\images\\users";
+					string folderName = Path.Combine(projectPath, textBoxUsernamePegawai.Text.Trim());
+					Directory.CreateDirectory(folderName);
+					Array.ForEach(Directory.GetFiles(@folderName + "\\"), File.Delete);
+					File.Copy(pathFoto, folderName + "\\" + "foto" + user.Foto);
 				}
 
-				user.Foto = foto;
+				List<User> listUser = new List<User>();
 
-				string hasilTambah = User.TambahPegawai(user, this.mainForm.listUser);
+				User.BacaPegawai("cari username", textBoxUsernamePegawai.Text, listUser);
 
-				if (hasilTambah == "1")
+				if (listUser.Count == 0)
 				{
-					MessageBox.Show("Proses tambah berhasil", "Info");
+					string hasilTambah = User.TambahPegawai(user);
 
-					this.mainForm.textBoxSearchPegawai.Clear();
-					this.mainForm.FormMaster_Load(buttonTambahPegawai, e);
-					this.Close();
-				}
-				else if (hasilTambah == "Username sudah ada") // apabila ada username yang sama di database
-				{
-					MessageBox.Show(hasilTambah + ". Harap input username yang lain");
+					if (hasilTambah == "1")
+					{
+						MessageBox.Show("Proses tambah berhasil");
+
+						this.mainForm.textBoxSearchPegawai.Clear();
+						this.mainForm.PopulatePegawaiTable("", "");
+						this.Close();
+					}
+					else
+					{
+						MessageBox.Show(hasilTambah);
+					}
 				}
 
 			}
@@ -125,9 +120,17 @@ namespace Kawi_Agung
 				//{
 				//	MessageBox.Show("Ukuran file tidak boleh lebih dari 64 kb");
 				//}
+				try
+				{
+					pathFoto = openFileDialog.FileName;
+					pictureBoxTambahFotoUser.ImageLocation = openFileDialog.FileName;
+				}
+				catch (IOException ex)
+				{
+					MessageBox.Show(ex.Message.ToString());
+				}
 
-				pictureBoxTambahFotoUser.Image = new Bitmap(openFileDialog.FileName);
-				pathFoto = openFileDialog.FileName;
+				openFileDialog.Dispose();
 			}
 		}
 
@@ -137,9 +140,12 @@ namespace Kawi_Agung
 			pathFoto = "";
 		}
 
-		private void buttonHapusFoto_Click_1(object sender, EventArgs e)
+		private void textBoxAlamatPegawai_KeyDown(object sender, KeyEventArgs e)
 		{
-
+			if (e.KeyCode == Keys.Enter)
+			{
+				buttonTambahPegawai_Click(sender, e);
+			}
 		}
 	}
 }

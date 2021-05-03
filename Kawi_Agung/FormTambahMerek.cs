@@ -21,6 +21,7 @@ namespace Kawi_Agung
 		public FormTambahMerek(Form callingForm)
 		{
 			mainForm = callingForm as FormMaster;
+			//this.mainForm = callingForm;
 			InitializeComponent();
 		}
 
@@ -35,31 +36,21 @@ namespace Kawi_Agung
 				MerekBarang merek = new MerekBarang();
 				merek.Nama = textBoxTambahMerekBarang.Text.Trim();
 
-				string hasilTambah = MerekBarang.TambahData(merek, this.mainForm.listMerek);
+				MerekBarang.TambahData(merek);
 
-				if (hasilTambah == "1")
-				{
-					MessageBox.Show("Proses tambah berhasil", "Info");
+				MessageBox.Show("Proses tambah berhasil");
 
-					this.mainForm.textBoxSearchMerekBrg.Clear();
-					this.mainForm.FormMaster_Load(buttonTambahMerek, e);
-					this.Close();
-				}
-				else if (hasilTambah == "Nama merek sudah ada")
-				{
-					DialogResult dialogResult = MessageBox.Show("Merek sudah ada. Apakah Anda ingin menyimpan data dengan nama merek tersebut?", "Tambah Merek", MessageBoxButtons.YesNo);
-					if (dialogResult == DialogResult.Yes)
-					{
-						List<MerekBarang> listKosong = new List<MerekBarang>(); // kirim list kosong sebagai parameter method tambah data, agar bisa ditambahkan ke database
-						string hasilTambah_ = MerekBarang.TambahData(merek, listKosong);
+				this.mainForm.textBoxSearchMerekBrg.Clear();
+				this.mainForm.PopulateMerekTable("", "");
+				this.Close();
+			}
+		}
 
-						MessageBox.Show("Proses tambah berhasil", "Info");
-
-						this.mainForm.textBoxSearchMerekBrg.Clear();
-						this.mainForm.FormMaster_Load(buttonTambahMerek, e);
-						this.Close();
-					}
-				}
+		private void textBoxTambahMerekBarang_KeyDown(object sender, KeyEventArgs e)
+		{
+			if (e.KeyCode == Keys.Enter)
+			{
+				buttonTambahMerek_Click(sender, e);
 			}
 		}
 	}

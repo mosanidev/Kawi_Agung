@@ -89,6 +89,7 @@
 			this.textBoxTambahKategoriBarang.Name = "textBoxTambahKategoriBarang";
 			this.textBoxTambahKategoriBarang.Size = new System.Drawing.Size(215, 20);
 			this.textBoxTambahKategoriBarang.TabIndex = 41;
+			this.textBoxTambahKategoriBarang.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBoxTambahKategoriBarang_KeyDown);
 			// 
 			// label1
 			// 
@@ -109,7 +110,7 @@
 			this.Controls.Add(this.buttonTambahKategori);
 			this.Controls.Add(this.textBoxTambahKategoriBarang);
 			this.Controls.Add(this.label1);
-			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+			this.MaximizeBox = false;
 			this.Name = "FormTambahKategori";
 			this.ShowIcon = false;
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

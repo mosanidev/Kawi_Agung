@@ -28,16 +28,14 @@
         /// </summary>
         private void InitializeComponent()
         {
+			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormLogin));
 			this.panelWindowsButton = new System.Windows.Forms.Panel();
-			this.btnClose = new System.Windows.Forms.PictureBox();
-			this.btnMinimize = new System.Windows.Forms.PictureBox();
 			this.panel1 = new System.Windows.Forms.Panel();
 			this.textBoxUsername = new System.Windows.Forms.TextBox();
 			this.label1 = new System.Windows.Forms.Label();
 			this.panelUsername = new System.Windows.Forms.Panel();
 			this.buttonNextUsername = new ePOSOne.btnProduct.Button_WOC();
 			this.panelBuatPassword = new System.Windows.Forms.Panel();
-			this.iconButtonBackPanelNewPassword = new FontAwesome.Sharp.IconButton();
 			this.textBoxRePassword = new System.Windows.Forms.TextBox();
 			this.label3 = new System.Windows.Forms.Label();
 			this.panel5 = new System.Windows.Forms.Panel();
@@ -46,18 +44,21 @@
 			this.textBoxNewPassword = new System.Windows.Forms.TextBox();
 			this.panel4 = new System.Windows.Forms.Panel();
 			this.panelPassword = new System.Windows.Forms.Panel();
-			this.iconButtonBackPanelPassword = new FontAwesome.Sharp.IconButton();
 			this.label4 = new System.Windows.Forms.Label();
 			this.btnNextPassword = new ePOSOne.btnProduct.Button_WOC();
 			this.textBoxPassword = new System.Windows.Forms.TextBox();
 			this.panel3 = new System.Windows.Forms.Panel();
 			this.dragControl1 = new Kawi_Agung.DragControl();
+			this.iconButtonBackPanelPassword = new FontAwesome.Sharp.IconButton();
+			this.iconButtonBackPanelNewPassword = new FontAwesome.Sharp.IconButton();
+			this.btnClose = new System.Windows.Forms.PictureBox();
+			this.btnMinimize = new System.Windows.Forms.PictureBox();
 			this.panelWindowsButton.SuspendLayout();
-			((System.ComponentModel.ISupportInitialize)(this.btnClose)).BeginInit();
-			((System.ComponentModel.ISupportInitialize)(this.btnMinimize)).BeginInit();
 			this.panelUsername.SuspendLayout();
 			this.panelBuatPassword.SuspendLayout();
 			this.panelPassword.SuspendLayout();
+			((System.ComponentModel.ISupportInitialize)(this.btnClose)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.btnMinimize)).BeginInit();
 			this.SuspendLayout();
 			// 
 			// panelWindowsButton
@@ -71,29 +72,6 @@
 			this.panelWindowsButton.Name = "panelWindowsButton";
 			this.panelWindowsButton.Size = new System.Drawing.Size(471, 46);
 			this.panelWindowsButton.TabIndex = 12;
-			// 
-			// btnClose
-			// 
-			this.btnClose.Image = global::Kawi_Agung.Properties.Resources.close2;
-			this.btnClose.Location = new System.Drawing.Point(437, 12);
-			this.btnClose.Name = "btnClose";
-			this.btnClose.Size = new System.Drawing.Size(20, 20);
-			this.btnClose.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-			this.btnClose.TabIndex = 3;
-			this.btnClose.TabStop = false;
-			this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
-			// 
-			// btnMinimize
-			// 
-			this.btnMinimize.ErrorImage = null;
-			this.btnMinimize.Image = global::Kawi_Agung.Properties.Resources.minimize;
-			this.btnMinimize.Location = new System.Drawing.Point(404, 14);
-			this.btnMinimize.Name = "btnMinimize";
-			this.btnMinimize.Size = new System.Drawing.Size(20, 15);
-			this.btnMinimize.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-			this.btnMinimize.TabIndex = 2;
-			this.btnMinimize.TabStop = false;
-			this.btnMinimize.Click += new System.EventHandler(this.btnMinimize_Click);
 			// 
 			// panel1
 			// 
@@ -180,29 +158,6 @@
 			this.panelBuatPassword.Name = "panelBuatPassword";
 			this.panelBuatPassword.Size = new System.Drawing.Size(448, 253);
 			this.panelBuatPassword.TabIndex = 22;
-			// 
-			// iconButtonBackPanelNewPassword
-			// 
-			this.iconButtonBackPanelNewPassword.Cursor = System.Windows.Forms.Cursors.Hand;
-			this.iconButtonBackPanelNewPassword.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(26)))), ((int)(((byte)(46)))));
-			this.iconButtonBackPanelNewPassword.FlatAppearance.BorderSize = 0;
-			this.iconButtonBackPanelNewPassword.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(26)))), ((int)(((byte)(46)))));
-			this.iconButtonBackPanelNewPassword.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(26)))), ((int)(((byte)(46)))));
-			this.iconButtonBackPanelNewPassword.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-			this.iconButtonBackPanelNewPassword.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
-			this.iconButtonBackPanelNewPassword.Font = new System.Drawing.Font("Wingdings 3", 35F);
-			this.iconButtonBackPanelNewPassword.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(227)))), ((int)(((byte)(139)))), ((int)(((byte)(50)))));
-			this.iconButtonBackPanelNewPassword.IconChar = FontAwesome.Sharp.IconChar.None;
-			this.iconButtonBackPanelNewPassword.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(26)))), ((int)(((byte)(46)))));
-			this.iconButtonBackPanelNewPassword.IconSize = 16;
-			this.iconButtonBackPanelNewPassword.Location = new System.Drawing.Point(3, 3);
-			this.iconButtonBackPanelNewPassword.Name = "iconButtonBackPanelNewPassword";
-			this.iconButtonBackPanelNewPassword.Rotation = 0D;
-			this.iconButtonBackPanelNewPassword.Size = new System.Drawing.Size(53, 58);
-			this.iconButtonBackPanelNewPassword.TabIndex = 19;
-			this.iconButtonBackPanelNewPassword.Text = "\\";
-			this.iconButtonBackPanelNewPassword.UseVisualStyleBackColor = true;
-			this.iconButtonBackPanelNewPassword.Click += new System.EventHandler(this.iconButtonBackPanelNewPassword_Click);
 			// 
 			// textBoxRePassword
 			// 
@@ -306,29 +261,6 @@
 			this.panelPassword.Size = new System.Drawing.Size(360, 195);
 			this.panelPassword.TabIndex = 18;
 			// 
-			// iconButtonBackPanelPassword
-			// 
-			this.iconButtonBackPanelPassword.Cursor = System.Windows.Forms.Cursors.Hand;
-			this.iconButtonBackPanelPassword.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(26)))), ((int)(((byte)(46)))));
-			this.iconButtonBackPanelPassword.FlatAppearance.BorderSize = 0;
-			this.iconButtonBackPanelPassword.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(26)))), ((int)(((byte)(46)))));
-			this.iconButtonBackPanelPassword.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(26)))), ((int)(((byte)(46)))));
-			this.iconButtonBackPanelPassword.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-			this.iconButtonBackPanelPassword.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
-			this.iconButtonBackPanelPassword.Font = new System.Drawing.Font("Wingdings 3", 35F);
-			this.iconButtonBackPanelPassword.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(227)))), ((int)(((byte)(139)))), ((int)(((byte)(50)))));
-			this.iconButtonBackPanelPassword.IconChar = FontAwesome.Sharp.IconChar.None;
-			this.iconButtonBackPanelPassword.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(26)))), ((int)(((byte)(46)))));
-			this.iconButtonBackPanelPassword.IconSize = 16;
-			this.iconButtonBackPanelPassword.Location = new System.Drawing.Point(3, 3);
-			this.iconButtonBackPanelPassword.Name = "iconButtonBackPanelPassword";
-			this.iconButtonBackPanelPassword.Rotation = 0D;
-			this.iconButtonBackPanelPassword.Size = new System.Drawing.Size(53, 58);
-			this.iconButtonBackPanelPassword.TabIndex = 18;
-			this.iconButtonBackPanelPassword.Text = "\\";
-			this.iconButtonBackPanelPassword.UseVisualStyleBackColor = true;
-			this.iconButtonBackPanelPassword.Click += new System.EventHandler(this.iconButtonBackPanelPassword_Click);
-			// 
 			// label4
 			// 
 			this.label4.AutoSize = true;
@@ -389,6 +321,77 @@
 			// 
 			this.dragControl1.SelectControl = this.panelWindowsButton;
 			// 
+			// iconButtonBackPanelPassword
+			// 
+			this.iconButtonBackPanelPassword.BackgroundImage = global::Kawi_Agung.Properties.Resources.back_dark;
+			this.iconButtonBackPanelPassword.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+			this.iconButtonBackPanelPassword.Cursor = System.Windows.Forms.Cursors.Hand;
+			this.iconButtonBackPanelPassword.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(26)))), ((int)(((byte)(46)))));
+			this.iconButtonBackPanelPassword.FlatAppearance.BorderSize = 0;
+			this.iconButtonBackPanelPassword.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(26)))), ((int)(((byte)(46)))));
+			this.iconButtonBackPanelPassword.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(26)))), ((int)(((byte)(46)))));
+			this.iconButtonBackPanelPassword.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+			this.iconButtonBackPanelPassword.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
+			this.iconButtonBackPanelPassword.Font = new System.Drawing.Font("Wingdings 3", 35F);
+			this.iconButtonBackPanelPassword.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(227)))), ((int)(((byte)(139)))), ((int)(((byte)(50)))));
+			this.iconButtonBackPanelPassword.IconChar = FontAwesome.Sharp.IconChar.None;
+			this.iconButtonBackPanelPassword.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(26)))), ((int)(((byte)(46)))));
+			this.iconButtonBackPanelPassword.IconSize = 16;
+			this.iconButtonBackPanelPassword.Location = new System.Drawing.Point(3, 3);
+			this.iconButtonBackPanelPassword.Name = "iconButtonBackPanelPassword";
+			this.iconButtonBackPanelPassword.Rotation = 0D;
+			this.iconButtonBackPanelPassword.Size = new System.Drawing.Size(50, 45);
+			this.iconButtonBackPanelPassword.TabIndex = 18;
+			this.iconButtonBackPanelPassword.UseVisualStyleBackColor = true;
+			this.iconButtonBackPanelPassword.Click += new System.EventHandler(this.iconButtonBackPanelPassword_Click);
+			// 
+			// iconButtonBackPanelNewPassword
+			// 
+			this.iconButtonBackPanelNewPassword.BackgroundImage = global::Kawi_Agung.Properties.Resources.back_dark;
+			this.iconButtonBackPanelNewPassword.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+			this.iconButtonBackPanelNewPassword.Cursor = System.Windows.Forms.Cursors.Hand;
+			this.iconButtonBackPanelNewPassword.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(26)))), ((int)(((byte)(46)))));
+			this.iconButtonBackPanelNewPassword.FlatAppearance.BorderSize = 0;
+			this.iconButtonBackPanelNewPassword.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(26)))), ((int)(((byte)(46)))));
+			this.iconButtonBackPanelNewPassword.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(26)))), ((int)(((byte)(46)))));
+			this.iconButtonBackPanelNewPassword.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+			this.iconButtonBackPanelNewPassword.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
+			this.iconButtonBackPanelNewPassword.Font = new System.Drawing.Font("Wingdings 3", 35F);
+			this.iconButtonBackPanelNewPassword.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(227)))), ((int)(((byte)(139)))), ((int)(((byte)(50)))));
+			this.iconButtonBackPanelNewPassword.IconChar = FontAwesome.Sharp.IconChar.None;
+			this.iconButtonBackPanelNewPassword.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(26)))), ((int)(((byte)(46)))));
+			this.iconButtonBackPanelNewPassword.IconSize = 16;
+			this.iconButtonBackPanelNewPassword.Location = new System.Drawing.Point(3, 3);
+			this.iconButtonBackPanelNewPassword.Name = "iconButtonBackPanelNewPassword";
+			this.iconButtonBackPanelNewPassword.Rotation = 0D;
+			this.iconButtonBackPanelNewPassword.Size = new System.Drawing.Size(50, 45);
+			this.iconButtonBackPanelNewPassword.TabIndex = 19;
+			this.iconButtonBackPanelNewPassword.UseVisualStyleBackColor = true;
+			this.iconButtonBackPanelNewPassword.Click += new System.EventHandler(this.iconButtonBackPanelNewPassword_Click);
+			// 
+			// btnClose
+			// 
+			this.btnClose.Image = global::Kawi_Agung.Properties.Resources.close2;
+			this.btnClose.Location = new System.Drawing.Point(437, 12);
+			this.btnClose.Name = "btnClose";
+			this.btnClose.Size = new System.Drawing.Size(20, 20);
+			this.btnClose.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+			this.btnClose.TabIndex = 3;
+			this.btnClose.TabStop = false;
+			this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
+			// 
+			// btnMinimize
+			// 
+			this.btnMinimize.ErrorImage = null;
+			this.btnMinimize.Image = global::Kawi_Agung.Properties.Resources.minimize;
+			this.btnMinimize.Location = new System.Drawing.Point(404, 14);
+			this.btnMinimize.Name = "btnMinimize";
+			this.btnMinimize.Size = new System.Drawing.Size(20, 15);
+			this.btnMinimize.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+			this.btnMinimize.TabIndex = 2;
+			this.btnMinimize.TabStop = false;
+			this.btnMinimize.Click += new System.EventHandler(this.btnMinimize_Click);
+			// 
 			// FormLogin
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -401,18 +404,19 @@
 			this.Controls.Add(this.panelWindowsButton);
 			this.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(19)))), ((int)(((byte)(39)))), ((int)(((byte)(67)))));
 			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+			this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
 			this.MaximizeBox = false;
 			this.Name = "FormLogin";
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
 			this.panelWindowsButton.ResumeLayout(false);
-			((System.ComponentModel.ISupportInitialize)(this.btnClose)).EndInit();
-			((System.ComponentModel.ISupportInitialize)(this.btnMinimize)).EndInit();
 			this.panelUsername.ResumeLayout(false);
 			this.panelUsername.PerformLayout();
 			this.panelBuatPassword.ResumeLayout(false);
 			this.panelBuatPassword.PerformLayout();
 			this.panelPassword.ResumeLayout(false);
 			this.panelPassword.PerformLayout();
+			((System.ComponentModel.ISupportInitialize)(this.btnClose)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.btnMinimize)).EndInit();
 			this.ResumeLayout(false);
 
         }

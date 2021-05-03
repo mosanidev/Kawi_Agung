@@ -38,48 +38,31 @@ namespace Kawi_Agung
 
 			KategoriBarang kategori = new KategoriBarang();
 			kategori.IdKategoriBarang = IdKategori;
-			kategori.Nama = textBoxUbahKategoriBarang.Text.Trim();
-
-			List<KategoriBarang> listKategori = new List<KategoriBarang>();
-
-			string hasilBaca = KategoriBarang.BacaData("exclude", FormMaster.listSelectedKategori[0].Nama, listKategori);
-
-			string hasilUbah = "";
-
-			if (hasilBaca == "1")
-			{
-				hasilUbah = KategoriBarang.UbahData(kategori, listKategori);
-			}
 
 			if (textBoxUbahKategoriBarang.Text == "")
 			{
 				MessageBox.Show("Harap di isi terlebih dahulu");
 			}
-			else if (textBoxUbahKategoriBarang.Text != "")
+			else
 			{
-				if (hasilUbah == "1")
-				{
-					MessageBox.Show("Proses ubah berhasil", "Info");
+				kategori.Nama = textBoxUbahKategoriBarang.Text.Trim();
 
-					this.mainForm.textBoxSearchKategoriBrg.Clear();
-					this.mainForm.FormMaster_Load(buttonUbahKategori, e);
-					this.Close();
-				}
-				else if (hasilUbah == "Nama kategori sudah ada")
-				{
-					DialogResult dialogResult = MessageBox.Show("Kategori sudah ada. Apakah Anda ingin menyimpan data dengan nama kategori tersebut?", "Ubah Kategori", MessageBoxButtons.YesNo);
-					if (dialogResult == DialogResult.Yes)
-					{
-						List<KategoriBarang> listKosong = new List<KategoriBarang>(); // kirim list kosong sebagai parameter method tambah data, agar bisa ditambahkan ke database
-						string hasilTambah_ = KategoriBarang.UbahData(kategori, listKosong);
+				KategoriBarang.UbahData(kategori);
 
-						MessageBox.Show("Proses ubah berhasil", "Info");
+				MessageBox.Show("Proses ubah berhasil");
 
-						this.mainForm.textBoxSearchKategoriBrg.Clear();
-						this.mainForm.FormMaster_Load(buttonUbahKategori, e);
-						this.Close();
-					}
-				}
+				this.mainForm.textBoxSearchKategoriBrg.Clear();
+				this.mainForm.PopulateKategoriTable("", "");
+				this.Close();
+				
+			}
+		}
+
+		private void textBoxUbahKategoriBarang_KeyDown(object sender, KeyEventArgs e)
+		{
+			if (e.KeyCode == Keys.Enter)
+			{
+				buttonUbahKategori_Click(sender, e);
 			}
 		}
 	}

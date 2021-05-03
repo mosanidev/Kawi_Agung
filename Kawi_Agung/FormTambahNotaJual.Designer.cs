@@ -28,9 +28,9 @@
 		/// </summary>
 		private void InitializeComponent()
 		{
-			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
-			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
+			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
 			this.ColumnSatuan = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.dataGridViewTextBoxColumn11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.dataGridViewTextBoxColumn12 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -99,8 +99,8 @@
 			// 
 			// dataGridViewTextBoxColumn11
 			// 
-			dataGridViewCellStyle7.Padding = new System.Windows.Forms.Padding(3);
-			this.dataGridViewTextBoxColumn11.DefaultCellStyle = dataGridViewCellStyle7;
+			dataGridViewCellStyle10.Padding = new System.Windows.Forms.Padding(3);
+			this.dataGridViewTextBoxColumn11.DefaultCellStyle = dataGridViewCellStyle10;
 			this.dataGridViewTextBoxColumn11.HeaderText = "Kode Barang";
 			this.dataGridViewTextBoxColumn11.Name = "dataGridViewTextBoxColumn11";
 			this.dataGridViewTextBoxColumn11.ReadOnly = true;
@@ -201,7 +201,7 @@
 			this.numericUpDownTotalDiskonJual.Location = new System.Drawing.Point(143, 276);
 			this.numericUpDownTotalDiskonJual.Name = "numericUpDownTotalDiskonJual";
 			this.numericUpDownTotalDiskonJual.Size = new System.Drawing.Size(47, 20);
-			this.numericUpDownTotalDiskonJual.TabIndex = 67;
+			this.numericUpDownTotalDiskonJual.TabIndex = 5;
 			this.numericUpDownTotalDiskonJual.KeyDown += new System.Windows.Forms.KeyEventHandler(this.numericUpDownTotalDiskonJual_KeyDown);
 			// 
 			// labelHargaBarang
@@ -226,14 +226,14 @@
 			this.dataGridViewBarangKeluar.BorderStyle = System.Windows.Forms.BorderStyle.None;
 			this.dataGridViewBarangKeluar.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleVertical;
 			this.dataGridViewBarangKeluar.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-			dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-			dataGridViewCellStyle8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(7)))), ((int)(((byte)(104)))), ((int)(((byte)(159)))));
-			dataGridViewCellStyle8.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold);
-			dataGridViewCellStyle8.ForeColor = System.Drawing.Color.White;
-			dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-			dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-			dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-			this.dataGridViewBarangKeluar.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle8;
+			dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+			dataGridViewCellStyle11.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(7)))), ((int)(((byte)(104)))), ((int)(((byte)(159)))));
+			dataGridViewCellStyle11.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold);
+			dataGridViewCellStyle11.ForeColor = System.Drawing.Color.White;
+			dataGridViewCellStyle11.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+			dataGridViewCellStyle11.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+			dataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+			this.dataGridViewBarangKeluar.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle11;
 			this.dataGridViewBarangKeluar.ColumnHeadersHeight = 50;
 			this.dataGridViewBarangKeluar.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
 			this.dataGridViewBarangKeluar.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -251,19 +251,19 @@
 			this.dataGridViewBarangKeluar.Location = new System.Drawing.Point(20, 20);
 			this.dataGridViewBarangKeluar.Name = "dataGridViewBarangKeluar";
 			this.dataGridViewBarangKeluar.ReadOnly = true;
-			dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-			dataGridViewCellStyle9.BackColor = System.Drawing.SystemColors.ButtonFace;
-			dataGridViewCellStyle9.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			dataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.WindowText;
-			dataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-			dataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.ControlLightLight;
-			dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-			this.dataGridViewBarangKeluar.RowHeadersDefaultCellStyle = dataGridViewCellStyle9;
+			dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+			dataGridViewCellStyle12.BackColor = System.Drawing.SystemColors.ButtonFace;
+			dataGridViewCellStyle12.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			dataGridViewCellStyle12.ForeColor = System.Drawing.SystemColors.WindowText;
+			dataGridViewCellStyle12.SelectionBackColor = System.Drawing.SystemColors.GradientInactiveCaption;
+			dataGridViewCellStyle12.SelectionForeColor = System.Drawing.SystemColors.ControlLightLight;
+			dataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+			this.dataGridViewBarangKeluar.RowHeadersDefaultCellStyle = dataGridViewCellStyle12;
 			this.dataGridViewBarangKeluar.RowHeadersVisible = false;
 			this.dataGridViewBarangKeluar.RowTemplate.DefaultCellStyle.BackColor = System.Drawing.Color.GhostWhite;
 			this.dataGridViewBarangKeluar.RowTemplate.DefaultCellStyle.ForeColor = System.Drawing.Color.Black;
 			this.dataGridViewBarangKeluar.RowTemplate.DefaultCellStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
-			this.dataGridViewBarangKeluar.RowTemplate.DefaultCellStyle.SelectionForeColor = System.Drawing.Color.White;
+			this.dataGridViewBarangKeluar.RowTemplate.DefaultCellStyle.SelectionForeColor = System.Drawing.Color.Black;
 			this.dataGridViewBarangKeluar.RowTemplate.DividerHeight = 1;
 			this.dataGridViewBarangKeluar.RowTemplate.Height = 25;
 			this.dataGridViewBarangKeluar.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
@@ -326,7 +326,7 @@
 			this.buttonSimpan.OnHoverButtonColor = System.Drawing.Color.FromArgb(((int)(((byte)(7)))), ((int)(((byte)(104)))), ((int)(((byte)(159)))));
 			this.buttonSimpan.OnHoverTextColor = System.Drawing.Color.AliceBlue;
 			this.buttonSimpan.Size = new System.Drawing.Size(647, 40);
-			this.buttonSimpan.TabIndex = 33;
+			this.buttonSimpan.TabIndex = 0;
 			this.buttonSimpan.Text = "Simpan";
 			this.buttonSimpan.TextColor = System.Drawing.Color.White;
 			this.buttonSimpan.UseVisualStyleBackColor = false;
@@ -401,7 +401,7 @@
 			this.textBoxKodeBarangKeluar.Location = new System.Drawing.Point(162, 144);
 			this.textBoxKodeBarangKeluar.Name = "textBoxKodeBarangKeluar";
 			this.textBoxKodeBarangKeluar.Size = new System.Drawing.Size(215, 20);
-			this.textBoxKodeBarangKeluar.TabIndex = 49;
+			this.textBoxKodeBarangKeluar.TabIndex = 3;
 			this.textBoxKodeBarangKeluar.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBoxKodeBarangKeluar_KeyDown);
 			// 
 			// label9
@@ -467,7 +467,7 @@
 			this.panel87.Margin = new System.Windows.Forms.Padding(0);
 			this.panel87.Name = "panel87";
 			this.panel87.Size = new System.Drawing.Size(687, 343);
-			this.panel87.TabIndex = 19;
+			this.panel87.TabIndex = 1;
 			// 
 			// labelDiskonPersen
 			// 
@@ -494,7 +494,7 @@
 			this.comboBoxPelanggan.Location = new System.Drawing.Point(162, 83);
 			this.comboBoxPelanggan.Name = "comboBoxPelanggan";
 			this.comboBoxPelanggan.Size = new System.Drawing.Size(215, 21);
-			this.comboBoxPelanggan.TabIndex = 44;
+			this.comboBoxPelanggan.TabIndex = 2;
 			// 
 			// label4
 			// 
@@ -511,7 +511,7 @@
 			this.dateTimePickerTanggalNotaJual.Location = new System.Drawing.Point(162, 54);
 			this.dateTimePickerTanggalNotaJual.Name = "dateTimePickerTanggalNotaJual";
 			this.dateTimePickerTanggalNotaJual.Size = new System.Drawing.Size(215, 20);
-			this.dateTimePickerTanggalNotaJual.TabIndex = 40;
+			this.dateTimePickerTanggalNotaJual.TabIndex = 1;
 			// 
 			// label3
 			// 
@@ -538,7 +538,7 @@
 			this.textBoxNoFaktur.Location = new System.Drawing.Point(162, 26);
 			this.textBoxNoFaktur.Name = "textBoxNoFaktur";
 			this.textBoxNoFaktur.Size = new System.Drawing.Size(215, 20);
-			this.textBoxNoFaktur.TabIndex = 35;
+			this.textBoxNoFaktur.TabIndex = 0;
 			// 
 			// label1
 			// 
@@ -557,7 +557,7 @@
 			this.labelTotalHargaBarangKeluar.Location = new System.Drawing.Point(119, 247);
 			this.labelTotalHargaBarangKeluar.Name = "labelTotalHargaBarangKeluar";
 			this.labelTotalHargaBarangKeluar.Size = new System.Drawing.Size(41, 21);
-			this.labelTotalHargaBarangKeluar.TabIndex = 30;
+			this.labelTotalHargaBarangKeluar.TabIndex = 5;
 			this.labelTotalHargaBarangKeluar.Text = "Rp0";
 			// 
 			// label12
@@ -590,7 +590,7 @@
             0});
 			this.numericUpDownJumlahBarangKeluar.Name = "numericUpDownJumlahBarangKeluar";
 			this.numericUpDownJumlahBarangKeluar.Size = new System.Drawing.Size(51, 20);
-			this.numericUpDownJumlahBarangKeluar.TabIndex = 26;
+			this.numericUpDownJumlahBarangKeluar.TabIndex = 4;
 			this.numericUpDownJumlahBarangKeluar.Value = new decimal(new int[] {
             1,
             0,
@@ -663,7 +663,6 @@
 			this.Controls.Add(this.panelSubMenuTransaksiBarangKeluar);
 			this.Controls.Add(this.panel1);
 			this.MaximizeBox = false;
-			this.MinimizeBox = false;
 			this.Name = "FormTambahNotaJual";
 			this.ShowIcon = false;
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

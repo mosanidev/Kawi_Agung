@@ -36,7 +36,6 @@
 			this.label1 = new System.Windows.Forms.Label();
 			this.label17 = new System.Windows.Forms.Label();
 			this.label4 = new System.Windows.Forms.Label();
-			this.labelDetailKodeBarang = new System.Windows.Forms.Label();
 			this.labelDetailNamaBarang = new System.Windows.Forms.Label();
 			this.labelDetailJenisBarang = new System.Windows.Forms.Label();
 			this.labelDetailKategoriBarang = new System.Windows.Forms.Label();
@@ -51,6 +50,7 @@
 			this.label10 = new System.Windows.Forms.Label();
 			this.labelJumlahStok = new System.Windows.Forms.Label();
 			this.label8 = new System.Windows.Forms.Label();
+			this.textBoxKodeBarang = new System.Windows.Forms.TextBox();
 			this.panel1.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.pictureBoxDetailGambarBarang)).BeginInit();
 			this.SuspendLayout();
@@ -62,7 +62,7 @@
 			this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
 			this.panel1.Location = new System.Drawing.Point(0, 0);
 			this.panel1.Name = "panel1";
-			this.panel1.Size = new System.Drawing.Size(659, 59);
+			this.panel1.Size = new System.Drawing.Size(731, 59);
 			this.panel1.TabIndex = 28;
 			// 
 			// labelJudul
@@ -136,16 +136,6 @@
 			this.label4.TabIndex = 45;
 			this.label4.Text = "Harga Jual :";
 			// 
-			// labelDetailKodeBarang
-			// 
-			this.labelDetailKodeBarang.AutoSize = true;
-			this.labelDetailKodeBarang.Font = new System.Drawing.Font("Century Gothic", 12.5F);
-			this.labelDetailKodeBarang.Location = new System.Drawing.Point(174, 84);
-			this.labelDetailKodeBarang.Name = "labelDetailKodeBarang";
-			this.labelDetailKodeBarang.Size = new System.Drawing.Size(16, 21);
-			this.labelDetailKodeBarang.TabIndex = 46;
-			this.labelDetailKodeBarang.Text = "-";
-			// 
 			// labelDetailNamaBarang
 			// 
 			this.labelDetailNamaBarang.AutoSize = true;
@@ -199,7 +189,7 @@
 			// pictureBoxDetailGambarBarang
 			// 
 			this.pictureBoxDetailGambarBarang.Image = global::Kawi_Agung.Properties.Resources.box;
-			this.pictureBoxDetailGambarBarang.Location = new System.Drawing.Point(438, 82);
+			this.pictureBoxDetailGambarBarang.Location = new System.Drawing.Point(525, 84);
 			this.pictureBoxDetailGambarBarang.Name = "pictureBoxDetailGambarBarang";
 			this.pictureBoxDetailGambarBarang.Size = new System.Drawing.Size(194, 174);
 			this.pictureBoxDetailGambarBarang.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -230,7 +220,7 @@
 			// 
 			this.labelTotalHargaJual.AutoSize = true;
 			this.labelTotalHargaJual.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.labelTotalHargaJual.Location = new System.Drawing.Point(250, 352);
+			this.labelTotalHargaJual.Location = new System.Drawing.Point(321, 352);
 			this.labelTotalHargaJual.Name = "labelTotalHargaJual";
 			this.labelTotalHargaJual.Size = new System.Drawing.Size(44, 24);
 			this.labelTotalHargaJual.TabIndex = 55;
@@ -286,11 +276,21 @@
 			this.label8.TabIndex = 61;
 			this.label8.Text = "Jumlah Stok :";
 			// 
+			// textBoxKodeBarang
+			// 
+			this.textBoxKodeBarang.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
+			this.textBoxKodeBarang.Location = new System.Drawing.Point(178, 81);
+			this.textBoxKodeBarang.Name = "textBoxKodeBarang";
+			this.textBoxKodeBarang.ReadOnly = true;
+			this.textBoxKodeBarang.Size = new System.Drawing.Size(187, 24);
+			this.textBoxKodeBarang.TabIndex = 63;
+			// 
 			// FormDetailBarang
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(659, 385);
+			this.ClientSize = new System.Drawing.Size(731, 385);
+			this.Controls.Add(this.textBoxKodeBarang);
 			this.Controls.Add(this.labelJumlahStok);
 			this.Controls.Add(this.label8);
 			this.Controls.Add(this.labelDetailSatuanBarang);
@@ -305,7 +305,6 @@
 			this.Controls.Add(this.labelDetailKategoriBarang);
 			this.Controls.Add(this.labelDetailJenisBarang);
 			this.Controls.Add(this.labelDetailNamaBarang);
-			this.Controls.Add(this.labelDetailKodeBarang);
 			this.Controls.Add(this.label4);
 			this.Controls.Add(this.label3);
 			this.Controls.Add(this.label2);
@@ -313,7 +312,8 @@
 			this.Controls.Add(this.label1);
 			this.Controls.Add(this.label17);
 			this.Controls.Add(this.panel1);
-			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+			this.MaximizeBox = false;
 			this.Name = "FormDetailBarang";
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
 			this.Load += new System.EventHandler(this.FormDetailBarang_Load);
@@ -335,7 +335,6 @@
 		private System.Windows.Forms.Label label1;
 		private System.Windows.Forms.Label label17;
 		private System.Windows.Forms.Label label4;
-		private System.Windows.Forms.Label labelDetailKodeBarang;
 		private System.Windows.Forms.Label labelDetailNamaBarang;
 		private System.Windows.Forms.Label labelDetailJenisBarang;
 		private System.Windows.Forms.Label labelDetailKategoriBarang;
@@ -350,5 +349,6 @@
 		private System.Windows.Forms.Label label10;
 		private System.Windows.Forms.Label labelJumlahStok;
 		private System.Windows.Forms.Label label8;
+		private System.Windows.Forms.TextBox textBoxKodeBarang;
 	}
 }

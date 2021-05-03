@@ -18,7 +18,7 @@ namespace Kawi_Agung
 		private string nama;
 		private int hargaJual;
 		private int diskonPersenJual;
-		private byte[] foto;
+		private string foto;
 		private KategoriBarang kategori;
 		private JenisBarang jenis;
 		private MerekBarang merek;
@@ -36,7 +36,7 @@ namespace Kawi_Agung
 		public string Nama { get => nama; set => nama = value; }
 		public int HargaJual { get => hargaJual; set => hargaJual = value; }
 		public int DiskonPersenJual { get => diskonPersenJual; set => diskonPersenJual = value; }
-		public byte[] Foto { get => foto; set => foto = value; }
+		public string Foto { get => foto; set => foto = value; }
 		public KategoriBarang Kategori { get => kategori; set => kategori = value; }
 		public JenisBarang Jenis { get => jenis; set => jenis = value; }
 		public MerekBarang Merek { get => merek; set => merek = value; }
@@ -58,7 +58,7 @@ namespace Kawi_Agung
 			JumlahStok = 0;
 			Satuan = "";
 			DiskonPersenJual = 0;
-			Foto = null;
+			Foto = "";
 		}
 
 		#endregion
@@ -120,7 +120,7 @@ namespace Kawi_Agung
 					b.HargaJual = Convert.ToInt32(hasil.GetValue(6));
 					if (hasil.GetValue(7) != System.DBNull.Value)
 					{
-						b.Foto = (byte[])hasil.GetValue(7);
+						b.Foto = hasil.GetValue(7).ToString();
 					}
 					b.DiskonPersenJual = Convert.ToInt32(hasil.GetValue(8));
 					b.Satuan = hasil.GetValue(9).ToString();
@@ -138,7 +138,8 @@ namespace Kawi_Agung
 			finally
 			{
 				cmd.Dispose();
-				hasil.Dispose();
+				hasil.Close();
+				conn.KoneksiDB.Close();
 			}
 		}
 
@@ -149,15 +150,15 @@ namespace Kawi_Agung
 
 			if (kriteria == "")
 			{
-				sql = "SELECT kode_barang, nama, jumlah_stok, (select sum(jumlah_stok) FROM barang) as total_stok, (select count(jumlah_stok) from barang where jumlah_stok<=3) AS stok_kurang FROM barang ORDER BY kode_barang";
+				sql = "SELECT kode_barang, nama, jumlah_stok, (select sum(jumlah_stok) FROM barang) as total_stok, (select count(jumlah_stok) from barang where jumlah_stok<=2) AS stok_kurang FROM barang ORDER BY kode_barang";
 			}
 			else if (kriteria == "kode_barang")
 			{
-				sql = "SELECT kode_barang, nama, jumlah_stok, (select sum(jumlah_stok) FROM barang) as total_stok, (select count(jumlah_stok) from barang where jumlah_stok<=3) AS stok_kurang FROM barang WHERE kode_barang LIKE '%" + nilaiKriteria + "%' ORDER by kode_barang";
+				sql = "SELECT kode_barang, nama, jumlah_stok, (select sum(jumlah_stok) FROM barang) as total_stok, (select count(jumlah_stok) from barang where jumlah_stok<=2) AS stok_kurang FROM barang WHERE kode_barang LIKE '%" + nilaiKriteria + "%' ORDER by kode_barang";
 			}
 			else if (kriteria == "nama")
 			{
-				sql = "SELECT kode_barang, nama, jumlah_stok, (select sum(jumlah_stok) FROM barang) as total_stok, (select count(jumlah_stok) from barang where jumlah_stok<=3) AS stok_kurang FROM barang WHERE nama LIKE '%" + nilaiKriteria + "%' ORDER by kode_barang";
+				sql = "SELECT kode_barang, nama, jumlah_stok, (select sum(jumlah_stok) FROM barang) as total_stok, (select count(jumlah_stok) from barang where jumlah_stok<=2) AS stok_kurang FROM barang WHERE nama LIKE '%" + nilaiKriteria + "%' ORDER by kode_barang";
 			}
 
 			MySqlCommand cmd = new MySqlCommand(sql, conn.KoneksiDB);
@@ -182,39 +183,25 @@ namespace Kawi_Agung
 			{
 				return "Terjadi Kesalahan. Pesan Kesalahan : " + ex.Message;
 			}
-
 			finally
 			{
 				cmd.Dispose();
-				hasil.Dispose();
+				hasil.Close();
+				conn.KoneksiDB.Close();
 			}
 		}
 
-		public static string TambahData(Barang barang, List<Barang> listBarang)
+		public static string TambahData(Barang barang)
 		{
-			string sql = "INSERT INTO barang(kode_barang, nama, idjenis_barang, idkategori_barang, idmerek_barang, harga_jual, diskon_persen_jual, satuan, jumlah_stok, foto) VALUES ('" + barang.KodeBarang + "', '" + barang.Nama + "', " + barang.Jenis.IdJenisBarang + ", " + barang.Kategori.IdKategoriBarang + ", " + barang.Merek.IdMerekBarang + ", " + barang.HargaJual + ", " + barang.DiskonPersenJual + ", '" + barang.Satuan + "', 0, @foto)";
+			string sql = "INSERT INTO barang(kode_barang, nama, idjenis_barang, idkategori_barang, idmerek_barang, harga_jual, diskon_persen_jual, satuan, jumlah_stok, foto) VALUES ('" + barang.KodeBarang + "', '" + barang.Nama + "', " + barang.Jenis.IdJenisBarang + ", " + barang.Kategori.IdKategoriBarang + ", " + barang.Merek.IdMerekBarang + ", " + barang.HargaJual + ", " + barang.DiskonPersenJual + ", '" + barang.Satuan + "', 0, '" + barang.Foto + "')";
 
-			var fotoParam = new MySqlParameter("foto", MySqlDbType.Blob);
+			Koneksi k = new Koneksi();
 
-			fotoParam.Value = barang.Foto;
+			MySqlCommand c = new MySqlCommand(sql, k.KoneksiDB);
 
 			try
 			{
-				for (int i = 0; i < listBarang.Count; i++)
-				{
-					if (barang.KodeBarang.ToLower() == listBarang[i].KodeBarang.ToLower())
-					{
-						return "Kode Barang Sudah Ada. Harap masukkan kode barang yang lain";
-					}
-				}
-				Koneksi k = new Koneksi();
-
 				k.Connect();
-
-				MySqlCommand c = new MySqlCommand(sql, k.KoneksiDB);
-
-				// if blob type must do parameterized query not concat string
-				c.Parameters.Add(fotoParam);
 
 				c.ExecuteNonQuery();
 
@@ -224,7 +211,11 @@ namespace Kawi_Agung
 			{
 				return ex.Message + ". Perintah sql : " + sql;
 			}
-
+			finally
+			{
+				c.Dispose();
+				k.KoneksiDB.Close();
+			}
 		}
 
 		public static string UbahData(Barang barang, List<Barang> listBarang, string image)
@@ -237,20 +228,19 @@ namespace Kawi_Agung
 				sql = "UPDATE barang SET kode_barang='" + barang.KodeBarang + "', nama='" + barang.Nama + "', diskon_persen_jual=" + barang.DiskonPersenJual + ", harga_jual=" + barang.HargaJual + ", idkategori_barang=" + barang.Kategori.IdKategoriBarang + ", idjenis_barang=" + barang.Jenis.IdJenisBarang + ", idmerek_barang=" + barang.Merek.IdMerekBarang + ", satuan='" + barang.Satuan + "' WHERE idbarang=" + barang.IdBarang;
 
 			}
-			else if (image == "Kosong")
+			else if (image == "Hapus")
 			{
 				sql = "UPDATE barang SET kode_barang='" + barang.KodeBarang + "', nama='" + barang.Nama + "', diskon_persen_jual=" + barang.DiskonPersenJual + ", harga_jual=" + barang.HargaJual + ", idkategori_barang=" + barang.Kategori.IdKategoriBarang + ", idjenis_barang=" + barang.Jenis.IdJenisBarang + ", idmerek_barang=" + barang.Merek.IdMerekBarang + ", satuan='" + barang.Satuan + "', foto=NULL WHERE idbarang=" + barang.IdBarang;
 			}
 			else if (image == "Ada")
 			{
 
-				sql = "UPDATE barang SET kode_barang='" + barang.KodeBarang + "', nama='" + barang.Nama + "', diskon_persen_jual=" + barang.DiskonPersenJual + ", harga_jual=" + barang.HargaJual + ", idkategori_barang=" + barang.Kategori.IdKategoriBarang + ", idjenis_barang=" + barang.Jenis.IdJenisBarang + ", idmerek_barang=" + barang.Merek.IdMerekBarang + ", satuan='" + barang.Satuan + "', foto=@foto WHERE idbarang=" + barang.IdBarang;
-
-				fotoParam = new MySqlParameter("foto", MySqlDbType.Blob);
-
-				fotoParam.Value = barang.foto;
+				sql = "UPDATE barang SET kode_barang='" + barang.KodeBarang + "', nama='" + barang.Nama + "', diskon_persen_jual=" + barang.DiskonPersenJual + ", harga_jual=" + barang.HargaJual + ", idkategori_barang=" + barang.Kategori.IdKategoriBarang + ", idjenis_barang=" + barang.Jenis.IdJenisBarang + ", idmerek_barang=" + barang.Merek.IdMerekBarang + ", satuan='" + barang.Satuan + "', foto='" + barang.Foto + "' WHERE idbarang=" + barang.IdBarang;
 
 			}
+
+			Koneksi k = new Koneksi();
+			MySqlCommand c = new MySqlCommand(sql, k.KoneksiDB);
 
 			try
 			{
@@ -262,17 +252,7 @@ namespace Kawi_Agung
 					}
 				}
 
-				Koneksi k = new Koneksi();
-
 				k.Connect();
-
-				MySqlCommand c = new MySqlCommand(sql, k.KoneksiDB);
-
-				// if blob type must do parameterized query not concat string
-				if (image == "Ada")
-				{
-					c.Parameters.Add(fotoParam);
-				}
 
 				c.ExecuteNonQuery();
 
@@ -282,18 +262,23 @@ namespace Kawi_Agung
 			{
 				return ex.Message + ". Perintah sql : " + sql;
 			}
+			finally
+			{
+				c.Dispose();
+				k.KoneksiDB.Close();
+			}
 		}
 
 		public static string TambahStok(int idBarang, int jumlah)
 		{
 			string sql = "UPDATE barang SET jumlah_stok=jumlah_stok+" + jumlah + " WHERE idbarang=" + idBarang;
+			Koneksi k = new Koneksi();
+			MySqlCommand cmd = new MySqlCommand(sql, k.KoneksiDB);
 
 			try
 			{
-				Koneksi k = new Koneksi();
 				k.Connect();
 
-				MySqlCommand cmd = new MySqlCommand(sql, k.KoneksiDB);
 				cmd.ExecuteNonQuery();
 
 				return "1";
@@ -301,19 +286,24 @@ namespace Kawi_Agung
 			catch (MySqlException ex)
 			{
 				return ex.Message + ". Perintah sql : " + sql;
+			}
+			finally
+			{
+				cmd.Dispose();
+				k.KoneksiDB.Close();
 			}
 		}
 
 		public static string KurangiStok(int idBarang, int jumlah)
 		{
 			string sql = "UPDATE barang SET jumlah_stok=jumlah_stok-" + jumlah + " WHERE idbarang=" + idBarang;
+			Koneksi k = new Koneksi();
+			MySqlCommand cmd = new MySqlCommand(sql, k.KoneksiDB);
 
 			try
 			{
-				Koneksi k = new Koneksi();
 				k.Connect();
 
-				MySqlCommand cmd = new MySqlCommand(sql, k.KoneksiDB);
 				cmd.ExecuteNonQuery();
 
 				return "1";
@@ -321,6 +311,11 @@ namespace Kawi_Agung
 			catch (MySqlException ex)
 			{
 				return ex.Message + ". Perintah sql : " + sql;
+			}
+			finally
+			{
+				cmd.Dispose();
+				k.KoneksiDB.Close();
 			}
 		}
 
@@ -328,6 +323,8 @@ namespace Kawi_Agung
 		{
 			List<string> listKeterangan = new List<string>();
 			string sql = "";
+			Koneksi k = new Koneksi();
+			MySqlCommand c = null;
 
 			foreach (Barang barang in listBarang)
 			{
@@ -335,11 +332,8 @@ namespace Kawi_Agung
 
 				try
 				{
-					Koneksi k = new Koneksi();
 					k.Connect();
-
-					MySqlCommand c = new MySqlCommand(sql, k.KoneksiDB);
-
+					c = new MySqlCommand(sql, k.KoneksiDB);
 					c.ExecuteNonQuery();
 
 					listKeterangan.Add("berhasil");
@@ -352,6 +346,11 @@ namespace Kawi_Agung
 					}
 
 					// error sql lain selain error diatas belum direkam
+				}
+				finally
+				{
+					c.Dispose();
+					k.KoneksiDB.Close();
 				}
 			}
 			return listKeterangan;

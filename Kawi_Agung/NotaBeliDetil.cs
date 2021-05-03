@@ -104,11 +104,11 @@ namespace Kawi_Agung
 			finally
 			{
 				cmd.Dispose();
-				hasil.Dispose();
+				hasil.Close();
+				conn.KoneksiDB.Close();
 			}
 		}
 
-
-	#endregion
+		#endregion
 	}
 }

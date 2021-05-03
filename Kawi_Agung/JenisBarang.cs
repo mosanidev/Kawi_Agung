@@ -34,15 +34,6 @@ namespace Kawi_Agung
 		#endregion
 
 		#region METHODS
-		public static void JalankanPerintahDML(string pSql)
-		{
-			Koneksi k = new Koneksi();
-			k.Connect();
-
-			MySqlCommand c = new MySqlCommand(pSql, k.KoneksiDB);
-
-			c.ExecuteNonQuery();
-		}
 
 		public static string BacaData(string kriteria, string nilaiKriteria, List<JenisBarang> listJenis)
 		{
@@ -51,15 +42,19 @@ namespace Kawi_Agung
 
 			if (kriteria == "")
 			{
-				sql = "SELECT * FROM jenis_barang ORDER BY idjenis_barang";
+				sql = "SELECT * FROM jenis_barang ORDER BY nama ASC";
+			}
+			else if (kriteria == "cari jenis")
+			{
+				sql = "SELECT * FROM jenis_barang WHERE nama='" + nilaiKriteria + "'";
 			}
 			else if (kriteria == "exclude") // kriteria khusus untuk perintah sql yang menyeleksi semua jenis barang terkecuali jenis tertentu
 			{
-				sql = "SELECT * FROM jenis_barang WHERE NOT nama='"  + nilaiKriteria + "' ORDER BY idjenis_barang";
+				sql = "SELECT * FROM jenis_barang WHERE NOT nama='" + nilaiKriteria + "' ORDER BY nama ASC";
 			}
 			else
 			{
-				sql = "SELECT * FROM jenis_barang WHERE " + kriteria + " LIKE '%" + nilaiKriteria + "%' ORDER BY idjenis_barang";
+				sql = "SELECT * FROM jenis_barang WHERE " + kriteria + " LIKE '%" + nilaiKriteria + "%' ORDER BY nama ASC";
 			}
 
 			MySqlCommand cmd = new MySqlCommand(sql, conn.KoneksiDB);
@@ -86,54 +81,53 @@ namespace Kawi_Agung
 			finally
 			{
 				cmd.Dispose();
-				hasil.Dispose();
+				hasil.Close();
+				conn.KoneksiDB.Close();
 			}
 		}
 
-		public static string TambahData(JenisBarang jenis, List<JenisBarang> listJenis)
+		public static string TambahData(JenisBarang jenis)
 		{
 			string sql = "INSERT INTO jenis_barang(nama) VALUES('" + jenis.Nama + "')";
+			Koneksi k = new Koneksi();
+			MySqlCommand c = new MySqlCommand(sql, k.KoneksiDB);
 
 			try
 			{
-				for (int i = 0; i < listJenis.Count; i++)
-				{
-					if (jenis.Nama.ToLower() == listJenis[i].Nama.ToLower())
-					{
-						return "Nama jenis sudah ada";
-					}
-				}
+				c.ExecuteNonQuery();
 
-				JalankanPerintahDML(sql);
 				return "1";
 			}
 			catch (MySqlException ex)
 			{
 				return ex.Message + ". Perintah sql : " + sql;
 			}
-
+			finally
+			{
+				c.Dispose();
+				k.KoneksiDB.Close();
+			}
 		}
 
-		public static string UbahData(JenisBarang jenis, List<JenisBarang> listJenis)
+		public static string UbahData(JenisBarang jenis)
 		{
 			string sql = "UPDATE jenis_barang SET nama='" + jenis.Nama + "' WHERE idjenis_barang=" + jenis.idJenisBarang;
+			Koneksi k = new Koneksi();
+			MySqlCommand c = new MySqlCommand(sql, k.KoneksiDB);
 
 			try
 			{
-				for (int i = 0; i < listJenis.Count; i++)
-				{
-					if (jenis.Nama.ToLower() == listJenis[i].Nama.ToLower())
-					{
-						return "Nama jenis sudah ada";
-					}
-				}
-
-				JalankanPerintahDML(sql);
+				c.ExecuteNonQuery();
 				return "1";
 			}
 			catch (MySqlException ex)
 			{
 				return ex.Message + ". Perintah sql : " + sql;
+			}
+			finally
+			{
+				c.Dispose();
+				k.KoneksiDB.Close();
 			}
 		}
 
@@ -141,6 +135,8 @@ namespace Kawi_Agung
 		{
 			List<string> listKeterangan = new List<string>();
 			string sql = "";
+			Koneksi k = new Koneksi();
+			MySqlCommand c = null;
 
 			foreach (JenisBarang jenis in listJenis)
 			{
@@ -148,7 +144,9 @@ namespace Kawi_Agung
 
 				try
 				{
-					JalankanPerintahDML(sql);
+					k.Connect();
+					c = new MySqlCommand(sql, k.KoneksiDB);
+					c.ExecuteNonQuery();
 					listKeterangan.Add("berhasil");
 				}
 				catch (MySqlException ex)
@@ -160,7 +158,13 @@ namespace Kawi_Agung
 
 					// error sql lain selain error diatas belum direkam
 				}
+				finally
+				{
+					c.Dispose();
+					k.KoneksiDB.Close();
+				}
 			}
+
 			return listKeterangan;
 		}
 		#endregion

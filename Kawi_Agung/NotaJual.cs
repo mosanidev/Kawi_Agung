@@ -65,15 +65,19 @@ namespace Kawi_Agung
 
 			if (kriteria == "")
 			{
-				sql = "SELECT nj.idnota_jual, nj.no_faktur, nj.tanggal, p.nama, u.nama FROM nota_jual nj INNER JOIN pelanggan p ON nj.idpelanggan=p.idpelanggan INNER JOIN user u ON nj.iduser=u.iduser ORDER BY nj.no_faktur";
+				sql = "SELECT nj.idnota_jual, nj.no_faktur, nj.tanggal, p.nama, u.nama FROM nota_jual nj INNER JOIN pelanggan p ON nj.idpelanggan=p.idpelanggan INNER JOIN user u ON nj.iduser=u.iduser ORDER BY nj.tanggal";
 			}
 			else if (kriteria == "nj.tanggal")
 			{
-				sql = "SELECT nj.idnota_jual, nj.no_faktur, nj.tanggal, p.nama, u.nama FROM nota_jual nj INNER JOIN pelanggan p ON nj.idpelanggan=p.idpelanggan INNER JOIN user u ON nj.iduser=u.iduser WHERE " + kriteria + " BETWEEN '" + nilaiKriteria + "' AND '" + nilaiKriteria2 + "' ORDER BY nj.no_faktur";
+				sql = "SELECT nj.idnota_jual, nj.no_faktur, nj.tanggal, p.nama, u.nama FROM nota_jual nj INNER JOIN pelanggan p ON nj.idpelanggan=p.idpelanggan INNER JOIN user u ON nj.iduser=u.iduser WHERE " + kriteria + " BETWEEN '" + nilaiKriteria + "' AND '" + nilaiKriteria2 + "' ORDER BY nj.tanggal";
+			}
+			else if (kriteria == "cek no faktur")
+			{
+				sql = "SELECT nj.idnota_jual, nj.no_faktur, nj.tanggal, p.nama, u.nama FROM nota_jual nj INNER JOIN pelanggan p ON nj.idpelanggan=p.idpelanggan INNER JOIN user u ON nj.iduser=u.iduser WHERE nj.no_faktur='" + nilaiKriteria + "'";
 			}
 			else
 			{
-				sql = "SELECT nj.idnota_jual, nj.no_faktur, nj.tanggal, p.nama, u.nama FROM nota_jual nj INNER JOIN pelanggan p ON nj.idpelanggan=p.idpelanggan INNER JOIN user u ON nj.iduser=u.iduser WHERE " + kriteria + " LIKE '%" + nilaiKriteria + "%' ORDER BY nj.no_faktur";
+				sql = "SELECT nj.idnota_jual, nj.no_faktur, nj.tanggal, p.nama, u.nama FROM nota_jual nj INNER JOIN pelanggan p ON nj.idpelanggan=p.idpelanggan INNER JOIN user u ON nj.iduser=u.iduser WHERE " + kriteria + " LIKE '%" + nilaiKriteria + "%' ORDER BY nj.tanggal";
 			}
 
 			MySqlCommand cmd = new MySqlCommand(sql, conn.KoneksiDB);
@@ -107,45 +111,9 @@ namespace Kawi_Agung
 			}
 			finally
 			{
+				conn.KoneksiDB.Close();
 				cmd.Dispose();
-				hasil.Dispose();
-			}
-		}
-
-		public static string JalankanPerintahDML(string pSql)
-		{
-			try
-			{
-				Koneksi k = new Koneksi();
-				k.Connect();
-
-				MySqlCommand c = new MySqlCommand(pSql, k.KoneksiDB);
-
-				c.ExecuteNonQuery();
-
-				return "1";
-			}
-			catch (MySqlException e)
-			{
-				return e.Message;
-			}
-		}
-
-		public static string JalankanPerintahDML2(string pSql)
-		{
-			try
-			{
-				Koneksi k = new Koneksi();
-				k.Connect();
-
-				MySqlCommand c = new MySqlCommand(pSql, k.KoneksiDB);
-
-				return c.ExecuteScalar().ToString();
-
-			}
-			catch (MySqlException e)
-			{
-				return e.Message;
+				hasil.Close();
 			}
 		}
 
@@ -155,19 +123,25 @@ namespace Kawi_Agung
 			{
 				// tuliskan perintah SQL 1 : menambahkan nota beli ke tabel Nota Beli
 				string sql1 = "INSERT INTO nota_jual(no_faktur, tanggal, idpelanggan, iduser) VALUES('" + notaJual.NoFaktur + "', '" + notaJual.Tanggal.ToString("yyyy-MM-dd") + "', " + notaJual.Pelanggan.IdPelanggan + ", " + notaJual.User.IdUser + "); SELECT last_insert_id();";
+				string sql2 = "";
+
+				Koneksi k = new Koneksi();
+				k.Connect();
+				MySqlCommand c1 = new MySqlCommand(sql1, k.KoneksiDB);
+				MySqlCommand c2 = null;
 
 				try
 				{
-					for (int i = 0; i < listNJ.Count; i++)
-					{
-						if (notaJual.NoFaktur.ToLower() == listNJ[i].NoFaktur.ToLower())
-						{
-							return "Nomor Faktur sudah ada. Harap masukkan nomor faktur yang lain";
-						}
-					}
+					//for (int i = 0; i < listNJ.Count; i++)
+					//{
+					//	if (notaJual.NoFaktur.ToLower() == listNJ[i].NoFaktur.ToLower())
+					//	{
+					//		return "Nomor Faktur sudah ada. Harap masukkan nomor faktur yang lain";
+					//	}
+					//}
 
 					// menjalankan perintah untuk menambahkan ke tabel nota jual
-					string idNotaJual = JalankanPerintahDML2(sql1);
+					string idNotaJual = c1.ExecuteScalar().ToString();
 
 					string hasilUpdateStok = "";
 
@@ -177,10 +151,12 @@ namespace Kawi_Agung
 						for (int i = 0; i < notaJual.ListNotaJualDetil.Count; i++)
 						{
 							// tuliskan perintah SQL 2 : menambahkan barang-barang yang terbeli ke Nota Jual Detil
-							string sql2 = "INSERT INTO nota_jual_detil(idbarang, idnota_jual, qty, sub_total, total, diskon_persen) VALUES(" + notaJual.ListNotaJualDetil[i].Barang.IdBarang + ", " + idNotaJual + ", " + notaJual.ListNotaJualDetil[i].Qty + ", " + notaJual.ListNotaJualDetil[i].SubTotal + ", " + notaJual.ListNotaJualDetil[i].Total + ", " + notaJual.ListNotaJualDetil[i].DiskonPersen + ")";
+							sql2 = "INSERT INTO nota_jual_detil(idbarang, idnota_jual, qty, sub_total, total, diskon_persen) VALUES(" + notaJual.ListNotaJualDetil[i].Barang.IdBarang + ", " + idNotaJual + ", " + notaJual.ListNotaJualDetil[i].Qty + ", " + notaJual.ListNotaJualDetil[i].SubTotal + ", " + notaJual.ListNotaJualDetil[i].Total + ", " + notaJual.ListNotaJualDetil[i].DiskonPersen + ")";
 
+							c2 = new MySqlCommand(sql2, k.KoneksiDB);
+							c2.ExecuteNonQuery();
 							// menjalankan perintah untuk menambahkan ke tabel nota beli detil
-							string hasilTambahNotaJualDetil = JalankanPerintahDML(sql2);
+							string hasilTambahNotaJualDetil = "1";
 
 							if (hasilTambahNotaJualDetil == "1")
 							{
@@ -228,6 +204,12 @@ namespace Kawi_Agung
 
 					return e.Message;
 				}
+				finally
+				{
+					c1.Dispose();
+					c2.Dispose();
+					k.KoneksiDB.Close();
+				}
 			}
 		}
 
@@ -237,6 +219,13 @@ namespace Kawi_Agung
 			string sql1 = "";
 			string sql2 = "";
 			string sql3 = "";
+
+			Koneksi k = new Koneksi();
+
+			MySqlCommand cmd1 = null;
+			MySqlCommand cmd2 = null;
+			MySqlCommand cmd3 = null;
+			MySqlCommand cmd4 = null;
 
 			foreach (NotaJual nj in listNotaJual)
 			{
@@ -249,12 +238,9 @@ namespace Kawi_Agung
 
 				try
 				{
-					Koneksi k = new Koneksi();
-					k.Connect();
-
-					MySqlCommand cmd1 = new MySqlCommand(sql1, k.KoneksiDB);
-					MySqlCommand cmd2 = new MySqlCommand(sql2, k.KoneksiDB);
-					MySqlCommand cmd3 = new MySqlCommand(sql3, k.KoneksiDB);
+					cmd1 = new MySqlCommand(sql1, k.KoneksiDB);
+					cmd2 = new MySqlCommand(sql2, k.KoneksiDB);
+					cmd3 = new MySqlCommand(sql3, k.KoneksiDB);
 
 					if (hasilBacaNotaDetil == "1")
 					{
@@ -264,7 +250,7 @@ namespace Kawi_Agung
 						sql3 = "UPDATE barang SET jumlah_stok=jumlah_stok+" + qty + " WHERE idbarang=" + idBarang;
 					}
 
-					MySqlCommand cmd4 = new MySqlCommand(sql3, k.KoneksiDB);
+					cmd4 = new MySqlCommand(sql3, k.KoneksiDB);
 
 					cmd4.ExecuteNonQuery();
 					cmd1.ExecuteNonQuery();
@@ -285,6 +271,14 @@ namespace Kawi_Agung
 					}
 
 					// error sql lain selain error diatas belum direkam
+				}
+				finally
+				{
+					cmd1.Dispose();
+					cmd2.Dispose();
+					cmd3.Dispose();
+					cmd4.Dispose();
+					k.KoneksiDB.Close();
 				}
 			}
 			return listKeterangan;
@@ -317,7 +311,8 @@ namespace Kawi_Agung
 			finally
 			{
 				cmd.Dispose();
-				hasil.Dispose();
+				hasil.Close();
+				conn.KoneksiDB.Close();	
 			}
 		}
 

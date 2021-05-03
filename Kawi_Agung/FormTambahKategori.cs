@@ -35,33 +35,30 @@ namespace Kawi_Agung
 				KategoriBarang kategori = new KategoriBarang();
 				kategori.Nama = textBoxTambahKategoriBarang.Text.Trim();
 
-				string hasilTambah = KategoriBarang.TambahData(kategori, this.mainForm.listKategori);
+				string hasilTambah = KategoriBarang.TambahData(kategori);
 
 				if (hasilTambah == "1")
 				{
 					MessageBox.Show("Proses tambah berhasil");
 
 					this.mainForm.textBoxSearchKategoriBrg.Clear();
-					this.mainForm.FormMaster_Load(buttonTambahKategori, e);
+					this.mainForm.PopulateKategoriTable("", "");
 					this.Close();
+
 				}
-				else if (hasilTambah == "Nama kategori sudah ada")
+				else
 				{
-					DialogResult dialogResult = MessageBox.Show("Kategori sudah ada. Apakah Anda ingin menyimpan data dengan nama kategori tersebut?", "Tambah Kategori", MessageBoxButtons.YesNo);
-					if (dialogResult == DialogResult.Yes)
-					{
-						List<KategoriBarang> listKosong = new List<KategoriBarang>(); // kirim list kosong sebagai parameter method tambah data, agar bisa ditambahkan ke database
-						string hasilTambah_ = KategoriBarang.TambahData(kategori, listKosong);
-
-						MessageBox.Show("Proses tambah berhasil", "Info");
-
-						this.mainForm.textBoxSearchKategoriBrg.Clear();
-						this.mainForm.FormMaster_Load(buttonTambahKategori, e);
-						this.Close();
-					}
+					MessageBox.Show(hasilTambah);
 				}
 			}
 		}
 
+		private void textBoxTambahKategoriBarang_KeyDown(object sender, KeyEventArgs e)
+		{
+			if (e.KeyCode == Keys.Enter)
+			{
+				buttonTambahKategori_Click(sender, e);
+			}
+		}
 	}
 }

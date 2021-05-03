@@ -81,7 +81,7 @@
 			this.buttonUbahSupplier.OnHoverButtonColor = System.Drawing.Color.FromArgb(((int)(((byte)(7)))), ((int)(((byte)(104)))), ((int)(((byte)(159)))));
 			this.buttonUbahSupplier.OnHoverTextColor = System.Drawing.Color.AliceBlue;
 			this.buttonUbahSupplier.Size = new System.Drawing.Size(120, 40);
-			this.buttonUbahSupplier.TabIndex = 56;
+			this.buttonUbahSupplier.TabIndex = 3;
 			this.buttonUbahSupplier.Text = "Simpan";
 			this.buttonUbahSupplier.TextColor = System.Drawing.Color.White;
 			this.buttonUbahSupplier.UseVisualStyleBackColor = false;
@@ -92,7 +92,7 @@
 			this.textBoxUbahNoTelpSupplier.Location = new System.Drawing.Point(177, 160);
 			this.textBoxUbahNoTelpSupplier.Name = "textBoxUbahNoTelpSupplier";
 			this.textBoxUbahNoTelpSupplier.Size = new System.Drawing.Size(215, 20);
-			this.textBoxUbahNoTelpSupplier.TabIndex = 55;
+			this.textBoxUbahNoTelpSupplier.TabIndex = 1;
 			// 
 			// label3
 			// 
@@ -109,8 +109,9 @@
 			this.richTextBoxUbahAlamatSupplier.Location = new System.Drawing.Point(35, 229);
 			this.richTextBoxUbahAlamatSupplier.Name = "richTextBoxUbahAlamatSupplier";
 			this.richTextBoxUbahAlamatSupplier.Size = new System.Drawing.Size(357, 61);
-			this.richTextBoxUbahAlamatSupplier.TabIndex = 53;
+			this.richTextBoxUbahAlamatSupplier.TabIndex = 2;
 			this.richTextBoxUbahAlamatSupplier.Text = "";
+			this.richTextBoxUbahAlamatSupplier.KeyDown += new System.Windows.Forms.KeyEventHandler(this.richTextBoxUbahAlamatSupplier_KeyDown);
 			// 
 			// label2
 			// 
@@ -127,7 +128,7 @@
 			this.textBoxUbahNamaSupplier.Location = new System.Drawing.Point(177, 113);
 			this.textBoxUbahNamaSupplier.Name = "textBoxUbahNamaSupplier";
 			this.textBoxUbahNamaSupplier.Size = new System.Drawing.Size(215, 20);
-			this.textBoxUbahNamaSupplier.TabIndex = 51;
+			this.textBoxUbahNamaSupplier.TabIndex = 0;
 			// 
 			// label1
 			// 
@@ -152,8 +153,10 @@
 			this.Controls.Add(this.label2);
 			this.Controls.Add(this.textBoxUbahNamaSupplier);
 			this.Controls.Add(this.label1);
-			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+			this.MaximizeBox = false;
 			this.Name = "FormUbahSupplier";
+			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
 			this.Load += new System.EventHandler(this.FormUbahSupplier_Load);
 			this.panel1.ResumeLayout(false);
 			this.panel1.PerformLayout();

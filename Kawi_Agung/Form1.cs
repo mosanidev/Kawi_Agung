@@ -27,7 +27,7 @@ namespace Kawi_Agung
 
 			if (textBoxUsername.Text == "")
 			{
-                MessageBox.Show("Harap di isi terlebih dahulu");
+                MessageBox.Show("Harap diisi terlebih dahulu");
 				textBoxUsername.Clear();
 				textBoxUsername.Focus();
 			}
@@ -70,7 +70,7 @@ namespace Kawi_Agung
 		{
             if (textBoxPassword.Text == "")
             {
-                MessageBox.Show("Harap di isi terlebih dahulu");
+                MessageBox.Show("Harap diisi terlebih dahulu");
                 textBoxPassword.Clear();
                 textBoxPassword.Focus();
             }
@@ -107,6 +107,10 @@ namespace Kawi_Agung
                 textBoxNewPassword.Clear();
                 textBoxRePassword.Clear();
                 textBoxNewPassword.Focus();
+            }
+            else if (textBoxNewPassword.Text.Length < 8)
+            {
+                MessageBox.Show("Password minimal 8 karakter");
             }
             else if (textBoxRePassword.Text != textBoxNewPassword.Text)
             {

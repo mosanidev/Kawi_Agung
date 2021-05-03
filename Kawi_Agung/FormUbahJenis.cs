@@ -30,48 +30,23 @@ namespace Kawi_Agung
 
 			JenisBarang jenis = new JenisBarang();
 			jenis.IdJenisBarang = IdJenis;
-			jenis.Nama = textBoxUbahJenisBarang.Text;
-
-			List<JenisBarang> listJenis = new List<JenisBarang>();
-
-			string hasilBaca = JenisBarang.BacaData("exclude", FormMaster.listSelectedJenis[0].Nama, listJenis);
-
-			string hasilUbah = "";
-
-			if (hasilBaca == "1")
-			{
-				hasilUbah = JenisBarang.UbahData(jenis, listJenis);
-			}
 
 			if (textBoxUbahJenisBarang.Text == "")
 			{
 				MessageBox.Show("Harap di isi terlebih dahulu");
 			}
-			else if (textBoxUbahJenisBarang.Text != "")
+			else
 			{
-				if (hasilUbah == "1")
-				{
-					MessageBox.Show("Proses ubah berhasil", "Ubah Jenis");
+				jenis.Nama = textBoxUbahJenisBarang.Text.Trim();
 
-					this.mainForm.textBoxSearchJenisBrg.Clear();
-					this.mainForm.FormMaster_Load(buttonUbahJenis, e);
-					this.Close();
-				}
-				else if (hasilUbah == "Nama jenis sudah ada")
-				{
-					DialogResult dialogResult = MessageBox.Show("Jenis sudah ada. Apakah Anda ingin menyimpan data dengan nama jenis tersebut?", "Tambah Jenis", MessageBoxButtons.YesNo);
-					if (dialogResult == DialogResult.Yes)
-					{
-						List<JenisBarang> listKosong = new List<JenisBarang>(); // kirim list kosong sebagai parameter method ubah data, agar bisa ditambahkan ke database
-						string hasilTambah_ = JenisBarang.UbahData(jenis, listKosong);
+				JenisBarang.UbahData(jenis);
 
-						MessageBox.Show("Proses ubah berhasil", "Ubah Jenis");	
+				MessageBox.Show("Proses ubah berhasil");
 
-						this.mainForm.textBoxSearchJenisBrg.Clear();
-						this.mainForm.FormMaster_Load(buttonUbahJenis, e);
-						this.Close();
-					}
-				}
+				this.mainForm.textBoxSearchJenisBrg.Clear();
+				this.mainForm.PopulateJenisTable("", "");
+				this.Close();
+				
 			}
 		}
 
@@ -81,6 +56,14 @@ namespace Kawi_Agung
 
 			textBoxUbahJenisBarang.SelectionStart = textBoxUbahJenisBarang.Text.Length;
 			textBoxUbahJenisBarang.SelectionLength = 0;
+		}
+
+		private void textBoxUbahJenisBarang_KeyDown(object sender, KeyEventArgs e)
+		{
+			if (e.KeyCode == Keys.Enter)
+			{
+				buttonUbahJenis_Click(sender, e);
+			}
 		}
 	}
 }

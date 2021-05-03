@@ -89,6 +89,7 @@
 			this.textBoxTambahJenisBarang.Name = "textBoxTambahJenisBarang";
 			this.textBoxTambahJenisBarang.Size = new System.Drawing.Size(215, 20);
 			this.textBoxTambahJenisBarang.TabIndex = 41;
+			this.textBoxTambahJenisBarang.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBoxTambahJenisBarang_KeyDown);
 			// 
 			// label1
 			// 
@@ -109,7 +110,8 @@
 			this.Controls.Add(this.buttonTambahJenis);
 			this.Controls.Add(this.textBoxTambahJenisBarang);
 			this.Controls.Add(this.label1);
-			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+			this.MaximizeBox = false;
 			this.Name = "FormTambahJenis";
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
 			this.panel1.ResumeLayout(false);

@@ -38,31 +38,28 @@ namespace Kawi_Agung
 				supplier.Alamat = richTextBoxTambahAlamatSupplier.Text.Trim();
 				supplier.NoTelp = textBoxTambahNoTelpSupplier.Text.Trim();
 
-				string hasilTambah = Supplier.TambahData(supplier, this.mainForm.listSupplier);
+				string hasilTambah = Supplier.TambahData(supplier);
 
 				if (hasilTambah == "1")
 				{
 					MessageBox.Show("Proses tambah berhasil");
 
 					this.mainForm.textBoxSearchNamaSupplier.Clear();
-					this.mainForm.FormMaster_Load(buttonTambahSupplier, e);
+					this.mainForm.PopulateSupplierTable("", "");
 					this.Close();
 				}
-				else if (hasilTambah == "Nama supplier sudah ada") // apabila ada nama supplier yang sama di database
+				else
 				{
-					DialogResult dialogResult = MessageBox.Show("Nama supplier sudah ada. Apakah Anda ingin menyimpan data dengan nama supplier tersebut?", "Tambah Supplier", MessageBoxButtons.YesNo);
-					if (dialogResult == DialogResult.Yes)
-					{
-						List<Supplier> listKosong = new List<Supplier>(); // kirim list kosong sebagai parameter method tambah data, agar bisa ditambahkan ke database
-						string hasilTambah_ = Supplier.TambahData(supplier, listKosong);
-
-						MessageBox.Show("Proses tambah berhasil");
-
-						this.mainForm.textBoxSearchNamaSupplier.Clear();
-						this.mainForm.FormMaster_Load(buttonTambahSupplier, e);
-						this.Close();
-					}
+					MessageBox.Show(hasilTambah);
 				}
+			}
+		}
+
+		private void richTextBoxTambahAlamatSupplier_KeyDown(object sender, KeyEventArgs e)
+		{
+			if (e.KeyCode == Keys.Enter)
+			{
+				buttonTambahSupplier_Click(sender, e);
 			}
 		}
 	}

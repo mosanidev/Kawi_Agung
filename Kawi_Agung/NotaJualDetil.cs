@@ -62,11 +62,11 @@ namespace Kawi_Agung
 
 			if (kriteria == "")
 			{
-				sql = "SELECT njd.idbarang, b.kode_barang, b.nama, b.satuan, nj.idnota_jual, nj.no_faktur, njd.qty, njd.sub_total, njd.total, njd.diskon_persen, nj.tanggal, p.nama FROM nota_jual_detil njd INNER JOIN barang b ON njd.idbarang=b.idbarang INNER JOIN nota_jual nj ON njd.idnota_jual=nj.idnota_jual INNER JOIN pelanggan p ON nj.idpelanggan=p.idpelanggan";
+				sql = "SELECT njd.idbarang, b.kode_barang, b.nama, b.satuan, nj.idnota_jual, nj.no_faktur, njd.qty, njd.sub_total, njd.total, njd.diskon_persen, nj.tanggal, p.nama, u.nama FROM nota_jual_detil njd INNER JOIN barang b ON njd.idbarang=b.idbarang INNER JOIN nota_jual nj ON njd.idnota_jual=nj.idnota_jual INNER JOIN pelanggan p ON nj.idpelanggan=p.idpelanggan INNER JOIN user u ON nj.iduser=u.iduser";
 			}
 			else
 			{
-				sql = "SELECT njd.idbarang, b.kode_barang, b.nama, b.satuan, nj.idnota_jual, nj.no_faktur, njd.qty, njd.sub_total, njd.total, njd.diskon_persen, nj.tanggal, p.nama FROM nota_jual_detil njd INNER JOIN barang b ON njd.idbarang=b.idbarang INNER JOIN nota_jual nj ON njd.idnota_jual=nj.idnota_jual INNER JOIN pelanggan p ON nj.idpelanggan=p.idpelanggan WHERE " + kriteria + "='" + nilaiKriteria + "'";
+				sql = "SELECT njd.idbarang, b.kode_barang, b.nama, b.satuan, nj.idnota_jual, nj.no_faktur, njd.qty, njd.sub_total, njd.total, njd.diskon_persen, nj.tanggal, p.nama, u.nama FROM nota_jual_detil njd INNER JOIN barang b ON njd.idbarang=b.idbarang INNER JOIN nota_jual nj ON njd.idnota_jual=nj.idnota_jual INNER JOIN pelanggan p ON nj.idpelanggan=p.idpelanggan INNER JOIN user u ON nj.iduser=u.iduser WHERE " + kriteria + "='" + nilaiKriteria + "'";
 			}
 
 			MySqlCommand cmd = new MySqlCommand(sql, conn.KoneksiDB);
@@ -79,6 +79,9 @@ namespace Kawi_Agung
 					Pelanggan p = new Pelanggan();
 					p.Nama = hasil.GetValue(11).ToString();
 
+					User u = new User();
+					u.Nama = hasil.GetValue(12).ToString();
+
 					Barang b = new Barang();
 					b.IdBarang = Convert.ToInt32(hasil.GetValue(0));
 					b.KodeBarang = hasil.GetValue(1).ToString();
@@ -90,6 +93,7 @@ namespace Kawi_Agung
 					nj.NoFaktur = hasil.GetValue(5).ToString();
 					nj.Tanggal = DateTime.Parse(hasil.GetValue(10).ToString());
 					nj.Pelanggan = p;
+					nj.User = u;
 
 					NotaJualDetil notaJualDetil = new NotaJualDetil(b, nj, Convert.ToInt32(hasil.GetValue(6)), Convert.ToInt32(hasil.GetValue(7)), Convert.ToInt32(hasil.GetValue(8)), Convert.ToInt32(hasil.GetValue(9)));
 
@@ -104,7 +108,8 @@ namespace Kawi_Agung
 			finally
 			{
 				cmd.Dispose();
-				hasil.Dispose();
+				hasil.Close();
+				conn.KoneksiDB.Close();
 			}
 		}
 

@@ -46,9 +46,15 @@ namespace Kawi_Agung
 			numericUpDownUbahBarangHargaJual.Value = CountPriceBeforeDiscount(FormMaster.listSelectedBarang[0].HargaJual, FormMaster.listSelectedBarang[0].DiskonPersenJual);
 			numericUpDownUbahBarangDiskon.Value = FormMaster.listSelectedBarang[0].DiskonPersenJual;
 
-			if (FormMaster.listSelectedBarang[0].Foto != null)
+			if (FormMaster.listSelectedBarang[0].Foto != "")
 			{
-				pictureBoxUbahBarangGambarBarang.Image = ConvertBinaryToImage(FormMaster.listSelectedBarang[0].Foto);
+				string projectPath = Directory.GetParent(Directory.GetCurrentDirectory()).Parent.FullName + "\\images\\barang";
+				string folderName = Path.Combine(projectPath, FormMaster.listSelectedBarang[0].KodeBarang);
+				pictureBoxUbahBarangGambarBarang.ImageLocation = folderName + "\\" + "foto" + FormMaster.listSelectedBarang[0].Foto;
+			}
+			else
+			{
+				pictureBoxUbahBarangGambarBarang.Image = Resources.profile_picture;
 			}
 
 			labelHasilHargaJual.Text = ConvertToRupiah(FormMaster.listSelectedBarang[0].HargaJual);
@@ -86,27 +92,6 @@ namespace Kawi_Agung
 			}
 		}
 
-		Image ConvertBinaryToImage(byte[] data)
-		{
-			var img = Resources.box;
-
-			if (data == null)
-				return img; ;
-			using (MemoryStream ms = new MemoryStream(data))
-			{
-				try
-				{
-					return Image.FromStream(ms);
-				}
-				catch (Exception e)
-				{
-					MessageBox.Show(e.Message.ToString());
-
-					return img;
-				}
-			}
-		}
-
 		string ConvertToRupiah(int number)
 		{
 			CultureInfo culture = new CultureInfo("id-ID");
@@ -135,17 +120,19 @@ namespace Kawi_Agung
 			if (openFileDialog.ShowDialog() == DialogResult.OK)
 			{
 				// limit jadi 16 Mib
-				if (new FileInfo(openFileDialog.FileName).Length > (16 * 1048576))
+				try
 				{
-					MessageBox.Show("Ukuran file tidak boleh lebih dari 64 kb");
-				}
-				else
-				{
-					pictureBoxUbahBarangGambarBarang.Image = new Bitmap(openFileDialog.FileName);
 					pathFoto = openFileDialog.FileName;
+					pictureBoxUbahBarangGambarBarang.ImageLocation = openFileDialog.FileName;
 					pictureBoxUbahBarangGambarBarang.Tag = "Unggahan";
 				}
+				catch (IOException ex)
+				{
+					MessageBox.Show(ex.Message.ToString());
+				}
 			}
+
+			openFileDialog.Dispose();
 		}
 
 		private void buttonUbahBarang_Click(object sender, EventArgs e)
@@ -156,8 +143,6 @@ namespace Kawi_Agung
 			}
 			else
 			{
-				byte[] foto = null;
-
 				JenisBarang jenis = new JenisBarang();
 				jenis.IdJenisBarang = int.Parse(comboBoxUbahBarangJenisBarang.Text.Split('-')[0]);
 				jenis.Nama = comboBoxUbahBarangJenisBarang.Text.Split('-')[1];
@@ -170,13 +155,6 @@ namespace Kawi_Agung
 				merek.IdMerekBarang = int.Parse(comboBoxUbahBarangMerekBarang.Text.Split('-')[0]);
 				merek.Nama = comboBoxUbahBarangMerekBarang.Text.Split('-')[1];
 
-				if (pathFoto != "")
-				{
-					foto = ConvertImageToBinary(Image.FromFile(pathFoto));
-				}
-
-				hasilHargaJual = hitungDiskon(Convert.ToInt32(numericUpDownUbahBarangHargaJual.Value), Convert.ToInt32(numericUpDownUbahBarangDiskon.Value));
-
 				Barang barang = new Barang();
 				barang.IdBarang = FormMaster.listSelectedBarang[0].IdBarang;
 				barang.KodeBarang = textBoxUbahBarangKodeBarang.Text;
@@ -184,10 +162,16 @@ namespace Kawi_Agung
 				barang.Jenis = jenis;
 				barang.Kategori = kategori;
 				barang.Merek = merek;
-				barang.HargaJual = hasilHargaJual;
+				barang.HargaJual = hitungDiskon(Convert.ToInt32(numericUpDownUbahBarangHargaJual.Value), Convert.ToInt32(numericUpDownUbahBarangDiskon.Value)); 
 				barang.DiskonPersenJual = Convert.ToInt32(numericUpDownUbahBarangDiskon.Value);
 				barang.Satuan = comboBoxUbahSatuanBarang.Text;
-				barang.Foto = foto;
+
+				if (pathFoto != "")
+				{
+					barang.Foto = Path.GetExtension(pathFoto);
+				}
+
+				hasilHargaJual = hitungDiskon(Convert.ToInt32(numericUpDownUbahBarangHargaJual.Value), Convert.ToInt32(numericUpDownUbahBarangDiskon.Value));
 
 				List<Barang> listBarang = new List<Barang>();
 
@@ -199,11 +183,18 @@ namespace Kawi_Agung
 				{
 					if (pictureBoxUbahBarangGambarBarang.Tag == "Default")
 					{
-						hasilUbah = Barang.UbahData(barang, listBarang, "Kosong");
-					} else if (pictureBoxUbahBarangGambarBarang.Tag == "Unggahan")
+						hasilUbah = Barang.UbahData(barang, listBarang, "Hapus");
+					} 
+					else if (pictureBoxUbahBarangGambarBarang.Tag == "Unggahan")
 					{
+						string projectPath = Directory.GetParent(Directory.GetCurrentDirectory()).Parent.FullName + "\\images\\barang";
+						string folderName = Path.Combine(projectPath, FormMaster.listSelectedBarang[0].KodeBarang);
+						Directory.CreateDirectory(folderName);
+						Array.ForEach(Directory.GetFiles(@folderName + "\\"), File.Delete);
+						File.Copy(pathFoto, folderName + "\\" + "foto" + barang.Foto);
 						hasilUbah = Barang.UbahData(barang, listBarang, "Ada");
-					} else if (pictureBoxUbahBarangGambarBarang.Tag == null)
+					} 
+					else if (pictureBoxUbahBarangGambarBarang.Tag == null)
 					{
 						hasilUbah = Barang.UbahData(barang, listBarang, "Tidak Ada");
 					}
@@ -214,26 +205,13 @@ namespace Kawi_Agung
 					MessageBox.Show("Data berhasil disimpan");
 
 					this.mainForm.textBoxSearchBarang.Clear();
-					this.mainForm.FormMaster_Load(buttonUbahBarang, e);
+					this.mainForm.PopulateBarangTable("", "");
 					this.Close();
 				}
 				else
 				{
 					MessageBox.Show(hasilUbah);
 				}
-			}
-		}
-
-		byte[] ConvertImageToBinary(Image img)
-		{
-			if (img == null)
-				return null;
-			using (MemoryStream ms = new MemoryStream())
-			{
-				//System.Drawing.Imaging.ImageFormat.Jpeg
-				img.Save(ms, img.RawFormat);
-				return ms.ToArray();
-
 			}
 		}
 
@@ -258,6 +236,7 @@ namespace Kawi_Agung
 		{
 			pictureBoxUbahBarangGambarBarang.Image = Resources.box;
 			pictureBoxUbahBarangGambarBarang.Tag = "Default";
+			pathFoto = "";
 		}
 	}
 }

@@ -59,6 +59,7 @@
 			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle27 = new System.Windows.Forms.DataGridViewCellStyle();
 			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle29 = new System.Windows.Forms.DataGridViewCellStyle();
 			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle30 = new System.Windows.Forms.DataGridViewCellStyle();
+			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormMaster));
 			this.panelSideNavigation = new System.Windows.Forms.Panel();
 			this.panelButtonIndicator = new System.Windows.Forms.Panel();
 			this.iconButtonProfil = new FontAwesome.Sharp.IconButton();
@@ -262,15 +263,9 @@
 			this.checkBoxTampilPassword = new System.Windows.Forms.CheckBox();
 			this.textBoxPasswordProfilUser = new System.Windows.Forms.TextBox();
 			this.label15 = new System.Windows.Forms.Label();
-			this.textBoxRekeningBankProfilUser = new System.Windows.Forms.TextBox();
-			this.textBoxNoRekeningProfilUser = new System.Windows.Forms.TextBox();
-			this.textBoxNamaRekeningProfilUser = new System.Windows.Forms.TextBox();
 			this.richTextBoxAlamatProfilUser = new System.Windows.Forms.RichTextBox();
 			this.textBoxNoTelpProfilUser = new System.Windows.Forms.TextBox();
 			this.buttonUnggahFotoProfilUser = new ePOSOne.btnProduct.Button_WOC();
-			this.label21 = new System.Windows.Forms.Label();
-			this.label17 = new System.Windows.Forms.Label();
-			this.label16 = new System.Windows.Forms.Label();
 			this.label12 = new System.Windows.Forms.Label();
 			this.buttonSimpanInfoUser = new ePOSOne.btnProduct.Button_WOC();
 			this.labelProfilJabatan = new System.Windows.Forms.Label();
@@ -1018,6 +1013,8 @@
 			// 
 			// iconButtonBackPanelBarang
 			// 
+			this.iconButtonBackPanelBarang.BackgroundImage = global::Kawi_Agung.Properties.Resources.back_light;
+			this.iconButtonBackPanelBarang.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
 			this.iconButtonBackPanelBarang.Cursor = System.Windows.Forms.Cursors.Hand;
 			this.iconButtonBackPanelBarang.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(232)))), ((int)(((byte)(232)))));
 			this.iconButtonBackPanelBarang.FlatAppearance.BorderSize = 0;
@@ -1030,16 +1027,13 @@
 			this.iconButtonBackPanelBarang.IconChar = FontAwesome.Sharp.IconChar.None;
 			this.iconButtonBackPanelBarang.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(7)))), ((int)(((byte)(104)))), ((int)(((byte)(159)))));
 			this.iconButtonBackPanelBarang.IconSize = 16;
-			this.iconButtonBackPanelBarang.Location = new System.Drawing.Point(15, 12);
+			this.iconButtonBackPanelBarang.Location = new System.Drawing.Point(15, 25);
 			this.iconButtonBackPanelBarang.Name = "iconButtonBackPanelBarang";
 			this.iconButtonBackPanelBarang.Rotation = 0D;
-			this.iconButtonBackPanelBarang.Size = new System.Drawing.Size(63, 65);
+			this.iconButtonBackPanelBarang.Size = new System.Drawing.Size(63, 48);
 			this.iconButtonBackPanelBarang.TabIndex = 6;
-			this.iconButtonBackPanelBarang.Text = "\\";
 			this.iconButtonBackPanelBarang.UseVisualStyleBackColor = true;
 			this.iconButtonBackPanelBarang.Click += new System.EventHandler(this.iconButtonBackPanelBarang_Click);
-			this.iconButtonBackPanelBarang.MouseLeave += new System.EventHandler(this.iconButtonBackPanel_MouseLeave);
-			this.iconButtonBackPanelBarang.MouseHover += new System.EventHandler(this.iconButtonBackPanel_MouseHover);
 			// 
 			// dataGridViewDaftarBarang
 			// 
@@ -1315,6 +1309,8 @@
 			// 
 			// iconButtonBackPanelJenisBrg
 			// 
+			this.iconButtonBackPanelJenisBrg.BackgroundImage = global::Kawi_Agung.Properties.Resources.back_light;
+			this.iconButtonBackPanelJenisBrg.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
 			this.iconButtonBackPanelJenisBrg.Cursor = System.Windows.Forms.Cursors.Hand;
 			this.iconButtonBackPanelJenisBrg.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(232)))), ((int)(((byte)(232)))));
 			this.iconButtonBackPanelJenisBrg.FlatAppearance.BorderSize = 0;
@@ -1327,16 +1323,13 @@
 			this.iconButtonBackPanelJenisBrg.IconChar = FontAwesome.Sharp.IconChar.None;
 			this.iconButtonBackPanelJenisBrg.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(7)))), ((int)(((byte)(104)))), ((int)(((byte)(159)))));
 			this.iconButtonBackPanelJenisBrg.IconSize = 16;
-			this.iconButtonBackPanelJenisBrg.Location = new System.Drawing.Point(15, 12);
+			this.iconButtonBackPanelJenisBrg.Location = new System.Drawing.Point(15, 25);
 			this.iconButtonBackPanelJenisBrg.Name = "iconButtonBackPanelJenisBrg";
 			this.iconButtonBackPanelJenisBrg.Rotation = 0D;
-			this.iconButtonBackPanelJenisBrg.Size = new System.Drawing.Size(63, 65);
+			this.iconButtonBackPanelJenisBrg.Size = new System.Drawing.Size(63, 48);
 			this.iconButtonBackPanelJenisBrg.TabIndex = 6;
-			this.iconButtonBackPanelJenisBrg.Text = "\\";
 			this.iconButtonBackPanelJenisBrg.UseVisualStyleBackColor = true;
 			this.iconButtonBackPanelJenisBrg.Click += new System.EventHandler(this.iconButtonBackPanelJenisBrg_Click);
-			this.iconButtonBackPanelJenisBrg.MouseLeave += new System.EventHandler(this.iconButtonBackPanelJenisBrg_MouseLeave);
-			this.iconButtonBackPanelJenisBrg.MouseHover += new System.EventHandler(this.iconButtonBackPanelJenisBrg_MouseHover);
 			// 
 			// dataGridViewDaftarJenisBrg
 			// 
@@ -1542,6 +1535,8 @@
 			// 
 			// iconButtonBackPanelKategoriBrg
 			// 
+			this.iconButtonBackPanelKategoriBrg.BackgroundImage = global::Kawi_Agung.Properties.Resources.back_light;
+			this.iconButtonBackPanelKategoriBrg.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
 			this.iconButtonBackPanelKategoriBrg.Cursor = System.Windows.Forms.Cursors.Hand;
 			this.iconButtonBackPanelKategoriBrg.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(232)))), ((int)(((byte)(232)))));
 			this.iconButtonBackPanelKategoriBrg.FlatAppearance.BorderSize = 0;
@@ -1554,16 +1549,13 @@
 			this.iconButtonBackPanelKategoriBrg.IconChar = FontAwesome.Sharp.IconChar.None;
 			this.iconButtonBackPanelKategoriBrg.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(7)))), ((int)(((byte)(104)))), ((int)(((byte)(159)))));
 			this.iconButtonBackPanelKategoriBrg.IconSize = 16;
-			this.iconButtonBackPanelKategoriBrg.Location = new System.Drawing.Point(15, 12);
+			this.iconButtonBackPanelKategoriBrg.Location = new System.Drawing.Point(15, 25);
 			this.iconButtonBackPanelKategoriBrg.Name = "iconButtonBackPanelKategoriBrg";
 			this.iconButtonBackPanelKategoriBrg.Rotation = 0D;
-			this.iconButtonBackPanelKategoriBrg.Size = new System.Drawing.Size(63, 65);
+			this.iconButtonBackPanelKategoriBrg.Size = new System.Drawing.Size(63, 48);
 			this.iconButtonBackPanelKategoriBrg.TabIndex = 6;
-			this.iconButtonBackPanelKategoriBrg.Text = "\\";
 			this.iconButtonBackPanelKategoriBrg.UseVisualStyleBackColor = true;
 			this.iconButtonBackPanelKategoriBrg.Click += new System.EventHandler(this.iconButtonBackPanelKategoriBrg_Click);
-			this.iconButtonBackPanelKategoriBrg.MouseLeave += new System.EventHandler(this.iconButtonBackPanelKategoriBrg_MouseLeave);
-			this.iconButtonBackPanelKategoriBrg.MouseHover += new System.EventHandler(this.iconButtonBackPanelKategoriBrg_MouseHover);
 			// 
 			// dataGridViewSubMenuKategoriBrg
 			// 
@@ -1769,6 +1761,8 @@
 			// 
 			// iconButtonBackPanelMerekBrg
 			// 
+			this.iconButtonBackPanelMerekBrg.BackgroundImage = global::Kawi_Agung.Properties.Resources.back_light;
+			this.iconButtonBackPanelMerekBrg.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
 			this.iconButtonBackPanelMerekBrg.Cursor = System.Windows.Forms.Cursors.Hand;
 			this.iconButtonBackPanelMerekBrg.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(232)))), ((int)(((byte)(232)))));
 			this.iconButtonBackPanelMerekBrg.FlatAppearance.BorderSize = 0;
@@ -1781,16 +1775,13 @@
 			this.iconButtonBackPanelMerekBrg.IconChar = FontAwesome.Sharp.IconChar.None;
 			this.iconButtonBackPanelMerekBrg.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(7)))), ((int)(((byte)(104)))), ((int)(((byte)(159)))));
 			this.iconButtonBackPanelMerekBrg.IconSize = 16;
-			this.iconButtonBackPanelMerekBrg.Location = new System.Drawing.Point(15, 12);
+			this.iconButtonBackPanelMerekBrg.Location = new System.Drawing.Point(15, 25);
 			this.iconButtonBackPanelMerekBrg.Name = "iconButtonBackPanelMerekBrg";
 			this.iconButtonBackPanelMerekBrg.Rotation = 0D;
-			this.iconButtonBackPanelMerekBrg.Size = new System.Drawing.Size(63, 65);
+			this.iconButtonBackPanelMerekBrg.Size = new System.Drawing.Size(63, 48);
 			this.iconButtonBackPanelMerekBrg.TabIndex = 6;
-			this.iconButtonBackPanelMerekBrg.Text = "\\";
 			this.iconButtonBackPanelMerekBrg.UseVisualStyleBackColor = true;
 			this.iconButtonBackPanelMerekBrg.Click += new System.EventHandler(this.iconButtonBackPanelMerekBrg_Click);
-			this.iconButtonBackPanelMerekBrg.MouseLeave += new System.EventHandler(this.iconButtonBackPanelMerekBrg_MouseLeave);
-			this.iconButtonBackPanelMerekBrg.MouseHover += new System.EventHandler(this.iconButtonBackPanelMerekBrg_MouseHover);
 			// 
 			// dataGridViewSubMenuMerekBrg
 			// 
@@ -2381,6 +2372,8 @@
 			// 
 			// iconButtonBackBarangKeluar
 			// 
+			this.iconButtonBackBarangKeluar.BackgroundImage = global::Kawi_Agung.Properties.Resources.back_light;
+			this.iconButtonBackBarangKeluar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
 			this.iconButtonBackBarangKeluar.Cursor = System.Windows.Forms.Cursors.Hand;
 			this.iconButtonBackBarangKeluar.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(232)))), ((int)(((byte)(232)))));
 			this.iconButtonBackBarangKeluar.FlatAppearance.BorderSize = 0;
@@ -2393,16 +2386,13 @@
 			this.iconButtonBackBarangKeluar.IconChar = FontAwesome.Sharp.IconChar.None;
 			this.iconButtonBackBarangKeluar.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(7)))), ((int)(((byte)(104)))), ((int)(((byte)(159)))));
 			this.iconButtonBackBarangKeluar.IconSize = 16;
-			this.iconButtonBackBarangKeluar.Location = new System.Drawing.Point(23, 12);
+			this.iconButtonBackBarangKeluar.Location = new System.Drawing.Point(23, 25);
 			this.iconButtonBackBarangKeluar.Name = "iconButtonBackBarangKeluar";
 			this.iconButtonBackBarangKeluar.Rotation = 0D;
-			this.iconButtonBackBarangKeluar.Size = new System.Drawing.Size(63, 65);
+			this.iconButtonBackBarangKeluar.Size = new System.Drawing.Size(63, 48);
 			this.iconButtonBackBarangKeluar.TabIndex = 20;
-			this.iconButtonBackBarangKeluar.Text = "\\";
 			this.iconButtonBackBarangKeluar.UseVisualStyleBackColor = true;
 			this.iconButtonBackBarangKeluar.Click += new System.EventHandler(this.iconButtonBackBarangKeluar_Click);
-			this.iconButtonBackBarangKeluar.MouseLeave += new System.EventHandler(this.iconButtonBackBarangKeluar_MouseLeave);
-			this.iconButtonBackBarangKeluar.MouseHover += new System.EventHandler(this.iconButtonBackBarangKeluar_MouseHover);
 			// 
 			// panelMenuLaporan
 			// 
@@ -2580,6 +2570,8 @@
 			// 
 			// iconButtonBackLaporanPenjualan
 			// 
+			this.iconButtonBackLaporanPenjualan.BackgroundImage = global::Kawi_Agung.Properties.Resources.back_light;
+			this.iconButtonBackLaporanPenjualan.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
 			this.iconButtonBackLaporanPenjualan.Cursor = System.Windows.Forms.Cursors.Hand;
 			this.iconButtonBackLaporanPenjualan.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(232)))), ((int)(((byte)(232)))));
 			this.iconButtonBackLaporanPenjualan.FlatAppearance.BorderSize = 0;
@@ -2592,16 +2584,13 @@
 			this.iconButtonBackLaporanPenjualan.IconChar = FontAwesome.Sharp.IconChar.None;
 			this.iconButtonBackLaporanPenjualan.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(7)))), ((int)(((byte)(104)))), ((int)(((byte)(159)))));
 			this.iconButtonBackLaporanPenjualan.IconSize = 16;
-			this.iconButtonBackLaporanPenjualan.Location = new System.Drawing.Point(15, 12);
+			this.iconButtonBackLaporanPenjualan.Location = new System.Drawing.Point(15, 25);
 			this.iconButtonBackLaporanPenjualan.Name = "iconButtonBackLaporanPenjualan";
 			this.iconButtonBackLaporanPenjualan.Rotation = 0D;
-			this.iconButtonBackLaporanPenjualan.Size = new System.Drawing.Size(63, 65);
+			this.iconButtonBackLaporanPenjualan.Size = new System.Drawing.Size(63, 48);
 			this.iconButtonBackLaporanPenjualan.TabIndex = 6;
-			this.iconButtonBackLaporanPenjualan.Text = "\\";
 			this.iconButtonBackLaporanPenjualan.UseVisualStyleBackColor = true;
 			this.iconButtonBackLaporanPenjualan.Click += new System.EventHandler(this.iconButtonBackLaporanPenjualan_Click);
-			this.iconButtonBackLaporanPenjualan.MouseLeave += new System.EventHandler(this.iconButtonBackLaporanPenjualan_MouseLeave);
-			this.iconButtonBackLaporanPenjualan.MouseHover += new System.EventHandler(this.iconButtonBackLaporanPenjualan_MouseHover);
 			// 
 			// dataGridViewLaporanPenjualan
 			// 
@@ -2761,6 +2750,8 @@
 			// 
 			// iconButtonBackLaporanPembelian
 			// 
+			this.iconButtonBackLaporanPembelian.BackgroundImage = global::Kawi_Agung.Properties.Resources.back_light;
+			this.iconButtonBackLaporanPembelian.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
 			this.iconButtonBackLaporanPembelian.Cursor = System.Windows.Forms.Cursors.Hand;
 			this.iconButtonBackLaporanPembelian.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(232)))), ((int)(((byte)(232)))));
 			this.iconButtonBackLaporanPembelian.FlatAppearance.BorderSize = 0;
@@ -2773,16 +2764,13 @@
 			this.iconButtonBackLaporanPembelian.IconChar = FontAwesome.Sharp.IconChar.None;
 			this.iconButtonBackLaporanPembelian.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(7)))), ((int)(((byte)(104)))), ((int)(((byte)(159)))));
 			this.iconButtonBackLaporanPembelian.IconSize = 16;
-			this.iconButtonBackLaporanPembelian.Location = new System.Drawing.Point(15, 12);
+			this.iconButtonBackLaporanPembelian.Location = new System.Drawing.Point(15, 25);
 			this.iconButtonBackLaporanPembelian.Name = "iconButtonBackLaporanPembelian";
 			this.iconButtonBackLaporanPembelian.Rotation = 0D;
-			this.iconButtonBackLaporanPembelian.Size = new System.Drawing.Size(63, 65);
+			this.iconButtonBackLaporanPembelian.Size = new System.Drawing.Size(63, 48);
 			this.iconButtonBackLaporanPembelian.TabIndex = 6;
-			this.iconButtonBackLaporanPembelian.Text = "\\";
 			this.iconButtonBackLaporanPembelian.UseVisualStyleBackColor = true;
 			this.iconButtonBackLaporanPembelian.Click += new System.EventHandler(this.iconButtonBackLaporanPembelian_Click);
-			this.iconButtonBackLaporanPembelian.MouseLeave += new System.EventHandler(this.iconButtonBackLaporanPembelian_MouseLeave);
-			this.iconButtonBackLaporanPembelian.MouseHover += new System.EventHandler(this.iconButtonBackLaporanPembelian_MouseHover);
 			// 
 			// dataGridViewLaporanPembelian
 			// 
@@ -2941,7 +2929,7 @@
 			// 
 			this.labelTotalJumlahBarang.AutoSize = true;
 			this.labelTotalJumlahBarang.Font = new System.Drawing.Font("Century Gothic", 12.5F);
-			this.labelTotalJumlahBarang.Location = new System.Drawing.Point(204, 23);
+			this.labelTotalJumlahBarang.Location = new System.Drawing.Point(248, 23);
 			this.labelTotalJumlahBarang.Margin = new System.Windows.Forms.Padding(0, 40, 40, 40);
 			this.labelTotalJumlahBarang.Name = "labelTotalJumlahBarang";
 			this.labelTotalJumlahBarang.Size = new System.Drawing.Size(16, 21);
@@ -2955,9 +2943,9 @@
 			this.label8.Location = new System.Drawing.Point(11, 23);
 			this.label8.Margin = new System.Windows.Forms.Padding(50, 40, 0, 40);
 			this.label8.Name = "label8";
-			this.label8.Size = new System.Drawing.Size(189, 21);
+			this.label8.Size = new System.Drawing.Size(229, 21);
 			this.label8.TabIndex = 11;
-			this.label8.Text = "Total Jumlah Barang :";
+			this.label8.Text = "Total Jumlah Stok Barang :";
 			// 
 			// comboBoxKriteriaLaporanStokBarang
 			// 
@@ -2997,6 +2985,8 @@
 			// 
 			// iconButtonBackLaporanInventaris
 			// 
+			this.iconButtonBackLaporanInventaris.BackgroundImage = global::Kawi_Agung.Properties.Resources.back_light;
+			this.iconButtonBackLaporanInventaris.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
 			this.iconButtonBackLaporanInventaris.Cursor = System.Windows.Forms.Cursors.Hand;
 			this.iconButtonBackLaporanInventaris.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(232)))), ((int)(((byte)(232)))));
 			this.iconButtonBackLaporanInventaris.FlatAppearance.BorderSize = 0;
@@ -3009,16 +2999,13 @@
 			this.iconButtonBackLaporanInventaris.IconChar = FontAwesome.Sharp.IconChar.None;
 			this.iconButtonBackLaporanInventaris.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(7)))), ((int)(((byte)(104)))), ((int)(((byte)(159)))));
 			this.iconButtonBackLaporanInventaris.IconSize = 16;
-			this.iconButtonBackLaporanInventaris.Location = new System.Drawing.Point(15, 12);
+			this.iconButtonBackLaporanInventaris.Location = new System.Drawing.Point(15, 25);
 			this.iconButtonBackLaporanInventaris.Name = "iconButtonBackLaporanInventaris";
 			this.iconButtonBackLaporanInventaris.Rotation = 0D;
-			this.iconButtonBackLaporanInventaris.Size = new System.Drawing.Size(63, 65);
+			this.iconButtonBackLaporanInventaris.Size = new System.Drawing.Size(63, 48);
 			this.iconButtonBackLaporanInventaris.TabIndex = 6;
-			this.iconButtonBackLaporanInventaris.Text = "\\";
 			this.iconButtonBackLaporanInventaris.UseVisualStyleBackColor = true;
 			this.iconButtonBackLaporanInventaris.Click += new System.EventHandler(this.iconButtonBackLaporanInventaris_Click);
-			this.iconButtonBackLaporanInventaris.MouseLeave += new System.EventHandler(this.iconButtonBackLaporanInventaris_MouseLeave);
-			this.iconButtonBackLaporanInventaris.MouseHover += new System.EventHandler(this.iconButtonBackLaporanInventaris_MouseHover);
 			// 
 			// dataGridViewLaporanStokBarang
 			// 
@@ -3351,15 +3338,9 @@
 			this.panelMenuProfil.Controls.Add(this.checkBoxTampilPassword);
 			this.panelMenuProfil.Controls.Add(this.textBoxPasswordProfilUser);
 			this.panelMenuProfil.Controls.Add(this.label15);
-			this.panelMenuProfil.Controls.Add(this.textBoxRekeningBankProfilUser);
-			this.panelMenuProfil.Controls.Add(this.textBoxNoRekeningProfilUser);
-			this.panelMenuProfil.Controls.Add(this.textBoxNamaRekeningProfilUser);
 			this.panelMenuProfil.Controls.Add(this.richTextBoxAlamatProfilUser);
 			this.panelMenuProfil.Controls.Add(this.textBoxNoTelpProfilUser);
 			this.panelMenuProfil.Controls.Add(this.buttonUnggahFotoProfilUser);
-			this.panelMenuProfil.Controls.Add(this.label21);
-			this.panelMenuProfil.Controls.Add(this.label17);
-			this.panelMenuProfil.Controls.Add(this.label16);
 			this.panelMenuProfil.Controls.Add(this.label12);
 			this.panelMenuProfil.Controls.Add(this.buttonSimpanInfoUser);
 			this.panelMenuProfil.Controls.Add(this.labelProfilJabatan);
@@ -3472,27 +3453,6 @@
 			this.label15.TabIndex = 42;
 			this.label15.Text = "Password :";
 			// 
-			// textBoxRekeningBankProfilUser
-			// 
-			this.textBoxRekeningBankProfilUser.Location = new System.Drawing.Point(197, 440);
-			this.textBoxRekeningBankProfilUser.Name = "textBoxRekeningBankProfilUser";
-			this.textBoxRekeningBankProfilUser.Size = new System.Drawing.Size(248, 20);
-			this.textBoxRekeningBankProfilUser.TabIndex = 41;
-			// 
-			// textBoxNoRekeningProfilUser
-			// 
-			this.textBoxNoRekeningProfilUser.Location = new System.Drawing.Point(197, 401);
-			this.textBoxNoRekeningProfilUser.Name = "textBoxNoRekeningProfilUser";
-			this.textBoxNoRekeningProfilUser.Size = new System.Drawing.Size(248, 20);
-			this.textBoxNoRekeningProfilUser.TabIndex = 40;
-			// 
-			// textBoxNamaRekeningProfilUser
-			// 
-			this.textBoxNamaRekeningProfilUser.Location = new System.Drawing.Point(197, 361);
-			this.textBoxNamaRekeningProfilUser.Name = "textBoxNamaRekeningProfilUser";
-			this.textBoxNamaRekeningProfilUser.Size = new System.Drawing.Size(248, 20);
-			this.textBoxNamaRekeningProfilUser.TabIndex = 39;
-			// 
 			// richTextBoxAlamatProfilUser
 			// 
 			this.richTextBoxAlamatProfilUser.Location = new System.Drawing.Point(197, 236);
@@ -3533,36 +3493,6 @@
 			this.buttonUnggahFotoProfilUser.UseVisualStyleBackColor = false;
 			this.buttonUnggahFotoProfilUser.Click += new System.EventHandler(this.buttonUnggahFotoProfilUser_Click);
 			// 
-			// label21
-			// 
-			this.label21.AutoSize = true;
-			this.label21.Font = new System.Drawing.Font("Century Gothic", 12.5F);
-			this.label21.Location = new System.Drawing.Point(23, 437);
-			this.label21.Name = "label21";
-			this.label21.Size = new System.Drawing.Size(141, 21);
-			this.label21.TabIndex = 34;
-			this.label21.Text = "Rekening Bank :";
-			// 
-			// label17
-			// 
-			this.label17.AutoSize = true;
-			this.label17.Font = new System.Drawing.Font("Century Gothic", 12.5F);
-			this.label17.Location = new System.Drawing.Point(23, 398);
-			this.label17.Name = "label17";
-			this.label17.Size = new System.Drawing.Size(124, 21);
-			this.label17.TabIndex = 32;
-			this.label17.Text = "No Rekening :";
-			// 
-			// label16
-			// 
-			this.label16.AutoSize = true;
-			this.label16.Font = new System.Drawing.Font("Century Gothic", 12.5F);
-			this.label16.Location = new System.Drawing.Point(23, 358);
-			this.label16.Name = "label16";
-			this.label16.Size = new System.Drawing.Size(152, 21);
-			this.label16.TabIndex = 30;
-			this.label16.Text = "Nama Rekening :";
-			// 
 			// label12
 			// 
 			this.label12.AutoSize = true;
@@ -3585,7 +3515,7 @@
 			this.buttonSimpanInfoUser.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
 			this.buttonSimpanInfoUser.Font = new System.Drawing.Font("Century Gothic", 11F);
 			this.buttonSimpanInfoUser.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(49)))), ((int)(((byte)(69)))));
-			this.buttonSimpanInfoUser.Location = new System.Drawing.Point(27, 479);
+			this.buttonSimpanInfoUser.Location = new System.Drawing.Point(27, 357);
 			this.buttonSimpanInfoUser.Name = "buttonSimpanInfoUser";
 			this.buttonSimpanInfoUser.OnHoverBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(7)))), ((int)(((byte)(104)))), ((int)(((byte)(159)))));
 			this.buttonSimpanInfoUser.OnHoverButtonColor = System.Drawing.Color.FromArgb(((int)(((byte)(7)))), ((int)(((byte)(104)))), ((int)(((byte)(159)))));
@@ -3959,6 +3889,8 @@
 			// 
 			// iconButtonBackPanelBarangMasuk
 			// 
+			this.iconButtonBackPanelBarangMasuk.BackgroundImage = global::Kawi_Agung.Properties.Resources.back_light;
+			this.iconButtonBackPanelBarangMasuk.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
 			this.iconButtonBackPanelBarangMasuk.Cursor = System.Windows.Forms.Cursors.Hand;
 			this.iconButtonBackPanelBarangMasuk.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(232)))), ((int)(((byte)(232)))));
 			this.iconButtonBackPanelBarangMasuk.FlatAppearance.BorderSize = 0;
@@ -3971,16 +3903,13 @@
 			this.iconButtonBackPanelBarangMasuk.IconChar = FontAwesome.Sharp.IconChar.None;
 			this.iconButtonBackPanelBarangMasuk.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(7)))), ((int)(((byte)(104)))), ((int)(((byte)(159)))));
 			this.iconButtonBackPanelBarangMasuk.IconSize = 16;
-			this.iconButtonBackPanelBarangMasuk.Location = new System.Drawing.Point(23, 12);
+			this.iconButtonBackPanelBarangMasuk.Location = new System.Drawing.Point(23, 25);
 			this.iconButtonBackPanelBarangMasuk.Name = "iconButtonBackPanelBarangMasuk";
 			this.iconButtonBackPanelBarangMasuk.Rotation = 0D;
-			this.iconButtonBackPanelBarangMasuk.Size = new System.Drawing.Size(63, 65);
+			this.iconButtonBackPanelBarangMasuk.Size = new System.Drawing.Size(63, 48);
 			this.iconButtonBackPanelBarangMasuk.TabIndex = 20;
-			this.iconButtonBackPanelBarangMasuk.Text = "\\";
 			this.iconButtonBackPanelBarangMasuk.UseVisualStyleBackColor = true;
 			this.iconButtonBackPanelBarangMasuk.Click += new System.EventHandler(this.iconButtonBackPanelBarangMasuk_Click_1);
-			this.iconButtonBackPanelBarangMasuk.MouseLeave += new System.EventHandler(this.iconButtonBackPanelBarangMasuk_MouseLeave);
-			this.iconButtonBackPanelBarangMasuk.MouseHover += new System.EventHandler(this.iconButtonBackPanelBarangMasuk_MouseHover);
 			// 
 			// flowLayoutPanelTransaksi
 			// 
@@ -4295,6 +4224,7 @@
 			this.Controls.Add(this.panelContent);
 			this.Controls.Add(this.panelHeader);
 			this.Controls.Add(this.panelSideNavigation);
+			this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
 			this.Name = "FormMaster";
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
 			this.Text = "Kawi Agung Application";
@@ -4541,18 +4471,11 @@
 		private System.Windows.Forms.Label label11;
 		public System.Windows.Forms.DataGridView dataGridViewSubMenuMerekBrg;
 		public System.Windows.Forms.DataGridView dataGridViewDaftarJenisBrg;
-		private System.Windows.Forms.Label labelProfilUser;
 		private System.Windows.Forms.Label label28;
 		private System.Windows.Forms.Label label12;
 		private System.Windows.Forms.Panel panelButtonIndicator;
-		private System.Windows.Forms.Label label21;
-		private System.Windows.Forms.Label label17;
-		private System.Windows.Forms.Label label16;
 		private System.Windows.Forms.RichTextBox richTextBoxAlamatProfilUser;
 		private System.Windows.Forms.TextBox textBoxNoTelpProfilUser;
-		private System.Windows.Forms.TextBox textBoxRekeningBankProfilUser;
-		private System.Windows.Forms.TextBox textBoxNoRekeningProfilUser;
-		private System.Windows.Forms.TextBox textBoxNamaRekeningProfilUser;
 		private System.Windows.Forms.CheckBox checkBoxTampilPassword;
 		private System.Windows.Forms.TextBox textBoxPasswordProfilUser;
 		private System.Windows.Forms.Label label15;
@@ -4645,5 +4568,6 @@
 		private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn31;
 		private System.Windows.Forms.Label label19;
 		private System.Windows.Forms.ComboBox comboBoxKriteriaLaporanStokBarang;
+		private System.Windows.Forms.Label labelProfilUser;
 	}
 }

@@ -28,7 +28,7 @@ namespace Kawi_Agung
 		{
 			if (textBoxTambahNamaPelanggan.Text == "" || textBoxTambahNoTelpPelanggan.Text == "" || richTextBoxTambahAlamatPelanggan.Text == "")
 			{
-				MessageBox.Show("Harap di isi terlebih dahulu", "Info");
+				MessageBox.Show("Harap di isi terlebih dahulu");
 			}
 			else
 			{
@@ -37,31 +37,28 @@ namespace Kawi_Agung
 				pelanggan.Alamat = richTextBoxTambahAlamatPelanggan.Text.Trim();
 				pelanggan.NoTelp = textBoxTambahNoTelpPelanggan.Text.Trim();
 
-				string hasilTambah = Pelanggan.TambahData(pelanggan, this.mainForm.listPelanggan);
+				string hasilTambah = Pelanggan.TambahData(pelanggan);
 
 				if (hasilTambah == "1")
 				{
-					MessageBox.Show("Proses tambah berhasil", "Info");
+					MessageBox.Show("Proses tambah berhasil");
 
 					this.mainForm.textBoxSearchNamaPelanggan.Clear();
-					this.mainForm.FormMaster_Load(buttonTambahPelanggan, e);
+					this.mainForm.PopulatePelangganTable("", "");
 					this.Close();
 				}
-				else if (hasilTambah == "Nama pelanggan sudah ada") // apabila ada nama pelanggan yang sama di database
+				else
 				{
-					DialogResult dialogResult = MessageBox.Show("Nama pelanggan sudah ada. Apakah Anda ingin menyimpan data dengan nama pelanggan tersebut?", "Tambah Pelanggan", MessageBoxButtons.YesNo);
-					if (dialogResult == DialogResult.Yes)
-					{
-						List<Pelanggan> listKosong = new List<Pelanggan>(); // kirim list kosong sebagai parameter method tambah data, agar bisa ditambahkan ke database
-						string hasilTambah_ = Pelanggan.TambahData(pelanggan, listKosong);
-
-						MessageBox.Show("Proses tambah berhasil", "Info");
-
-						this.mainForm.textBoxSearchNamaPelanggan.Clear();
-						this.mainForm.FormMaster_Load(buttonTambahPelanggan, e);
-						this.Close();
-					}
+					MessageBox.Show(hasilTambah);
 				}
+			}
+		}
+
+		private void richTextBoxTambahAlamatPelanggan_KeyDown(object sender, KeyEventArgs e)
+		{
+			if (e.KeyCode == Keys.Enter)
+			{
+				buttonTambahPelanggan_Click(sender, e);
 			}
 		}
 	}

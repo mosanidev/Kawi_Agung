@@ -149,7 +149,7 @@
 			this.textBoxPegawaiNama.Location = new System.Drawing.Point(184, 90);
 			this.textBoxPegawaiNama.Name = "textBoxPegawaiNama";
 			this.textBoxPegawaiNama.Size = new System.Drawing.Size(231, 20);
-			this.textBoxPegawaiNama.TabIndex = 101;
+			this.textBoxPegawaiNama.TabIndex = 0;
 			// 
 			// comboBoxJenisKelaminPegawai
 			// 
@@ -158,28 +158,28 @@
 			this.comboBoxJenisKelaminPegawai.Location = new System.Drawing.Point(184, 126);
 			this.comboBoxJenisKelaminPegawai.Name = "comboBoxJenisKelaminPegawai";
 			this.comboBoxJenisKelaminPegawai.Size = new System.Drawing.Size(231, 21);
-			this.comboBoxJenisKelaminPegawai.TabIndex = 102;
+			this.comboBoxJenisKelaminPegawai.TabIndex = 1;
 			// 
 			// dateTimePickerTanggalLahirPegawai
 			// 
 			this.dateTimePickerTanggalLahirPegawai.Location = new System.Drawing.Point(184, 161);
 			this.dateTimePickerTanggalLahirPegawai.Name = "dateTimePickerTanggalLahirPegawai";
 			this.dateTimePickerTanggalLahirPegawai.Size = new System.Drawing.Size(231, 20);
-			this.dateTimePickerTanggalLahirPegawai.TabIndex = 103;
+			this.dateTimePickerTanggalLahirPegawai.TabIndex = 2;
 			// 
 			// textBoxNoTelpPegawai
 			// 
 			this.textBoxNoTelpPegawai.Location = new System.Drawing.Point(184, 266);
 			this.textBoxNoTelpPegawai.Name = "textBoxNoTelpPegawai";
 			this.textBoxNoTelpPegawai.Size = new System.Drawing.Size(231, 20);
-			this.textBoxNoTelpPegawai.TabIndex = 104;
+			this.textBoxNoTelpPegawai.TabIndex = 5;
 			// 
 			// textBoxUsernamePegawai
 			// 
 			this.textBoxUsernamePegawai.Location = new System.Drawing.Point(184, 194);
 			this.textBoxUsernamePegawai.Name = "textBoxUsernamePegawai";
 			this.textBoxUsernamePegawai.Size = new System.Drawing.Size(231, 20);
-			this.textBoxUsernamePegawai.TabIndex = 105;
+			this.textBoxUsernamePegawai.TabIndex = 3;
 			// 
 			// comboBoxJabatanPegawai
 			// 
@@ -188,7 +188,7 @@
 			this.comboBoxJabatanPegawai.Location = new System.Drawing.Point(184, 231);
 			this.comboBoxJabatanPegawai.Name = "comboBoxJabatanPegawai";
 			this.comboBoxJabatanPegawai.Size = new System.Drawing.Size(231, 21);
-			this.comboBoxJabatanPegawai.TabIndex = 106;
+			this.comboBoxJabatanPegawai.TabIndex = 4;
 			// 
 			// textBoxAlamatPegawai
 			// 
@@ -196,7 +196,8 @@
 			this.textBoxAlamatPegawai.Multiline = true;
 			this.textBoxAlamatPegawai.Name = "textBoxAlamatPegawai";
 			this.textBoxAlamatPegawai.Size = new System.Drawing.Size(231, 69);
-			this.textBoxAlamatPegawai.TabIndex = 107;
+			this.textBoxAlamatPegawai.TabIndex = 6;
+			this.textBoxAlamatPegawai.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBoxAlamatPegawai_KeyDown);
 			// 
 			// pictureBoxTambahFotoUser
 			// 
@@ -227,10 +228,11 @@
 			this.buttonHapusFoto.OnHoverButtonColor = System.Drawing.Color.FromArgb(((int)(((byte)(7)))), ((int)(((byte)(104)))), ((int)(((byte)(159)))));
 			this.buttonHapusFoto.OnHoverTextColor = System.Drawing.Color.AliceBlue;
 			this.buttonHapusFoto.Size = new System.Drawing.Size(146, 34);
-			this.buttonHapusFoto.TabIndex = 112;
+			this.buttonHapusFoto.TabIndex = 8;
 			this.buttonHapusFoto.Text = "Hapus Foto";
 			this.buttonHapusFoto.TextColor = System.Drawing.Color.White;
 			this.buttonHapusFoto.UseVisualStyleBackColor = false;
+			this.buttonHapusFoto.Click += new System.EventHandler(this.buttonHapusFoto_Click);
 			// 
 			// buttonUnggahFotoUser
 			// 
@@ -251,7 +253,7 @@
 			this.buttonUnggahFotoUser.OnHoverButtonColor = System.Drawing.Color.FromArgb(((int)(((byte)(7)))), ((int)(((byte)(104)))), ((int)(((byte)(159)))));
 			this.buttonUnggahFotoUser.OnHoverTextColor = System.Drawing.Color.AliceBlue;
 			this.buttonUnggahFotoUser.Size = new System.Drawing.Size(146, 34);
-			this.buttonUnggahFotoUser.TabIndex = 111;
+			this.buttonUnggahFotoUser.TabIndex = 7;
 			this.buttonUnggahFotoUser.Text = "Unggah";
 			this.buttonUnggahFotoUser.TextColor = System.Drawing.Color.White;
 			this.buttonUnggahFotoUser.UseVisualStyleBackColor = false;
@@ -275,7 +277,7 @@
 			this.buttonTambahPegawai.OnHoverButtonColor = System.Drawing.Color.FromArgb(((int)(((byte)(7)))), ((int)(((byte)(104)))), ((int)(((byte)(159)))));
 			this.buttonTambahPegawai.OnHoverTextColor = System.Drawing.Color.AliceBlue;
 			this.buttonTambahPegawai.Size = new System.Drawing.Size(232, 40);
-			this.buttonTambahPegawai.TabIndex = 108;
+			this.buttonTambahPegawai.TabIndex = 9;
 			this.buttonTambahPegawai.Text = "Tambah";
 			this.buttonTambahPegawai.TextColor = System.Drawing.Color.White;
 			this.buttonTambahPegawai.UseVisualStyleBackColor = false;
@@ -305,8 +307,10 @@
 			this.Controls.Add(this.label6);
 			this.Controls.Add(this.label1);
 			this.Controls.Add(this.panel1);
+			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+			this.MaximizeBox = false;
 			this.Name = "FormTambahPegawai";
-			this.Text = "FormTambahPegawai";
+			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
 			this.Load += new System.EventHandler(this.FormTambahPegawai_Load);
 			this.panel1.ResumeLayout(false);
 			this.panel1.PerformLayout();

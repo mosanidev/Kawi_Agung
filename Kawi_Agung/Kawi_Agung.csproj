@@ -12,6 +12,7 @@
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
     <PublishUrl>publish\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
@@ -24,7 +25,6 @@
     <MapFileExtensions>true</MapFileExtensions>
     <ApplicationRevision>0</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
-    <IsWebBootstrapper>false</IsWebBootstrapper>
     <UseApplicationTrust>false</UseApplicationTrust>
     <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
@@ -51,15 +51,26 @@
     <LangVersion>8.0</LangVersion>
   </PropertyGroup>
   <PropertyGroup />
+  <PropertyGroup>
+    <ApplicationIcon>logo_kawi_agung.ico</ApplicationIcon>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationManifest>app.manifest</ApplicationManifest>
+  </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AxShockwaveFlashObjects, Version=1.0.0.0, Culture=neutral, PublicKeyToken=692fbea5521e1304" />
     <Reference Include="BouncyCastle.Crypto, Version=1.8.6.0, Culture=neutral, PublicKeyToken=0e99375e54769942">
       <HintPath>..\packages\BouncyCastle.1.8.6.1\lib\BouncyCastle.Crypto.dll</HintPath>
     </Reference>
+    <Reference Include="CrystalDecisions.CrystalReports.Engine, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.ReportSource, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.Shared, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.Windows.Forms, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
     <Reference Include="FontAwesome.Sharp, Version=5.14.1.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\FontAwesome.Sharp.5.14.1\lib\net472\FontAwesome.Sharp.dll</HintPath>
     </Reference>
-    <Reference Include="itextsharp, Version=5.5.13.2, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
-      <HintPath>..\packages\iTextSharp.5.5.13.2\lib\itextsharp.dll</HintPath>
+    <Reference Include="log4net, Version=1.2.10.0, Culture=neutral, PublicKeyToken=1b44e1d426115821, processorArchitecture=MSIL">
+      <HintPath>..\packages\log4net.1.2.10\lib\2.0\log4net.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="MySql.Data, Version=8.0.21.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL" />
@@ -104,6 +115,8 @@
     </Reference>
     <Reference Include="System.ServiceProcess" />
     <Reference Include="System.Transactions" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Services" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Xml.Linq" />
@@ -115,7 +128,13 @@
       <SubType>Component</SubType>
       <CustomToolNamespace>Button_WOC</CustomToolNamespace>
     </Compile>
-    <Compile Include="Cetak.cs" />
+    <Compile Include="CrystalReports\CrystalReport1.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CrystalReport1.rpt</DependentUpon>
+      <SubType>Component</SubType>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Compile>
     <Compile Include="DragControl.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -154,6 +173,12 @@
     </Compile>
     <Compile Include="FormMaster.Designer.cs">
       <DependentUpon>FormMaster.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormReportViewer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormReportViewer.Designer.cs">
+      <DependentUpon>FormReportViewer.cs</DependentUpon>
     </Compile>
     <Compile Include="FormTambahBarang.cs">
       <SubType>Form</SubType>
@@ -196,12 +221,6 @@
     </Compile>
     <Compile Include="FormTambahSupplier.Designer.cs">
       <DependentUpon>FormTambahSupplier.cs</DependentUpon>
-    </Compile>
-    <Compile Include="FormTambahUser.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FormTambahUser.Designer.cs">
-      <DependentUpon>FormTambahUser.cs</DependentUpon>
     </Compile>
     <Compile Include="FormUbahBarang.cs">
       <SubType>Form</SubType>
@@ -261,7 +280,6 @@
     <Compile Include="JenisBarang.cs" />
     <Compile Include="KategoriBarang.cs" />
     <Compile Include="Koneksi.cs" />
-    <Compile Include="Menu.cs" />
     <Compile Include="MerekBarang.cs" />
     <Compile Include="NotaBeli.cs" />
     <Compile Include="NotaBeliDetil.cs" />
@@ -275,9 +293,13 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Include="SubMenu.cs" />
     <Compile Include="Supplier.cs" />
     <Compile Include="User.cs" />
+    <EmbeddedResource Include="CrystalReports\CrystalReport1.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>CrystalReport1.cs</LastGenOutput>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
@@ -295,6 +317,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormMaster.resx">
       <DependentUpon>FormMaster.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormReportViewer.resx">
+      <DependentUpon>FormReportViewer.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormTambahBarang.resx">
       <DependentUpon>FormTambahBarang.cs</DependentUpon>
@@ -316,9 +341,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormTambahSupplier.resx">
       <DependentUpon>FormTambahSupplier.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="FormTambahUser.resx">
-      <DependentUpon>FormTambahUser.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormUbahBarang.resx">
       <DependentUpon>FormUbahBarang.cs</DependentUpon>
@@ -352,6 +374,7 @@
       <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include="app.manifest" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -407,6 +430,16 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\laporan_kecil.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{C0C07587-41A7-46C8-8FBD-3F9C8EBE2DDC}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="logo_kawi_agung.ico" />
+    <Content Include="Resources\back_dark.JPG" />
+    <None Include="Resources\back_light1.JPG" />
+    <None Include="Resources\back_dark1.JPG" />
+    <Content Include="Resources\back_light.JPG" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
